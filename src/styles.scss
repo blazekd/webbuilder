@@ -5,9 +5,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 /* Importing Bootstrap SCSS file. */
-@import '../node_modules/bootstrap/scss/bootstrap';
-
-
+@import 'bootstrap/scss/bootstrap';
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.bubble.css';
 @import '~quill/dist/quill.snow.css';

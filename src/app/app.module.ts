@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,20 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatLegacyDialogModule as MatDialogModule, MAT_LEGACY_DIALOG_DEFAULT_OPTIONS as MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/legacy-dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoMaterialModule } from './material-module';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { LayoutModule } from '@angular/cdk/layout';
-import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
 import { CreateWebComponent } from './create-web/create-web.component';
-import { TestComponent } from './test/test.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { QuillModule } from 'ngx-quill'
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -70,11 +65,7 @@ import { CalendarColorModuleComponent } from './create-web/edit/modules/calendar
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    HomeComponent,
-    NavbarComponent,
     CreateWebComponent,
-    TestComponent,
     NavigationBarComponent,
     WebFooterComponent,
     WebNavComponent,
@@ -112,7 +103,6 @@ import { CalendarColorModuleComponent } from './create-web/edit/modules/calendar
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
