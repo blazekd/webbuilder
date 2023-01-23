@@ -1,16 +1,16 @@
 <quill-editor [(ngModel)]="content.text" theme="bubble2" 
-placeholder="Zadejte text" [modules]="modules">
+placeholder="Enter text" [modules]="modules">
 <div quill-editor-toolbar>
   <span class="ql-formats">
-    <button class="ql-bold" [title]="'Tučné'"></button>
-    <button class="ql-italic" [title]="'Kurzíva'"></button>
+    <button class="ql-bold" [title]="'Bold'"></button>
+    <button class="ql-italic" [title]="'Italic'"></button>
   </span>
   <span class="ql-formats">
-    <button type="button" class="ql-indent" value="-1" [title]="'Zmenšit odsazení'"></button>
-    <button type="button" class="ql-indent" value="+1" [title]="'Zvětšit odsazení'"></button>
+    <button type="button" class="ql-indent" value="-1" [title]="'Increase indentation'"></button>
+    <button type="button" class="ql-indent" value="+1" [title]="'Decrease indentation'"></button>
   </span>
   <span class="ql-formats">
-    <select class="ql-header" [title]="'Styl textu'">
+    <select class="ql-header" [title]="'Text style'">
       <option value="1"></option>
       <option value="2"></option>
       <option value="3"></option>
@@ -22,60 +22,25 @@ placeholder="Zadejte text" [modules]="modules">
         <option [value]="item">{{item}}</option>
       </ng-container>
     </select>
-    <select class="ql-align" [title]="'Zarovnání textu'">
-      <option selected [title]="'Vpravo'"></option>
-      <option value="center" [title]="'Na střed'"></option>
-      <option value="right" [title]="'Vpravo'"></option>
-      <option value="justify" [title]="'Do bloku'"></option>
+    <select class="ql-align" [title]="'Alignment'">
+      <option selected [title]="'Left'"></option>
+      <option value="center" [title]="'Center'"></option>
+      <option value="right" [title]="'Right'"></option>
+      <option value="justify" [title]="'Justify'"></option>
     </select>
   </span>
   <span class="ql-formats">
-    <select class="ql-color" [title]="'Barva textu'"></select>
-    <select class="ql-background" [title]="'Barva pozadí textu'"></select>
+    <select class="ql-color" [title]="'Text color'"></select>
+    <select class="ql-background" [title]="'Text background color'"></select>
   </span>
   <span class="ql-formats">
-    <button type="button" class="ql-letter-spacing" value="+0.1" [title]="'Zvětšit mezeru mezi písmeny'"></button>
-    <button type="button" class="ql-letter-spacing" value="-0.1" [title]="'Zmenšit mezeru mezi písmeny'"></button>
+    <button type="button" class="ql-letter-spacing" value="+0.1" [title]="'Increase letter spacing'"></button>
+    <button type="button" class="ql-letter-spacing" value="-0.1" [title]="'Decrease letter spacing'"></button>
   </span>
   <span class="ql-formats">
-    <button type="button" class="ql-font-size-button" value="+10" [title]="'Zvětšit písmo'"></button>
-    <button type="button" class="ql-font-size-button" value="-10" [title]="'Zmenšit písmo'"></button>
+    <button type="button" class="ql-font-size-button" value="+10" [title]="'Increase font size'"></button>
+    <button type="button" class="ql-font-size-button" value="-10" [title]="'Decrease font size'"></button>
   </span>
 </div>
 </quill-editor>
 
-<!-- ['bold', 'italic'],        // toggled buttons
-// ['blockquote', 'code-block'],
-
-// [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-// [{ 'list': 'ordered'}, { 'list': 'bullet' }], //list custom with block 
-// [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-// [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-// [{ 'direction': 'rtl' }],                         // text direction
-
-// [{ 'size': FONT_SIZES }],  // custom dropdown
-// [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-[{ 'header': [1, 2, 3, false, 10] }],
-// [ {'kokotina': ['custom-header', 'custom-header2']}],
-      // [ 'custom-header', 'custom-header2'],
-      // [{ 'custom-header': [1, 2, 3, 4, 5, 6] }],
-// [{ 'placeholder': ['[GuestName]', '[HotelName]'] }]
-[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-// [{ 'font': FONT_NAMES_LOWER }],
-[{'font': FONT_NAMES}],
-[{ 'align': [] }], -->
-
-
-
-
-<!-- <quill-editor [(ngModel)]="content.text" theme="bubble2" 
-placeholder="Zadejte text"
-class="editor"
-[modules]="modulesText" (onEditorCreated)="editorCreated($event)">
-
-</quill-editor> -->
-
-<!-- <pre>{{pepa}}</pre> -->
-<!-- <div #xxx>
-  <ng-content></ng-content>
-</div> -->

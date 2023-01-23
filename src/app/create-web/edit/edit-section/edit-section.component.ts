@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-section.component.scss']
 })
 export class EditSectionComponent implements OnInit {
-
+  //todo
   constructor() { }
 
   ngOnInit(): void {

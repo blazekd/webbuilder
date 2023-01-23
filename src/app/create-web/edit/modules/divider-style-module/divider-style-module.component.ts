@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DividerStyleModuleComponent implements OnInit {
 
   constructor() { }
-
+  //todo?
   ngOnInit(): void {
   }
 

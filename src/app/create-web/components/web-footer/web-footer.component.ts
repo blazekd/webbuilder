@@ -9,7 +9,6 @@ import { ComponentData } from '../../create-web.component';
 export class WebFooterComponent implements OnInit {
 
   @Input() component!: ComponentData;
-  // test = "© 2021 Worlds Collide. Všechna práva vyhrazena."
   constructor() { }
 
   ngOnInit(): void {

@@ -14,31 +14,7 @@ import { DividerSizeModuleComponent } from '../edit/modules/divider-size-module/
 import { CalendarColorModuleComponent } from '../edit/modules/calendar-color-module/calendar-color-module.component';
 import { CalendarStyleModuleComponent } from "../edit/modules/calendar-style-module/calendar-style-module.component";
 
-// export class NavComponentClass {
-//   layout: LayoutClass;
-//   color: ColorClass;
-//   size: SizeClass;
-//   logo: LogoAndTitleClass;
-//   logo2 = LogoAndTitleClass2.default()
-//   background: BackgroundClass;
-//   button: ButtonClass;
-//   constructor(layout: LayoutClass, color: ColorClass, size: SizeClass, logo: LogoAndTitleClass, background: BackgroundClass, button: ButtonClass) {
-//     this.layout = layout;
-//     this.color = color;
-//     this.size = size
-//     this.logo = logo;
-//     this.background = background;
-//     this.button = button;
-//   }
 
-//   static empty() : NavComponentClass {
-//     return new NavComponentClass(new LayoutClass(), ColorClass.default(), new SizeClass('width2', 'height2'), new LogoAndTitleClass(), new BackgroundClass(), new ButtonClass())
-//   }
-
-//   static webnode() : NavComponentClass {
-//     return new NavComponentClass(new LayoutClass(), ColorClass.default(), new SizeClass('width2', 'height2'), LogoAndTitleClass.webnode(), new BackgroundClass(), new ButtonClass())
-//   }
-// }
 
 
 export class NavComponentClass {
@@ -714,53 +690,53 @@ export class EditDialog {
 // ]
 
 export const EDIT_NAV_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit hlavičku','','')),
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Rozvržení hlavičky!!!','view_compact','Rozvržení')), 
-  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Barvy hlavičky','palette','Barvy')),
-  new EditMenuModule(SizeModuleComponent, new EditMenuButton('Rozměry hlavičky', 'expand','Rozměry')),
-  new EditMenuModule(LogoModuleComponent, new EditMenuButton('Logo a titulek!!!','title','Logo a titulek')),
-  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Pozadí hlavičky','image','Pozadí')),
+  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit header','','')),
+  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Layout!!!','view_compact','Layout')), 
+  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
+  new EditMenuModule(SizeModuleComponent, new EditMenuButton('Dimensions', 'expand','Dimensions')),
+  new EditMenuModule(LogoModuleComponent, new EditMenuButton('Logo and title!!!','title','Logo and title')),
+  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Background','image','Background')),
 ]
 
 export const EDIT_SECTION_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit sekci','','')),
-  new EditMenuModule(ColumnsModuleComponent, new EditMenuButton('Sloupce','view_compact','Sloupce')),
-  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Barvy sekce','palette','Barvy')),
-  new EditMenuModule(SizeModuleComponent, new EditMenuButton('Rozměry sekce', 'expand','Rozměry')),
-  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Pozadí sekce','image','Pozadí'))
+  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit section','','')),
+  new EditMenuModule(ColumnsModuleComponent, new EditMenuButton('Columns','view_compact','Columns')),
+  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
+  new EditMenuModule(SizeModuleComponent, new EditMenuButton('Dimensions', 'expand','Dimensions')),
+  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Background','image','Background'))
 ]
 
 export const EDIT_FOOTER_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit zápatí','','')),
+  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit footer','','')),
   // new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Rozvržení hlavičky!!!','view_compact','Rozvržení')), 
-  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Barvy zápatí','palette','Barvy')),
+  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
   // new EditMenuModule(SizeModuleComponent, new EditMenuButton('Rozměry zápatí', 'expand','Rozměry')),
   // new EditMenuModule(LogoModuleComponent, new EditMenuButton('Logo a titulek!!!','title','Logo a titulek')),
-  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Pozadí zápatí','image','Pozadí')),
+  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Background','image','Background')),
 ]
 
 export const EDIT_GRID_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit mřížku','','')),
-  new EditMenuModule(ColumnsModuleComponent, new EditMenuButton('Sloupce','view_compact','Sloupce')),
+  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit grid','','')),
+  new EditMenuModule(ColumnsModuleComponent, new EditMenuButton('Columns','view_compact','Columns')),
   // new EditMenuModule(ColorModuleComponent, new EditMenuButton('Barvy sekce','palette','Barvy')),
   // new EditMenuModule(SizeModuleComponent, new EditMenuButton('Rozměry sekce', 'expand','Rozměry')),
   // new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Pozadí sekce','image','Pozadí'))
 ]
 
 export const EDIT_CARD_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit kartu','','')),
-  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Barvy karty','palette','Barvy')),
-  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Pozadí karty','image','Pozadí'))
+  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit card','','')),
+  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
+  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Background','image','Background'))
 ]
 
 export const EDIT_DIVIDER_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit dělící čáru','','')),
-  new EditMenuModule(DividerStyleModuleComponent, new EditMenuButton('Styl čáry','horizontal_split','Styly')),
-  new EditMenuModule(DividerColorModuleComponent, new EditMenuButton('Barvy čáry','palette','Barvy')),
-  new EditMenuModule(DividerSizeModuleComponent, new EditMenuButton('Rozměry čáry','expand','Rozměry'))
+  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit divider','','')),
+  new EditMenuModule(DividerStyleModuleComponent, new EditMenuButton('Line style','horizontal_split','Line style')),
+  new EditMenuModule(DividerColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
+  new EditMenuModule(DividerSizeModuleComponent, new EditMenuButton('Dimensions','expand','Dimensions'))
 ]
 
-
+//todo del
 export const EDIT_CALENDAR_COMPONENT = [
   new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit kalendář','','')),
   new EditMenuModule(CalendarStyleModuleComponent, new EditMenuButton('Styl kalendáře','event','Styly')),

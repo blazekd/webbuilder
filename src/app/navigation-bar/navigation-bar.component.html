@@ -1,17 +1,12 @@
 <mat-toolbar color="primary">
 
   <mat-toolbar-row>
-
-    <button mat-icon-button (click)="toggleSidenav.emit()">
-      <mat-icon>menu</mat-icon>
-    </button>
-
     <span class="toolbar-title"> Web builder </span>
 
     <div fxFlex fxLayout fxLayoutAlign="flex-end center">
 
       <mat-list-item fxHide.xs *ngIf="returnUrl === '/web'">
-        <span class="p-1">Zobrazení: </span>
+        <span class="p-1">View: </span>
         <mat-button-toggle-group aria-label="Font Style" class="icon-display">
           <mat-button-toggle [checked]="!showPc" (change)="showPc = false"><mat-icon>smartphone</mat-icon></mat-button-toggle>
           <mat-button-toggle [checked]="showPc" (change)="showPc = true"><mat-icon>computer</mat-icon></mat-button-toggle>
@@ -21,18 +16,18 @@
       <ul fxLayout fxLayoutGap="20px" class="navigation-items">
         <li fxHide.xs>
           <button mat-button>
-            <mat-icon> download </mat-icon><span> Uložit jako HTML </span>
+            <mat-icon> download </mat-icon><span> Save as HTML </span>
           </button>
         </li>
         <li fxHide.xs>
           <button mat-button>
-            <mat-icon> settings </mat-icon><span> Nastavení stránky </span>
+            <mat-icon> settings </mat-icon><span> Page settings </span>
           </button>
         </li>
 
         <li fxHide.xs>
           <button mat-button>
-            <mat-icon> help_outline </mat-icon><span> Nápověda </span>
+            <mat-icon> help_outline </mat-icon><span> Help </span>
           </button>
         </li>
 

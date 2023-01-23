@@ -1,23 +1,23 @@
 <mat-tab-group dynamicHeight mat-stretch-tabs>
-    <mat-tab label="Připravené styly">
+    <mat-tab label="Prepared styles">
         <div *ngFor="let item of buttons" [id]="item" class="button-wrapper" [class.button-wrapper-active]="item == data.button.name" (click)="changeButton(item)">
-            <button class="btn-none">Neaktivní</button>
+            <button class="btn-none">Inactive</button>
             <!-- <button class="btn-hover">Zvýraznění</button> -->
-            <button class="btn-active">Aktivní</button>
+            <button class="btn-active">Active</button>
         </div>  
     </mat-tab>
-    <mat-tab label="Barvy tlačítka">
+    <mat-tab label="Button colors">
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Pozadí tlačítka</mat-label>
+                <mat-label>Button background</mat-label>
                 <input matInput type="color" placeholder="Ex. It makes me feel..." [(ngModel)]="data.button.customBackground">
             </mat-form-field>
             
-            <p>Průhlednost pozadí</p>
+            <p>Background transparency</p>
             <mat-slider thumbLabel min="0" max="1" step="0.05" [displayWith]="formatLabel" #ngSlider><input matSliderThumb [value]="data.button.opacity" (input)="changeOpacity({source: ngSliderThumb, parent: ngSlider, value: ngSliderThumb.value})" #ngSliderThumb="matSliderThumb" /></mat-slider>
 
             <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Barva textu</mat-label>
+                <mat-label>Text color</mat-label>
                 <input matInput type="color" placeholder="Ex. It makes me feel..." [(ngModel)]="data.button.customColor">
             </mat-form-field>
         </div>

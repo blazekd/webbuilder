@@ -1,13 +1,13 @@
 <div>
     <mat-form-field class="example-full-width" appearance="fill" class="w-100">
-        <mat-label>Nadpis</mat-label>
+        <mat-label>Title</mat-label>
         <input matInput [(ngModel)]="data.header.text">
     </mat-form-field>
 </div>
-<mat-slide-toggle [(ngModel)]="data.header.haveSubtext">Zobrazit podnadpis</mat-slide-toggle>
+<mat-slide-toggle [(ngModel)]="data.header.haveSubtext">Show subtitle</mat-slide-toggle>
 <div class="logo" [class.show-logo]="data.header.haveSubtext">
     <mat-form-field class="example-full-width" appearance="fill" class="w-100">
-        <mat-label>Podnadpis</mat-label>
+        <mat-label>Subtitle</mat-label>
         <input matInput [(ngModel)]="data.header.subtext">
     </mat-form-field>
 </div>

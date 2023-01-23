@@ -1,39 +1,4 @@
-<!-- <p>adresa obrázku</p>
-<input matInput type="text" [(ngModel)]="image">
-<button (click)="ok()">Ok</button>
-<button (click)="close()">Close</button> -->
 
-<!-- <div class="container">
-    <form [formGroup]="form" (ngSubmit)="submitUser()">
-
-        <div class="progress form-group" *ngIf="progress > 0">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <input type="file" (change)="uploadFile($event)">
-        </div>
-
-
-        <div class="form-group">
-            <button class="btn btn-danger btn-block btn-lg">Create</button>
-        </div>
-    </form>
-</div> -->
-
-
-<!-- <div class="drag-and-drop container" appDragAndDrop (fileDropped)="onFileDropped($event)">
-
-        <input type="file" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event.target)" accept="image/*" />
-        <mat-icon>file_upload</mat-icon>
-
-        <h3>Přetáhněte sem obrázek</h3>
-        <h3>nebo</h3>
-        <label for="fileDropRef">Prohledat</label>
-</div> -->
-
-<!-- <p>{{data.src}}</p> -->
 <div class="container" [ngSwitch]="uploading">
 
     <ng-container *ngSwitchCase="0">
@@ -43,30 +8,25 @@
                 <input type="file" #fileDropRef id="fileDropRef" (change)="uploadFile($event)" accept="image/*" />
                 <mat-icon>file_upload</mat-icon>
         
-                <h3>Přetáhněte sem obrázek</h3>
-                <h3>nebo</h3>
-                <label for="fileDropRef">Prohledat</label>
+                <h3>Drag image</h3>
+                <h3>or</h3>
+                <label for="fileDropRef">Browse</label>
             </div>
         </div>
         <div class="d-flex justify-content-around mt-4">
-            <button mat-stroked-button (click)="gallery()">Galerie</button>
-            <button mat-stroked-button (click)="close()">Zrušit</button>
+            <button mat-stroked-button (click)="gallery()">Gallery</button>
+            <button mat-stroked-button (click)="close()">Close</button>
         </div>
     </ng-container>
     <ng-container *ngSwitchCase="1">
-        <p>Nahrávám {{ form.value.file.name }}</p>
+        <p>Uploading {{ form.value.file.name }}</p>
         <div class="progress form-group" *ngIf="progress > 0">
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
             </div>
         </div>
     </ng-container>
     <ng-container *ngSwitchCase="2">
-        <!-- <p>Nahráno {{ form.value.file.name }}</p> -->
-        <!-- <div class="ohgodhelpme">
-            <img [src]="image.src" [alt]="image.alt" class="test2">
-            <img [src]="image.src" [alt]="image.alt" class="test">
-        </div> -->
-        <h4>Focus obrázku</h4>
+        <h4>Image focus</h4>
         <div class="img-wrap">
             <div #imageBoundary class="image-boundary">
                 <div #imageFocusPoint cdkDrag cdkDragBoundary=".image-boundary" (cdkDragEnded)="dropFocusPoint($event)" [style.left]="image.left" [style.top]="image.top"></div>
@@ -74,9 +34,9 @@
             </div>
         </div>
 
-        <h4>Styl obrázku</h4>
+        <h4>Image style</h4>
         <mat-form-field appearance="fill">
-            <mat-label>Styl obrázku</mat-label>
+            <mat-label>Image style</mat-label>
             <mat-select [(value)]="image.style">
                 <mat-option *ngFor="let style of styles" [value]="style.value">
                     {{style.viewValue}}
@@ -84,58 +44,19 @@
             </mat-select>
         </mat-form-field>
 
-        <!-- <div class="text-center"> -->
-
-            <!-- <div class="col-md-8"> -->
-              <!-- <image-cropper 
-                [imageChangedEvent]="imgChangeEvt" 
-                [maintainAspectRatio]="true" 
-                [aspectRatio]="4 / 4"
-                [resizeToWidth]="256" 
-                format="png" 
-                (imageCropped)="cropImg($event)" 
-                (imageLoaded)="imgLoad()"
-                (cropperReady)="initCropper()" 
-                (loadImageFailed)="imgFailed()">
-              </image-cropper> -->
-              <!-- <image-cropper 
-              [imageURL]="image.url"  
-              [resizeToWidth]="400" 
-              format="png" 
-              (imageCropped)="cropImg($event)" 
-              (imageLoaded)="imgLoad()"
-              (cropperReady)="initCropper()" 
-              (loadImageFailed)="imgFailed()">
-            </image-cropper> -->
-            <!-- </div> -->
-          
-            <!-- <div class="col-md-4">
-              <h6>Image Preview</h6>
-              <img [src]="cropImgPreview" />
-            </div> -->
-          
-          <!-- </div> -->
           <div class="d-flex justify-content-around mt-4">
-            <button mat-stroked-button (click)="uploadNew()">Změnit</button>
-            <!-- <button mat-stroked-button (click)="galery()">Galerie</button> -->
-            <button mat-stroked-button (click)="close()">Zrušit</button>
+            <button mat-stroked-button (click)="uploadNew()">Change image</button>
+            <button mat-stroked-button (click)="close()">Cancel</button>
         </div>
     </ng-container>
     <ng-container *ngSwitchCase="3">
         <div class="d-flex justify-content-around mt-4">
-            <button mat-stroked-button (click)="uploadNew()">Nahrát nový obrázek</button>
-            <button mat-stroked-button (click)="close()">Zrušit</button>
+            <button mat-stroked-button (click)="uploadNew()">Upload new image</button>
+            <button mat-stroked-button (click)="close()">Cancel</button>
         </div>
     </ng-container>
 
-        <!-- <div class="form-group">
-            <input type="file" (change)="uploadFile($event)">
-        </div> -->
 
-
-        <!-- <div class="form-group">
-            <button class="btn btn-danger btn-block btn-lg">Create</button>
-        </div> -->
 
 </div>
 

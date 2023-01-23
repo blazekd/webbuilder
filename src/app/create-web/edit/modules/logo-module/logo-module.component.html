@@ -1,59 +1,59 @@
 <mat-tab-group dynamicHeight mat-stretch-tabs>
     <mat-tab label="Logo">
-        <mat-slide-toggle [checked]="data.logo.haveLogo" (change)="changeLogo()">Zobrazit logo</mat-slide-toggle>
+        <mat-slide-toggle [checked]="data.logo.haveLogo" (change)="changeLogo()">Show logo</mat-slide-toggle>
     <div class="logo" [class.show-logo]="data.logo.haveLogo">
         <div class="row align-items-center justify-content-center text-center vertical-center">
             <div class="col-12">
                 <img [src]="data.logo.logoUrl" alt="Logo" height="70px">
             </div>
             <div class="col-6">
-                <button mat-button>Nahrát logo <mat-icon>file_upload</mat-icon></button>
+                <button mat-button>Upload logo <mat-icon>file_upload</mat-icon></button>
             </div>
             <div class="col-6">
-                <button mat-button>Smazat logo <mat-icon>delete</mat-icon></button>
+                <button mat-button>Delete logo <mat-icon>delete</mat-icon></button>
             </div>
         </div>
     </div>
-    <mat-slide-toggle [checked]="data.logo.haveLogoText && data.logo.haveLogo" (change)="changeLogoText()" [disabled]="!data.logo.haveLogo">Zobrazit text pod logem</mat-slide-toggle>
+    <mat-slide-toggle [checked]="data.logo.haveLogoText && data.logo.haveLogo" (change)="changeLogoText()" [disabled]="!data.logo.haveLogo">Show text under logo</mat-slide-toggle>
     <div class="logo" [class.show-logo]="data.logo.haveLogoText && data.logo.haveLogo">
         <mat-form-field class="example-full-width" appearance="fill" class="w-100">
-            <mat-label>Text pod logem</mat-label>
+            <mat-label>Text under logo</mat-label>
             <input matInput [(ngModel)]="data.logo.logoText">
         </mat-form-field>
     </div>
-    <mat-slide-toggle [(ngModel)]="data.logo.haveLogoHighlight">Zvýraznit logo</mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="data.logo.haveLogoHighlight">Highlight logo</mat-slide-toggle>
     <div class="logo" [class.show-logo]="data.logo.haveLogoHighlight">
-        <p>Průhlednost pozadí</p>
+        <p>Background transparency</p>
         <mat-slider thumbLabel min="0" max="1" step="0.05" [displayWith]="formatLabel" #ngSlider><input matSliderThumb [value]="data.logo.logoHighlightOpacity" (input)="changeLogoHighlightOpacity({source: ngSliderThumb, parent: ngSlider, value: ngSliderThumb.value})" #ngSliderThumb="matSliderThumb" /></mat-slider>
 
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Barva pozadí</mat-label>
+            <mat-label>Background color</mat-label>
             <input matInput type="color" placeholder="Ex. It makes me feel..." [(ngModel)]="data.logo.logoHighlight">
         </mat-form-field>
     </div>
     </mat-tab>
-    <mat-tab label="Titulek">
-        <mat-slide-toggle [checked]="data.logo.haveTitle" (change)="changeTitle()">Zobrazit itulek</mat-slide-toggle>
+    <mat-tab label="Title">
+        <mat-slide-toggle [checked]="data.logo.haveTitle" (change)="changeTitle()">Show title</mat-slide-toggle>
         <div class="logo" [class.show-logo]="data.logo.haveTitle">
             <mat-form-field class="example-full-width" appearance="fill" class="w-100">
-                <mat-label>Titulek</mat-label>
+                <mat-label>Title</mat-label>
                 <input matInput [(ngModel)]="data.logo.title">
             </mat-form-field>
         </div>
-        <mat-slide-toggle [checked]="data.logo.haveTitleText && data.logo.haveTitle" (change)="changeTitleText()" [disabled]="!data.logo.haveTitle">Zobrazit text pod titulkem</mat-slide-toggle>
+        <mat-slide-toggle [checked]="data.logo.haveTitleText && data.logo.haveTitle" (change)="changeTitleText()" [disabled]="!data.logo.haveTitle">Show subtitle</mat-slide-toggle>
         <div class="logo" [class.show-logo]="data.logo.haveTitleText && data.logo.haveTitle">
             <mat-form-field class="example-full-width" appearance="fill" class="w-100">
-                <mat-label>Text pod titulkem</mat-label>
+                <mat-label>Subtitle</mat-label>
                 <input matInput [(ngModel)]="data.logo.titleText">
             </mat-form-field>
         </div>
-        <mat-slide-toggle [(ngModel)]="data.logo.haveTitleHighlight">Zvýraznit titulek</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="data.logo.haveTitleHighlight">Highlight title</mat-slide-toggle>
         <div class="logo" [class.show-logo]="data.logo.haveTitleHighlight">
-            <p>Průhlednost pozadí</p>
+            <p>Background transparency</p>
             <mat-slider thumbLabel min="0" max="1" step="0.05" [displayWith]="formatLabel" #ngSlider><input matSliderThumb [value]="data.logo.titleHighlightOpacity" (input)="changeTitleHighlightOpacity({source: ngSliderThumb, parent: ngSlider, value: ngSliderThumb.value})" #ngSliderThumb="matSliderThumb" /></mat-slider>
 
             <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Barva pozadí</mat-label>
+                <mat-label>Background color</mat-label>
                 <input matInput type="color" placeholder="Ex. It makes me feel..." [(ngModel)]="data.logo.titleHighlight">
             </mat-form-field>
         </div>

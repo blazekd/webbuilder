@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CalendarStyleModuleComponent implements OnInit {
 
   @Input() data: any;
-
+  //todo delete
   constructor() { }
 
   ngOnInit(): void {

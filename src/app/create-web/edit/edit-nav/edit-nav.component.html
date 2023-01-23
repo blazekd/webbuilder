@@ -7,50 +7,50 @@ cdkDragRootElement=".cdk-overlay-pane">
     </svg>
   </div>
     <div class="d-flex justify-content-between align-items-baseline" [ngSwitch]="menu">
-        <h1 class="pb-4" *ngSwitchCase="1">Upravit hlavičku</h1>
-        <h1 class="pb-4" *ngSwitchCase="2">Rozvržení hlavičky</h1>
-        <h1 class="pb-4" *ngSwitchCase="3">Barvy hlavičky</h1>
-        <h1 class="pb-4" *ngSwitchCase="4">Šířka hlavičky</h1>
-        <h1 class="pb-4" *ngSwitchCase="5">Logo a titulek</h1>
-        <h1 class="pb-4" *ngSwitchCase="6">Pozadí hlavičky</h1>
-        <h1 class="pb-4" *ngSwitchCase="7">Styl tlačítek</h1>
+        <h1 class="pb-4" *ngSwitchCase="1">Edit header</h1>
+        <h1 class="pb-4" *ngSwitchCase="2">Layout</h1>
+        <h1 class="pb-4" *ngSwitchCase="3">Colors</h1>
+        <h1 class="pb-4" *ngSwitchCase="4">Dimensions</h1>
+        <h1 class="pb-4" *ngSwitchCase="5">Logo and title</h1>
+        <h1 class="pb-4" *ngSwitchCase="6">Background</h1>
+        <h1 class="pb-4" *ngSwitchCase="7">Buttons</h1>
     </div>
     <div class="menu-wrapper d-flex">
         <div class="menu d-flex flex-column align-items-center" [class.menu-active]="menu == 1"> <!-- MAIN MENU -->
             <mat-list class="w-100">
                 <mat-list-item>
                     <button class="w-100 text-left" mat-button (click)="changeMenu(2)">
-                        <mat-icon>view_compact</mat-icon> Rozvržení <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                        <mat-icon>view_compact</mat-icon> Layout <mat-icon class="float-right p-1">navigate_next</mat-icon>
                     </button>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
                     <button class="w-100 text-left" mat-button (click)="changeMenu(3)">
-                        <mat-icon>palette</mat-icon> Barvy <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                        <mat-icon>palette</mat-icon> Colors <mat-icon class="float-right p-1">navigate_next</mat-icon>
                     </button>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
                     <button class="w-100 text-left" mat-button (click)="changeMenu(4)">
-                        <mat-icon class="rotate">expand</mat-icon> Rozměry sekce <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                        <mat-icon class="rotate">expand</mat-icon> Dimensions <mat-icon class="float-right p-1">navigate_next</mat-icon>
                     </button>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
                     <button class="w-100 text-left" mat-button (click)="changeMenu(5)">
-                        <mat-icon>title</mat-icon> Logo a titulek <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                        <mat-icon>title</mat-icon> Logo and title <mat-icon class="float-right p-1">navigate_next</mat-icon>
                     </button>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
                     <button class="w-100 text-left" mat-button (click)="changeMenu(6)">
-                        <mat-icon>image</mat-icon> Pozadí <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                        <mat-icon>image</mat-icon> Background <mat-icon class="float-right p-1">navigate_next</mat-icon>
                     </button>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
                     <button class="w-100 text-left" mat-button (click)="changeMenu(7)">
-                        <mat-icon>more_horiz</mat-icon> Tlačítka <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                        <mat-icon>more_horiz</mat-icon> Buttons <mat-icon class="float-right p-1">navigate_next</mat-icon>
                     </button>
                 </mat-list-item>
                 <!-- <mat-divider></mat-divider>
@@ -81,8 +81,8 @@ cdkDragRootElement=".cdk-overlay-pane">
         </div>
     </div>
     <div class="w-100 d-flex justify-content-between align-items-baseline bottom-wrapper pt-4">
-        <button mat-button class="save w-100" (click)="save()" *ngIf="menu == 1">Zavřít</button>
-        <button mat-button class="save" (click)="save()" *ngIf="menu != 1">Uložit</button>
-        <button mat-button class="cancel" (click)="cancel()" *ngIf="menu != 1">Zrušit</button>
+        <button mat-button class="save w-100" (click)="save()" *ngIf="menu == 1">Close</button>
+        <button mat-button class="save" (click)="save()" *ngIf="menu != 1">Save</button>
+        <button mat-button class="cancel" (click)="cancel()" *ngIf="menu != 1">Cancel</button>
     </div>
 </div>

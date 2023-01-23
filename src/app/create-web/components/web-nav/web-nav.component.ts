@@ -13,7 +13,7 @@ export class WebNavComponent implements OnInit {
 
   @Input() component!: ComponentData;
   // fontSizes = FONT_SIZES;
-
+  FONT_NAMES = FONT_NAMES;
 
   modulesHeader = {
     toolbar: [

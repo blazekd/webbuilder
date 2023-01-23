@@ -1,88 +1,3 @@
-<!-- <div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.data.size.height]">
-    <div class="flex-container" [ngClass]="[component.data.size.width]">
-        <div class="content" *ngFor="let item of component.data.columns.content; index as i" [ngClass]="['columns-' + component.data.columns.columns]">
-            <div class="new-content-button new-content-button-top">
-                <div class="d-flex align-items-end justify-content-center">
-                    <button mat-mini-fab (click)="addContent(i)"><mat-icon>add</mat-icon></button>
-                </div>
-            </div>
-
-            <div class="content-inner-wrapper">
-
-                <div [ngSwitch]="item.type">
-                
-                    <web-section-text *ngSwitchCase="'text'" [content]="item"></web-section-text>
-                    <div *ngSwitchDefault>{{item.type}}</div>
-                    
-                </div>   
-            </div>
-        </div>
-        <div class="new-content-button new-content-button-bottom">
-            <div class="d-flex align-items-start justify-content-center">
-                <button mat-mini-fab (click)="addContent(component.data.columns.content.length)"><mat-icon>add</mat-icon></button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-<!-- <div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.data.size.height]">
-    <div class="flex-container" [ngClass]="[component.data.size.width]" cdkDropListGroup>
-        <ng-container *ngFor="let columnContent of component.data.columns.content | slice:0:component.data.columns.columns; index as column;">
-            <div class="my-col" [ngStyle]="{flexBasis: component.data.columns.content[column].flexBasis}">
-                    <div class="my-col-data"
-                    cdkDropList
-                    [cdkDropListData]="component.data.columns.content[column].content"
-                    [cdkDropListConnectedTo]="[columnWidthDropList]"
-                    (cdkDropListDropped)="drop($event)">
-                    <div class="content" *ngFor="let item of component.data.columns.content[column].content; index as i" cdkDrag>
-                        <div class="new-content-button new-content-button-top">
-                            <div class="d-flex align-items-end justify-content-center">
-                                <button mat-mini-fab (click)="addContent(column, i)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
-                            </div>
-                        </div>
-                        <div class="mini-menu" [ngSwitch]="item.type">
-                            <mat-icon cdkDragHandle class="handle" matTooltip="Přesunout prvek">open_with</mat-icon>
-                            <mat-icon *ngSwitchDefault (click)="editMenu(column, i, item.type)" matTooltip="Upravit prvek">edit</mat-icon>
-                            <ng-template *ngSwitchCase="'text'"></ng-template>
-                            <mat-icon (click)="deleteContent(column, i)" matTooltip="Smazat prvek">delete</mat-icon>
-                        </div>
-                        <div class="content-inner-wrapper">
-
-                            <div [ngSwitch]="item.type">
-                        
-                                <web-section-text *ngSwitchCase="'text'" [content]="item"></web-section-text>
-                                <web-section-image *ngSwitchCase="'image'" [content]="item"></web-section-image>
-                                <web-section-divider *ngSwitchCase="'divider'" [content]="item"></web-section-divider>
-                                <div *ngSwitchDefault>{{item.type}}</div>
-                                
-                            </div> 
-                        </div>
-                        <div class="new-content-button new-content-button-bottom" *ngIf="i == component.data.columns.content[column].content.length - 1">
-                            <div class="d-flex align-items-start justify-content-center">
-                                <button mat-mini-fab (click)="addContent(column, component.data.columns.content[column].content.length)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event)" class="column-width" [attr.column]="column">
-                    <div *ngIf="column != component.data.columns.columns - 1; else columnWidthBorderEnd" class="column-width-border"
-                    cdkDrag cdkDragLockAxis="x" [cdkDragConstrainPosition]="borderConstraint" (cdkDragMoved)="moved($event)" (cdkDragStarted)="started(column)"></div>
-                    <ng-template #columnWidthBorderEnd>
-                        <div class="column-width-border column-width-border-end"></div>
-                    </ng-template>
-                </div>
-                <div class="new-content-button new-content-button-bottom-empty" *ngIf="0 == component.data.columns.content[column].content.length">
-                    <div class="d-flex align-items-start justify-content-center">
-                        <button mat-mini-fab (click)="addContent(column, component.data.columns.content[column].content.length)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
-                    </div>
-                </div>
-            </div>
-        </ng-container>
-    </div>
-</div> -->
-
-
 
 <div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.data.size.height]">
     <div class="flex-container" [ngClass]="[component.data.size.width]" cdkDropListGroup>
@@ -107,15 +22,15 @@
                             <div class="content" *ngFor="let item of columnContent.content; index as i" cdkDrag>
                                 <div class="new-content-button new-content-button-top">
                                     <div class="d-flex align-items-end justify-content-center">
-                                        <button mat-mini-fab (click)="addContent(column, row, i)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
+                                        <button mat-mini-fab (click)="addContent(column, row, i)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
                                     </div>
                                 </div>
                                 <div class="mini-menu" [ngSwitch]="item.type">
-                                    <mat-icon cdkDragHandle class="handle" matTooltip="Přesunout prvek" [style.display]="columnContent.resizable ? 'block' : 'none'">open_with</mat-icon>
-                                    <mat-icon *ngSwitchDefault (click)="editMenu(column, row, i, item.type)" matTooltip="Upravit prvek">edit</mat-icon>
+                                    <mat-icon cdkDragHandle class="handle" matTooltip="Move element" [style.display]="columnContent.resizable ? 'block' : 'none'">open_with</mat-icon>
+                                    <mat-icon *ngSwitchDefault (click)="editMenu(column, row, i, item.type)" matTooltip="Edit element">edit</mat-icon>
                                     <ng-template *ngSwitchCase="'text'"></ng-template>
                                     <!-- <ng-template *ngSwitchCase="'grid'"></ng-template> -->
-                                    <mat-icon (click)="deleteContent(column, row, i)" matTooltip="Smazat prvek">delete</mat-icon>
+                                    <mat-icon (click)="deleteContent(column, row, i)" matTooltip="Delete element">delete</mat-icon>
                                 </div>
                                 <div class="content-inner-wrapper">
 
@@ -132,7 +47,7 @@
                                 </div>
                                 <div class="new-content-button new-content-button-bottom" *ngIf="i == columnContent.content.length - 1">
                                     <div class="d-flex align-items-start justify-content-center">
-                                        <button mat-mini-fab (click)="addContent(column, row, columnContent.content.length)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
+                                        <button mat-mini-fab (click)="addContent(column, row, columnContent.content.length)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +57,7 @@
                         </div>
                         <div class="new-content-button new-content-button-bottom-empty" *ngIf="0 == columnContent.content.length">
                             <div class="d-flex align-items-start justify-content-center">
-                                <button mat-mini-fab (click)="addContent(column, row, columnContent.content.length)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
+                                <button mat-mini-fab (click)="addContent(column, row, columnContent.content.length)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
                             </div>
                         </div>
                     </as-split-area>
@@ -152,12 +67,3 @@
     </div>
 </div>
 <div>
-    <!-- <as-split direction="horizontal">
-      <as-split-area [size]="40">
-        <p>LEFT</p>
-      </as-split-area>
-      <as-split-area [size]="60">
-        <p>RIGHT</p>
-      </as-split-area>
-    </as-split>
-  </div> -->

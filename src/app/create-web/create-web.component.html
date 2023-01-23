@@ -5,7 +5,7 @@
             <div class="w-100 component" *ngFor="let component of components; index as i">
                 <div class="new-component-button new-component-button-top" *ngIf="i != 0">
                     <div class="d-flex align-items-end justify-content-center">
-                        <button mat-button (click)="addComp(i)"><mat-icon>add</mat-icon> Přidat sekci</button>
+                        <button mat-button (click)="addComp(i)"><mat-icon>add</mat-icon>Add section</button>
                     </div>
                 </div>
                 <!-- <div class="w-100" [style.font-family]="pageSettings.defaultFont" [style.font-weight]="pageSettings.defaultFontWeight"> -->
@@ -34,15 +34,15 @@
                         
                     </div> 
                     <div class="btn-settings">
-                        <button mat-icon-button (click)="moveCompUp(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" [disabled]="i == 1" matTooltip="Přesunout sekci nahoru"><mat-icon>arrow_upward</mat-icon></button>
-                        <button mat-icon-button (click)="moveCompDown(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" [disabled]="i == components.length - 2" matTooltip="Přesunout sekci dolu"><mat-icon>arrow_downward</mat-icon></button>
-                        <button mat-icon-button (click)="editComp(i)" matTooltip="Nastavení sekce"><mat-icon>edit</mat-icon></button>
-                        <button mat-icon-button (click)="deleteComp(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" matTooltip="Smazat sekci"><mat-icon>delete</mat-icon></button>
+                        <button mat-icon-button (click)="moveCompUp(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" [disabled]="i == 1" matTooltip="Move section up"><mat-icon>arrow_upward</mat-icon></button>
+                        <button mat-icon-button (click)="moveCompDown(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" [disabled]="i == components.length - 2" matTooltip="Move section down"><mat-icon>arrow_downward</mat-icon></button>
+                        <button mat-icon-button (click)="editComp(i)" matTooltip="Section settings"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button (click)="deleteComp(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" matTooltip="Delete section"><mat-icon>delete</mat-icon></button>
                     </div>    
                 </div>
                 <div class="new-component-button new-component-button-bottom" *ngIf="i != components.length -1">
                     <div class="d-flex align-items-start justify-content-center">
-                        <button mat-button (click)="addComp(i+1)"><mat-icon>add</mat-icon> Přidat sekci</button>
+                        <button mat-button (click)="addComp(i+1)"><mat-icon>add</mat-icon>Add section</button>
                     </div>
                 </div>
             </div>

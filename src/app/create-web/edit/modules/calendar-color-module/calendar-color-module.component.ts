@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./calendar-color-module.component.scss']
 })
 export class CalendarColorModuleComponent implements OnInit {
-
+  //todo delete
   @Input() data: any;
 
   constructor() { }

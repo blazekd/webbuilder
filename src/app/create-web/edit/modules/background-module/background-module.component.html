@@ -1,5 +1,5 @@
 <mat-tab-group dynamicHeight mat-stretch-tabs>
-    <mat-tab label="Obrázky">
+    <mat-tab label="Images">
         <div [id]="'nonebg'" class='bg-image' [class.bg-image-active]="data.background.name == 'nonebg'" (click)="changeBackground('nonebg')" #backgroundBinding></div>
         <div *ngFor="let item of backgrounds" [id]="item" class="bg-image" [class.bg-image-active]="item == data.background.name" (click)="changeBackground(item)" #backgroundBinding></div>        
     </mat-tab>
@@ -7,10 +7,10 @@
         <div [id]="'custombg'" class='bg-image' [class.bg-image-active]="data.background.name == 'custombg'" (click)="changeBackground('custombg')" [style.background-image]="'url(' + data.customBackground + ')'" #backgroundBinding></div>
         <div class="row align-items-center justify-content-center text-center vertical-center">
             <div class="col-6">
-                <button mat-button>Nahrát pozadí <mat-icon>file_upload</mat-icon></button>
+                <button mat-button>Upload background <mat-icon>file_upload</mat-icon></button>
             </div>
             <div class="col-6">
-                <button mat-button>Smazat pozadí <mat-icon>delete</mat-icon></button>
+                <button mat-button>Delete background <mat-icon>delete</mat-icon></button>
             </div>
         </div>
     </mat-tab>

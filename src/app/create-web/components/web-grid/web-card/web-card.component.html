@@ -7,17 +7,17 @@
 
             <div class="new-content-button new-content-button-top">
                 <div class="d-flex align-items-end justify-content-start">
-                    <button (click)="addContent(i)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
+                    <button (click)="addContent(i)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
                 </div>
             </div> 
 
             <!-- MODULE MENU -->
 
             <div class="mini-menu" [ngSwitch]="item.type">
-                <mat-icon cdkDragHandle class="handle-content" matTooltip="Přesunout prvek">open_with</mat-icon>
-                <mat-icon *ngSwitchDefault (click)="editMenu(i, item.type)" matTooltip="Upravit prvek">edit</mat-icon>
+                <mat-icon cdkDragHandle class="handle-content" matTooltip="Move element">open_with</mat-icon>
+                <mat-icon *ngSwitchDefault (click)="editMenu(i, item.type)" matTooltip="Edit element">edit</mat-icon>
                 <ng-template *ngSwitchCase="'text'"></ng-template>
-                <mat-icon (click)="deleteContent(i)" matTooltip="Smazat prvek">delete</mat-icon>
+                <mat-icon (click)="deleteContent(i)" matTooltip="Delete element">delete</mat-icon>
             </div>
 
             <!-- MODULE -->
@@ -34,7 +34,7 @@
 
             <div class="new-content-button new-content-button-bottom" *ngIf="i == card.content.length - 1">
                 <div class="d-flex align-items-start justify-content-start">
-                    <button (click)="addContent(card.content.length)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
+                    <button (click)="addContent(card.content.length)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
                 </div>
             </div>
         </div>
