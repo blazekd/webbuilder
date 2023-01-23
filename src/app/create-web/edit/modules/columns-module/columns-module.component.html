@@ -1,3 +1,4 @@
 
     <p>Počet sloupců</p>
-    <mat-slider min="1" max="5" step="1" thumbLabel tickInterval="1" [ngModel]="data.columns.columns" (ngModelChange)="onModelChange($event)"></mat-slider>
+    <!-- TODO: The 'tickInterval' property no longer exists -->
+    <mat-slider min="1" max="5" step="1" thumbLabel [ngModel]="data.columns.columns" (ngModelChange)="onModelChange($event)"><input matSliderThumb /></mat-slider>

@@ -1,6 +1,6 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit, Input } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { NewSectionContentComponent } from 'src/app/create-web/add/new-section-content/new-section-content.component';
 import { CardClass, DividerClass, ImageClass, TextClass } from '../../component-classes';
 import { WebImageDialogComponent } from '../../web-section/web-image/web-image-dialog/web-image-dialog.component';
