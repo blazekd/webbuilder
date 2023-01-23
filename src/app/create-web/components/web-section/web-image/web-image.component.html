@@ -1,0 +1,78 @@
+<!-- 
+<div class="ql-container ql-bubble">
+    <div> -->
+        
+        <!-- <button (click)="editDialog()">Edit</button> -->
+    <!-- </div>
+
+    <div class="ql-tooltip ql-flip ql-position">
+        <span class="ql-tooltip-arrow"></span>
+        <div class="ql-tooltip-editor">
+    
+        </div>
+        <div class="ql-tooltip-submenu ql-tooltip-submenu-show">
+            <mat-icon cdkdraghandle="">open_with</mat-icon>
+            <mat-icon _ngcontent-qam-c415="" class="mat-icon material-icons">delete</mat-icon>
+        </div>
+        <div class="ql-toolbar">
+    
+        </div>
+    </div>
+</div> -->
+<!-- <div class="image-container" #imageContainer>
+    <div class="image-wrapper" #wrapper [style.height]="content.height" [style.aspectRatio]="content.style == 2 ? 1 : ''" [attr.mystyle]="content.style">
+        <div class="image-container"  [ngClass]="'image-style-' + content.style" [style.paddingBottom]="content.height">
+            <img [src]="content.src" [alt]="content.alt" class="w-100" class="imagee" [style.objectPosition]="content.left + ' ' + content.top">
+        </div>
+    
+        <div class="handle handle-left" (mousedown)="resizeInit($event, resizeDirection.LEFT)"></div> -->
+        <!-- <div class="handle handle-bottom" (mousedown)="resizeInit($event, resizeDirection.BOTTOM)"></div> -->
+        <!-- <div class="handle handle-right" (mousedown)="resizeInit($event, resizeDirection.RIGHT)"></div> -->
+    <!-- </div>
+</div> -->
+
+
+<!-- <div class="image-container" #imageContainer>
+    <div class="image-wrapper" #wrapper [style.aspectRatio]="content.style == 2 ? 1 : ''"
+    
+    mwlResizable
+      [enableGhostResize]="true"
+      >
+        <div class="image-container"  [ngClass]="'image-style-' + content.style" [style.paddingBottom]="content.height">
+            <img [src]="content.src" [alt]="content.alt" class="w-100" class="imagee" [style.objectPosition]="content.left + ' ' + content.top">
+        </div>
+    
+        <div class="handle handle-bottom" mwlResizeHandle
+        [resizeEdges]="{ bottom: true }"></div>
+    </div>
+</div> -->
+
+<!-- <div class="image-container" #imageContainer>
+    <div class="image-wrapper" #wrapper [style.aspectRatio]="content.style == 2 ? 1 : ''" [style.background]="'red'"
+    [ngStyle]="style"
+    mwlResizable
+    [validateResize]="validate"
+    [enableGhostResize]="false"
+    (resizeEnd)="onResizeEnd($event)"
+    (resizing)="onResizeEnd($event)"
+    > -->
+<div class="image-container" #imageContainer>
+    <div class="image-wrapper" #wrapper [style.maxHeight]="content.height"
+    mwlResizable
+    [validateResize]="validate"
+    [enableGhostResize]="false"
+    (resizeEnd)="onResizeEnd($event)"
+    (resizing)="onResize($event)"
+    [ngClass]="'image-style-' + content.style"
+    [attr.mystyle]="content.style"
+    >
+        <!-- <div class="image-container"  [ngClass]="'image-style-' + content.style" [style.paddingBottom]="content.height"> -->
+            <img [src]="content.src" [alt]="content.alt" class="w-100" class="imagee" [style.objectPosition]="content.left + ' ' + content.top">
+        <!-- </div> -->
+        <div class="handle handle-bottom" mwlResizeHandle
+        [resizeEdges]="{ bottom: true }"></div>
+    </div>
+</div>
+
+
+

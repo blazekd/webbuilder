@@ -1,0 +1,111 @@
+<!-- <div [ngStyle]="getStyle()" class="background">
+    <div [ngClass]="[component.data.layout.layout, component.data.size.height, isMobile ? 'mobile' : '']" class="wrapper">
+      <div class="w-100 h-100" [ngStyle]="{'background': component.data.layout.showBackground ? '' : component.data.color.background}" class="background" [ngClass]="component.data.layout.showBackground ? '' : 'navbar-wrapper'">
+        <div class="navbar" [ngClass]="[component.data.size.width]">
+          <div class="logo" *ngIf="!isMobile" [class.hidelogo]="!scrolledTop">
+            <div [ngStyle]="{'background' : getLogoBackground()}">
+              <img *ngIf="component.data.logo.haveLogo" [src]="component.data.logo.logoUrl" alt="Logo" height="120px">
+              <small *ngIf="component.data.logo.haveLogoText">{{ component.data.logo.logoText }}</small>
+              <quill-editor [(ngModel)]="component.data.logo.logoText" theme="bubble2" 
+                [styles]="{
+                  border: 'none'
+                }"
+                placeholder="Zadejte text"
+                class="editor"
+                [modules]="modulesHeader"
+                >
+              </quill-editor>
+            </div>
+            <div class="logo-text">
+              <quill-editor [(ngModel)]="component.data.logo.logoText" theme="bubble2" 
+              [styles]="{
+                border: 'none'
+              }"
+              placeholder="Zadejte text"
+              class="editor"
+              [modules]="modulesHeader"
+              >
+            </quill-editor>
+            </div>
+          </div>
+          <div class="nav-buttons" [ngClass]="[isMobile ? 'nav-buttons-mobile' : '', component.data.button.style]">
+            <button class="btn-active" [ngStyle]="{'color': getColor(), 'background': getBackground()}">Home</button>
+            <button [ngStyle]="{'color': getColor() && false, 'background': getBackground() && false}">Kontakt</button>
+            <button [ngStyle]="{'color': getColor() && false, 'background': getBackground() && false}">IDK</button>
+          </div>
+        </div>
+      </div>
+      <div class="title" [ngClass]="[component.data.size.width]">
+        <div [ngStyle]="{'background' : getTitleBackground()}">
+            <quill-editor [(ngModel)]="component.data.logo.title" theme="bubble2" 
+            [styles]="{
+                border: 'none',
+                fontSize: '20px'
+            }"
+            placeholder="Zadejte text"
+            class="editor"
+            [modules]="modulesHeader">
+          </quill-editor>
+          <quill-editor [(ngModel)]="component.data.logo.titleText" theme="bubble2" 
+          [styles]="{
+            border: 'none'
+          }"
+          placeholder="Zadejte text"
+          class="editor"
+          [modules]="modulesHeader">
+        </quill-editor>
+        </div>
+      </div>  
+    </div>
+  </div>
+   -->
+
+
+  <!-- <div [ngClass]="[component.data.layout.layout, component.data.size.height, isMobile ? 'mobile' : '']" class="wrapper">
+    <div class="w-100 h-100" [ngStyle]="{'background': component.data.layout.showBackground ? '' : component.data.color.background}" class="background" [ngClass]="component.data.layout.showBackground ? '' : 'navbar-wrapper'">
+      <div class="navbar" [ngClass]="[component.data.size.width]">
+        <div class="logo" *ngIf="!isMobile" [class.hidelogo]="!scrolledTop">
+          <div [ngStyle]="{'background' : getLogoBackground()}">
+            <img *ngIf="component.data.logo.haveLogo" [src]="component.data.logo.logoUrl" alt="Logo" height="120px">
+            <quill-editor [(ngModel)]="component.data.logo.logoText" theme="bubble2" 
+              [styles]="{
+                border: 'none'
+              }"
+              placeholder="Zadejte text"
+              class="editor"
+              [modules]="modulesHeader"
+              >
+            </quill-editor>
+          </div>
+          <div class="logo-text">
+            <quill-editor [(ngModel)]="component.data.logo.logoText" theme="bubble2" 
+            [styles]="{
+              border: 'none'
+            }"
+            placeholder="Zadejte text"
+            class="editor"
+            [modules]="modulesHeader"
+            >
+          </quill-editor>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<div class="wrapper background navbar-wrapper" [ngStyle]="getStyle2()"><!--OPACITY, BACKGROUND, LAYOUT-->
+  <div class="navbar" [ngClass]="[component.data.size.width]">
+    <div class="logo">
+      <web-section-image [content]="component.data.logo.logo" *ngIf="component.data.logo.hasLogo"></web-section-image>
+      <quill-editor [(ngModel)]="component.data.logo.text" theme="bubble2" 
+        placeholder="Zadejte text"
+        class="nav-ql-editor"
+        [modules]="modulesHeader"
+        >
+      </quill-editor>
+      <!-- <web-section-text [content]="component.data.logo.text"></web-section-text> -->
+    </div>
+  </div>
+</div>
+
+  

@@ -1,0 +1,93 @@
+
+.color {
+    height: 100px;
+    width: 300px;
+    border: 1px solid silver;
+    margin: 20px 0;
+    text-align: center;
+    
+    // font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 24px;
+    //padding: 25px;
+    line-height: 100px;
+
+    &:hover {
+        cursor: pointer;
+        border: 1px dashed #222;
+    }
+
+    &::before {
+        content: 'Text';
+    }
+}
+
+.color-active, .color-active:hover {
+    border: 1px solid #222;
+}
+
+#color1, #nocolors {
+    //background-image: url("/assets/img/layout1.png");
+    background: white;
+    color: black;
+}
+
+#nocolors {
+    &::before {
+        content: 'Barvy podle sekce'
+    }
+}
+
+#color2 {
+    // background-image: url("/assets/img/layout2.png");
+    background: white;
+    color: rgb(167, 142, 1);
+}
+
+#color3 {
+    // background-image: url("/assets/img/layout3.png");
+    background: lightgray;
+    color: black;
+}
+
+#color4 {
+    // background-image: url("/assets/img/layout1.png");
+    background: lightgray;
+    color: rgb(167, 142, 1);
+}
+
+#color5 {
+    // background-image: url("/assets/img/layout1.png");
+    background: gray;
+    color: black;
+}
+
+#color6 {
+    // background-image: url("/assets/img/layout1.png");
+    background: gray;
+    color: rgb(167, 142, 1);
+}
+
+#color7 {
+    // background-image: url("/assets/img/layout1.png");
+    background: rgb(59, 59, 59);
+    color: white;
+}
+
+#color8 {
+    // background-image: url("/assets/img/layout1.png");
+    background: rgb(59, 59, 59);
+    color: gold;
+}
+
+#color9 {
+    // background-image: url("/assets/img/layout1.png");
+    background: black;
+    color: white;
+}
+
+#color10 {
+    // background-image: url("/assets/img/layout1.png");
+    background: black;
+    color: gold;
+}

@@ -1,0 +1,54 @@
+<div class="main d-flex">
+    <div [class.w-100] = "showPc" [class.smartphone] = "!showPc">
+        <div class="pc-container" id="pc-container" (scroll)="onElementScroll($event)">
+            <div class="w-100 component" *ngFor="let component of components; index as i">
+                <div class="new-component-button new-component-button-top" *ngIf="i != 0">
+                    <div class="d-flex align-items-end justify-content-center">
+                        <button mat-button (click)="addComp(i)"><mat-icon>add</mat-icon> Přidat sekci</button>
+                    </div>
+                </div>
+                <!-- <div class="w-100" [style.font-family]="pageSettings.defaultFont" [style.font-weight]="pageSettings.defaultFontWeight"> -->
+                <div class="w-100">
+                    <!-- <div [ngSwitch]="component.type" [ngClass]="component.background" class="h-100 my-min-height"> -->
+                    <div [ngSwitch]="component.type" class="h-100 my-min-height">
+                        <!-- <app-web-events-comp *ngSwitchCase="'event'"></app-web-events-comp> -->
+                    
+                        <!-- <app-web-header-comp [component]="component" *ngSwitchCase="'header'"></app-web-header-comp> -->
+                    
+                        <!-- <app-web-image-comp *ngSwitchCase="'image'"></app-web-image-comp> -->
+                            
+                        <!-- <app-web-reviews-comp *ngSwitchCase="'review'"></app-web-reviews-comp> -->
+                            
+                        <!-- <app-web-text-comp *ngSwitchCase="'text'"></app-web-text-comp> -->
+                    
+                        <!-- <web-grid *ngSwitchCase="'grid'" [component]="component"></web-grid> -->
+
+                        <web-footer *ngSwitchCase="'footer'" [component]="component"></web-footer>
+
+                        <!-- <web-calendar *ngSwitchCase="'calendar'"></web-calendar> -->
+
+                        <web-section *ngSwitchCase="'section'" [component]="component"></web-section>
+                    
+                        <web-nav *ngSwitchCase="'nav'" [component]="component"></web-nav>
+                        
+                    </div> 
+                    <div class="btn-settings">
+                        <button mat-icon-button (click)="moveCompUp(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" [disabled]="i == 1" matTooltip="Přesunout sekci nahoru"><mat-icon>arrow_upward</mat-icon></button>
+                        <button mat-icon-button (click)="moveCompDown(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" [disabled]="i == components.length - 2" matTooltip="Přesunout sekci dolu"><mat-icon>arrow_downward</mat-icon></button>
+                        <button mat-icon-button (click)="editComp(i)" matTooltip="Nastavení sekce"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button (click)="deleteComp(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" matTooltip="Smazat sekci"><mat-icon>delete</mat-icon></button>
+                    </div>    
+                </div>
+                <div class="new-component-button new-component-button-bottom" *ngIf="i != components.length -1">
+                    <div class="d-flex align-items-start justify-content-center">
+                        <button mat-button (click)="addComp(i+1)"><mat-icon>add</mat-icon> Přidat sekci</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="my-menu" [class.my-menu-active] = "showSettings">
+        <app-page-settings [pageSettings]="pageSettings" (newSettings)="setSettings($event)"></app-page-settings>
+    </div> -->
+
+</div>

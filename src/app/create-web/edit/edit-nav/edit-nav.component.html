@@ -1,0 +1,88 @@
+<div class="full-wrapper d-flex flex-column align-items-center" cdkDrag
+cdkDragRootElement=".cdk-overlay-pane">
+<div class="example-handle" cdkDragHandle>
+    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+      <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+  </div>
+    <div class="d-flex justify-content-between align-items-baseline" [ngSwitch]="menu">
+        <h1 class="pb-4" *ngSwitchCase="1">Upravit hlavičku</h1>
+        <h1 class="pb-4" *ngSwitchCase="2">Rozvržení hlavičky</h1>
+        <h1 class="pb-4" *ngSwitchCase="3">Barvy hlavičky</h1>
+        <h1 class="pb-4" *ngSwitchCase="4">Šířka hlavičky</h1>
+        <h1 class="pb-4" *ngSwitchCase="5">Logo a titulek</h1>
+        <h1 class="pb-4" *ngSwitchCase="6">Pozadí hlavičky</h1>
+        <h1 class="pb-4" *ngSwitchCase="7">Styl tlačítek</h1>
+    </div>
+    <div class="menu-wrapper d-flex">
+        <div class="menu d-flex flex-column align-items-center" [class.menu-active]="menu == 1"> <!-- MAIN MENU -->
+            <mat-list class="w-100">
+                <mat-list-item>
+                    <button class="w-100 text-left" mat-button (click)="changeMenu(2)">
+                        <mat-icon>view_compact</mat-icon> Rozvržení <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                    </button>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <button class="w-100 text-left" mat-button (click)="changeMenu(3)">
+                        <mat-icon>palette</mat-icon> Barvy <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                    </button>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <button class="w-100 text-left" mat-button (click)="changeMenu(4)">
+                        <mat-icon class="rotate">expand</mat-icon> Rozměry sekce <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                    </button>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <button class="w-100 text-left" mat-button (click)="changeMenu(5)">
+                        <mat-icon>title</mat-icon> Logo a titulek <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                    </button>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <button class="w-100 text-left" mat-button (click)="changeMenu(6)">
+                        <mat-icon>image</mat-icon> Pozadí <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                    </button>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <button class="w-100 text-left" mat-button (click)="changeMenu(7)">
+                        <mat-icon>more_horiz</mat-icon> Tlačítka <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                    </button>
+                </mat-list-item>
+                <!-- <mat-divider></mat-divider>
+                <mat-list-item>
+                    <button class="w-100 text-left" mat-button (click)="changeMenu(6)">
+                        <mat-icon>text_format</mat-icon> Písmo <mat-icon class="float-right p-1">navigate_next</mat-icon>
+                    </button>
+                </mat-list-item> -->
+            </mat-list>
+        </div>
+        <div class="menu" [class.menu-active]="menu == 2"> <!-- LAYOUTS -->
+            <web-layout-module [data]="data.layout" [type]="'nav'"></web-layout-module>
+        </div>
+        <div class="menu" [class.menu-active]="menu == 3"> <!-- COLORS -->
+            <web-color-module [data]="data.color"></web-color-module>
+        </div>
+        <div class="menu" [class.menu-active]="menu == 4"> <!-- SECTION WIDTHS -->
+            <web-size-module [data]="data.size"></web-size-module>
+        </div>
+        <div class="menu" [class.menu-active]="menu == 5"> <!-- LOGO AND TITLE -->
+            <web-logo-module [data]="data.logo"></web-logo-module>
+        </div>
+        <div class="menu" [class.menu-active]="menu == 6"> <!-- BACKGROUND -->
+            <web-background-module [data]="data.background"></web-background-module>
+        </div>
+        <div class="menu" [class.menu-active]="menu == 7"> <!-- BUTTONS -->
+            <!-- <web-button-module [data]="data.button"></web-button-module> -->
+        </div>
+    </div>
+    <div class="w-100 d-flex justify-content-between align-items-baseline bottom-wrapper pt-4">
+        <button mat-button class="save w-100" (click)="save()" *ngIf="menu == 1">Zavřít</button>
+        <button mat-button class="save" (click)="save()" *ngIf="menu != 1">Uložit</button>
+        <button mat-button class="cancel" (click)="cancel()" *ngIf="menu != 1">Zrušit</button>
+    </div>
+</div>

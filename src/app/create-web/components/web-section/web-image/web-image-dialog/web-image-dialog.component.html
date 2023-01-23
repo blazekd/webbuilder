@@ -1,0 +1,203 @@
+<!-- <p>adresa obrázku</p>
+<input matInput type="text" [(ngModel)]="image">
+<button (click)="ok()">Ok</button>
+<button (click)="close()">Close</button> -->
+
+<!-- <div class="container">
+    <form [formGroup]="form" (ngSubmit)="submitUser()">
+
+        <div class="progress form-group" *ngIf="progress > 0">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="file" (change)="uploadFile($event)">
+        </div>
+
+
+        <div class="form-group">
+            <button class="btn btn-danger btn-block btn-lg">Create</button>
+        </div>
+    </form>
+</div> -->
+
+
+<!-- <div class="drag-and-drop container" appDragAndDrop (fileDropped)="onFileDropped($event)">
+
+        <input type="file" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event.target)" accept="image/*" />
+        <mat-icon>file_upload</mat-icon>
+
+        <h3>Přetáhněte sem obrázek</h3>
+        <h3>nebo</h3>
+        <label for="fileDropRef">Prohledat</label>
+</div> -->
+
+<!-- <p>{{data.src}}</p> -->
+<div class="container" [ngSwitch]="uploading">
+
+    <ng-container *ngSwitchCase="0">
+
+        <div class="drag-and-drop">
+            <div appDragAndDrop (fileDropped)="uploadFile($event)">
+                <input type="file" #fileDropRef id="fileDropRef" (change)="uploadFile($event)" accept="image/*" />
+                <mat-icon>file_upload</mat-icon>
+        
+                <h3>Přetáhněte sem obrázek</h3>
+                <h3>nebo</h3>
+                <label for="fileDropRef">Prohledat</label>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around mt-4">
+            <button mat-stroked-button (click)="gallery()">Galerie</button>
+            <button mat-stroked-button (click)="close()">Zrušit</button>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="1">
+        <p>Nahrávám {{ form.value.file.name }}</p>
+        <div class="progress form-group" *ngIf="progress > 0">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="2">
+        <!-- <p>Nahráno {{ form.value.file.name }}</p> -->
+        <!-- <div class="ohgodhelpme">
+            <img [src]="image.src" [alt]="image.alt" class="test2">
+            <img [src]="image.src" [alt]="image.alt" class="test">
+        </div> -->
+        <h4>Focus obrázku</h4>
+        <div class="img-wrap">
+            <div #imageBoundary class="image-boundary">
+                <div #imageFocusPoint cdkDrag cdkDragBoundary=".image-boundary" (cdkDragEnded)="dropFocusPoint($event)" [style.left]="image.left" [style.top]="image.top"></div>
+                <img [src]="image.src" [alt]="image.alt" (click)="clickFocusPoint($event)">
+            </div>
+        </div>
+
+        <h4>Styl obrázku</h4>
+        <mat-form-field appearance="fill">
+            <mat-label>Styl obrázku</mat-label>
+            <mat-select [(value)]="image.style">
+                <mat-option *ngFor="let style of styles" [value]="style.value">
+                    {{style.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <div class="text-center"> -->
+
+            <!-- <div class="col-md-8"> -->
+              <!-- <image-cropper 
+                [imageChangedEvent]="imgChangeEvt" 
+                [maintainAspectRatio]="true" 
+                [aspectRatio]="4 / 4"
+                [resizeToWidth]="256" 
+                format="png" 
+                (imageCropped)="cropImg($event)" 
+                (imageLoaded)="imgLoad()"
+                (cropperReady)="initCropper()" 
+                (loadImageFailed)="imgFailed()">
+              </image-cropper> -->
+              <!-- <image-cropper 
+              [imageURL]="image.url"  
+              [resizeToWidth]="400" 
+              format="png" 
+              (imageCropped)="cropImg($event)" 
+              (imageLoaded)="imgLoad()"
+              (cropperReady)="initCropper()" 
+              (loadImageFailed)="imgFailed()">
+            </image-cropper> -->
+            <!-- </div> -->
+          
+            <!-- <div class="col-md-4">
+              <h6>Image Preview</h6>
+              <img [src]="cropImgPreview" />
+            </div> -->
+          
+          <!-- </div> -->
+          <div class="d-flex justify-content-around mt-4">
+            <button mat-stroked-button (click)="uploadNew()">Změnit</button>
+            <!-- <button mat-stroked-button (click)="galery()">Galerie</button> -->
+            <button mat-stroked-button (click)="close()">Zrušit</button>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="3">
+        <div class="d-flex justify-content-around mt-4">
+            <button mat-stroked-button (click)="uploadNew()">Nahrát nový obrázek</button>
+            <button mat-stroked-button (click)="close()">Zrušit</button>
+        </div>
+    </ng-container>
+
+        <!-- <div class="form-group">
+            <input type="file" (change)="uploadFile($event)">
+        </div> -->
+
+
+        <!-- <div class="form-group">
+            <button class="btn btn-danger btn-block btn-lg">Create</button>
+        </div> -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="files-list">
+	<div class="single-file" *ngFor="let file of files; let i = index">
+		<div class="file-icon" style="width: 50px">
+			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
+				<polygon style="fill:#EDEADA;" points="51.5,14 37.5,0 6.5,0 6.5,58 51.5,58 " />
+				<g>
+					<path style="fill:#CEC9AE;"
+						d="M16.5,23h25c0.552,0,1-0.447,1-1s-0.448-1-1-1h-25c-0.552,0-1,0.447-1,1S15.948,23,16.5,23z" />
+					<path style="fill:#CEC9AE;"
+						d="M16.5,15h10c0.552,0,1-0.447,1-1s-0.448-1-1-1h-10c-0.552,0-1,0.447-1,1S15.948,15,16.5,15z" />
+					<path style="fill:#CEC9AE;"
+						d="M41.5,29h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S42.052,29,41.5,29z" />
+					<path style="fill:#CEC9AE;"
+						d="M41.5,37h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S42.052,37,41.5,37z" />
+					<path style="fill:#CEC9AE;"
+						d="M41.5,45h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S42.052,45,41.5,45z" />
+				</g>
+				<polygon style="fill:#CEC9AE;" points="37.5,0 37.5,14 51.5,14 " />
+			</svg>
+		</div>
+		<div class="info">
+			<h4 class="name">
+				{{ file?.name }}
+			</h4>
+			<p class="size">
+				{{ formatBytes(file?.size, 0) }}
+			</p>
+			<app-progress [progress]="file?.progress"></app-progress>
+		</div>
+
+		<div class="delete" (click)="deleteFile(i)">
+			<svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
+				<path fill="#B1B1B1" fill-rule="nonzero"
+					d="M1 16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v10zm3.17-7.83a.996.996 0 0 1 1.41 0L7 9.59l1.42-1.42a.996.996 0 1 1 1.41 1.41L8.41 11l1.42 1.42a.996.996 0 1 1-1.41 1.41L7 12.41l-1.42 1.42a.996.996 0 1 1-1.41-1.41L5.59 11 4.17 9.58a.996.996 0 0 1 0-1.41zM10.5 1L9.79.29C9.61.11 9.35 0 9.09 0H4.91c-.26 0-.52.11-.7.29L3.5 1H1c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1h-2.5z" />
+			</svg>
+		</div>
+	</div>
+</div> -->

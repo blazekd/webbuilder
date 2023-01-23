@@ -1,0 +1,21 @@
+<mat-tab-group dynamicHeight mat-stretch-tabs>
+    <mat-tab label="Připravené styly">
+        <div [id]="'nocolors'" class="color nocolors" [class.color-active]="'nocolors' == data.color.name" (click)="unsetColors()"></div>
+        <div *ngFor="let item of colors" [id]="item" class="color" [class.color-active]="item == data.color.name" (click)="changeColor(item)" #colorBinding></div>
+    </mat-tab>
+    <mat-tab label="Vlastní">
+        <div [id]="'custom'" class="color" [class.color-active]="'custom' == data.color.name" [style.color]="data.color.customColor" [style.background]="data.color.customBackground" (click)="changeColor('custom')" #colorBinding></div>
+        <div (click)="changeColor('custom')">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Barva pozadí</mat-label>
+                <input matInput type="color" placeholder="Ex. It makes me feel..." [ngModel]="data.color.customBackground" (ngModelChange)="changeBackgroundColor($event)">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Barva textu</mat-label>
+                <input matInput type="color" placeholder="Ex. It makes me feel..." [ngModel]="data.color.customColor" (ngModelChange)="changeTextColor($event)">
+            </mat-form-field>
+        </div>
+    </mat-tab>
+</mat-tab-group>

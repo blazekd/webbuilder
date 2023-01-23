@@ -1,0 +1,500 @@
+// .rotate {
+//     transform: rotate(90deg);
+// }
+
+// .menu-wrapper {
+//     margin-bottom: 45px;
+//     position: relative;
+//     height: 350px;
+//     width: 320px;
+//     //overflow-y: auto;
+// }
+
+// .menu {
+//     position: relative;
+//     //display: flex;
+//     //order: 2;
+//     //display: none;
+//     //flex-direction: column;
+//     width: 0;
+//     opacity: 0;
+//     // height: 0;
+//     //opacity: 0;
+//     // margin: -24px;
+//     // padding: 24px 24px 0 24px;
+//     margin: 0;
+//     padding: 0;
+//     overflow: hidden;
+//     box-sizing: content-box;
+//     transition: width .6s ease-in-out, opacity 0.2s ease-in, z-index 0s ease 0.5s;
+//     margin: -24px -24px 0 -24px;
+//     padding: 0 24px 24px 24px;
+//     z-index: -1;
+//     .float-right {
+//         overflow: hidden;
+//         height: 0;
+//         visibility: hidden;
+//         transition: all 0.1s ease-in 0.5s;
+//     }
+// }
+
+// .menu-active {
+//     transition: width .6s ease-in-out, opacity 0.2s ease-in 0.3s;
+//     opacity: 1;
+//     //order:1;
+//     width: 100%;
+//     //height: 100%;
+//     //display:flex;
+//     overflow-y: auto;
+//     z-index: 1;
+//     .float-right {
+//         height: 100%;
+//         visibility: visible;
+//     }
+// }
+
+// .layout {
+//     height: 100px;
+//     width: 300px;
+//     border: 1px solid silver;
+//     margin: 20px 0;
+    
+//     &:hover {
+//         cursor: pointer;
+//         border: 1px dashed #222;
+//     }
+// }
+
+// .layout-active, .layout-active:hover {
+//     border: 1px solid #222;
+// }
+
+// .nav#layout1 {
+//     background-image: url("/assets/img/layout1.png");
+// }
+
+// .nav#layout2 {
+//     background-image: url("/assets/img/layout2.png");
+// }
+
+// .nav#layout3 {
+//     background-image: url("/assets/img/layout3.png");
+// }
+
+// .nav#layout4 {
+//     background-image: url("/assets/img/layout4.png");
+// }
+
+// .nav#layout5 {
+//     background-image: url("/assets/img/layout5.png");
+// }
+
+// .nav#layout6 {
+//     background-image: url("/assets/img/layout6.png");
+// }
+
+// div.header {
+//     text-align: center;
+    
+//     font-family: 'Roboto';
+//     font-weight: 300;
+//     font-size: 24px;
+//     //padding: 25px;
+//     line-height: 100px;
+//     position: relative;
+// }
+
+// .header#layout1 {
+//     &::before {
+//         content: 'Nadpis'
+//     }
+// }
+
+// .header#layout2 {
+//     &::before {
+//         content: 'Nadpis'
+//     }
+
+//     &::after {
+//         content:'';
+//         position:absolute;
+//         width:16%;
+//         height:1px;
+//         background:#000;
+//         bottom:0;
+//         left:0;
+//         right:0;
+//         top: 40px;
+//         margin:auto;
+//     }
+// }
+
+// .header#layout3 {
+//     &::before {
+//         content: 'Nadpis'
+//     }
+//     display:none;
+// }
+
+// .header#layout4 {
+//     display: none;
+// }
+
+// .header#layout5 {
+//     display: none;
+// }
+
+// .header#layout6 {
+//     display: none;
+// }
+
+
+// .bottom-wrapper {
+//     position: absolute;
+//     //position: absolute;
+//     bottom: 0;
+//     background-color: white;
+// }
+
+// .full-wrapper {
+//     position: relative;
+//     //width: calc(100% + 48px);
+//     // margin: -24px;
+//     // padding:24px;
+//     box-sizing: content-box;
+// }
+
+// .color {
+//     height: 100px;
+//     width: 300px;
+//     border: 1px solid silver;
+//     margin: 20px 0;
+//     text-align: center;
+    
+//     font-family: 'Roboto';
+//     font-weight: 300;
+//     font-size: 24px;
+//     //padding: 25px;
+//     line-height: 100px;
+
+//     &:hover {
+//         cursor: pointer;
+//         border: 1px dashed #222;
+//     }
+
+//     &::before {
+//         content: 'Text';
+//     }
+// }
+
+// .color-active, .color-active:hover {
+//     border: 1px solid #222;
+// }
+
+// #color1 {
+//     //background-image: url("/assets/img/layout1.png");
+//     background: white;
+//     color: black;
+// }
+
+// #color2 {
+//     // background-image: url("/assets/img/layout2.png");
+//     background: white;
+//     color: rgb(167, 142, 1);
+// }
+
+// #color3 {
+//     // background-image: url("/assets/img/layout3.png");
+//     background: lightgray;
+//     color: black;
+// }
+
+// #color4 {
+//     // background-image: url("/assets/img/layout1.png");
+//     background: lightgray;
+//     color: rgb(167, 142, 1);
+// }
+
+// #color5 {
+//     // background-image: url("/assets/img/layout1.png");
+//     background: gray;
+//     color: black;
+// }
+
+// #color6 {
+//     // background-image: url("/assets/img/layout1.png");
+//     background: gray;
+//     color: rgb(167, 142, 1);
+// }
+
+// #color7 {
+//     // background-image: url("/assets/img/layout1.png");
+//     background: rgb(59, 59, 59);
+//     color: white;
+// }
+
+// #color8 {
+//     // background-image: url("/assets/img/layout1.png");
+//     background: rgb(59, 59, 59);
+//     color: gold;
+// }
+
+// #color9 {
+//     // background-image: url("/assets/img/layout1.png");
+//     background: black;
+//     color: white;
+// }
+
+// #color10 {
+//     // background-image: url("/assets/img/layout1.png");
+//     background: black;
+//     color: gold;
+// }
+
+// .logo {
+//     overflow: hidden;
+//     max-height: 0;
+//     transition: all .3s ease-in-out;
+//     img {
+//         border: 1px solid #666;
+//         border-radius: 5px;
+//         margin: 12px 0;
+//     }
+// }
+
+// .show-logo {
+//     max-height: 1000px;
+//     padding: 12px 0;
+// }
+// // .width {
+// //     height: 100px;
+// //     width: 300px;
+// //     border: 1px solid silver;
+// //     margin: 20px 0;
+    
+// //     &:hover {
+// //         cursor: pointer;
+// //         border: 1px dashed #222;
+// //     }
+// // }
+
+// // .width-active, .width-active:hover {
+// //     border: 1px solid #222;
+// // }
+
+
+// .bg-image {
+//     height: 100px;
+//     width: 300px;
+//     border: 1px solid silver;
+//     margin: 20px 0;
+//     background-size: cover;
+//     &:hover {
+//         cursor: pointer;
+//         border: 1px dashed #222;
+//     }
+// }
+
+// .bg-image-active, .bg-image-active:hover {
+//     border: 1px solid #222;
+// }
+
+// #background1 {
+//     background-image: url("/assets/img/background1.jpg");
+
+// }
+
+// #background2 {
+//     background-image: url("/assets/img/background2.jpg");
+// }
+
+// #background3 {
+//     background-image: url("/assets/img/background3.jpg");
+// }
+
+// #background4 {
+//     background-image: url("/assets/img/background4.jpg");
+// }
+
+// #nonebg {
+//     font-family: 'Roboto';
+//     font-weight: 300;
+//     font-size: 24px;
+//     line-height: 100px;
+//     text-align: center;
+//     &::before {
+//         content: 'Žádné pozadí';
+//     }
+// }
+
+// .width {
+//     height: 40px;
+//     width: 150px;
+//     border: 1px solid silver;
+//     margin: 20px 0;
+//     font-family: 'Roboto';
+//     font-weight: 300;
+//     font-size: 18px;
+//     line-height: 40px;
+//     text-align: center;
+    
+//     &:hover {
+//         cursor: pointer;
+//         border: 1px dashed #222;
+//     }
+// }
+
+// .width-active, .layout-active:hover {
+//     border: 1px solid #222;
+//     background: lightgray;
+// }
+
+// #width1 {
+//     &::before {
+//         content: 'Nejširší';
+//     }
+// }
+
+// #width2 {
+//     &::before {
+//         content: 'Široká';
+//     }
+// }
+
+// #width3 {
+//     &::before {
+//         content: 'Běžná';
+//     }
+// }
+
+// #width4 {
+//     &::before {
+//         content: 'Úzká';
+//     }
+// }
+
+// #width5 {
+//     &::before {
+//         content: 'Nejužší';
+//     }
+// }
+
+// .example-handle {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     color: #ccc;
+//     cursor: move;
+//     width: 24px;
+//     height: 24px;
+// }
+
+// .button-wrapper {
+//     height: 100px;
+//     width: 300px;
+//     border: 1px solid silver;
+//     margin: 20px 0;
+//     background-size: cover;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-around;
+//     background: #eeeeee;
+//     &:hover {
+//         cursor: pointer;
+//         border: 1px dashed #222;
+//     }
+
+//     .btn-none, .btn-active {
+//         // background-color: #4CAF50; /* Green */
+//         background: none;
+//         border: none;
+//         padding: 8px 16px;
+//         text-align: center;
+//         text-decoration: none;
+//         display: inline-block;
+//         font-size: 16px;
+//     }
+// }
+
+// .button-wrapper-active, .button-wrapper-active:hover {
+//     border: 1px solid #222;
+// }
+
+// #button1 {
+//     .btn-active {
+//         position: relative;
+//         &::after {
+//             content:'';
+//             position:absolute;
+//             width:35%;
+//             height:1px;
+//             background:#000;
+//             bottom:0;
+//             left:0;
+//             right:0;
+//             margin:auto;
+//         }
+//     }
+// }
+
+// #button2 {
+
+//     .btn-active {
+//         background: white;
+//         border-radius: 5px;
+//         position: relative;
+//         &::after {
+//             content:'';
+//             position:absolute;
+//             width:35%;
+//             height:1px;
+//             background:#000;
+//             bottom:0;
+//             left:0;
+//             right:0;
+//             margin:auto;
+//             margin-bottom: 5px;
+//         }
+//     }
+// }
+
+// #button3 {
+
+//     .btn-active {
+//         position: relative;
+//         &::before {
+//             font-size: 130%;
+//             content:'|';
+//             position:absolute;
+//             left:0;
+//             margin: 0 5px;
+//         }
+//         &::after {
+//             font-size: 130%;
+//             content:'|';
+//             position:absolute;
+//             right:0;
+//             margin:0 5px;
+//         }
+//     }
+// }
+
+// #button4 {
+//     .btn-active {
+//         background: white;
+//         border-radius: 5px;
+//         position: relative;
+//     }
+// }
+
+// .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
+//     font-family: Roboto, "Helvetica Neue", sans-serif;
+//     font-size: 14px;
+//     font-weight: 500;
+// }
+
+// h1 {
+//     font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+//     letter-spacing: normal;
+//     margin: 0 0 16px;
+// }

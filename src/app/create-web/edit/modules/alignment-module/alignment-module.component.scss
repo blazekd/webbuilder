@@ -1,0 +1,48 @@
+.grid  {
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden; /* hide standard table (collapsed) border */
+    box-shadow: 0 0 0 1px #666; /* this draws the table border  */ 
+    margin-top: 20px;
+    background-image: url('/assets/img/background3.jpg');
+
+    td {
+        border: 1px solid black;
+        padding: 20px 35px;
+        text-align: center; 
+        vertical-align: middle;
+        cursor: pointer;
+
+        div {
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            border: 1px solid black;
+            background-color: white;
+            display: inline-block;
+            text-align: center; 
+            vertical-align: middle;
+        }
+        &:hover div {
+            background-color: #ccc;
+        }
+
+        &.active div::after {
+            content: '';
+            width: 12px;
+            margin-top: 5px;
+            height: 12px;
+            border-radius: 6px;
+            background-color: black;
+            display: inline-block;
+        }
+
+        
+    }
+}
+
+.wrapper {
+    display:flex;
+    justify-content: center;
+
+}

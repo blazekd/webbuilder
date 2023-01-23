@@ -1,0 +1,61 @@
+<mat-toolbar color="primary" class="crm-navigation-bar">
+
+  <mat-toolbar-row>
+
+    <button mat-icon-button (click)="toggleSidenav.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="toolbar-title"> OftenOut </span>
+
+    <div fxFlex fxLayout fxLayoutAlign="flex-end center">
+
+      <mat-list-item fxHide.xs *ngIf="returnUrl === '/web'">
+        <span class="p-1">Zobrazení: </span>
+        <mat-button-toggle-group aria-label="Font Style" class="icon-display">
+          <mat-button-toggle [checked]="!showPc" (change)="showPc = false"><mat-icon>smartphone</mat-icon></mat-button-toggle>
+          <mat-button-toggle [checked]="showPc" (change)="showPc = true"><mat-icon>computer</mat-icon></mat-button-toggle>
+        </mat-button-toggle-group>
+      </mat-list-item>
+
+      <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+        <li fxHide.xs>
+          <button mat-button>
+            <mat-icon> settings </mat-icon><span> Nastavení stránky </span>
+          </button>
+        </li>
+
+        <li fxHide.xs>
+          <button mat-button>
+            <mat-icon> help_outline </mat-icon><span> Nápověda </span>
+          </button>
+        </li>
+
+        <li>
+          <button mat-button [matMenuTriggerFor]="auth">
+            <mat-icon> person </mat-icon><span> Jan Novák </span>
+          </button>
+          <mat-menu #auth="matMenu">
+
+            <button mat-menu-item (click)="onProfile()">
+              <mat-icon> person </mat-icon>
+              <span> Jan Novák </span>
+            </button>
+
+            <mat-divider></mat-divider>
+
+            <button mat-menu-item (click)="logout()">
+              <mat-icon> exit_to_app </mat-icon>
+              <span> Odhlásit se </span>
+            </button>
+
+          </mat-menu>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </mat-toolbar-row>
+
+</mat-toolbar>

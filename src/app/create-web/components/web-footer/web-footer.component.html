@@ -1,0 +1,13 @@
+<!-- <div class="d-flex flex-column align-items-center">
+    <quill-editor [(ngModel)]="test" theme="bubble2" 
+        placeholder="Zadejte text"
+        class="editor"
+        >
+      </quill-editor>
+      <p>Vytvořeno službou <a href="https://czprofi.eu" target="_blank">OftenOut</a></p>
+</div> -->
+
+<div class="d-flex flex-column align-items-center" [ngStyle]="getStyle2()"><!--OPACITY, BACKGROUND, LAYOUT-->
+  <web-section-text [content]="component.data.text"></web-section-text>
+  <p>Vytvořeno pomocí <a href="https://czprofi.eu" target="_blank">OftenOut</a></p>
+</div>

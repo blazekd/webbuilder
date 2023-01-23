@@ -1,0 +1,108 @@
+.card-wrapper {
+    width: 100%;
+    flex: 0 0 auto;
+    .content {
+        position: relative;
+        padding: 0 10px 25px;
+        &:hover .mini-menu {
+            display: flex;
+        }
+    }
+    
+}
+
+.new-content-button {
+    // height: 34px;
+    // width: 100%;
+    left:0;
+    right: 0;
+    z-index: 5;
+    position: absolute;
+    opacity: 0;
+    box-sizing: border-box;
+
+    &.new-content-button-bottom {
+        // bottom: -20px;
+        // top:0;
+        // border-bottom: 2px dashed #666;
+        // box-shadow: 0 1px 0px 1px #666;
+        bottom: 0;
+        // width: calc(100% - 80px);
+        // margin-left: 40px;
+    }
+
+    &.new-content-button-bottom-empty {
+      bottom: 0;
+      top: 0;
+      width: calc(100% - 80px);
+      margin-left: 40px;
+      position: relative;
+    }
+
+    &.new-content-button-top {
+        top: -20px;
+        // bottom:0;
+        // border-top: 2px dashed #666;
+        // box-shadow: 0 -1px 0px 1px #666;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: block;
+        height: 50%;
+        margin-top: 2px;
+        border-bottom: 2px dashed #666;
+    }
+
+    button {
+        background-color: #333;
+        color: white;
+        clip-path: polygon(10% 0%, 75% 0%, 100% 50%, 75% 100%, 10% 100%);
+        margin-left: -5px;
+        height: 24px;
+        width: 30px;
+        border: none;
+        padding: 1px 0 0 0;
+        .mat-icon {
+            transform: scale(0.5);
+        }
+
+    }
+
+    // & > div {
+    //     height: 17px;
+    // }
+}
+
+.new-content-button:hover {
+    opacity: 1;
+    // cursor: pointer;
+}
+
+.mini-menu {
+    position: absolute;
+    top: 10px;
+    right: -5px;
+    // display: flex;
+    display:none;
+    flex-direction: column;
+    border:1px solid rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.5);
+    // padding: 5px;
+    border-radius: 17px;
+    z-index: 45;
+    color: black;
+    & > * {
+      margin: 5px;
+      user-select: none;
+      cursor: pointer;
+    }
+    .handle-content {
+      cursor: move;
+    }
+  }

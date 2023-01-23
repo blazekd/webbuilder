@@ -1,0 +1,223 @@
+<!-- <div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.data.size.height]">
+    <div class="flex-container" [ngClass]="[component.data.size.width]" [sortablejs]="component.data.cards" [sortablejsOptions]="sortableOptions">
+       <div class="d-flex" [ngStyle]="getCardStyle(index)"
+       *ngFor="let item of component.data.cards; index as index">
+            <div class="content">
+                <div class="d-flex flex-column inner-content">
+                    <div class="new-content-button new-content-button-left">
+                        <button mat-mini-fab (click)="addContent(index)" matTooltip="Přidat kartu"><mat-icon>add</mat-icon></button>
+                    </div>
+                    <div class="card-menu"> 
+                        <mat-icon class="card-handle" matTooltip="Přesunout kartu">open_with</mat-icon>
+                        <mat-icon (click)="editMenu(index)" matTooltip="Nastavení karty">edit</mat-icon>
+                        <mat-icon (click)="duplicate(index)" matTooltip="Duplikovat kartu">content_copy</mat-icon>
+                        <mat-icon (click)="deleteContent(index)" matTooltip="Smazat kartu">delete</mat-icon>
+                    </div>
+                    <web-grid-card [card]="item"></web-grid-card>
+
+                    <div class="new-content-button new-content-button-right">
+                        <button mat-mini-fab (click)="addContent(component.data.cards.length)" matTooltip="Přidat kartu"><mat-icon>add</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new-content-button new-content-button-bottom" *ngIf="component.data.cards.length == 0">
+            <button mat-mini-fab (click)="addContent(0)" matTooltip="Přidat kartu"><mat-icon>add</mat-icon></button>
+        </div>
+    </div>
+</div> -->
+  
+<div class="content-wrapper">
+    <div class="flex-container" [sortablejs]="component.cards" [sortablejsOptions]="sortableOptions">
+       <div class="d-flex" [ngStyle]="getCardStyle(index)"
+       *ngFor="let item of component.cards; index as index">
+            <div class="content">
+                <div class="d-flex flex-column inner-content">
+                    <div class="new-content-button new-content-button-left">
+                        <button mat-mini-fab (click)="addContent(index)" matTooltip="Přidat kartu"><mat-icon>add</mat-icon></button>
+                    </div>
+                    <div class="card-menu"> 
+                        <mat-icon class="card-handle" matTooltip="Přesunout kartu">open_with</mat-icon>
+                        <mat-icon (click)="editMenu(index)" matTooltip="Nastavení karty">edit</mat-icon>
+                        <mat-icon (click)="duplicate(index)" matTooltip="Duplikovat kartu">content_copy</mat-icon>
+                        <mat-icon (click)="deleteContent(index)" matTooltip="Smazat kartu">delete</mat-icon>
+                    </div>
+
+                    <web-grid-card [card]="item"></web-grid-card>
+
+
+                    <div class="new-content-button new-content-button-right">
+                        <button mat-mini-fab (click)="addContent(component.cards.length)" matTooltip="Přidat kartu"><mat-icon>add</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new-content-button new-content-button-bottom" *ngIf="component.cards.length == 0">
+            <button mat-mini-fab (click)="addContent(0)" matTooltip="Přidat kartu"><mat-icon>add</mat-icon></button>
+        </div>
+    </div>
+</div>
+  
+
+
+  <!-- <div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.data.size.height]">
+    <div class="flex-container" [ngClass]="[component.data.size.width]" cdkDropListGroup>
+       <div class="d-flex" [ngStyle]="getFlexBasis()"
+       *ngFor="let item of component.data.cards; index as index"
+            cdkDropList 
+            cdkDropListOrientation="horizontal"
+            [cdkDropListData]="index"
+            (cdkDropListDropped)="drop2($event)">
+            <div class="content" [ngStyle]="getAlign(index)" cdkDrag>
+
+                <div class="drag-wrapper">
+                    <div  class="d-flex flex-column inner-content">
+                        <div class="new-content-button new-content-button-left">
+                            <button mat-mini-fab (click)="addContent(index)"><mat-icon>add</mat-icon></button>
+                        </div>
+                        <div class="card-menu"> 
+                            <mat-icon cdkDragHandle class="handle">open_with</mat-icon>
+                            <mat-icon (click)="editMenu(index)">edit</mat-icon>
+                            <mat-icon (click)="duplicate(index)">content_copy</mat-icon>
+                            <mat-icon (click)="deleteContent(index)">delete</mat-icon>
+                        </div>
+                        <div class="content-inner-wrapper" *ngFor="let subitem of item.content">                
+
+                        
+
+                            <div [ngSwitch]="subitem.type">
+                            
+                                <web-section-text *ngSwitchCase="'text'" [content]="subitem"></web-section-text>
+                                <web-section-image *ngSwitchCase="'image'" [content]="subitem"></web-section-image>
+                                <web-section-divider *ngSwitchCase="'divider'" [content]="subitem"></web-section-divider>
+                                <div *ngSwitchDefault>{{subitem.type}}</div>
+                                
+                            </div>   
+
+                        
+                        </div>
+                        <div class="new-content-button new-content-button-right">
+                            <button mat-mini-fab (click)="addContent(component.data.cards.length)"><mat-icon>add</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+       </div>
+
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="example-container" cdkDropListGroup>
+    <div cdkDropList [cdkDropListEnterPredicate]="dropListEnterPredicate" (cdkDropListDropped)="dropListDropped($event)">
+  
+    </div>
+    <div cdkDropList *ngFor="let item of items"
+         [cdkDropListEnterPredicate]="dropListEnterPredicate" (cdkDropListDropped)="dropListDropped($event)">
+      <div cdkDrag class="example-box" (cdkDragMoved)="dragMoved($event);">
+        {{item}}
+      </div>
+    </div>
+  </div>  -->
+
+<!-- 
+<div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.data.size.height]">
+    <div class="flex-container" [ngClass]="[component.data.size.width]" cdkDropListGroup>
+        
+        <div cdkDropList [cdkDropListEnterPredicate]="dropListEnterPredicate" (cdkDropListDropped)="dropListDropped($event)">
+        </div>
+        
+        <div class="content" [ngStyle]="getWidth(i)"
+            *ngFor="let item of component.data.cards; index as i"
+            cdkDropList
+            [cdkDropListEnterPredicate]="dropListEnterPredicate" 
+            (cdkDropListDropped)="dropListDropped($event)">
+        
+
+            <div cdkDrag class="d-flex flex-column inner-content"  (cdkDragMoved)="dragMoved($event);">
+                <div class="new-content-button new-content-button-left">
+                    <button mat-mini-fab (click)="addContent(i)"><mat-icon>add</mat-icon></button>
+                </div>
+                <div class="card-menu"> 
+                    <mat-icon cdkDragHandle class="handle">open_with</mat-icon>
+                    <mat-icon (click)="editMenu(i)">edit</mat-icon>
+                    <mat-icon (click)="duplicate(i)">content_copy</mat-icon>
+                    <mat-icon (click)="deleteContent(i)">delete</mat-icon>
+                </div>
+                <div class="content-inner-wrapper" *ngFor="let subitem of item.content">                
+
+                
+
+                    <div [ngSwitch]="subitem.type">
+                    
+                        <web-section-text *ngSwitchCase="'text'" [content]="subitem"></web-section-text>
+                        <web-section-image *ngSwitchCase="'image'" [content]="subitem"></web-section-image>
+                        <web-section-divider *ngSwitchCase="'divider'" [content]="subitem"></web-section-divider>
+                        <div *ngSwitchDefault>{{subitem.type}}</div>
+                        
+                    </div>   
+
+                
+                </div>
+                <div class="new-content-button new-content-button-right">
+                    <button mat-mini-fab (click)="addContent(component.data.cards.length)"><mat-icon>add</mat-icon></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+ -->
+
+
+
+
+<!-- <div class="content"
+            *ngFor="let itemsRow of getItemsTable(); index as row"
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            [cdkDropListData]="itemsRow"
+            (cdkDropListDropped)="reorderDroppedItem($event)"> -->
+            <!-- <div *ngFor="let item of itemsRow; index as column" cdkDrag [ngStyle]="getWidth(row*component.data.columns+column)" class="d-flex flex-column inner-content" >
+                <div class="new-content-button new-content-button-left">
+                    <button mat-mini-fab (click)="addContent(row*component.data.columns+column)"><mat-icon>add</mat-icon></button>
+                </div>
+                <div class="card-menu"> CARD MENU
+                    <mat-icon cdkDragHandle class="handle">open_with</mat-icon>
+                    <mat-icon (click)="editMenu(row*component.data.columns+column)">edit</mat-icon>
+                    <mat-icon (click)="duplicate(row*component.data.columns+column)">content_copy</mat-icon>
+                    <mat-icon (click)="deleteContent(row*component.data.columns+column)">delete</mat-icon>
+                </div>
+                <div class="content-inner-wrapper" *ngFor="let subitem of item.content">                
+    
+                    CARD START
+    
+                    <div [ngSwitch]="subitem.type">
+                        COMPONENT MENU
+                        <web-section-text *ngSwitchCase="'text'" [content]="subitem"></web-section-text>
+                        <web-section-image *ngSwitchCase="'image'" [content]="subitem"></web-section-image>
+                        <web-section-divider *ngSwitchCase="'divider'" [content]="subitem"></web-section-divider>
+                        <div *ngSwitchDefault>{{subitem.type}}</div>
+                        
+                    </div>   
+    
+                    CARD END
+                </div>
+                <div class="new-content-button new-content-button-right">
+                    <button mat-mini-fab (click)="addContent(component.data.cards.length)"><mat-icon>add</mat-icon></button>
+                </div>
+            </div> -->
+            

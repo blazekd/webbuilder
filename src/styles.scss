@@ -1,0 +1,841 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+@import '~@angular/material/theming';
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+
+
+// @import "../projects/utils/src/lib/angular-material/mat-variables";
+// https://github.com/angular/components/blob/master/src/material/core/style/_variables.scss
+
+$mat-xsmall: 'max-width: 599px';
+$mat-small: 'max-width: 959px';
+
+// https://github.com/angular/components/blob/master/src/material/toolbar/toolbar.scss
+
+$mat-toolbar-height-desktop: 64px !default;
+$mat-toolbar-height-mobile: 56px !default;
+$mat-toolbar-row-padding: 16px !default;
+
+
+// @import "../projects/utils/src/lib/angular-material/variables";
+
+
+// See: constants.ts
+
+$crm-command-bar-height-desktop: 56px !default;
+// $crm-command-bar-height-mobile: 48px !default;
+$crm-command-bar-height-mobile: 0 !default;
+
+$crm-action-bar-height-desktop: 56px !default;
+$crm-action-bar-height-mobile: 48px !default;
+
+$crm-activity-bar-height-desktop: 56px !default;
+$crm-activity-bar-height-mobile: 48px !default;
+
+$crm-view-bar-height-desktop: 96px !default;
+$crm-view-bar-height-mobile: 84px !default;
+
+$crm-component-title-margin: 16px !default;
+
+$crm-component-default-margin: 32px !default;
+
+$crm-collection-component-footer-button-min-width: 24px !default;
+
+
+// top, right, bottom, and left
+// width: 100vw;
+// height: 100vh;
+
+html, body {
+  // height: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+// The Nav Component hosts the Sidenav container and the Sidenav content area (i.e., the router-outlet).
+
+#app-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  // width: 100vw;
+  // height: 100vh;
+  overflow: auto;
+}
+
+// ------------------------------------------------------------------------------------------------------------------ //
+
+.crm-navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+}
+
+.crm-command-bar {
+  position: fixed;
+  top: $mat-toolbar-height-desktop !important;
+  left: 0;
+  right: 0;
+  z-index: 997;
+  height: $crm-command-bar-height-desktop !important;
+  min-height: $crm-command-bar-height-desktop !important;
+
+  @media ($mat-xsmall) {
+    top: $mat-toolbar-height-mobile;
+    height: $crm-command-bar-height-mobile !important;
+    min-height: $crm-command-bar-height-mobile !important;
+  }
+
+  background-color: #f5f5f5 !important;
+}
+
+// $command-bar-sidenav-width: 240px;  // menu item layout
+$command-bar-sidenav-width: 160px; // card layout
+
+.crm-command-bar-sidenav {
+  margin-top: $mat-toolbar-height-desktop + $crm-command-bar-height-desktop !important;
+  width: $command-bar-sidenav-width !important;
+
+  @media ($mat-xsmall) {
+    margin-top: $mat-toolbar-height-mobile + $crm-command-bar-height-mobile !important;
+  }
+}
+
+.crm-action-bar {
+  height: $crm-action-bar-height-desktop !important;
+  min-height: $crm-action-bar-height-desktop !important;
+
+  background-color: #f5f5f5 !important;
+}
+
+.crm-activity-bar {
+  height: $crm-activity-bar-height-desktop !important;
+  min-height: $crm-activity-bar-height-desktop !important;
+
+  margin-top: $mat-toolbar-height-desktop + $crm-command-bar-height-desktop !important;
+
+  @media ($mat-xsmall) {
+    height: $crm-activity-bar-height-mobile !important;
+    min-height: $crm-activity-bar-height-mobile !important;
+
+    margin-top: $mat-toolbar-height-mobile + $crm-command-bar-height-mobile !important;
+  }
+
+  background-color: transparent !important;
+}
+
+.crm-activity-bar-without-a-command-bar {
+  height: $crm-activity-bar-height-desktop !important;
+  min-height: $crm-activity-bar-height-desktop !important;
+
+  margin-top: $mat-toolbar-height-desktop !important;
+
+  @media ($mat-xsmall) {
+    height: $crm-activity-bar-height-mobile !important;
+    min-height: $crm-activity-bar-height-mobile !important;
+
+    margin-top: $mat-toolbar-height-mobile !important;
+  }
+
+  background-color: transparent !important;
+}
+
+//
+// https://material.angular.io/guide/customizing-component-styles
+//
+
+/*
+
+::ng-deep .mat-menu-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+::ng-deep .mat-menu-item {
+  line-height: 40px !important;
+  height: 40px !important;
+}
+
+*/
+
+.crm-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // $mat-toolbar-height-desktop + $crm-command-bar-height-desktop + $crm-view-bar-height-desktop
+  // 64 + 56 + 96
+  height: calc(100vh - 216px);
+  width: 100%;
+
+  @media ($mat-xsmall) {
+    // $mat-toolbar-height-mobile + $crm-command-bar-height-mobile + $crm-view-bar-height-mobile
+    // 56 + 0 + 84
+    height: calc(100vh - 140px);
+  }
+}
+
+.crm-component-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: $crm-view-bar-height-desktop;
+  min-height: $crm-view-bar-height-desktop;
+
+  margin-top: $mat-toolbar-height-desktop + $crm-command-bar-height-desktop;
+
+  @media ($mat-xsmall) {
+    height: $crm-view-bar-height-mobile;
+    min-height: $crm-view-bar-height-mobile;
+
+    margin-top: $mat-toolbar-height-mobile + $crm-command-bar-height-mobile;
+  }
+}
+
+.crm-component-title-container-without-command-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: $crm-view-bar-height-desktop;
+  min-height: $crm-view-bar-height-desktop;
+
+  margin-top: $mat-toolbar-height-desktop;
+
+  @media ($mat-xsmall) {
+    height: $crm-view-bar-height-mobile;
+    min-height: $crm-view-bar-height-mobile;
+
+    margin-top: $mat-toolbar-height-mobile;
+  }
+}
+
+.crm-component-title {
+  // margin-top: $crm-component-title-margin;
+  // margin-bottom: $crm-component-title-margin;
+  // vertical-align: middle;
+  // padding-top: 12px;
+  margin: 0;
+  // text-align: center;
+}
+
+/*
+.crm-content-container {
+  height: 100%;
+}
+*/
+
+.crm-content-container {
+  // $mat-toolbar-height-desktop + $crm-command-bar-height-desktop + $crm-view-bar-height-desktop
+  // 64 + 56 + 96
+  height: calc(100vh - 216px);
+  width: 100%;
+
+  @media ($mat-xsmall) {
+    // $mat-toolbar-height-mobile + $crm-command-bar-height-mobile + $crm-view-bar-height-mobile
+    // 56 + 0 + 84
+    height: calc(100vh - 140px);
+  }
+
+  // background-color: black;
+}
+
+$table-margin-desktop: 32px;
+$table-margin-mobile: 0;
+
+.crm-table-container {
+
+  // $mat-toolbar-height-desktop + $crm-command-bar-height-desktop + $crm-view-bar-height-desktop
+  // 64 + 56 + 96 + 32
+  height: calc(100vh - 248px);
+
+  margin-left: $table-margin-desktop;
+  margin-right: $table-margin-desktop;
+  overflow: auto;
+
+  // margin-top: $mat-toolbar-height-desktop + $crm-command-bar-height-desktop;
+
+  @media ($mat-xsmall) {
+    // $mat-toolbar-height-mobile + $crm-command-bar-height-mobile + $crm-view-bar-height-mobile
+    // 56 + 0 + 84 + 0
+    height: calc(100vh - 140px);
+
+    margin-left: $table-margin-mobile;
+    margin-right: $table-margin-mobile;
+  }
+
+  // background-color: black;
+}
+
+.crm-table {
+  width: 100%;
+}
+
+.crm-dashboard-container {
+  // $mat-toolbar-height-desktop + $crm-command-bar-height-desktop + $crm-view-bar-height-desktop
+  // 64 + 56 + 96
+  height: calc(100vh - 216px);
+  width: 100%;
+
+  @media ($mat-xsmall) {
+    // $mat-toolbar-height-mobile + $crm-command-bar-height-mobile + $crm-view-bar-height-mobile
+    // 56 + 0 + 84
+    height: calc(100vh - 140px);
+  }
+}
+
+:fullscreen .crm-navigation-bar {
+  display: none;
+}
+
+:fullscreen .crm-command-bar {
+  display: none;
+}
+
+:fullscreen .crm-activity-bar {
+  display: none;
+}
+
+:fullscreen .crm-component-title-container {
+  margin-top: 0;
+}
+
+:fullscreen .crm-dashboard-container {
+  // $crm-view-bar-height-desktop
+  height: calc(100vh - 96px);
+}
+
+
+$task-list-width: 320px; // 240px;
+
+.crm-activities-container {
+  display: grid;
+  grid-template-columns: $task-list-width auto;
+  // grid-template-rows: 100%; deprecated
+  // grid-template-rows: auto;
+  // grid-template-rows: minmax(250px, auto);
+  column-gap: 32px;
+  // row-gap: 1em;
+
+  margin-top: 0;
+  margin-left: 32px;
+  margin-bottom: 32px;
+  margin-right: 32px;
+
+  // overflow: auto;
+  // overflow: hidden;
+}
+
+.crm-email-container {
+  margin-left: $crm-component-default-margin;
+  margin-right: $crm-component-default-margin;
+  margin-bottom: $crm-component-default-margin;
+}
+
+.crm-form-field-label {
+  align-self: center;
+}
+
+.crm-email-editor-container {
+  height: 250px;
+}
+
+.crm-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 32px;
+  row-gap: 1em;
+
+  margin-top: 0;
+  // margin-left: 32px;
+  margin-bottom: 32px;
+  // margin-right: 32px;
+}
+
+.crm-task-list-container {
+  // background: white;
+  border: 1px solid lightgray;
+}
+
+.crm-task-container {
+  background: white;
+  border: 1px solid lightgray;
+  padding-top: 0;
+  margin-top: 0;
+  // background: whitesmoke;
+
+  // padding-left: 32px;
+  // padding-right: 32px;
+
+  // overflow: auto;
+
+  // height: 100%;
+  // height: calc(100vh - ($mat-toolbar-height-desktop + $crm-command-bar-height-desktop + $crm-component-title-margin));
+  // height: calc(100vh - 64 + 56 + 16);
+
+  // height: 100vh;
+  // height: calc(100vh - 64px + 56px + 16px);
+  // height: calc(100vh - 96px);
+  // height: calc(100vh - 128px);
+
+  // height: 400px;
+  // height: calc(100vh - 256px);
+  height: calc(100vh - 200px);
+
+  @media ($mat-xsmall) {
+    height: calc(100vh - 180px);
+  }
+
+}
+
+.crm-task-list-icon {
+  // margin: 0 12px 0 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.crm-snack-bar {
+  // background: #00b862;
+  text-align: center;
+}
+
+//
+// Dynamic Reactive Forms
+//
+
+.crm-prefix-icon {
+  cursor: pointer;
+}
+
+.crm-suffix-icon {
+  cursor: pointer;
+}
+
+.crm-nested-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 16px;  // 32px;
+  row-gap: 1em;
+}
+
+.grid-column-1 {
+  grid-column: 1;
+}
+
+.grid-column-1-span-2 {
+  grid-column: 1 / span 2;
+}
+
+.grid-column-2 {
+  grid-column: 2;
+}
+
+.grid-column-2-span-2 {
+  grid-column: 2 / span 2;
+  // min-width: 180px;
+}
+
+.grid-column-3 {
+  grid-column: 3;
+}
+
+.grid-column-3-row-1-span-2 {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.grid-column-3-row-1-span-3 {
+  grid-column: 3;
+  grid-row: 1 / span 3;
+}
+
+.grid-column-4 {
+  grid-column: 4;
+}
+
+.grid-row-2 {
+  grid-row: 2;
+}
+
+//
+// Library elements
+//
+
+.lib-component-title {
+
+  margin-top: $mat-toolbar-height-desktop + $crm-command-bar-height-desktop + $crm-component-title-margin;
+
+  @media ($mat-xsmall) {
+    margin-top: $mat-toolbar-height-mobile + $crm-command-bar-height-mobile + $crm-component-title-margin;
+  }
+
+  margin-bottom: $crm-component-title-margin;
+  text-align: center;
+}
+
+.anchor {
+  // font-weight: bold;
+  color: #488aff;
+  cursor: pointer;
+}
+
+//
+// Angular Material Styles
+//
+
+/*
+
+.mat-tab-group {
+  margin-left: $crm-component-default-margin;
+  margin-right: $crm-component-default-margin;
+}
+
+.mat-card {
+  padding: 0;
+  margin-top: $crm-component-default-margin;
+}
+
+.mat-card-header {
+  background: rgba(0, 0, 0, 0.04);
+  padding-top: 8px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mat-card-content {
+  padding: 16px;
+}
+
+*/
+app-home, app-create-web {
+    .ql-editor {
+        // border: none;
+        border: 1px solid transparent;
+        overflow: hidden;
+        // line-height: 1em;
+        // border: 1px dashed black;
+        // position: relative;
+        // &::after {
+        //   content:'';
+        //   position: absolute;
+        //   top: -1px;
+        //   left: -1px;
+        //   width: calc(100% + 2px);
+        //   height: calc(100% + 2px);
+        // }
+        &:hover {
+          border: 1px dashed black;
+          outline: 1px dashed white;
+        }
+        &.ql-border {
+          border: 1px solid black;
+          outline: 1px solid white;
+        }
+
+        // &.ql-blank {
+        //   width: 300px;
+        // }
+
+        // & > * {
+        //   word-wrap: break-word;
+        // }
+        word-break: break-word;
+        // &::after:hover {
+        //   border: 1px dashed white;
+        // }
+    }
+
+        // width: fit-content;
+        // margin: 3px;
+        .ql-position.ql-tooltip.ql-flip {
+            // bottom: calc(100% - 5px);
+            // margin: auto;
+            // left: 0;
+            // right: 0;
+            // width: fit-content;
+            z-index: 500;
+
+            position: absolute;
+            left: 50%;
+            /* top: 50%; */
+            bottom: 100%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            margin-bottom: 10px;
+            min-width: 300px;
+            width: fit-content;
+
+            //TODO: translate -> style
+            .ql-toolbar {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+
+              .ql-formats {
+                margin: 4px 6px 4px 6px;
+              }
+            }
+
+            .ql-tooltip-submenu {
+              &.ql-tooltip-submenu-show {
+                display:flex;
+              }
+              display: none;
+              height: 32px;
+              width: fit-content;
+              align-items: center;
+              position: absolute;
+              right: 0;
+              left: calc(100% + 6px);
+              background: #444;
+              border-radius: 16px;
+              padding: 0 8px;
+              .mat-icon {
+                // padding: 0 4px;
+                cursor: pointer;
+                color: #ccc;
+                &:hover {
+                  color: #fff;
+                }
+              }
+            }
+
+
+
+    }
+
+
+}
+.ql-bubble .ql-picker.ql-size .ql-picker-item[data-value]:not([data-value=''])::before {
+  font-size: attr(data-value);
+  // line-height: 1.3em;
+  content: attr(data-value);
+}
+
+.ql-bubble .ql-picker.ql-size .ql-picker-label::before {
+  content: 'Velikost';
+}
+
+.ql-bubble .ql-picker.ql-font .ql-picker-label::before {
+  content: 'Font';
+}
+
+// .ql-bubble .ql-picker.ql-size .ql-picker-label::before, .ql-bubble .ql-picker.ql-size .ql-picker-item::before
+
+/* Set default font-family */
+// #editor-container {
+//   font-family: "Aref Ruqaa";
+//   font-size: 18px;
+//   height: 375px;
+// }
+
+// .ql-bubble .ql-picker.ql-font .ql-picker-label::before, .ql-bubble .ql-picker.ql-font .ql-picker-item::before
+/* Set dropdown font-families */
+// .ql-bubble .ql-picker.ql-font span.ql-picker-item[data-value]:not([data-value=''])::before {
+//   font-family: attr(data-value);
+//   content: attr(data-value);
+// }
+
+.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value='10']::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value='10']::before {
+  content: 'Citace';
+}
+
+.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value='1']::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value='1']::before {
+  content: 'Nadpis';
+}
+
+.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value='2']::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value='2']::before {
+  content: 'Titulek';
+}
+
+.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value='3']::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value='3']::before {
+  content: 'Podnadpis';
+}
+
+.ql-bubble .ql-picker.ql-header .ql-picker-label::before, .ql-bubble .ql-picker.ql-header .ql-picker-item::before {
+  content: 'Běžný text';
+}
+
+.ql-selected {
+  color: red !important;
+}
+
+// .ql-bubble .ql-picker.ql-font .ql-picker-label::before, .ql-bubble .ql-picker.ql-font .ql-picker-item::before {
+//   font-family: attr(data-value);
+//   content: attr(data-value);
+// }
+
+/* Set content font-families */
+// .ql-font-mirza {
+//   font-family: "Mirza";
+// }
+// .ql-font-roboto {
+//   font-family: "Roboto";
+// }
+/* We do not set Aref Ruqaa since it is the default font */
+
+web-logo-module, web-background-module, web-size-module, web-color-module, web-button-module  {
+  .mat-tab-header-pagination {
+      display: none !important;
+  }
+
+}
+
+.cdk-drag-placeholder, .cdk-drop-list-receiving {
+
+  .mini-menu, .new-content-button {
+    display: none !important;
+  }
+
+  .ql-editor {
+    border: 1px solid transparent !important;
+    outline: none !important;
+  }
+}
+
+web-section .cdk-drag-placeholder {
+  .content-inner-wrapper > div {
+    border: 2px dotted grey;
+  }
+
+}
+
+web-grid {
+  .cdk-drag-placeholder.content > div, .sortable-chosen .inner-content {
+    border: 2px dotted grey !important;
+    .new-content-button, .card-menu, .mini-menu {
+      display: none !important;
+    }
+
+  }
+}
+
+.cdk-drag-preview:not(.column-width-border) {
+  border: 1px dashed #666 !important;
+  height: auto !important;
+}
+
+.cdk-drag-preview.column-width-border {
+  position: relative;
+  width: 30px !important;
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    left:0;
+    margin: auto;
+    height: 100%;
+    border: 1px dashed black;
+    box-shadow: 0px 0px 5px 0px white;
+    width: 0;
+    // z-index: 10;
+  }
+  // border-left: 1px dashed black;
+  // box-shadow: 0px 0px 5px 0px white;
+
+}
+
+.dragclass > .content {
+  border: 1px dashed #666 !important;
+}
+
+.cdk-drop-list-receiving, .cdk-drag-preview, .cdk-drag-placeholder, .cdk-drop-list-dragging {
+  .new-content-button {
+    display: none !important;
+  }
+}
+
+
+
+.cdk-drag-preview, .cdk-drag-placeholder  { 
+  .ql-tooltip.ql-flip.ql-position {
+    display: none;
+  }
+
+
+ }
+
+ .cdk-drag-preview {
+  &.column-width {
+    opacity: 1 !important;
+  }
+ }
+
+ .cdk-drag-placeholder {
+  &.column-width:hover {
+    opacity: 0 !important;
+  }
+ }
+
+
+//  .custom-backdrop {
+
+//  }
+
+.nav-ql-editor {
+  div.ql-position.ql-tooltip.ql-flip {
+    bottom: unset;
+    margin-top: 10px;
+    span.ql-tooltip-arrow {
+      border-bottom: 6px solid #444;
+      top: -6px;
+      bottom: unset;
+      border-top: unset;
+    }
+  }
+}
+
+.as-split-area {
+  overflow-x: unset !important;
+  overflow-y: unset !important;
+  position: relative;
+  height: unset !important;
+}
+
+.as-init {
+  overflow: unset !important;
+  height: unset !important;
+  position: relative;
+}
+
+.as-split-gutter {
+  height: unset !important;
+  background-color: unset !important;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
+  .as-split-gutter-icon {
+    background-image: none !important;
+    border: 1px dashed black;
+    box-shadow: 0px 0px 3px 0px white;
+    width: 0 !important;
+
+  }
+}

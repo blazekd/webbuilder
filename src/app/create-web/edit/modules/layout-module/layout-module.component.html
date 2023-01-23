@@ -1,0 +1,1 @@
+<div *ngFor="let item of layouts" [id]="item.name" class="layout" [class.layout-active]="item.name == data.layout.layout" [ngClass]="type" (click)="changeLayout(item)"></div>

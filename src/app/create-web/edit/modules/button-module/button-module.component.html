@@ -1,0 +1,26 @@
+<mat-tab-group dynamicHeight mat-stretch-tabs>
+    <mat-tab label="Připravené styly">
+        <div *ngFor="let item of buttons" [id]="item" class="button-wrapper" [class.button-wrapper-active]="item == data.button.name" (click)="changeButton(item)">
+            <button class="btn-none">Neaktivní</button>
+            <!-- <button class="btn-hover">Zvýraznění</button> -->
+            <button class="btn-active">Aktivní</button>
+        </div>  
+    </mat-tab>
+    <mat-tab label="Barvy tlačítka">
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Pozadí tlačítka</mat-label>
+                <input matInput type="color" placeholder="Ex. It makes me feel..." [(ngModel)]="data.button.customBackground">
+            </mat-form-field>
+            
+            <p>Průhlednost pozadí</p>
+            <mat-slider thumbLabel min="0" max="1" step="0.05" [displayWith]="formatLabel" [value]="data.button.opacity" (input)="changeOpacity($event)"></mat-slider>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Barva textu</mat-label>
+                <input matInput type="color" placeholder="Ex. It makes me feel..." [(ngModel)]="data.button.customColor">
+            </mat-form-field>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+

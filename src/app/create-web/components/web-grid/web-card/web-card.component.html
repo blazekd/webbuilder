@@ -1,0 +1,51 @@
+<div class="card-wrapper" cdkDropList
+    [cdkDropListData]="card.content"
+    (cdkDropListDropped)="drop($event)">
+    <div class="content" *ngFor="let item of card.content; index as i" cdkDrag>
+        <div>
+            <!-- ADD TOP -->
+
+            <div class="new-content-button new-content-button-top">
+                <div class="d-flex align-items-end justify-content-start">
+                    <button (click)="addContent(i)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
+                </div>
+            </div> 
+
+            <!-- MODULE MENU -->
+
+            <div class="mini-menu" [ngSwitch]="item.type">
+                <mat-icon cdkDragHandle class="handle-content" matTooltip="Přesunout prvek">open_with</mat-icon>
+                <mat-icon *ngSwitchDefault (click)="editMenu(i, item.type)" matTooltip="Upravit prvek">edit</mat-icon>
+                <ng-template *ngSwitchCase="'text'"></ng-template>
+                <mat-icon (click)="deleteContent(i)" matTooltip="Smazat prvek">delete</mat-icon>
+            </div>
+
+            <!-- MODULE -->
+
+            <div [ngSwitch]="item.type">
+
+                <web-section-text *ngSwitchCase="'text'" [content]="item"></web-section-text>
+                <web-section-image *ngSwitchCase="'image'" [content]="item"></web-section-image>
+                <web-section-divider *ngSwitchCase="'divider'" [content]="item"></web-section-divider>
+                <div *ngSwitchDefault>{{item.type}}</div>
+            </div>   
+
+            <!-- ADD BOTTOM -->
+
+            <div class="new-content-button new-content-button-bottom" *ngIf="i == card.content.length - 1">
+                <div class="d-flex align-items-start justify-content-start">
+                    <button (click)="addContent(card.content.length)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ADD BOTTOM IF 0 MODULES -->
+
+<div class="new-content-button new-content-button-bottom" *ngIf="card.content.length == 0">
+    <div class="d-flex align-items-start justify-content-start">
+        <button (click)="addContent(0)" matTooltip="Přidat prvek"><mat-icon>add</mat-icon></button>
+    </div>
+</div>
