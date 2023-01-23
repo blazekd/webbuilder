@@ -21,6 +21,11 @@
       <ul fxLayout fxLayoutGap="20px" class="navigation-items">
         <li fxHide.xs>
           <button mat-button>
+            <mat-icon> download </mat-icon><span> Uložit jako HTML </span>
+          </button>
+        </li>
+        <li fxHide.xs>
+          <button mat-button>
             <mat-icon> settings </mat-icon><span> Nastavení stránky </span>
           </button>
         </li>
@@ -31,26 +36,7 @@
           </button>
         </li>
 
-        <li>
-          <button mat-button [matMenuTriggerFor]="auth">
-            <mat-icon> person </mat-icon><span> Jan Novák </span>
-          </button>
-          <mat-menu #auth="matMenu">
-
-            <button mat-menu-item (click)="onProfile()">
-              <mat-icon> person </mat-icon>
-              <span> Jan Novák </span>
-            </button>
-
-            <mat-divider></mat-divider>
-
-            <button mat-menu-item (click)="logout()">
-              <mat-icon> exit_to_app </mat-icon>
-              <span> Odhlásit se </span>
-            </button>
-
-          </mat-menu>
-        </li>
+        
 
       </ul>
 
