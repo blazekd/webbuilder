@@ -1,47 +1,47 @@
 <quill-editor [(ngModel)]="content.text" theme="bubble2" 
 placeholder="Zadejte text" [modules]="modules">
-  <div quill-editor-toolbar>
-    <span class="ql-formats">
-      <button class="ql-bold" [title]="'Tučné'"></button>
-      <button class="ql-italic" [title]="'Kurzíva'"></button>
-    </span>
-    <span class="ql-formats">
-      <button type="button" class="ql-indent" value="-1" [title]="'Zmenšit odsazení'"></button>
-      <button type="button" class="ql-indent" value="+1" [title]="'Zvětšit odsazení'"></button>
-    </span>
-    <span class="ql-formats">
-      <select class="ql-header" [title]="'Styl textu'">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option selected></option>
-        <option value="10"></option>
-      </select>
-      <select class="ql-font" [title]="'Font'">
-        <ng-container *ngFor="let item of FONT_NAMES; index as i">
-          <option [value]="item">{{item}}</option>
-        </ng-container>
-      </select>
-      <select class="ql-align" [title]="'Zarovnání textu'">
-        <option selected [title]="'Vpravo'"></option>
-        <option value="center" [title]="'Na střed'"></option>
-        <option value="right" [title]="'Vpravo'"></option>
-        <option value="justify" [title]="'Do bloku'"></option>
-      </select>
-    </span>
-    <span class="ql-formats">
-      <select class="ql-color" [title]="'Barva textu'"></select>
-      <select class="ql-background" [title]="'Barva pozadí textu'"></select>
-    </span>
-    <span class="ql-formats">
-      <button type="button" class="ql-letter-spacing" value="+0.1" [title]="'Zvětšit mezeru mezi písmeny'"></button>
-      <button type="button" class="ql-letter-spacing" value="-0.1" [title]="'Zmenšit mezeru mezi písmeny'"></button>
-    </span>
-    <span class="ql-formats">
-      <button type="button" class="ql-font-size-button" value="+10" [title]="'Zvětšit písmo'"></button>
-      <button type="button" class="ql-font-size-button" value="-10" [title]="'Zmenšit písmo'"></button>
-    </span>
-  </div>
+<div quill-editor-toolbar>
+  <span class="ql-formats">
+    <button class="ql-bold" [title]="'Tučné'"></button>
+    <button class="ql-italic" [title]="'Kurzíva'"></button>
+  </span>
+  <span class="ql-formats">
+    <button type="button" class="ql-indent" value="-1" [title]="'Zmenšit odsazení'"></button>
+    <button type="button" class="ql-indent" value="+1" [title]="'Zvětšit odsazení'"></button>
+  </span>
+  <span class="ql-formats">
+    <select class="ql-header" [title]="'Styl textu'">
+      <option value="1"></option>
+      <option value="2"></option>
+      <option value="3"></option>
+      <option selected></option>
+      <option value="10"></option>
+    </select>
+    <select class="ql-font" [title]="'Font'">
+      <ng-container *ngFor="let item of FONT_NAMES; index as i">
+        <option [value]="item">{{item}}</option>
+      </ng-container>
+    </select>
+    <select class="ql-align" [title]="'Zarovnání textu'">
+      <option selected [title]="'Vpravo'"></option>
+      <option value="center" [title]="'Na střed'"></option>
+      <option value="right" [title]="'Vpravo'"></option>
+      <option value="justify" [title]="'Do bloku'"></option>
+    </select>
+  </span>
+  <span class="ql-formats">
+    <select class="ql-color" [title]="'Barva textu'"></select>
+    <select class="ql-background" [title]="'Barva pozadí textu'"></select>
+  </span>
+  <span class="ql-formats">
+    <button type="button" class="ql-letter-spacing" value="+0.1" [title]="'Zvětšit mezeru mezi písmeny'"></button>
+    <button type="button" class="ql-letter-spacing" value="-0.1" [title]="'Zmenšit mezeru mezi písmeny'"></button>
+  </span>
+  <span class="ql-formats">
+    <button type="button" class="ql-font-size-button" value="+10" [title]="'Zvětšit písmo'"></button>
+    <button type="button" class="ql-font-size-button" value="-10" [title]="'Zmenšit písmo'"></button>
+  </span>
+</div>
 </quill-editor>
 
 <!-- ['bold', 'italic'],        // toggled buttons

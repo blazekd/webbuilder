@@ -1,15 +1,14 @@
-@use '@angular/material' as mat;
-@mixin crm-app-theme($theme) {
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+}
 
-    a:active {
-      font-weight: bold;
-      color: mat.get-color-from-palette(map-get($theme, accent), darker) !important;
-    }
-  
-    .active {
-      font-weight: bold;
-      color: mat.get-color-from-palette(map-get($theme, accent), darker) !important;
-    }
-  
-  }
-  
+.create-web {
+  margin-top: 64px;
+  overflow: auto;
+  height: calc(100% - 64px);
+}
+

@@ -53,8 +53,13 @@
     border-radius: 10px;
     border: 1px solid rgba(0,0,0,0.15);
     button {
-        padding: 0;
+        padding: 6px;
         margin: 0;
+    }
+
+    & > .mat-mdc-icon-button.mat-mdc-button-base {
+        height: 40px;
+        width: 40px;
     }
 
 }
