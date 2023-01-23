@@ -1,7 +1,7 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { base64ToFile, ImageCroppedEvent } from 'ngx-image-cropper';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { ImageClass } from '../../../component-classes';
@@ -13,7 +13,7 @@ import { ImageClass } from '../../../component-classes';
 })
 export class WebImageDialogComponent implements OnInit { 
   
-  form: FormGroup;
+  form: UntypedFormGroup;
   progress: number = 0;
   // @Input() image!: ImageClass;
   image: ImageClass;
@@ -27,7 +27,7 @@ export class WebImageDialogComponent implements OnInit {
   ];
 
   uploading = 0;
-  constructor(public dialogRef: MatDialogRef<WebImageDialogComponent>, public fb: FormBuilder,
+  constructor(public dialogRef: MatDialogRef<WebImageDialogComponent>, public fb: UntypedFormBuilder,
     public fileUploadService: FileUploadService,  @Inject(MAT_DIALOG_DATA) public data: any) {
 
       this.image = data.image;

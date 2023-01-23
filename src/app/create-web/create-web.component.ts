@@ -1,6 +1,6 @@
-import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
+
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import Quill from 'quill';
 import ImageDropAndPaste from 'quill-image-drop-and-paste';
 import { NewComponentComponent } from './add/new-component/new-component.component';

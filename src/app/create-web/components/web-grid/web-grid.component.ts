@@ -1,7 +1,7 @@
 import { CdkDrag, CdkDragDrop, CdkDragMove, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ViewportRuler } from '@angular/cdk/scrolling';
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Console } from 'console';
 import { Options } from 'sortablejs';
 import { NewSectionContentComponent } from '../../add/new-section-content/new-section-content.component';

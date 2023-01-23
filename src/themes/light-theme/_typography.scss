@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
 /*
 
@@ -12,6 +12,6 @@ $custom-toolbar-typography: mat-typography-config(
 
 */
 
-$custom-typography: mat-typography-config(
+$custom-typography: mat.define-legacy-typography-config(
   $font-family: 'Open Sans, sans-serif'
 );

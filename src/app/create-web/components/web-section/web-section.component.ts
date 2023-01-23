@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Renderer2, ElementRef, QueryList, ViewChildren, ContentChild } from '@angular/core';
 import { ComponentData } from '../../create-web.component';
 import { NewSectionContentComponent } from '../../add/new-section-content/new-section-content.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { TextClass, ImageClass, DividerClass, ColorClass, ColumnClass, EditDialog } from '../component-classes';
 import { CdkDragDrop, DragRef, moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
 import { WebImageDialogComponent } from './web-image/web-image-dialog/web-image-dialog.component';

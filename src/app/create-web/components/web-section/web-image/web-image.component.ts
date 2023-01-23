@@ -1,7 +1,7 @@
 import { AfterViewInit, HostListener, Inject, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { ResizeEvent } from 'angular-resizable-element';
 import { ImageClass } from '../../component-classes';
 import { WebImageDialogComponent } from './web-image-dialog/web-image-dialog.component';
