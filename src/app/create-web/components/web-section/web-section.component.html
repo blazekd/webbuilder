@@ -40,7 +40,6 @@
                                         <web-section-image *ngSwitchCase="'image'" [content]="item"></web-section-image>
                                         <web-section-divider *ngSwitchCase="'divider'" [content]="item"></web-section-divider>
                                         <web-grid *ngSwitchCase="'grid'" [component]="item"></web-grid>
-                                        <web-calendar *ngSwitchCase="'calendar'"></web-calendar>
                                         <div *ngSwitchDefault>{{item.type}}</div>
                                         
                                     </div> 

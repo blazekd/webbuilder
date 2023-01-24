@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class WebHeaderComponent implements OnInit {
 
   constructor() { }
-
+  //todo delete
   ngOnInit(): void {
   }
 

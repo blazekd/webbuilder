@@ -51,16 +51,11 @@ import { WebGridComponent } from './create-web/components/web-grid/web-grid.comp
 import { WebCardComponent } from './create-web/components/web-grid/web-card/web-card.component';
 import { SortablejsModule } from 'ngx-sortablejs';
 import { EditGridComponent } from './create-web/edit/edit-grid/edit-grid.component';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { WebCalendarComponent } from './create-web/components/web-calendar/web-calendar.component';
 import { ResizableModule } from 'angular-resizable-element';
 import { AngularSplitModule } from 'angular-split';
 import { DividerSizeModuleComponent } from './create-web/edit/modules/divider-size-module/divider-size-module.component';
 import { DividerColorModuleComponent } from './create-web/edit/modules/divider-color-module/divider-color-module.component';
 import { DividerStyleModuleComponent } from './create-web/edit/modules/divider-style-module/divider-style-module.component';
-import { CalendarStyleModuleComponent } from './create-web/edit/modules/calendar-style-module/calendar-style-module.component';
-import { CalendarColorModuleComponent } from './create-web/edit/modules/calendar-color-module/calendar-color-module.component';
 
 @NgModule({
   declarations: [
@@ -94,12 +89,9 @@ import { CalendarColorModuleComponent } from './create-web/edit/modules/calendar
     WebGridComponent,
     WebCardComponent,
     EditGridComponent,
-    WebCalendarComponent,
     DividerSizeModuleComponent,
     DividerColorModuleComponent,
     DividerStyleModuleComponent,
-    CalendarStyleModuleComponent,
-    CalendarColorModuleComponent
   ],
   imports: [
     BrowserModule,
@@ -160,9 +152,8 @@ import { CalendarColorModuleComponent } from './create-web/edit/modules/calendar
     ImageCropperModule,
     // SortablejsModule.forRoot({ animation: 30 })
     SortablejsModule.forRoot({}),
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    // ResizableModule
-    AngularSplitModule
+    AngularSplitModule,
+    ResizableModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}

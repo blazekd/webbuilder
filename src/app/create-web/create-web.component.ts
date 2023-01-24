@@ -21,32 +21,19 @@ export class CreateWebComponent implements OnInit {
   // showSettings = false;
   showPc = true;
 
-  // components: ComponentDialogData[] = [
-  //   {type: 'nav', data: '', background: '', classes: new Map, classesString: ''},
-  //   {type: 'header', data: 'Zde můžete mít svůj nadpis', background: 'pozadi1', classes: new Map().set('text-align', 'text-left').set('text-align-v', 'align-items-end').set('section-size', 'section-large').set('font', 'roboto').set('font-size', 'font-size-32').set('font-weight', 'font-weight-light'), classesString: ''},
-  //   {type: 'text', data: 'Zde můžete mít svůj text', background: 'pozadi2', classes: new Map, classesString: ''},
-  //   {type: 'image', data: '', background: 'pozadi3', classes: new Map, classesString: ''},
-  //   {type: 'footer', data: '', background: '', classes: new Map, classesString: ''}
-  // ];
+
   components: ComponentData[] = [
-    // {type: 'nav', data: JSON.stringify(NavComponentClass.empty()), object: NavComponentClass.empty()},
-    // {type: 'header', data: 'Nový nadpis', object: {}},
-    // {type: 'text', data: '', object: {}},
-    // {type: 'image', data: '', object: {}},
-    // {type: 'footer', data: '', object: {}},
     {type: 'nav', data: NavComponentClass.webnode()},
     // {type: 'header', data: HeaderComponentClass.empty()},
     // {type: 'text', data: TextComponentClass.empty()},
     {type: 'section', data: SectionComponentClass.webnode0()},
     // {type: 'section', data: SectionComponentClass.grid()},
-    // {type: 'section', data: SectionComponentClass.calendar()},
     {type: 'section', data: SectionComponentClass.webnode1()},
     {type: 'section', data: SectionComponentClass.webnode2()},
     {type: 'section', data: SectionComponentClass.webnode3()},
     {type: 'section', data: SectionComponentClass.webnode4()},
     // {type: 'section', data: SectionComponentClass.title()},
     // {type: 'grid', data: GridComponentClass.test2()},
-    // {type: 'calendar', data: GridComponentClass.test2()},
     // {type: 'section', data: SectionComponentClass.image()},
     // {type: 'section', data: SectionComponentClass.text()},
     // {type: 'section', data: SectionComponentClass.columns()},
@@ -104,15 +91,9 @@ export class CreateWebComponent implements OnInit {
       if (result !== undefined)
         this.newComponent(result);
         switch (result) {
-          // case 'event':
-          //   break;
           case 'title':
             this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.title()});
             break;
-          // case 'photogallery':
-          //   break;
-          // case 'review':
-          //   break;
           case 'section':
             this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
             break;
@@ -122,16 +103,9 @@ export class CreateWebComponent implements OnInit {
           case 'text2':
             this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.text2()});
             break;
-          case 'calendar':
-            this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.calendar()});
-            break;
-          // case 'events':
-          //   break;
           case 'cards':
             this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.grid()});
             break;
-          // case 'table':
-          //   break;
           default:
             alert("Není implementováno!!");
             break;
@@ -156,8 +130,6 @@ export class CreateWebComponent implements OnInit {
           data: EditDialog.navDialog(this.components[i].data)
         });
         break;
-      // case 'event':
-      //   break;
       // case 'header':
       //   // dialogRef = this.dialog.open(EditHeaderCompComponent, {
       //   //   // data: NavComponentClass.fromComponent(this.components[i])

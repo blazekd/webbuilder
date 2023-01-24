@@ -12,27 +12,14 @@ import {  FONT_NAMES } from '../constants';
 export class WebNavComponent implements OnInit {
 
   @Input() component!: ComponentData;
-  // fontSizes = FONT_SIZES;
   FONT_NAMES = FONT_NAMES;
 
   modulesHeader = {
     toolbar: [
       ['bold', 'italic'],        // toggled buttons
-      // ['blockquote', 'code-block'],
-    
-      // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-      // [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-      // [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-      // [{ 'direction': 'rtl' }],                         // text direction
-    
-      // [{ 'size': FONT_SIZES }],  // custom dropdown
-      // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    
+
       [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
       [{ 'font': FONT_NAMES }],
-    
-      // ['clean']                                         // remove formatting button
     ],
     imageDropAndPaste: {
       handler: () => {return false}

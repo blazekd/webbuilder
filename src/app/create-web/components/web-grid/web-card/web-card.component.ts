@@ -44,10 +44,6 @@ export class WebCardComponent implements OnInit {
         //   // this.component.data.columns.content.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
         //   alert("Není implementováno!!");
         //   break;
-        // case 'event':
-        //   // this.component.data.columns.content.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
-        //   alert("Není implementováno!!");
-        //   break;
         case 'text':
           this.card.content.splice(i, 0, new TextClass('<p>Nový text</p>'));
           break;

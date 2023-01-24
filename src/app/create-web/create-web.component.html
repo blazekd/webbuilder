@@ -12,7 +12,6 @@
                 <div class="w-100">
                     <!-- <div [ngSwitch]="component.type" [ngClass]="component.background" class="h-100 my-min-height"> -->
                     <div [ngSwitch]="component.type" class="h-100 my-min-height">
-                        <!-- <app-web-events-comp *ngSwitchCase="'event'"></app-web-events-comp> -->
                     
                         <!-- <app-web-header-comp [component]="component" *ngSwitchCase="'header'"></app-web-header-comp> -->
                     
@@ -25,8 +24,6 @@
                         <!-- <web-grid *ngSwitchCase="'grid'" [component]="component"></web-grid> -->
 
                         <web-footer *ngSwitchCase="'footer'" [component]="component"></web-footer>
-
-                        <!-- <web-calendar *ngSwitchCase="'calendar'"></web-calendar> -->
 
                         <web-section *ngSwitchCase="'section'" [component]="component"></web-section>
                     

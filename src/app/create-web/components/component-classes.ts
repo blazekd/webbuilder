@@ -11,8 +11,6 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { DividerColorModuleComponent } from "../edit/modules/divider-color-module/divider-color-module.component";
 import { DividerStyleModuleComponent } from '../edit/modules/divider-style-module/divider-style-module.component';
 import { DividerSizeModuleComponent } from '../edit/modules/divider-size-module/divider-size-module.component';
-import { CalendarColorModuleComponent } from '../edit/modules/calendar-color-module/calendar-color-module.component';
-import { CalendarStyleModuleComponent } from "../edit/modules/calendar-style-module/calendar-style-module.component";
 
 
 
@@ -85,17 +83,6 @@ export class SectionComponentClass {
       ))
   }
 
-  static calendar() : SectionComponentClass {
-    return new SectionComponentClass(ColorClass.default(), 
-      new SizeClass('width1', 'height5'), 
-      BackgroundClass.default(), 
-      new AlignmentClass(), 
-      new ColumnWrapperClass(
-      [[
-          new ColumnClass([new CalendarComponentClass()],100,false)
-        ]], 
-      ))
-  }
 
   static text2() : SectionComponentClass {
     return new SectionComponentClass(
@@ -332,11 +319,6 @@ export class SectionComponentClass {
   }
 }
 
-export class CalendarColor {
-
-  constructor(public primary: string = "#0000ff", public secondary: string = "#ffffff") {
-  }
-}
 
 export class ColumnClass {
 
@@ -344,12 +326,6 @@ export class ColumnClass {
   }
 }
 
-export class CalendarComponentClass {
-  type = 'calendar'
-  // color: CalendarColor
-  constructor(public color: CalendarColor = new CalendarColor()) {
-  }
-}
 
 export class TextClass {
   type = 'text';
@@ -673,10 +649,6 @@ export class EditDialog {
   static dividerDialog(data: any) : EditDialog {
     return new EditDialog(data, EDIT_DIVIDER_COMPONENT);
   }
-
-  static calendarDialog(data: any) : EditDialog {
-    return new EditDialog(data, EDIT_CALENDAR_COMPONENT);
-  }
 }
 
 // export const EDIT_NAV_COMPONENT = [
@@ -736,10 +708,4 @@ export const EDIT_DIVIDER_COMPONENT = [
   new EditMenuModule(DividerSizeModuleComponent, new EditMenuButton('Dimensions','expand','Dimensions'))
 ]
 
-//todo del
-export const EDIT_CALENDAR_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit kalendář','','')),
-  new EditMenuModule(CalendarStyleModuleComponent, new EditMenuButton('Styl kalendáře','event','Styly')),
-  new EditMenuModule(CalendarColorModuleComponent, new EditMenuButton('Barvy kalendáře','palette','Barvy')),
-  // new EditMenuModule(DividerSizeModuleComponent, new EditMenuButton('Rozměry čáry','expand','Rozměry'))
-]
+
