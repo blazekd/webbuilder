@@ -6,7 +6,6 @@ import ImageDropAndPaste from 'quill-image-drop-and-paste';
 import { NewComponentComponent } from './add/new-component/new-component.component';
 import { EditMenuModule, EditDialog, NavComponentClass, SectionComponentClass, GridComponentClass, FooterComponentClass } from './components/component-classes';
 import { FONT_NAMES, FONT_NAMES_LOWER } from './components/constants';
-import { EditNavComponent } from './edit/edit-nav/edit-nav.component';
 import { EditComponent } from './edit/edit.component';
 
 @Component({

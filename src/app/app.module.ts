@@ -24,9 +24,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { WebFooterComponent } from './create-web/components/web-footer/web-footer.component';
 import { WebNavComponent } from './create-web/components/web-nav/web-nav.component';
 import { WebSectionComponent } from './create-web/components/web-section/web-section.component';
-import { EditFooterComponent } from './create-web/edit/edit-footer/edit-footer.component';
-import { EditNavComponent } from './create-web/edit/edit-nav/edit-nav.component';
-import { EditSectionComponent } from './create-web/edit/edit-section/edit-section.component';
 import { NewComponentComponent } from './create-web/add/new-component/new-component.component';
 import { NewSectionContentComponent } from './create-web/add/new-section-content/new-section-content.component';
 import { WebTextComponent } from './create-web/components/web-section/web-text/web-text.component';
@@ -50,7 +47,6 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { WebGridComponent } from './create-web/components/web-grid/web-grid.component';
 import { WebCardComponent } from './create-web/components/web-grid/web-card/web-card.component';
 import { SortablejsModule } from 'ngx-sortablejs';
-import { EditGridComponent } from './create-web/edit/edit-grid/edit-grid.component';
 import { ResizableModule } from 'angular-resizable-element';
 import { AngularSplitModule } from 'angular-split';
 import { DividerSizeModuleComponent } from './create-web/edit/modules/divider-size-module/divider-size-module.component';
@@ -65,9 +61,6 @@ import { DividerStyleModuleComponent } from './create-web/edit/modules/divider-s
     WebFooterComponent,
     WebNavComponent,
     WebSectionComponent,
-    EditFooterComponent,
-    EditNavComponent,
-    EditSectionComponent,
     NewComponentComponent,
     NewSectionContentComponent,
     WebTextComponent,
@@ -88,7 +81,6 @@ import { DividerStyleModuleComponent } from './create-web/edit/modules/divider-s
     DragAndDropDirective,
     WebGridComponent,
     WebCardComponent,
-    EditGridComponent,
     DividerSizeModuleComponent,
     DividerColorModuleComponent,
     DividerStyleModuleComponent,
