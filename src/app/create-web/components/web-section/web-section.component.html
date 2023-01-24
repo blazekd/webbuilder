@@ -26,11 +26,11 @@
                                     </div>
                                 </div>
                                 <div class="mini-menu" [ngSwitch]="item.type">
-                                    <mat-icon cdkDragHandle class="handle" matTooltip="Move element" [style.display]="columnContent.resizable ? 'block' : 'none'">open_with</mat-icon>
-                                    <mat-icon *ngSwitchDefault (click)="editMenu(column, row, i, item.type)" matTooltip="Edit element">edit</mat-icon>
+                                    <mat-icon cdkDragHandle class="handle" matTooltip="Move element" matTooltipPosition="right" [style.display]="columnContent.resizable ? 'block' : 'none'">open_with</mat-icon>
+                                    <mat-icon *ngSwitchDefault (click)="editMenu(column, row, i, item.type)" matTooltip="Edit element" matTooltipPosition="right">edit</mat-icon>
                                     <ng-template *ngSwitchCase="'text'"></ng-template>
                                     <!-- <ng-template *ngSwitchCase="'grid'"></ng-template> -->
-                                    <mat-icon (click)="deleteContent(column, row, i)" matTooltip="Delete element">delete</mat-icon>
+                                    <mat-icon (click)="deleteContent(column, row, i)" matTooltip="Delete element" matTooltipPosition="right">delete</mat-icon>
                                 </div>
                                 <div class="content-inner-wrapper">
 

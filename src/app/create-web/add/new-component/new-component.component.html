@@ -1,141 +1,32 @@
-<div class="wrapper">        
-    <button mat-button (click)="onNoClick()"><mat-icon>close</mat-icon></button>
-    <div class="container d-flex justify-content-center" style="align-items: center; width: 50%; min-width: 50rem;" mat-dialog-actions>
-      <div class="row d-flex justify-content-center" style="align-items: center;">
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('event')">
-            <div class="card not">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>event</mat-icon>
-                  <span>Event</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('title')">
-            <div class="card">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>title</mat-icon>
-                  <span>Title</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('text')">
-            <div class="card">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>title</mat-icon>
-                  <span>Text</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('text2')">
-            <div class="card">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>title</mat-icon>
-                  <span>Two text columns</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('photogallery')">
-            <div class="card not">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>image</mat-icon>
-                  <span>Photogallery</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('review')">
-            <div class="card not">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>star_rate</mat-icon>
-                  <span>Review</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('section')">
-            <div class="card">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>notes</mat-icon>
-                  <span>Empty section</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('calendar')">
-            <div class="card partly">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>notes</mat-icon>
-                  <span>Calendar</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('events')">
-            <div class="card not">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>notes</mat-icon>
-                  <span>Events</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('cards')">
-            <div class="card">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>notes</mat-icon>
-                  <span>Cards</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="dcard" (click)="addSection('table')">
-            <div class="card not">
-              <div class="frame d-flex justify-content-center flex-column">
-                <div class="frame-content">
-                  <mat-icon>notes</mat-icon>
-                  <span>Table</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<!-- TODO -->
+<div class="d-flex flex-column new-component-wrapper">
+  <h3>Add new component</h3>
+  <button mat-button (click)="addSection('table')">                  
+    <mat-icon>notes</mat-icon>
+    <span>Table</span>
+  </button>
+  <button mat-button (click)="addSection('cards')">                  
+    <mat-icon>notes</mat-icon>
+    <span>Cards</span>
+  </button>
+  <button mat-button (click)="addSection('empty')">                  
+    <mat-icon>notes</mat-icon>
+    <span>Empty section</span>
+  </button>
+  <button mat-button (click)="addSection('gallery')">                  
+    <mat-icon>photo</mat-icon>
+    <span>Photogallery</span>
+  </button>
+  <button mat-button (click)="addSection('text2')">                  
+    <mat-icon>title</mat-icon>
+    <span>Two columns of text</span>
+  </button>
+  <button mat-button (click)="addSection('text')">                  
+    <mat-icon>title</mat-icon>
+    <span>Text</span>
+  </button>
+  <button mat-button (click)="addSection('title')">                  
+    <mat-icon>title</mat-icon>
+    <span>Title</span>
+  </button>
+  <button mat-raised-button>Close</button>
+</div>

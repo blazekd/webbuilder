@@ -1,92 +1,13 @@
-.wrapper
-{
-  font-family: 'Raleway', sans-serif;
-  padding: 0.5rem;
+.new-component-wrapper {
+  button {
+    margin: 5px;
+  }
 
-  text-align: right;
-}
-
-.menu-wrapper
-{
-  align-items: center;
-}
-
-body {padding: 50px 0px;}
-* {transition: all 0.3s cubic-bezier(.25,.8,.25,1);}
-
-.card
-{
-  width: 12rem;
-  height: 12rem;
-  transform-style: preserve-3d;;
-  background-color: #00BCD4;
-  color: white;
-  font-size: 1.1rem;
-  border-radius: 1rem;
-  border: 0;
-  align-items: center;
-}
-
-.frame-content mat-icon
-{
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  width: 4rem;
-  height: 4rem;
-}
-
-.card .frame-content
-{
-  font-family: 'Raleway', sans-serif;
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translateY(-50%) translateX(-50%) translateZ(100px);
-  text-align: center;
-
-}
-
-.dcard
-{
-  display: block;
-  margin: 1rem 0.5rem;
-  transition: font-size 0.3s;
-  height: 12rem;
-  width: 12rem;
-  margin: 1rem;
-
-}
-
-.dcard:hover
-{
-  cursor: pointer;
-}
-
-.dcard:hover .card .frame-content mat-icon
-{
-  font-size: 3rem;
-  width: 5rem;
-  height: 5rem;
-}
-
-.dcard:hover .card
-{
-  font-size: 1.3rem;
-}
-
-.column
-{
-  margin: 0;
-  padding: 0;
-}
-
-.col-md
-{
-  min-height: 13rem;
-  min-width: 13rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.not {
-  background: red !important;
+  button:last-of-type {
+    margin: 50px 5px 5px;
+  }
+  h3 {
+    padding: 20px;
+  }
+  padding:0 20px 20px;
 }
