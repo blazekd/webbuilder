@@ -25,17 +25,15 @@ import { WebFooterComponent } from './create-web/components/web-footer/web-foote
 import { WebNavComponent } from './create-web/components/web-nav/web-nav.component';
 import { WebSectionComponent } from './create-web/components/web-section/web-section.component';
 import { WebTextComponent } from './create-web/components/web-section/web-text/web-text.component';
-import { BackgroundModuleComponent } from './create-web/edit/modules/background-module/background-module.component';
-import { ButtonModuleComponent } from './create-web/edit/modules/button-module/button-module.component';
-import { ColorModuleComponent } from './create-web/edit/modules/color-module/color-module.component';
-import { HeaderModuleComponent } from './create-web/edit/modules/header-module/header-module.component';
-import { LayoutModuleComponent } from './create-web/edit/modules/layout-module/layout-module.component';
-import { LogoModuleComponent } from './create-web/edit/modules/logo-module/logo-module.component';
-import { SizeModuleComponent } from './create-web/edit/modules/size-module/size-module.component';
-import { AlignmentModuleComponent } from './create-web/edit/modules/alignment-module/alignment-module.component';
-import { EditComponent } from './create-web/edit/edit.component';
-import { EditDirective } from './create-web/edit/edit.directive';
-import { ColumnsModuleComponent } from './create-web/edit/modules/columns-module/columns-module.component';
+import { BackgroundModuleComponent } from './popup-dialog/modules/background-module/background-module.component';
+import { ButtonModuleComponent } from './popup-dialog/modules/button-module/button-module.component';
+import { ColorModuleComponent } from './popup-dialog/modules/color-module/color-module.component';
+import { HeaderModuleComponent } from './popup-dialog/modules/header-module/header-module.component';
+import { LayoutModuleComponent } from './popup-dialog/modules/layout-module/layout-module.component';
+import { LogoModuleComponent } from './popup-dialog/modules/logo-module/logo-module.component';
+import { SizeModuleComponent } from './popup-dialog/modules/size-module/size-module.component';
+import { AlignmentModuleComponent } from './popup-dialog/modules/alignment-module/alignment-module.component';
+import { ColumnsModuleComponent } from './popup-dialog/modules/columns-module/columns-module.component';
 import { FONT_NAMES } from './create-web/components/constants';
 import { WebImageComponent } from './create-web/components/web-section/web-image/web-image.component';
 import { WebDividerComponent } from './create-web/components/web-section/web-divider/web-divider.component';
@@ -47,9 +45,9 @@ import { WebCardComponent } from './create-web/components/web-grid/web-card/web-
 import { SortablejsModule } from 'ngx-sortablejs';
 import { ResizableModule } from 'angular-resizable-element';
 import { AngularSplitModule } from 'angular-split';
-import { DividerSizeModuleComponent } from './create-web/edit/modules/divider-size-module/divider-size-module.component';
-import { DividerColorModuleComponent } from './create-web/edit/modules/divider-color-module/divider-color-module.component';
-import { DividerStyleModuleComponent } from './create-web/edit/modules/divider-style-module/divider-style-module.component';
+import { DividerSizeModuleComponent } from './popup-dialog/modules/divider-size-module/divider-size-module.component';
+import { DividerColorModuleComponent } from './popup-dialog/modules/divider-color-module/divider-color-module.component';
+import { DividerStyleModuleComponent } from './popup-dialog/modules/divider-style-module/divider-style-module.component';
 import { ListModuleComponent } from './popup-dialog/modules/list-module/list-module.component';
 import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
 
@@ -70,8 +68,6 @@ import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
     LogoModuleComponent,
     SizeModuleComponent,
     AlignmentModuleComponent,
-    EditComponent,
-    EditDirective,
     ColumnsModuleComponent,
     WebImageComponent,
     WebDividerComponent,

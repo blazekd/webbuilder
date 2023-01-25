@@ -1,16 +1,16 @@
 import { Type } from "@angular/core";
-import { BackgroundModuleComponent } from "../edit/modules/background-module/background-module.component";
-import { ButtonModuleComponent } from "../edit/modules/button-module/button-module.component";
-import { ColorModuleComponent } from "../edit/modules/color-module/color-module.component";
-import { LayoutModuleComponent } from "../edit/modules/layout-module/layout-module.component";
-import { LogoModuleComponent } from "../edit/modules/logo-module/logo-module.component";
-import { SizeModuleComponent } from "../edit/modules/size-module/size-module.component";
-import { ColumnsModuleComponent } from '../edit/modules/columns-module/columns-module.component';
+import { BackgroundModuleComponent } from "../../popup-dialog/modules/background-module/background-module.component";
+import { ButtonModuleComponent } from "../../popup-dialog/modules/button-module/button-module.component";
+import { ColorModuleComponent } from "../../popup-dialog/modules/color-module/color-module.component";
+import { LayoutModuleComponent } from "../../popup-dialog/modules/layout-module/layout-module.component";
+import { LogoModuleComponent } from "../../popup-dialog/modules/logo-module/logo-module.component";
+import { SizeModuleComponent } from "../../popup-dialog/modules/size-module/size-module.component";
+import { ColumnsModuleComponent } from '../../popup-dialog/modules/columns-module/columns-module.component';
 import { LOREM } from './constants';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { DividerColorModuleComponent } from "../edit/modules/divider-color-module/divider-color-module.component";
-import { DividerStyleModuleComponent } from '../edit/modules/divider-style-module/divider-style-module.component';
-import { DividerSizeModuleComponent } from '../edit/modules/divider-size-module/divider-size-module.component';
+import { DividerColorModuleComponent } from "../../popup-dialog/modules/divider-color-module/divider-color-module.component";
+import { DividerStyleModuleComponent } from '../../popup-dialog/modules/divider-style-module/divider-style-module.component';
+import { DividerSizeModuleComponent } from '../../popup-dialog/modules/divider-size-module/divider-size-module.component';
 
 
 

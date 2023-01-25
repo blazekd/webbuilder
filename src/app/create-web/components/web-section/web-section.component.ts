@@ -8,7 +8,6 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinct, distinctUntilChanged, throttleTime } from 'rxjs/operators';
 import { element } from 'protractor';
 import { Console } from 'console';
-import { EditComponent } from '../../edit/edit.component';
 import { PopupDialogComponent } from '../../../popup-dialog/popup-dialog.component';
 import { DialogData } from '../../../popup-dialog/dialog-settings';
 
@@ -198,15 +197,15 @@ export class WebSectionComponent implements OnInit {
         });
         break;
       case 'divider':
-        dialogRef = this.dialog.open(EditComponent, {
+        dialogRef = this.dialog.open(PopupDialogComponent, {
           // data: NavComponentClass.fromComponent(this.components[i])
-          data: EditDialog.dividerDialog(this.component.data.columns.content[row][column].content[i]),
+          data: DialogData.editDivider(this.component.data.columns.content[row][column].content[i]),
           backdropClass: 'custom-backdrop'
         });
         break;
       case 'grid':
-        dialogRef = this.dialog.open(EditComponent, {
-          data: EditDialog.gridDialog(this.component.data.columns.content[row][column].content[i])
+        dialogRef = this.dialog.open(PopupDialogComponent, {
+          data: DialogData.editGrid(this.component.data.columns.content[row][column].content[i])
         });
         break;
       default:

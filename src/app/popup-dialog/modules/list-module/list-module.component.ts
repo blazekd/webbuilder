@@ -7,15 +7,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ListModuleComponent {
 
-  @Input() data: any;
+  @Input() moduleData: any;
   @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
+  message: EventMessage = EventMessage.CHANGE;
+
 
   close() {
     this.newEvent.emit(new ChangeMenuEvent(EventMessage.CANCEL));
   }
 
-  addSection(type: string, index: number) {
-    this.newEvent.emit(new ChangeMenuEvent(EventMessage.ADD, index, type));
+  onClick(type: string, index: number) {
+    //index + 1, because 0 is menu, used during changing
+    this.newEvent.emit(new ChangeMenuEvent(this.message, index + 1, type));
   }
 
 }

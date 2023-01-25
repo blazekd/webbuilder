@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./divider-style-module.component.scss']
 })
 export class DividerStyleModuleComponent implements OnInit {
-
   constructor() { }
   //todo?
   ngOnInit(): void {

@@ -62,7 +62,7 @@ initWidth = 1;
   editDialog() {
     if (this.dialog.openDialogs.length > 0)
       return;
-
+      //todo change dialog
       const dialogRef = this.dialog.open(WebImageDialogComponent);
 
   dialogRef.afterClosed().subscribe(result => {

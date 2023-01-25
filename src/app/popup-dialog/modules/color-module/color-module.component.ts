@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
   selector: 'web-color-module',
@@ -14,6 +15,7 @@ export class ColorModuleComponent implements OnInit {
 
 
   @Input() data: any;
+  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
   constructor() { }
 
   ngOnInit(): void {

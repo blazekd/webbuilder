@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
   selector: 'web-header-module',
@@ -7,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderModuleComponent implements OnInit {
   @Input() data: any;
+  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
   constructor() { }
 
   ngOnInit(): void {

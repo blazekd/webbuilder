@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
   selector: 'web-size-module',
@@ -23,7 +24,7 @@ export class SizeModuleComponent implements OnInit {
     {value: 'height1', viewValue: 'Nejvyšší'}
   ];
   @Input() data: any;
-
+  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
   
   constructor() { 
   }

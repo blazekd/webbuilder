@@ -12,7 +12,7 @@ import { ImageClass } from '../../../component-classes';
   styleUrls: ['./web-image-dialog.component.scss']
 })
 export class WebImageDialogComponent implements OnInit { 
-  
+  //todo move to popup-dialog
   form: UntypedFormGroup;
   progress: number = 0;
   // @Input() image!: ImageClass;

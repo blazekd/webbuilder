@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
   selector: 'web-layout-module',
@@ -19,9 +20,8 @@ export class LayoutModuleComponent implements OnInit {
   
   @Input() data: any;
   @Input() type: any;
-  // @Output() selection = new EventEmitter<string>();
+  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
 
-  constructor() { }
 
   ngOnInit(): void {
   }

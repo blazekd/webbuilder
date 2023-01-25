@@ -4,8 +4,9 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { MatDialog } from '@angular/material/dialog';
 import { Console } from 'console';
 import { Options } from 'sortablejs';
+import { DialogData } from 'src/app/popup-dialog/dialog-settings';
+import { PopupDialogComponent } from 'src/app/popup-dialog/popup-dialog.component';
 import { ComponentData } from '../../create-web.component';
-import { EditComponent } from '../../edit/edit.component';
 import { TextClass, ImageClass, DividerClass, CardClass, EditDialog, GridComponentClass } from '../component-classes';
 import { WebImageDialogComponent } from '../web-section/web-image/web-image-dialog/web-image-dialog.component';
 
@@ -103,9 +104,9 @@ export class WebGridComponent implements OnInit {
     //     this.component.data.cards[i] = result;
     // });
 
-    const dialogRef = this.dialog.open(EditComponent, {
+    const dialogRef = this.dialog.open(PopupDialogComponent, {
       // data: NavComponentClass.fromComponent(this.components[i])
-      data: EditDialog.cardDialog(this.component.cards[i])
+      data: DialogData.editCard(this.component.cards[i])
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);

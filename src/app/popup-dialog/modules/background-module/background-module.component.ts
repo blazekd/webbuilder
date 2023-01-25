@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
   selector: 'web-background-module',
@@ -9,6 +10,7 @@ export class BackgroundModuleComponent implements OnInit {
 
 
   @Input() data: any;
+  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
   backgrounds = [
     'background1', 'background2', 'background3', 'background4'
   ]  

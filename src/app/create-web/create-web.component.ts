@@ -7,7 +7,6 @@ import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
 import { DialogData } from '../popup-dialog/dialog-settings';
 import { EditMenuModule, EditDialog, NavComponentClass, SectionComponentClass, GridComponentClass, FooterComponentClass } from './components/component-classes';
 import { FONT_NAMES, FONT_NAMES_LOWER } from './components/constants';
-import { EditComponent } from './edit/edit.component';
 
 @Component({
   selector: 'app-create-web',
@@ -154,9 +153,9 @@ export class CreateWebComponent implements OnInit {
     let dialogRef;
     switch (this.components[i].type) {
       case 'nav':
-        dialogRef = this.dialog.open(EditComponent, {
+        dialogRef = this.dialog.open(PopupDialogComponent, {
           // data: NavComponentClass.fromComponent(this.components[i])
-          data: EditDialog.navDialog(this.components[i].data)
+          data: DialogData.editNav(this.components[i].data)
         });
         break;
       // case 'header':
@@ -170,15 +169,15 @@ export class CreateWebComponent implements OnInit {
       // case 'review':
       //   break;
       case 'section':
-        dialogRef = this.dialog.open(EditComponent, {
+        dialogRef = this.dialog.open(PopupDialogComponent, {
           // data: NavComponentClass.fromComponent(this.components[i])
-          data: EditDialog.sectionDialog(this.components[i].data)
+          data: DialogData.editSection(this.components[i].data)
         });
         break;
       case 'footer':
-        dialogRef = this.dialog.open(EditComponent, {
+        dialogRef = this.dialog.open(PopupDialogComponent, {
           // data: NavComponentClass.fromComponent(this.components[i])
-          data: EditDialog.footerDialog(this.components[i].data)
+          data: DialogData.editFooter(this.components[i].data)
         });
         break;
       default:
@@ -195,12 +194,13 @@ export class CreateWebComponent implements OnInit {
     // });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        console.log(result);
-        // this.components[i] = result;
-        this.components[i].data = result;
-        // this.components = this.components.slice();
-      }
+      // if (result !== undefined) {
+      //   console.log(result);
+      //   // this.components[i] = result;
+      //   this.components[i].data = result;
+      //   // this.components = this.components.slice();
+      // }
+      console.log("result", result)
     });
   }
 

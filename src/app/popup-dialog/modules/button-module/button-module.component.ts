@@ -1,5 +1,6 @@
-import { Input } from '@angular/core';
+import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
   selector: 'web-button-module',
@@ -10,7 +11,7 @@ export class ButtonModuleComponent implements OnInit {
 
 
   @Input() data: any;
-
+  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
   buttons = [
     'button1', 'button2', 'button3', 'button4'
   ]  

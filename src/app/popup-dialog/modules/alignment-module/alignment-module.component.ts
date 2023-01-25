@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
   selector: 'web-alignment-module',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./alignment-module.component.scss']
 })
 export class AlignmentModuleComponent implements OnInit {
-
+  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
   @Input() data: any;
   constructor() { }
 
