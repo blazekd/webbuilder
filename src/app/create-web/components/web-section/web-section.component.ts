@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Renderer2, ElementRef, QueryList, ViewChildren, ContentChild } from '@angular/core';
 import { ComponentData } from '../../create-web.component';
-import { NewSectionContentComponent } from '../../add/new-section-content/new-section-content.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TextClass, ImageClass, DividerClass, ColorClass, ColumnClass, EditDialog } from '../component-classes';
 import { CdkDragDrop, DragRef, moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
@@ -10,6 +9,9 @@ import { debounceTime, distinct, distinctUntilChanged, throttleTime } from 'rxjs
 import { element } from 'protractor';
 import { Console } from 'console';
 import { EditComponent } from '../../edit/edit.component';
+import { PopupDialogComponent } from '../../../popup-dialog/popup-dialog.component';
+import { DialogData } from '../../../popup-dialog/dialog-settings';
+
 
 @Component({
   selector: 'web-section',
@@ -42,7 +44,7 @@ export class WebSectionComponent implements OnInit {
     if (this.dialog.openDialogs.length > 0)
     return;
 
-  const dialogRef = this.dialog.open(NewSectionContentComponent);
+  const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addComponent()});
   // console.log('column: ' + column + ' index: ' + i)
   dialogRef.afterClosed().subscribe(result => {
     //console.log(result);

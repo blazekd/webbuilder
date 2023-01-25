@@ -4,7 +4,6 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { MatDialog } from '@angular/material/dialog';
 import { Console } from 'console';
 import { Options } from 'sortablejs';
-import { NewSectionContentComponent } from '../../add/new-section-content/new-section-content.component';
 import { ComponentData } from '../../create-web.component';
 import { EditComponent } from '../../edit/edit.component';
 import { TextClass, ImageClass, DividerClass, CardClass, EditDialog, GridComponentClass } from '../component-classes';

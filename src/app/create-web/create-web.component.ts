@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import Quill from 'quill';
 import ImageDropAndPaste from 'quill-image-drop-and-paste';
-import { NewComponentComponent } from './add/new-component/new-component.component';
+import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
+import { DialogData } from '../popup-dialog/dialog-settings';
 import { EditMenuModule, EditDialog, NavComponentClass, SectionComponentClass, GridComponentClass, FooterComponentClass } from './components/component-classes';
 import { FONT_NAMES, FONT_NAMES_LOWER } from './components/constants';
 import { EditComponent } from './edit/edit.component';
@@ -80,15 +81,47 @@ export class CreateWebComponent implements OnInit {
   //   this.components.push({type: 'header', data: 'Real friends, Real life', background: 'pozadi1', classes: new Map().set('text-align', 'text-left').set('text-align-v', 'align-items-end').set('section-size', 'section-large').set('font', 'roboto').set('font-size', 'font-size-32').set('font-weight', 'font-weight-light'), classesString: ''});
   // }
 
+  // addComp(i: number) {
+  //   if (this.dialog.openDialogs.length > 0)
+  //     return;
+
+  //   const dialogRef = this.dialog.open(NewComponentComponent);
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result !== undefined)
+  //       this.newComponent(result);
+  //       switch (result) {
+  //         case 'title':
+  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.title()});
+  //           break;
+  //         case 'section':
+  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
+  //           break;
+  //         case 'text':
+  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.text()});
+  //           break;
+  //         case 'text2':
+  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.text2()});
+  //           break;
+  //         case 'cards':
+  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.grid()});
+  //           break;
+  //         default:
+  //           alert("Není implementováno!!");
+  //           break;
+  //       }
+  //   });
+
+    
+  // }
   addComp(i: number) {
     if (this.dialog.openDialogs.length > 0)
       return;
 
-    const dialogRef = this.dialog.open(NewComponentComponent);
+    const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addSection()});
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined)
-        this.newComponent(result);
         switch (result) {
           case 'title':
             this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.title()});
@@ -114,9 +147,6 @@ export class CreateWebComponent implements OnInit {
     
   }
 
-  newComponent(result: any) {
-
-  }
 
   editComp(i: number) {
     if (this.dialog.openDialogs.length > 0)

@@ -1,9 +1,11 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NewSectionContentComponent } from 'src/app/create-web/add/new-section-content/new-section-content.component';
+
 import { CardClass, DividerClass, ImageClass, TextClass } from '../../component-classes';
 import { WebImageDialogComponent } from '../../web-section/web-image/web-image-dialog/web-image-dialog.component';
+import { PopupDialogComponent } from '../../../../popup-dialog/popup-dialog.component';
+import { DialogData } from '../../../../popup-dialog/dialog-settings';
 
 @Component({
   selector: 'web-grid-card',
@@ -23,7 +25,7 @@ export class WebCardComponent implements OnInit {
     if (this.dialog.openDialogs.length > 0)
     return;
 
-  const dialogRef = this.dialog.open(NewSectionContentComponent);
+  const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addComponent()});
   // console.log('column: ' + column + ' index: ' + i)
   dialogRef.afterClosed().subscribe(result => {
     //console.log(result);

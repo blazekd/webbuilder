@@ -24,8 +24,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { WebFooterComponent } from './create-web/components/web-footer/web-footer.component';
 import { WebNavComponent } from './create-web/components/web-nav/web-nav.component';
 import { WebSectionComponent } from './create-web/components/web-section/web-section.component';
-import { NewComponentComponent } from './create-web/add/new-component/new-component.component';
-import { NewSectionContentComponent } from './create-web/add/new-section-content/new-section-content.component';
 import { WebTextComponent } from './create-web/components/web-section/web-text/web-text.component';
 import { BackgroundModuleComponent } from './create-web/edit/modules/background-module/background-module.component';
 import { ButtonModuleComponent } from './create-web/edit/modules/button-module/button-module.component';
@@ -52,6 +50,8 @@ import { AngularSplitModule } from 'angular-split';
 import { DividerSizeModuleComponent } from './create-web/edit/modules/divider-size-module/divider-size-module.component';
 import { DividerColorModuleComponent } from './create-web/edit/modules/divider-color-module/divider-color-module.component';
 import { DividerStyleModuleComponent } from './create-web/edit/modules/divider-style-module/divider-style-module.component';
+import { ListModuleComponent } from './popup-dialog/modules/list-module/list-module.component';
+import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
 
 @NgModule({
   declarations: [
@@ -61,8 +61,6 @@ import { DividerStyleModuleComponent } from './create-web/edit/modules/divider-s
     WebFooterComponent,
     WebNavComponent,
     WebSectionComponent,
-    NewComponentComponent,
-    NewSectionContentComponent,
     WebTextComponent,
     BackgroundModuleComponent,
     ButtonModuleComponent,
@@ -84,6 +82,8 @@ import { DividerStyleModuleComponent } from './create-web/edit/modules/divider-s
     DividerSizeModuleComponent,
     DividerColorModuleComponent,
     DividerStyleModuleComponent,
+    ListModuleComponent,
+    PopupDialogComponent,
   ],
   imports: [
     BrowserModule,

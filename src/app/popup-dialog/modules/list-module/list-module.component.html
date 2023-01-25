@@ -1,0 +1,10 @@
+<div class="d-flex flex-column new-component-wrapper">
+    <!-- <h3>{{title}}</h3> -->
+    <ng-container *ngFor="let item of data; index as i">
+        <button mat-button (click)="addSection(item.type, i)">                  
+            <mat-icon>{{item.icon}}</mat-icon>
+            <span>{{item.text}}</span>
+          </button>
+    </ng-container>
+    <button mat-raised-button (click)="close()">Close</button>
+</div>

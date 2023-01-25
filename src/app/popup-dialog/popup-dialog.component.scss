@@ -1,0 +1,30 @@
+.menu {
+    min-width: 320px;
+    h4 {
+        text-align: center;
+        padding: 20px 20px 5px;
+
+    }
+    .divider {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        width: 50%;
+        align-self: center;
+    }
+    padding:0 20px 20px;
+}
+
+.menu-wrapper {
+    position: relative;
+    box-sizing: content-box;
+}
+
+.handle {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #ccc;
+    cursor: move;
+    width: 24px;
+    height: 24px;
+}
