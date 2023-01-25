@@ -8,5 +8,5 @@ import { AbstractDialogModule } from '../AbstractDialogModule';
 })
 export class DividerSizeModuleComponent extends AbstractDialogModule {
 
-
+  title = 'Divider dimensions'
 }

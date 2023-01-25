@@ -8,7 +8,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   styleUrls: ['./size-module.component.scss']
 })
 export class SizeModuleComponent extends AbstractDialogModule {
-
+  title = 'Dimensions'
   widths = [
     {value: 'width5', viewValue: 'Nejužší'}, 
     {value: 'width4', viewValue: 'Úzký'}, 

@@ -1,43 +1,20 @@
 
-<div class="container" [ngSwitch]="uploading">
+<div class="container">
 
-    <ng-container *ngSwitchCase="0">
 
-        <div class="drag-and-drop">
-            <div appDragAndDrop (fileDropped)="uploadFile($event)">
-                <input type="file" #fileDropRef id="fileDropRef" (change)="uploadFile($event)" accept="image/*" />
-                <mat-icon>file_upload</mat-icon>
-        
-                <h3>Drag image</h3>
-                <h3>or</h3>
-                <label for="fileDropRef">Browse</label>
-            </div>
-        </div>
-        <div class="d-flex justify-content-around mt-4">
-            <button mat-stroked-button (click)="gallery()">Gallery</button>
-            <button mat-stroked-button (click)="close()">Close</button>
-        </div>
-    </ng-container>
-    <ng-container *ngSwitchCase="1">
-        <p>Uploading {{ form.value.file.name }}</p>
-        <div class="progress form-group" *ngIf="progress > 0">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
-            </div>
-        </div>
-    </ng-container>
-    <ng-container *ngSwitchCase="2">
+
         <h4>Image focus</h4>
         <div class="img-wrap">
             <div #imageBoundary class="image-boundary">
-                <div #imageFocusPoint cdkDrag cdkDragBoundary=".image-boundary" (cdkDragEnded)="dropFocusPoint($event)" [style.left]="image.left" [style.top]="image.top"></div>
-                <img [src]="image.src" [alt]="image.alt" (click)="clickFocusPoint($event)">
+                <div #imageFocusPoint cdkDrag cdkDragBoundary=".image-boundary" (cdkDragEnded)="dropFocusPoint($event)" [style.left]="data.left" [style.top]="data.top"></div>
+                <img [src]="data.src" [alt]="data.alt" (click)="clickFocusPoint($event)">
             </div>
         </div>
 
         <h4>Image style</h4>
         <mat-form-field appearance="fill">
             <mat-label>Image style</mat-label>
-            <mat-select [(value)]="image.style">
+            <mat-select [(value)]="data.style">
                 <mat-option *ngFor="let style of styles" [value]="style.value">
                     {{style.viewValue}}
                 </mat-option>
@@ -45,16 +22,16 @@
         </mat-form-field>
 
           <div class="d-flex justify-content-around mt-4">
-            <button mat-stroked-button (click)="uploadNew()">Change image</button>
-            <button mat-stroked-button (click)="close()">Cancel</button>
+            <!-- <button mat-stroked-button (click)="uploadNew()">Change image</button>
+            <button mat-stroked-button (click)="close()">Cancel</button> -->
         </div>
-    </ng-container>
-    <ng-container *ngSwitchCase="3">
+
+    <!-- <ng-container *ngSwitchCase="3">
         <div class="d-flex justify-content-around mt-4">
             <button mat-stroked-button (click)="uploadNew()">Upload new image</button>
             <button mat-stroked-button (click)="close()">Cancel</button>
         </div>
-    </ng-container>
+    </ng-container> -->
 
 
 

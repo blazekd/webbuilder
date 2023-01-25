@@ -9,6 +9,6 @@ import { AbstractDialogModule } from '../AbstractDialogModule';
 export class DividerStyleModuleComponent extends AbstractDialogModule {
 
   //todo?
-
+  title = 'Divider style'
 
 }

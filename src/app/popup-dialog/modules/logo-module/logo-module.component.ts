@@ -9,7 +9,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
 })
 export class LogoModuleComponent extends AbstractDialogModule {
 
-
+  title = 'Logo and title'
   changeTitleText() {
     this.data.logo.haveTitleText = !this.data.logo.haveTitleText && this.data.logo.haveTitle
   }

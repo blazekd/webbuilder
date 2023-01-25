@@ -8,7 +8,6 @@ import { DialogData } from 'src/app/popup-dialog/dialog-settings';
 import { PopupDialogComponent } from 'src/app/popup-dialog/popup-dialog.component';
 import { ComponentData } from '../../create-web.component';
 import { TextClass, ImageClass, DividerClass, CardClass, EditDialog, GridComponentClass } from '../component-classes';
-import { WebImageDialogComponent } from '../web-section/web-image/web-image-dialog/web-image-dialog.component';
 
 @Component({
   selector: 'web-grid',

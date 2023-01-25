@@ -7,8 +7,9 @@ import { AbstractDialogModule } from '../AbstractDialogModule';
   styleUrls: ['./list-module.component.scss']
 })
 export class ListModuleComponent extends AbstractDialogModule {
-
+  title = 'Menu'
   close() {
+    console.log(close);
     this.newEvent.emit(new ChangeMenuEvent(EventMessage.CANCEL));
   }
 

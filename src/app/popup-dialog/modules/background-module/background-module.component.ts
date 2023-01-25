@@ -9,7 +9,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
 })
 export class BackgroundModuleComponent extends AbstractDialogModule {
 
-
+  title = 'Background'
 
   backgrounds = [
     'background1', 'background2', 'background3', 'background4'

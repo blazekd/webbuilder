@@ -8,7 +8,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   styleUrls: ['./columns-module.component.scss']
 })
 export class ColumnsModuleComponent extends AbstractDialogModule {
-
+  title = 'Columns'
   onModelChange(event: any) {
     // console.log(event)
     this.data.columns.columns = event;

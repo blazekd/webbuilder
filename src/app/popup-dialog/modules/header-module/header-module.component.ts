@@ -8,5 +8,6 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   styleUrls: ['./header-module.component.scss']
 })
 export class HeaderModuleComponent extends AbstractDialogModule {
-
+  title = 'Header'
+  //todo what
 }

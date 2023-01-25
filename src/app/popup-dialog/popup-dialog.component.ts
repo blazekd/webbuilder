@@ -1,5 +1,6 @@
-import { AfterContentInit, AfterViewInit, Component, Inject, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, EventEmitter, Inject, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Subject, Subscription } from 'rxjs';
 import { DialogData } from './dialog-settings';
 import { ChangeMenuEvent, EventMessage } from './modules/list-module/list-module.component';
 
@@ -10,6 +11,10 @@ import { ChangeMenuEvent, EventMessage } from './modules/list-module/list-module
 })
 export class PopupDialogComponent implements AfterViewInit {
   menuIndex = 0;
+  title = '';
+  sendMessage = new Subject<EventMessage>();
+  subscription = new Subscription;
+
   @ViewChild('menuElem', {static: false, read: ViewContainerRef}) menuElem!: ViewContainerRef;
   constructor(public dialogRef: MatDialogRef<PopupDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData: DialogData) {
@@ -22,7 +27,6 @@ export class PopupDialogComponent implements AfterViewInit {
 
 
   handleEvent($event: ChangeMenuEvent) {
-    console.log(this.dialogData);
     switch ($event.message) {
       case EventMessage.ADD:
         this.dialogRef.close($event.data)
@@ -31,12 +35,20 @@ export class PopupDialogComponent implements AfterViewInit {
         this.dialogRef.close();
         break;
       case EventMessage.CHANGE:
-        if ($event.index)
+        if ($event.index !== undefined)
           this.changeMenu($event.index);
         break;
       default:
         console.log("default", $event)
     }
+  }
+
+  save() {
+    this.sendMessage.next(EventMessage.SAVE);
+  }
+
+  cancel() {
+    this.sendMessage.next(EventMessage.CANCEL);
   }
 
   changeMenu(i: number) {
@@ -45,9 +57,11 @@ export class PopupDialogComponent implements AfterViewInit {
     const componentRef = this.menuElem.createComponent(this.dialogData.list[this.menuIndex].component);
     componentRef.instance.newEvent.subscribe((x: ChangeMenuEvent) => this.handleEvent(x));
     componentRef.instance.moduleData = this.dialogData.list[this.menuIndex].moduleData;
+    componentRef.instance.dataOld = structuredClone(this.dialogData.data);
     componentRef.instance.data = this.dialogData.data;
     componentRef.instance.message = this.dialogData.message;
-    //todo decide if add or change
-    // componentRef.instance.message = EventMessage.ADD;
+    this.subscription.unsubscribe();
+    this.subscription = this.sendMessage.subscribe(x => componentRef.instance.handleMessage(x));
+    this.title = componentRef.instance.title;
   }
 }

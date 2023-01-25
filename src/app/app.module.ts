@@ -37,7 +37,6 @@ import { ColumnsModuleComponent } from './popup-dialog/modules/columns-module/co
 import { FONT_NAMES } from './create-web/components/constants';
 import { WebImageComponent } from './create-web/components/web-section/web-image/web-image.component';
 import { WebDividerComponent } from './create-web/components/web-section/web-divider/web-divider.component';
-import { WebImageDialogComponent } from './create-web/components/web-section/web-image/web-image-dialog/web-image-dialog.component';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { WebGridComponent } from './create-web/components/web-grid/web-grid.component';
@@ -50,6 +49,8 @@ import { DividerColorModuleComponent } from './popup-dialog/modules/divider-colo
 import { DividerStyleModuleComponent } from './popup-dialog/modules/divider-style-module/divider-style-module.component';
 import { ListModuleComponent } from './popup-dialog/modules/list-module/list-module.component';
 import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
+import { ImageModuleComponent } from './popup-dialog/modules/image-module/image-module.component';
+import { ImageUploadModuleComponent } from './popup-dialog/modules/image-upload-module/image-upload-module.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,6 @@ import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
     ColumnsModuleComponent,
     WebImageComponent,
     WebDividerComponent,
-    WebImageDialogComponent,
     DragAndDropDirective,
     WebGridComponent,
     WebCardComponent,
@@ -80,6 +80,8 @@ import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
     DividerStyleModuleComponent,
     ListModuleComponent,
     PopupDialogComponent,
+    ImageModuleComponent,
+    ImageUploadModuleComponent,
   ],
   imports: [
     BrowserModule,

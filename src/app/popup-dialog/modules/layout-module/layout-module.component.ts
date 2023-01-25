@@ -9,7 +9,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
 })
 export class LayoutModuleComponent extends AbstractDialogModule {
 
-
+  title = 'Layout'
   layouts = [
     {name: 'layout1', layout: 'layout1'},
     {name: 'layout2', layout: 'layout2'}, 

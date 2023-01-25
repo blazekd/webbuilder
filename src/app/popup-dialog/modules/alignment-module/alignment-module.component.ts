@@ -9,7 +9,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
 })
 export class AlignmentModuleComponent extends AbstractDialogModule {
 
-
+  title = 'Alignment'
   getAlignment() {
     let i = 0;
     if(this.data.alignment.align == 'center') {

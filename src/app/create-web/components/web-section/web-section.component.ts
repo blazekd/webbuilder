@@ -3,7 +3,6 @@ import { ComponentData } from '../../create-web.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TextClass, ImageClass, DividerClass, ColorClass, ColumnClass, EditDialog } from '../component-classes';
 import { CdkDragDrop, DragRef, moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
-import { WebImageDialogComponent } from './web-image/web-image-dialog/web-image-dialog.component';
 import { Subject } from 'rxjs';
 import { debounceTime, distinct, distinctUntilChanged, throttleTime } from 'rxjs/operators';
 import { element } from 'protractor';
@@ -184,10 +183,8 @@ export class WebSectionComponent implements OnInit {
     let dialogRef;
     switch (type) {
       case 'image':
-        let xx = this.dialog.open(WebImageDialogComponent, {
-          data: {
-            image: this.component.data.columns.content[row][column].content[i]
-          },
+        let xx = this.dialog.open(PopupDialogComponent, {
+          data: DialogData.editImage(this.component.data.columns.content[row][column].content[i]),
           backdropClass: 'custom-backdrop'
         });
         xx.afterClosed().subscribe(result => {

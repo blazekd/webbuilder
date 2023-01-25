@@ -3,7 +3,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { CardClass, DividerClass, ImageClass, TextClass } from '../../component-classes';
-import { WebImageDialogComponent } from '../../web-section/web-image/web-image-dialog/web-image-dialog.component';
 import { PopupDialogComponent } from '../../../../popup-dialog/popup-dialog.component';
 import { DialogData } from '../../../../popup-dialog/dialog-settings';
 
@@ -79,10 +78,8 @@ export class WebCardComponent implements OnInit {
 
     switch (type) {
       case 'image':
-        const dialogRef = this.dialog.open(WebImageDialogComponent, {
-          data: {
-            image: this.card.content[i]
-          },
+        const dialogRef = this.dialog.open(PopupDialogComponent, {
+          data: DialogData.editImage(this.card.content[i]),
           backdropClass: 'custom-backdrop'
         });
         dialogRef.afterClosed().subscribe(result => {

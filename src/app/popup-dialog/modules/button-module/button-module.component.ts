@@ -10,7 +10,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
 })
 export class ButtonModuleComponent extends AbstractDialogModule {
 
-
+  title = 'Buttons'
   
   buttons = [
     'button1', 'button2', 'button3', 'button4'

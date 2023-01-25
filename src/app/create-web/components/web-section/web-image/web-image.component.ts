@@ -3,8 +3,8 @@ import { ElementRef } from '@angular/core';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ResizeEvent } from 'angular-resizable-element';
+import { PopupDialogComponent } from 'src/app/popup-dialog/popup-dialog.component';
 import { ImageClass } from '../../component-classes';
-import { WebImageDialogComponent } from './web-image-dialog/web-image-dialog.component';
 
 @Component({
   selector: 'web-section-image',
@@ -63,7 +63,7 @@ initWidth = 1;
     if (this.dialog.openDialogs.length > 0)
       return;
       //todo change dialog
-      const dialogRef = this.dialog.open(WebImageDialogComponent);
+      const dialogRef = this.dialog.open(PopupDialogComponent);
 
   dialogRef.afterClosed().subscribe(result => {
     //console.log(result);
