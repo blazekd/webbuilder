@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
@@ -6,13 +7,8 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   templateUrl: './alignment-module.component.html',
   styleUrls: ['./alignment-module.component.scss']
 })
-export class AlignmentModuleComponent implements OnInit {
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
-  @Input() data: any;
-  constructor() { }
+export class AlignmentModuleComponent extends AbstractDialogModule {
 
-  ngOnInit(): void {
-  }
 
   getAlignment() {
     let i = 0;

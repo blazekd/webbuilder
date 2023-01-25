@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
@@ -6,7 +7,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   templateUrl: './size-module.component.html',
   styleUrls: ['./size-module.component.scss']
 })
-export class SizeModuleComponent implements OnInit {
+export class SizeModuleComponent extends AbstractDialogModule {
 
   widths = [
     {value: 'width5', viewValue: 'Nejužší'}, 
@@ -23,15 +24,4 @@ export class SizeModuleComponent implements OnInit {
     {value: 'height2', viewValue: 'Vysoký'}, 
     {value: 'height1', viewValue: 'Nejvyšší'}
   ];
-  @Input() data: any;
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
-  
-  constructor() { 
-  }
-
-  ngOnInit(): void {
-  }
-
-  change() {
-  }
 }

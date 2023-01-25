@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
@@ -6,23 +7,16 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   templateUrl: './background-module.component.html',
   styleUrls: ['./background-module.component.scss']
 })
-export class BackgroundModuleComponent implements OnInit {
+export class BackgroundModuleComponent extends AbstractDialogModule {
 
 
-  @Input() data: any;
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
+
   backgrounds = [
     'background1', 'background2', 'background3', 'background4'
   ]  
   @ViewChildren('backgroundBinding') backgroundBinding!: QueryList<ElementRef>;
 
 
-  constructor() {
-
-   }
-
-  ngOnInit(): void {
-  }
 
   changeBackground(bg: string) {
     // console.log(bg);

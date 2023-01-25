@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
@@ -6,7 +7,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   templateUrl: './layout-module.component.html',
   styleUrls: ['./layout-module.component.scss']
 })
-export class LayoutModuleComponent implements OnInit {
+export class LayoutModuleComponent extends AbstractDialogModule {
 
 
   layouts = [
@@ -17,14 +18,8 @@ export class LayoutModuleComponent implements OnInit {
     {name: 'layout5', layout: 'layout2'}, 
     {name: 'layout6', layout: 'layout3'}
   ]
-  
-  @Input() data: any;
-  @Input() type: any;
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
 
 
-  ngOnInit(): void {
-  }
 
   changeLayout(layout: any) {
     // console.log(this.data);

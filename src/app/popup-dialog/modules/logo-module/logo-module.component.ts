@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
@@ -6,15 +7,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   templateUrl: './logo-module.component.html',
   styleUrls: ['./logo-module.component.scss']
 })
-export class LogoModuleComponent implements OnInit {
-
-
-  @Input() data: any;
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class LogoModuleComponent extends AbstractDialogModule {
 
 
   changeTitleText() {

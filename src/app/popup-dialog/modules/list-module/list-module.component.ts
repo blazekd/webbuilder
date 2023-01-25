@@ -1,16 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 
 @Component({
   selector: 'app-list-module',
   templateUrl: './list-module.component.html',
   styleUrls: ['./list-module.component.scss']
 })
-export class ListModuleComponent {
-
-  @Input() moduleData: any;
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
-  message: EventMessage = EventMessage.CHANGE;
-
+export class ListModuleComponent extends AbstractDialogModule {
 
   close() {
     this.newEvent.emit(new ChangeMenuEvent(EventMessage.CANCEL));

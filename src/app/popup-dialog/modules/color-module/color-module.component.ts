@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
@@ -6,20 +7,12 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   templateUrl: './color-module.component.html',
   styleUrls: ['./color-module.component.scss']
 })
-export class ColorModuleComponent implements OnInit {
+export class ColorModuleComponent extends AbstractDialogModule {
 
   @ViewChildren('colorBinding') colorBinding!: QueryList<ElementRef>;
   colors = [
     'color','color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9', 'color10'
   ]
-
-
-  @Input() data: any;
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 
   unsetColors() {

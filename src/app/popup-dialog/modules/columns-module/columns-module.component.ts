@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
@@ -6,13 +7,7 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   templateUrl: './columns-module.component.html',
   styleUrls: ['./columns-module.component.scss']
 })
-export class ColumnsModuleComponent implements OnInit {
-  @Input() data: any;
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class ColumnsModuleComponent extends AbstractDialogModule {
 
   onModelChange(event: any) {
     // console.log(event)

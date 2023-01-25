@@ -1,5 +1,6 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
@@ -7,18 +8,14 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
   templateUrl: './button-module.component.html',
   styleUrls: ['./button-module.component.scss']
 })
-export class ButtonModuleComponent implements OnInit {
+export class ButtonModuleComponent extends AbstractDialogModule {
 
 
-  @Input() data: any;
-  @Output() newEvent = new EventEmitter<ChangeMenuEvent>();
+  
   buttons = [
     'button1', 'button2', 'button3', 'button4'
   ]  
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
   changeButton(button: string) {;
     this.data.button.style = button;
