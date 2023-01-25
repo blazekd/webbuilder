@@ -25,11 +25,11 @@ export class ImageModuleComponent extends AbstractDialogModule {
 
 
   ok() {
-    this.newEvent.emit(new ChangeMenuEvent(EventMessage.SAVE))
+    this.newEvent.next(new ChangeMenuEvent(EventMessage.SAVE))
   }
 
   close() {
-    this.newEvent.emit(new ChangeMenuEvent(EventMessage.CANCEL))
+    this.newEvent.next(new ChangeMenuEvent(EventMessage.CANCEL))
   }
 
 

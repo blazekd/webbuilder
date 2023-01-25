@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
