@@ -8,7 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent {
-
+  //todo sidenav asi už není ne
   @Output() toggleSidenav = new EventEmitter<void>();
 
   returnUrl = '/';

@@ -1,5 +1,5 @@
 import { CdkDrag } from '@angular/cdk/drag-drop';
-import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, Injector, Input, OnInit, Output, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, Injector, Input, OnInit, Output, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { MatIcon } from '@angular/material/icon';
 import { TextClass } from '../../component-classes';

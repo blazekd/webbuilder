@@ -236,11 +236,72 @@ export interface ComponentData {
   data: any;
 }
 
+
+function fillSelect(select:any, values:any, defaultValue: unknown = false) {
+  values.forEach((value: any) => {
+    const option = document.createElement('option');
+    if (value === defaultValue) {
+      option.setAttribute('selected', 'selected');
+    } else {
+      option.setAttribute('value', value);
+    }
+    // option.setAttribute('label', value);
+    option.innerText = value;
+    select.appendChild(option);
+  });
+}
+
 Quill.register('modules/imageDropAndPaste', ImageDropAndPaste)
 
 const BubbleTheme = Quill.import("themes/bubble");
 const BaseToolTip = Quill.import("ui/tooltip")
 const icons = Quill.import("ui/icons")
+
+
+const ColorPicker = Quill.import('ui/color-picker');
+
+class MyColorPicker extends ColorPicker {
+  constructor(select: any, icons: any) {
+    super(select, icons);
+    
+  }
+
+  buildItem(option: HTMLOptionElement) {
+    const item = document.createElement('span');
+    // @ts-expect-error
+    item.tabIndex = '0';
+    item.setAttribute('role', 'button');
+    item.classList.add('ql-picker-item');
+    // item.classList.add('custom-class');
+    if (option.hasAttribute('value')) {
+      item.setAttribute('data-value', option.getAttribute('value')!);
+    }
+    if (option.textContent) {
+      item.setAttribute('data-label', option.textContent);
+      item.setAttribute('title', option.textContent);
+    }
+    item.addEventListener('click', () => {
+      this.selectItem(item, true);
+    });
+    item.addEventListener('keydown', event => {
+      switch (event.key) {
+        case 'Enter':
+          this.selectItem(item, true);
+          event.preventDefault();
+          break;
+        case 'Escape':
+          this.escape();
+          event.preventDefault();
+          break;
+        default:
+      }
+    });
+    
+    item.style.backgroundColor = option.getAttribute('value') || '';
+    return item;
+  }
+}
+
 class ExtendBubbleTheme extends BubbleTheme {
   constructor(quill:any, options:any) {
     super(quill, options);
@@ -263,6 +324,81 @@ class ExtendBubbleTheme extends BubbleTheme {
     this.buildButtons(Array.from(toolbar.container.querySelectorAll('button')), icons);
     this.buildPickers(Array.from(toolbar.container.querySelectorAll('select')), icons);
   }
+  //custom color pickers
+  buildPickers(selects: HTMLElement[], icons: any) {
+    //select classes from selects and run it here, other to super.buildPickers()
+    const COLORS = [
+      'none',
+      '#000000',
+      '#e60000',
+      '#ff9900',
+      '#ffff00',
+      '#008a00',
+      '#0066cc',
+      '#9933ff',
+      '#ffffff',
+      '#facccc',
+      '#ffebcc',
+      '#ffffcc',
+      '#cce8cc',
+      '#cce0f5',
+      '#ebd6ff',
+      '#bbbbbb',
+      '#f06666',
+      '#ffc266',
+      '#ffff66',
+      '#66b966',
+      '#66a3e0',
+      '#c285ff',
+      '#888888',
+      '#a10000',
+      '#b26b00',
+      '#b2b200',
+      '#006100',
+      '#0047b2',
+      '#6b24b2',
+      '#444444',
+      '#5c0000',
+      '#663d00',
+      '#666600',
+      '#003700',
+      '#002966',
+      '#3d1466',
+    ];
+
+
+    let [thisPickers, superPickers]: [HTMLElement[], HTMLElement[]] = partition(selects, (select:any) => (select.classList.contains('ql-background') ||
+    select.classList.contains('ql-color')));
+    super.buildPickers(superPickers, icons);
+    //ad to this.pickers instead
+    let newPickers = Array.from(thisPickers).map((select: HTMLElement) => {
+      const format = select.classList.contains('ql-background')
+        ? 'background'
+        : 'color';
+      if (select.querySelector('option') == null) {
+        fillSelect(
+          select,
+          COLORS,
+          // //format === 'background' ? '#ffffff' : '#000000',
+          'none'
+        );
+      }
+      return new MyColorPicker(select, icons[format]);
+  })
+  const update = () => {
+    newPickers.forEach((picker:any) => {
+        picker.update();
+    });
+  };
+  this.quill.on('editor-change', update);
+
+}
+}
+
+function partition(array: Array<any>, isValid: any) {
+  return array.reduce(([pass, fail], elem) => {
+    return isValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]];
+  }, [[], []]);
 }
 
 class ExtendBubbleTooltip extends BaseToolTip {
@@ -325,6 +461,7 @@ const Parchment = Quill.import('parchment');
 
 const AlignStyle = Quill.import('attributors/style/align');
 const BackgroundStyle = Quill.import('attributors/style/background');
+
 const ColorStyle = Quill.import('attributors/style/color');
 const DirectionStyle = Quill.import('attributors/style/direction');
 const FontStyle = Quill.import('attributors/style/font');
