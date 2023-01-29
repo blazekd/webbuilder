@@ -2,16 +2,16 @@ import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { CardClass, DividerClass, ImageClass, TextClass } from '../../component-classes';
+import { CardClass, DividerClass, ImageClass, TextClass } from '../../../component-classes';
 import { PopupDialogComponent } from '../../../../popup-dialog/popup-dialog.component';
 import { DialogData } from '../../../../popup-dialog/dialog-settings';
 
 @Component({
-  selector: 'web-grid-card',
-  templateUrl: './web-card.component.html',
-  styleUrls: ['./web-card.component.scss']
+  selector: 'app-section-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss']
 })
-export class WebCardComponent implements OnInit {
+export class CardComponent implements OnInit {
 
   @Input('card') card!: CardClass;
 

@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DividerClass, DividerSizeClass } from '../../component-classes';
 
 @Component({
-  selector: 'web-section-divider',
-  templateUrl: './web-divider.component.html',
-  styleUrls: ['./web-divider.component.scss']
+  selector: 'app-section-divider',
+  templateUrl: './divider.component.html',
+  styleUrls: ['./divider.component.scss']
 })
-export class WebDividerComponent implements OnInit {
+export class DividerComponent implements OnInit {
 
   @Input() content!: DividerClass;
   constructor() { }

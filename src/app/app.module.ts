@@ -21,18 +21,18 @@ import { CreateWebComponent } from './create-web/create-web.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { QuillModule } from 'ngx-quill'
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { WebSectionComponent } from './create-web/components/web-section/web-section.component';
-import { WebTextComponent } from './create-web/components/web-section/web-text/web-text.component';
+import { SectionComponent } from './create-web/section/section.component';
+import { TextComponent } from './create-web/section/text/text.component';
 import { BackgroundModuleComponent } from './popup-dialog/modules/background-module/background-module.component';
 import { ColorModuleComponent } from './popup-dialog/modules/color-module/color-module.component';
 import { SizeModuleComponent } from './popup-dialog/modules/size-module/size-module.component';
 import { ColumnsModuleComponent } from './popup-dialog/modules/columns-module/columns-module.component';
-import { WebImageComponent } from './create-web/components/web-section/web-image/web-image.component';
-import { WebDividerComponent } from './create-web/components/web-section/web-divider/web-divider.component';
+import { ImageComponent } from './create-web/section/image/image.component';
+import { DividerComponent } from './create-web/section/divider/divider.component';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { WebGridComponent } from './create-web/components/web-grid/web-grid.component';
-import { WebCardComponent } from './create-web/components/web-grid/web-card/web-card.component';
+import { CardsComponent } from './create-web/section/cards/cards.component';
+import { CardComponent } from './create-web/section/cards/card/card.component';
 import { SortablejsModule } from 'ngx-sortablejs';
 import { ResizableModule } from 'angular-resizable-element';
 import { AngularSplitModule } from 'angular-split';
@@ -48,17 +48,17 @@ import { ImageUploadModuleComponent } from './popup-dialog/modules/image-upload-
     AppComponent,
     CreateWebComponent,
     NavigationBarComponent,
-    WebSectionComponent,
-    WebTextComponent,
+    SectionComponent,
+    TextComponent,
     BackgroundModuleComponent,
     ColorModuleComponent,
     SizeModuleComponent,
     ColumnsModuleComponent,
-    WebImageComponent,
-    WebDividerComponent,
+    ImageComponent,
+    DividerComponent,
     DragAndDropDirective,
-    WebGridComponent,
-    WebCardComponent,
+    CardsComponent,
+    CardComponent,
     DividerSizeModuleComponent,
     DividerColorModuleComponent,
     ListModuleComponent,

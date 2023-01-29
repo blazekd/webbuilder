@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DividerSizeClass } from 'src/app/create-web/components/component-classes';
+import { DividerSizeClass } from '../../../create-web/component-classes';
 import { AbstractDialogModule } from '../AbstractDialogModule';
 
 @Component({

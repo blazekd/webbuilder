@@ -1,24 +1,23 @@
 import { Component, Input, OnInit, Renderer2, ElementRef, QueryList, ViewChildren, ContentChild } from '@angular/core';
-import { ComponentData } from '../../create-web.component';
 import { MatDialog } from '@angular/material/dialog';
-import { TextClass, ImageClass, DividerClass, ColorClass, ColumnClass } from '../component-classes';
+import { TextClass, ImageClass, DividerClass, ColorClass, ColumnClass, SectionComponentClass } from '../component-classes';
 import { CdkDragDrop, DragRef, moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Subject } from 'rxjs';
 import { debounceTime, distinct, distinctUntilChanged, throttleTime } from 'rxjs/operators';
 import { element } from 'protractor';
 import { Console } from 'console';
-import { PopupDialogComponent } from '../../../popup-dialog/popup-dialog.component';
-import { DialogData } from '../../../popup-dialog/dialog-settings';
+import { PopupDialogComponent } from '../../popup-dialog/popup-dialog.component';
+import { DialogData } from '../../popup-dialog/dialog-settings';
 
 
 @Component({
-  selector: 'web-section',
-  templateUrl: './web-section.component.html',
-  styleUrls: ['./web-section.component.scss']
+  selector: 'app-section',
+  templateUrl: './section.component.html',
+  styleUrls: ['./section.component.scss']
 })
-export class WebSectionComponent implements OnInit {
+export class SectionComponent implements OnInit {
 
-  @Input() component!: ComponentData;
+  @Input() component!: SectionComponentClass;
   pointChanged: Subject<Point> = new Subject<Point>();
   // @ViewChildren('columnWidthDropList') viewChildren!: QueryList<ElementRef>;
   test = [];
@@ -35,7 +34,7 @@ export class WebSectionComponent implements OnInit {
       return [];
     
     // console.log(this.component.data.columns.columns)
-    return Array(this.component.data.columns.columns).fill(1).map((x,i)=>i); // [0,1,2,3,4]
+    return Array(this.component.columns.columns).fill(1).map((x,i)=>i); // [0,1,2,3,4]
   }
 
   addContent(column:number,row:number, i: number) {
@@ -64,16 +63,16 @@ export class WebSectionComponent implements OnInit {
         //   alert("Není implementováno!!");
         //   break;
         case 'text':
-          this.component.data.columns.content[row][column].content.splice(i, 0, new TextClass('<p>Nový text</p>'));
+          this.component.columns.content[row][column].content.splice(i, 0, new TextClass('<p>Nový text</p>'));
           break;
         case 'header':
-          this.component.data.columns.content[row][column].content.splice(i, 0, new TextClass('<h1 style="text-align: center">Nový nadpis</h1>'));
+          this.component.columns.content[row][column].content.splice(i, 0, new TextClass('<h1 style="text-align: center">Nový nadpis</h1>'));
           break;
         case 'image':
-          this.component.data.columns.content[row][column].content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/','lel', '300px'));
+          this.component.columns.content[row][column].content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/','lel', '300px'));
           break;
         case 'divider':
-          this.component.data.columns.content[row][column].content.splice(i, 0, DividerClass.default());
+          this.component.columns.content[row][column].content.splice(i, 0, DividerClass.default());
           break;
         default:
           alert("Není implementováno!!");
@@ -86,29 +85,25 @@ export class WebSectionComponent implements OnInit {
 
   getStyle() {
     return {
-      backgroundImage: this.component.data.background.background,
-      backgroundColor: this.component.data.color.background,
-      color: this.component.data.color.color,
+      backgroundImage: this.component.background.background,
+      backgroundColor: this.component.color.background,
+      color: this.component.color.color,
       backgroundPosition: 'center'
     }
   } 
 
   drop(event: any, row: number) {
-    // console.log(event)
-    // console.log()
-    // console.log(event)
-
     let col = event.container.element.nativeElement.getAttribute('column');
     if (col === 'up') {
       // console.log(col); // nový s flexBasis = 100;
-      this.component.data.columns.content.splice(0,0,[new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
+      this.component.columns.content.splice(0,0,[new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
       // console.log(this.component.data.columns.content)
       event.previousContainer.data.splice(event.previousIndex, 1);
       return;
     }
     if (col === 'down') {
       // console.log(col); // nový s flexBasis = 100;
-      this.component.data.columns.content.splice(this.component.data.columns.content.length,0,[new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
+      this.component.columns.content.splice(this.component.columns.content.length,0,[new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
       event.previousContainer.data.splice(event.previousIndex, 1);
       return;
     }
@@ -121,9 +116,9 @@ export class WebSectionComponent implements OnInit {
     if (!isNaN(column) && event.previousContainer.element.nativeElement.getAttribute('column') )
       return;
     if (!isNaN(column) && event.previousContainer !== event.container) { //make new column
-      this.component.data.columns.columns = this.component.data.columns.columns + 1; // přidat column
+      this.component.columns.columns = this.component.columns.columns + 1; // přidat column
       // console.log(this.component.data.columns.content)
-      this.component.data.columns.content[row].splice(column+1,0,new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))]));
+      this.component.columns.content[row].splice(column+1,0,new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))]));
       // console.log(this.component.data.columns.content)
       //výpočet šířky
       for (let i = 0; i < event.container.data.length; ++i) {
@@ -157,13 +152,13 @@ export class WebSectionComponent implements OnInit {
       // console.log(event.previousContainer.element.nativeElement)
       // console.log(x, y, this.component.data.columns.content)
 
-      this.component.data.columns.content[x].splice(y,1);
+      this.component.columns.content[x].splice(y,1);
       // let flex = this.component.data.columns.content[x][y-1].flexBasis / this.component.data.columns.content[x].length;
       // console.log(flex)
-      let flex = 100 / this.component.data.columns.content[x].length;
-      for (let i = 0; i < this.component.data.columns.content[x].length; ++i) {
+      let flex = 100 / this.component.columns.content[x].length;
+      for (let i = 0; i < this.component.columns.content[x].length; ++i) {
         // console.log(this.component.data.columns.content[x][i].flexBasis, flex)
-        this.component.data.columns.content[x][i].flexBasis = flex;
+        this.component.columns.content[x][i].flexBasis = flex;
       }
       // console.log(this.component.data.columns.content[x])
       // console.log('x')
@@ -173,7 +168,7 @@ export class WebSectionComponent implements OnInit {
 
   deleteContent(column: number, row: number, i:number) {
     // console.log(this.component.data.columns.content[column].content[i])
-    this.component.data.columns.content[row][column].content.splice(i, 1);
+    this.component.columns.content[row][column].content.splice(i, 1);
   }
 
   editMenu(column:number, row:number, i:number, type: string) {
@@ -184,25 +179,25 @@ export class WebSectionComponent implements OnInit {
     switch (type) {
       case 'image':
         let xx = this.dialog.open(PopupDialogComponent, {
-          data: DialogData.editImage(this.component.data.columns.content[row][column].content[i]),
+          data: DialogData.editImage(this.component.columns.content[row][column].content[i]),
           backdropClass: 'custom-backdrop'
         });
         xx.afterClosed().subscribe(result => {
           //console.log(result);
           if (result !== undefined)
-            this.component.data.columns.content[row][column].content[i].src = result;
+            this.component.columns.content[row][column].content[i].src = result;
         });
         break;
       case 'divider':
         dialogRef = this.dialog.open(PopupDialogComponent, {
           // data: NavComponentClass.fromComponent(this.components[i])
-          data: DialogData.editDivider(this.component.data.columns.content[row][column].content[i]),
+          data: DialogData.editDivider(this.component.columns.content[row][column].content[i]),
           backdropClass: 'custom-backdrop'
         });
         break;
       case 'grid':
         dialogRef = this.dialog.open(PopupDialogComponent, {
-          data: DialogData.editGrid(this.component.data.columns.content[row][column].content[i])
+          data: DialogData.editGrid(this.component.columns.content[row][column].content[i])
         });
         break;
       default:
@@ -222,7 +217,7 @@ export class WebSectionComponent implements OnInit {
   dragEnd(event: any, row: number) {
     // console.log(event)
     for (let i = 0; i < event.sizes.length; ++i) {
-      this.component.data.columns.content[row][i].flexBasis = event.sizes[i];
+      this.component.columns.content[row][i].flexBasis = event.sizes[i];
     }
     // console.log(this.component.data.columns)
   }

@@ -6,11 +6,11 @@ import { TextClass } from '../../component-classes';
 import { FONT_NAMES, FONT_NAMES_LOWER } from '../../constants';
 
 @Component({
-  selector: 'web-section-text',
-  templateUrl: './web-text.component.html',
-  styleUrls: ['./web-text.component.scss']
+  selector: 'app-section-text',
+  templateUrl: './text.component.html',
+  styleUrls: ['./text.component.scss']
 })
-export class WebTextComponent implements OnInit {
+export class TextComponent implements OnInit {
   @Input() content!: TextClass;
 
   modules = {

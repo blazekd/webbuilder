@@ -7,11 +7,11 @@ import { PopupDialogComponent } from 'src/app/popup-dialog/popup-dialog.componen
 import { ImageClass } from '../../component-classes';
 
 @Component({
-  selector: 'web-section-image',
-  templateUrl: './web-image.component.html',
-  styleUrls: ['./web-image.component.scss']
+  selector: 'app-section-image',
+  templateUrl: './image.component.html',
+  styleUrls: ['./image.component.scss']
 })
-export class WebImageComponent implements OnInit, AfterViewInit {
+export class ImageComponent implements OnInit, AfterViewInit {
   @Input() content!: ImageClass;
   // content: ImageClass;
   @ViewChild('wrapper') wrapper!: ElementRef;

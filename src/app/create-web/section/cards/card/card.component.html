@@ -24,9 +24,9 @@
 
             <div [ngSwitch]="item.type">
 
-                <web-section-text *ngSwitchCase="'text'" [content]="item"></web-section-text>
-                <web-section-image *ngSwitchCase="'image'" [content]="item"></web-section-image>
-                <web-section-divider *ngSwitchCase="'divider'" [content]="item"></web-section-divider>
+                <app-section-text *ngSwitchCase="'text'" [content]="item"></app-section-text>
+                <app-section-image *ngSwitchCase="'image'" [content]="item"></app-section-image>
+                <app-section-divider *ngSwitchCase="'divider'" [content]="item"></app-section-divider>
                 <div *ngSwitchDefault>{{item.type}}</div>
             </div>   
 

@@ -1,13 +1,13 @@
 
-<div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.data.size.height]">
-    <div class="flex-container" [ngClass]="[component.data.size.width]" cdkDropListGroup>
+<div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.size.height]">
+    <div class="flex-container" [ngClass]="[component.size.width]" cdkDropListGroup>
         <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,0)" class="column-width column-width-top" [attr.column]="'up'">
             <div class="column-width-border column-width-border-end"></div>
         </div>
         <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,0)" class="column-width column-width-bottom" [attr.column]="'down'">
             <div class="column-width-border column-width-border-end"></div>
         </div>
-        <as-split [gutterSize]="30" *ngFor="let rowContent of component.data.columns.content; index as row"  (dragEnd)="dragEnd($event, row)" >
+        <as-split [gutterSize]="30" *ngFor="let rowContent of component.columns.content; index as row"  (dragEnd)="dragEnd($event, row)" >
             <!-- <div class="split-wrapper"> -->
                 <!-- <p>{{rowContent[0] }} {{rowContent[0] && rowContent[0].resizable}}</p> -->
                 <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,row)" class="column-width column-width-left" [attr.column]="-1">
@@ -36,10 +36,10 @@
 
                                     <div [ngSwitch]="item.type">
                                 
-                                        <web-section-text *ngSwitchCase="'text'" [content]="item"></web-section-text>
-                                        <web-section-image *ngSwitchCase="'image'" [content]="item"></web-section-image>
-                                        <web-section-divider *ngSwitchCase="'divider'" [content]="item"></web-section-divider>
-                                        <web-grid *ngSwitchCase="'grid'" [component]="item"></web-grid>
+                                        <app-section-text *ngSwitchCase="'text'" [content]="item"></app-section-text>
+                                        <app-section-image *ngSwitchCase="'image'" [content]="item"></app-section-image>
+                                        <app-section-divider *ngSwitchCase="'divider'" [content]="item"></app-section-divider>
+                                        <app-section-cards *ngSwitchCase="'grid'" [component]="item"></app-section-cards>
                                         <div *ngSwitchDefault>{{item.type}}</div>
                                         
                                     </div> 

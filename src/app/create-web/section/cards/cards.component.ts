@@ -6,15 +6,14 @@ import { Console } from 'console';
 import { Options } from 'sortablejs';
 import { DialogData } from 'src/app/popup-dialog/dialog-settings';
 import { PopupDialogComponent } from 'src/app/popup-dialog/popup-dialog.component';
-import { ComponentData } from '../../create-web.component';
-import { TextClass, ImageClass, DividerClass, CardClass, GridComponentClass } from '../component-classes';
+import { TextClass, ImageClass, DividerClass, CardClass, GridComponentClass } from '../../component-classes';
 
 @Component({
-  selector: 'web-grid',
-  templateUrl: './web-grid.component.html',
-  styleUrls: ['./web-grid.component.scss']
+  selector: 'app-section-cards',
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.scss']
 })
-export class WebGridComponent implements OnInit {
+export class CardsComponent implements OnInit {
 
   sortableOptions: Options = {
     scroll: true,

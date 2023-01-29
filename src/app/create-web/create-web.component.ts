@@ -5,8 +5,8 @@ import Quill from 'quill';
 import ImageDropAndPaste from 'quill-image-drop-and-paste';
 import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
 import { DialogData } from '../popup-dialog/dialog-settings';
-import { SectionComponentClass, GridComponentClass } from './components/component-classes';
-import { FONT_NAMES, FONT_NAMES_LOWER } from './components/constants';
+import { SectionComponentClass, GridComponentClass } from './component-classes';
+import { FONT_NAMES, FONT_NAMES_LOWER } from './constants';
 
 @Component({
   selector: 'app-create-web',
@@ -16,34 +16,21 @@ import { FONT_NAMES, FONT_NAMES_LOWER } from './components/constants';
 export class CreateWebComponent implements OnInit {
 
   
-  // showMenu = false;
-  // showSettings = false;
   showPc = true;
 
 
-  components: ComponentData[] = [
-    {type: 'section', data: SectionComponentClass.webnodeNav()},
-    // {type: 'header', data: HeaderComponentClass.empty()},
-    // {type: 'text', data: TextComponentClass.empty()},
-    {type: 'section', data: SectionComponentClass.webnode0()},
-    // {type: 'section', data: SectionComponentClass.grid()},
-    {type: 'section', data: SectionComponentClass.webnode1()},
-    {type: 'section', data: SectionComponentClass.webnode2()},
-    {type: 'section', data: SectionComponentClass.webnode3()},
-    {type: 'section', data: SectionComponentClass.webnode4()},
-    // {type: 'section', data: SectionComponentClass.title()},
-    // {type: 'grid', data: GridComponentClass.test2()},
-    // {type: 'section', data: SectionComponentClass.image()},
-    // {type: 'section', data: SectionComponentClass.text()},
-    // {type: 'section', data: SectionComponentClass.columns()},
-    // {type: 'section', data: SectionComponentClass.empty()},
-
-    {type: 'section', data: SectionComponentClass.webnodeFooter()},
+  components: SectionComponentClass[] = [
+    SectionComponentClass.webnodeNav(),
+    SectionComponentClass.webnode0(),
+    SectionComponentClass.webnode1(),
+    SectionComponentClass.webnode2(),
+    SectionComponentClass.webnode3(),
+    SectionComponentClass.webnode4(),
+    SectionComponentClass.webnodeFooter(),
   ]
-  scrolledTop = true;
+
   // pageSettings: PageSettings = { title: 'Název stránky', defaultFont: 'Roboto', defaultFontWeight: '300'}
   // oldPageSettings: PageSettings = Object.assign({}, this.pageSettings);
-  favicon = '???'
 
   constructor(public dialog: MatDialog) { }
 
@@ -64,19 +51,19 @@ export class CreateWebComponent implements OnInit {
       if (result !== undefined)
         switch (result) {
           case 'title':
-            this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.title()});
+            this.components.splice(i, 0, SectionComponentClass.title());
             break;
           case 'section':
-            this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
+            this.components.splice(i, 0, SectionComponentClass.empty());
             break;
           case 'text':
-            this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.text()});
+            this.components.splice(i, 0, SectionComponentClass.text());
             break;
           case 'text2':
-            this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.text2()});
+            this.components.splice(i, 0, SectionComponentClass.text2());
             break;
           case 'cards':
-            this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.grid()});
+            this.components.splice(i, 0, SectionComponentClass.grid());
             break;
           default:
             alert("Není implementováno!!");
@@ -91,41 +78,9 @@ export class CreateWebComponent implements OnInit {
   editComp(i: number) {
     if (this.dialog.openDialogs.length > 0)
       return;
-    let dialogRef;
-    switch (this.components[i].type) {
-      // case 'nav':
-      //   console.log(this.components[i].data)
-        // dialogRef = this.dialog.open(PopupDialogComponent, {
-        //   // data: NavComponentClass.fromComponent(this.components[i])
-
-        //   data: DialogData.editNav(this.components[i].data)
-        // });
-        // break;
-      // case 'header':
-      //   // dialogRef = this.dialog.open(EditHeaderCompComponent, {
-      //   //   // data: NavComponentClass.fromComponent(this.components[i])
-      //   //   data: this.components[i].data
-      //   // });
-      //   break;
-      // case 'image':
-      //   break;
-      // case 'review':
-      //   break;
-      case 'section':
-        dialogRef = this.dialog.open(PopupDialogComponent, {
-          // data: NavComponentClass.fromComponent(this.components[i])
-          data: DialogData.editSection(this.components[i].data)
-        });
-        break;
-      // case 'footer':
-      //   dialogRef = this.dialog.open(PopupDialogComponent, {
-      //     // data: NavComponentClass.fromComponent(this.components[i])
-      //     data: DialogData.editFooter(this.components[i].data)
-      //   });
-      //   break;
-      default:
-        break;
-    }
+    let dialogRef = this.dialog.open(PopupDialogComponent, {
+          data: DialogData.editSection(this.components[i])
+    })
 
     if (dialogRef === undefined)
       return;
@@ -161,23 +116,8 @@ export class CreateWebComponent implements OnInit {
     // console.log('delete: ' + index);
     this.components.splice(index, 1);
   }
-
-  onElementScroll(event:any) {
-  //   console.log(event.target.scrollTop);
-  //   if (event.target.scrollTop == 0) {
-  //     this.scrolledTop = true;
-  //   } else {
-  //     this.scrolledTop = false;
-  //   }
-  }
 }
 
-export interface ComponentData {
-  type: string;
-  //data: string;
-  // object: any;
-  data: any;
-}
 
 
 function fillSelect(select:any, values:any, defaultValue: unknown = false) {

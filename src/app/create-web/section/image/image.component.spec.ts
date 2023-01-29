@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebImageComponent } from './web-image.component';
+import { WebImageComponent } from './image.component';
 
 describe('WebImageComponent', () => {
   let component: WebImageComponent;

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebGridComponent } from './web-grid.component';
+import { WebGridComponent } from './grid.component';
 
 describe('WebGridComponent', () => {
   let component: WebGridComponent;

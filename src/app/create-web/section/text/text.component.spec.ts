@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebTextComponent } from './web-text.component';
+import { WebTextComponent } from './text.component';
 
 describe('WebTextComponent', () => {
   let component: WebTextComponent;

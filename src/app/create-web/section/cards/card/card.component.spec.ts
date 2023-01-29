@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebDividerComponent } from './web-divider.component';
+import { WebCardComponent } from './card.component';
 
-describe('WebDividerComponent', () => {
-  let component: WebDividerComponent;
-  let fixture: ComponentFixture<WebDividerComponent>;
+describe('WebCardComponent', () => {
+  let component: WebCardComponent;
+  let fixture: ComponentFixture<WebCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WebDividerComponent ]
+      declarations: [ WebCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WebDividerComponent);
+    fixture = TestBed.createComponent(WebCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

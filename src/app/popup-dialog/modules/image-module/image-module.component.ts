@@ -1,7 +1,7 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
-import { ImageClass } from 'src/app/create-web/components/component-classes';
+import { ImageClass } from '../../../create-web/component-classes';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent, EventMessage } from '../list-module/list-module.component';
