@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, Inject, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, Inject, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject, Subscription } from 'rxjs';
 import { DialogData } from './dialog-settings';
@@ -9,19 +9,19 @@ import { ChangeMenuEvent, EventMessage } from './modules/list-module/list-module
   templateUrl: './popup-dialog.component.html',
   styleUrls: ['./popup-dialog.component.scss']
 })
-export class PopupDialogComponent implements AfterViewInit {
+export class PopupDialogComponent implements OnInit {
   menuIndex = 0;
   title = '';
   sendMessage = new Subject<EventMessage>();
   subscription = new Subscription;
 
-  @ViewChild('menuElem', {static: false, read: ViewContainerRef}) menuElem!: ViewContainerRef;
+  @ViewChild('menuElem', {static: true, read: ViewContainerRef}) menuElem!: ViewContainerRef;
   constructor(public dialogRef: MatDialogRef<PopupDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData: DialogData) {
 
     }
 
-    ngAfterViewInit(): void {
+    ngOnInit(): void {
       this.changeMenu(0);
   }
 
@@ -53,7 +53,8 @@ export class PopupDialogComponent implements AfterViewInit {
 
   changeMenu(i: number) {
     this.menuIndex = i;
-    this.menuElem.clear();
+    if (this.menuElem)
+      this.menuElem.clear();
     const componentRef = this.menuElem.createComponent(this.dialogData.list[this.menuIndex].component);
     componentRef.instance.newEvent.subscribe((x: ChangeMenuEvent) => this.handleEvent(x));
     componentRef.instance.moduleData = this.dialogData.list[this.menuIndex].moduleData;

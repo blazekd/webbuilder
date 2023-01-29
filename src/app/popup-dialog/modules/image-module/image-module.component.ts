@@ -18,19 +18,19 @@ export class ImageModuleComponent extends AbstractDialogModule {
   @ViewChild('imageBoundary') imageBoundary!: ElementRef;
   @ViewChild('imageFocusPoint') imageFocusPoint!: ElementRef;
   styles: any[] = [
-    {value: 1, viewValue: 'Normální'},
-    {value: 2, viewValue: 'Kolečko'},
-    {value: 3, viewValue: 'Elipsa'}
+    {value: 1, viewValue: 'Square'},
+    {value: 2, viewValue: 'Circle'},
+    {value: 3, viewValue: 'Ellipse'}
   ];
 
 
-  ok() {
-    this.newEvent.next(new ChangeMenuEvent(EventMessage.SAVE))
-  }
+  // ok() {
+  //   this.newEvent.next(new ChangeMenuEvent(EventMessage.SAVE))
+  // }
 
-  close() {
-    this.newEvent.next(new ChangeMenuEvent(EventMessage.CANCEL))
-  }
+  // close() {
+  //   this.newEvent.next(new ChangeMenuEvent(EventMessage.CANCEL))
+  // }
 
 
 

@@ -65,6 +65,22 @@ quill-editor {
   overflow: auto;
 }
 
+
+.my-slider.mat-mdc-slider {
+  width: calc(100% - 24px);
+}
+
+.my-label-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 10px 0;
+  max-width: 284px;
+}
+
+.my-value-label {
+  font-weight: 600;
+}
+
 // ------------------------------------------------------------------------------------------------------------------ //
 
 

@@ -1,12 +1,10 @@
 <mat-tab-group dynamicHeight mat-stretch-tabs>
     <mat-tab label="Width">
-        <h1>Section width</h1>
         <mat-radio-group aria-label="Choose width" [(ngModel)]="data.size.width" class="d-flex flex-column">
             <mat-radio-button [value]="item.value" *ngFor="let item of widths" class="d-flex custom-button">{{ item.viewValue }}</mat-radio-button>
         </mat-radio-group>
     </mat-tab>
     <mat-tab label="Height">
-        <h1>Section height</h1>
         <mat-radio-group aria-label="Choose height" [(ngModel)]="data.size.height" class="d-flex flex-column">
             <mat-radio-button [value]="item.value" *ngFor="let item of heights" class="d-flex custom-button">{{ item.viewValue }}</mat-radio-button>
         </mat-radio-group>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DividerClass } from '../../component-classes';
+import { DividerClass, DividerSizeClass } from '../../component-classes';
 
 @Component({
   selector: 'web-section-divider',
@@ -8,11 +8,14 @@ import { DividerClass } from '../../component-classes';
 })
 export class WebDividerComponent implements OnInit {
 
-
   @Input() content!: DividerClass;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  displayRadius(e: DividerSizeClass) {
+    return (e.radiusType === '%' ? e.radius : e.radius / 5) + e.radiusType;
+  }
 }

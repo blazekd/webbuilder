@@ -54,65 +54,6 @@ export class CreateWebComponent implements OnInit {
   }
 
 
-  // activateMenu() {
-  //   this.showSettings = false;
-  //   this.showMenu = !this.showMenu;
-  // }
-
-  // activateSettings() {
-  //   this.showMenu = false;
-  //   // this.showSettings = !this.showSettings;
-  //   // if (this.showSettings)
-  //   //   this.oldPageSettings = Object.assign({}, this.pageSettings);
-  // }
-
-  // setSettings(event: any) {
-  //   console.log(event);
-  //   // if (event === undefined)
-  //   //   this.pageSettings = this.oldPageSettings;
-  //   // else {
-  //   //   this.pageSettings = event;
-  //   // }
-  //   this.showSettings = false;
-  // }
-
-  // addComp() {
-  //   this.components.push({type: 'header', data: 'Real friends, Real life', background: 'pozadi1', classes: new Map().set('text-align', 'text-left').set('text-align-v', 'align-items-end').set('section-size', 'section-large').set('font', 'roboto').set('font-size', 'font-size-32').set('font-weight', 'font-weight-light'), classesString: ''});
-  // }
-
-  // addComp(i: number) {
-  //   if (this.dialog.openDialogs.length > 0)
-  //     return;
-
-  //   const dialogRef = this.dialog.open(NewComponentComponent);
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result !== undefined)
-  //       this.newComponent(result);
-  //       switch (result) {
-  //         case 'title':
-  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.title()});
-  //           break;
-  //         case 'section':
-  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
-  //           break;
-  //         case 'text':
-  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.text()});
-  //           break;
-  //         case 'text2':
-  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.text2()});
-  //           break;
-  //         case 'cards':
-  //           this.components.splice(i, 0, {type: 'section', data: SectionComponentClass.grid()});
-  //           break;
-  //         default:
-  //           alert("Není implementováno!!");
-  //           break;
-  //       }
-  //   });
-
-    
-  // }
   addComp(i: number) {
     if (this.dialog.openDialogs.length > 0)
       return;
@@ -153,8 +94,10 @@ export class CreateWebComponent implements OnInit {
     let dialogRef;
     switch (this.components[i].type) {
       case 'nav':
+        console.log(this.components[i].data)
         dialogRef = this.dialog.open(PopupDialogComponent, {
           // data: NavComponentClass.fromComponent(this.components[i])
+
           data: DialogData.editNav(this.components[i].data)
         });
         break;

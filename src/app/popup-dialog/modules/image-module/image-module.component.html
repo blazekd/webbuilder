@@ -1,41 +1,28 @@
 
-<div class="container">
 
-
-
-        <h4>Image focus</h4>
-        <div class="img-wrap">
-            <div #imageBoundary class="image-boundary">
-                <div #imageFocusPoint cdkDrag cdkDragBoundary=".image-boundary" (cdkDragEnded)="dropFocusPoint($event)" [style.left]="data.left" [style.top]="data.top"></div>
-                <img [src]="data.src" [alt]="data.alt" (click)="clickFocusPoint($event)">
-            </div>
-        </div>
-
-        <h4>Image style</h4>
-        <mat-form-field appearance="fill">
-            <mat-label>Image style</mat-label>
-            <mat-select [(value)]="data.style">
-                <mat-option *ngFor="let style of styles" [value]="style.value">
-                    {{style.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-          <div class="d-flex justify-content-around mt-4">
-            <!-- <button mat-stroked-button (click)="uploadNew()">Change image</button>
-            <button mat-stroked-button (click)="close()">Cancel</button> -->
-        </div>
-
-    <!-- <ng-container *ngSwitchCase="3">
-        <div class="d-flex justify-content-around mt-4">
-            <button mat-stroked-button (click)="uploadNew()">Upload new image</button>
-            <button mat-stroked-button (click)="close()">Cancel</button>
-        </div>
-    </ng-container> -->
-
-
-
+<div class="d-flex flex-column">
+	<div class="d-flex flex-column align-items-center">
+		<label>Focus point</label>
+		<div class="img-wrap">
+			<div #imageBoundary class="image-boundary">
+				<div #imageFocusPoint cdkDrag cdkDragBoundary=".image-boundary" (cdkDragEnded)="dropFocusPoint($event)" [style.left]="data.left" [style.top]="data.top"></div>
+				<img [src]="data.src" [alt]="data.alt" (click)="clickFocusPoint($event)">
+			</div>
+		</div>
+	</div>
+	
+	<label class="text-center">Image style</label>
+	<mat-form-field appearance="fill">
+		<mat-select [(value)]="data.style">
+			<mat-option *ngFor="let style of styles" [value]="style.value">
+				{{style.viewValue}}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
 </div>
+
+
+
 
 
 

@@ -64,7 +64,17 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "dev": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "aot": true
             }
+            
           }
         },
         "serve": {
@@ -75,6 +85,9 @@
           "configurations": {
             "production": {
               "browserTarget": "org-new:build:production"
+            },
+            "dev": {
+              "browserTarget": "org-new:build:dev"
             }
           }
         },

@@ -10,18 +10,18 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
 export class SizeModuleComponent extends AbstractDialogModule {
   title = 'Dimensions'
   widths = [
-    {value: 'width5', viewValue: 'Nejužší'}, 
-    {value: 'width4', viewValue: 'Úzký'}, 
-    {value: 'width3', viewValue: 'Normální'}, 
-    {value: 'width2', viewValue: 'Široký'}, 
-    {value: 'width1', viewValue: 'Nejširší'}
+    {value: 'width5', viewValue: 'Narrower'}, 
+    {value: 'width4', viewValue: 'Narrow'}, 
+    {value: 'width3', viewValue: 'Normal'}, 
+    {value: 'width2', viewValue: 'Wide'}, 
+    {value: 'width1', viewValue: 'Wider'}
   ];
 
   heights = [
-    {value: 'height5', viewValue: 'Nejmenší'}, 
-    {value: 'height4', viewValue: 'Malý'}, 
-    {value: 'height3', viewValue: 'Normální'}, 
-    {value: 'height2', viewValue: 'Vysoký'}, 
-    {value: 'height1', viewValue: 'Nejvyšší'}
+    {value: 'height5', viewValue: 'Smaller'}, 
+    {value: 'height4', viewValue: 'Small'}, 
+    {value: 'height3', viewValue: 'Normal'}, 
+    {value: 'height2', viewValue: 'Large'}, 
+    {value: 'height1', viewValue: 'Larger'}
   ];
 }

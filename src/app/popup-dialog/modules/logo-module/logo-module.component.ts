@@ -11,23 +11,23 @@ export class LogoModuleComponent extends AbstractDialogModule {
 
   title = 'Logo and title'
   changeTitleText() {
-    this.data.logo.haveTitleText = !this.data.logo.haveTitleText && this.data.logo.haveTitle
+    this.data.logo.hasTitleText = !this.data.logo.hasTitleText && this.data.logo.hasTitle
   }
 
   changeLogoText() {
-    this.data.logo.haveLogoText = !this.data.logo.haveLogoText && this.data.logo.haveLogo;
+    this.data.logo.hasLogoText = !this.data.logo.hasLogoText && this.data.logo.hasLogo;
   }
 
   changeLogo() {
-    this.data.logo.haveLogo = !this.data.logo.haveLogo;
-    if (!this.data.logo.haveLogo)
-      this.data.logo.haveLogoText = false;
+    this.data.logo.hasLogo = !this.data.logo.hasLogo;
+    if (!this.data.logo.hasLogo)
+      this.data.logo.hasLogoText = false;
   }
 
   changeTitle() {
-    this.data.logo.haveTitle = !this.data.logo.haveTitle;
-    if (!this.data.logo.haveTitle)
-      this.data.logo.haveTitleText = false;
+    this.data.logo.hasTitle = !this.data.logo.hasTitle;
+    if (!this.data.logo.hasTitle)
+      this.data.logo.hasTitleText = false;
   }
 
   changeTitleHighlightOpacity(event: any) {

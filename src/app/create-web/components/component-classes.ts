@@ -1,6 +1,5 @@
 import { Type } from "@angular/core";
 import { BackgroundModuleComponent } from "../../popup-dialog/modules/background-module/background-module.component";
-import { ButtonModuleComponent } from "../../popup-dialog/modules/button-module/button-module.component";
 import { ColorModuleComponent } from "../../popup-dialog/modules/color-module/color-module.component";
 import { LayoutModuleComponent } from "../../popup-dialog/modules/layout-module/layout-module.component";
 import { LogoModuleComponent } from "../../popup-dialog/modules/logo-module/logo-module.component";
@@ -9,7 +8,6 @@ import { ColumnsModuleComponent } from '../../popup-dialog/modules/columns-modul
 import { LOREM } from './constants';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { DividerColorModuleComponent } from "../../popup-dialog/modules/divider-color-module/divider-color-module.component";
-import { DividerStyleModuleComponent } from '../../popup-dialog/modules/divider-style-module/divider-style-module.component';
 import { DividerSizeModuleComponent } from '../../popup-dialog/modules/divider-size-module/divider-size-module.component';
 
 
@@ -358,9 +356,11 @@ export class DividerColorClass {
 }
 
 export class DividerSizeClass {
-  constructor(public width: number = 80, public height: number = 1) {
+  constructor(public width: number = 80, public height: number = 1, public radius: number = 0, public radiusType: string = 'px') {
 
   }
+
+
 }
 
 export class DividerStyleClass {
@@ -382,12 +382,6 @@ export class DividerClass {
 
 
 
-// export class HeaderClass {
-//   text: string = 'Nový nadpis';
-//   haveSubtext: boolean = false;
-//   subtext: string = '';
-// }
-
 export class AlignmentClass {
   // align: string = 'center';
   // justify: string = 'center';
@@ -400,14 +394,14 @@ export class AlignmentClass {
 
   export class LogoAndTitleClass {
 
-    constructor(public logo: ImageClass, public hasLogo: boolean, public text: string) {
+    constructor(public logo: ImageClass, public hasLogo: boolean, public text: string, public hasLogoText: boolean = false, public logoText: string = 'Logo text', public hasLogoHighlight: boolean = false, public hasTitle: boolean = false, public title: string = 'Title', public hasTitleHighlight: boolean = false, public titleHighlight: string = '#cccccc', public titleHighlightOpacity: number = 1) {
     }
 
     static default() : LogoAndTitleClass {
       return new LogoAndTitleClass(ImageClass.default(), true, '<p style="font-family: Courier; font-size: 250%;"><b>WORDS<b> COLLIDE</p>');
     }
     static webnode() : LogoAndTitleClass {
-      return new LogoAndTitleClass(ImageClass.default(), false, '<p style="font-family: Courier; font-size: 250%;"><b>WORDS<b> COLLIDE</p>');
+      return new LogoAndTitleClass(ImageClass.circle(), false, '<p style="font-family: Courier; font-size: 250%;"><b>WORDS<b> COLLIDE</p>');
     }
   }
   
@@ -703,7 +697,6 @@ export const EDIT_CARD_COMPONENT = [
 
 export const EDIT_DIVIDER_COMPONENT = [
   new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit divider','','')),
-  new EditMenuModule(DividerStyleModuleComponent, new EditMenuButton('Line style','horizontal_split','Line style')),
   new EditMenuModule(DividerColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
   new EditMenuModule(DividerSizeModuleComponent, new EditMenuButton('Dimensions','expand','Dimensions'))
 ]

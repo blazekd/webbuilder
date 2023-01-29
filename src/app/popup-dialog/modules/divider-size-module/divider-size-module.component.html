@@ -1,9 +1,29 @@
 
-<p>Width in %</p>
-<mat-slider min="10" max="100" step="10" thumbLabel [(ngModel)]="data.size.width"><input matSliderThumb /></mat-slider>
+<div class="my-label-container">
+    <label>Width</label>
+    <label class="my-value-label">{{data.size.width}} %</label>
+</div>
+<mat-slider class="my-slider" min="1" max="100" step="1" thumbLabel><input matSliderThumb [(ngModel)]="data.size.width" /></mat-slider>
 
-<p>Height in px</p>
-<mat-slider min="1" max="10" step="1" thumbLabel [(ngModel)]="data.size.height"><input matSliderThumb /></mat-slider>
+<div class="my-label-container">
+    <label>Height</label>
+    <label class="my-value-label">{{data.size.height}} px</label>
+</div>
+<mat-slider class="my-slider" min="1" max="10" step="1" thumbLabel showTickMarks><input matSliderThumb [(ngModel)]="data.size.height" /></mat-slider>
 
-<!-- <p>Zaoblené rohy</p>
-<mat-slider min="0" max="50" step="5" thumbLabel tickInterval="1" [(ngModel)]="data.size.radius"></mat-slider> -->
+<div class="my-label-container">
+    <label>Border radius</label>
+    <label class="my-value-label">{{displayRadius(data.size)}}</label>
+</div>
+<mat-slider class="my-slider" min="0" max="50" step="5" thumbLabel showTickMarks><input matSliderThumb [(ngModel)]="data.size.radius" /></mat-slider>
+
+<div class="my-label-container">
+    <label>Border radius unit</label>
+    <mat-button-toggle-group [(ngModel)]="data.size.radiusType">
+        <mat-button-toggle value="%">%</mat-button-toggle>
+        <mat-button-toggle value="px">px</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+
+
+

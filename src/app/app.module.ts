@@ -28,7 +28,6 @@ import { WebTextComponent } from './create-web/components/web-section/web-text/w
 import { BackgroundModuleComponent } from './popup-dialog/modules/background-module/background-module.component';
 import { ButtonModuleComponent } from './popup-dialog/modules/button-module/button-module.component';
 import { ColorModuleComponent } from './popup-dialog/modules/color-module/color-module.component';
-import { HeaderModuleComponent } from './popup-dialog/modules/header-module/header-module.component';
 import { LayoutModuleComponent } from './popup-dialog/modules/layout-module/layout-module.component';
 import { LogoModuleComponent } from './popup-dialog/modules/logo-module/logo-module.component';
 import { SizeModuleComponent } from './popup-dialog/modules/size-module/size-module.component';
@@ -46,7 +45,6 @@ import { ResizableModule } from 'angular-resizable-element';
 import { AngularSplitModule } from 'angular-split';
 import { DividerSizeModuleComponent } from './popup-dialog/modules/divider-size-module/divider-size-module.component';
 import { DividerColorModuleComponent } from './popup-dialog/modules/divider-color-module/divider-color-module.component';
-import { DividerStyleModuleComponent } from './popup-dialog/modules/divider-style-module/divider-style-module.component';
 import { ListModuleComponent } from './popup-dialog/modules/list-module/list-module.component';
 import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
 import { ImageModuleComponent } from './popup-dialog/modules/image-module/image-module.component';
@@ -64,7 +62,6 @@ import { ImageUploadModuleComponent } from './popup-dialog/modules/image-upload-
     BackgroundModuleComponent,
     ButtonModuleComponent,
     ColorModuleComponent,
-    HeaderModuleComponent,
     LayoutModuleComponent,
     LogoModuleComponent,
     SizeModuleComponent,
@@ -77,7 +74,6 @@ import { ImageUploadModuleComponent } from './popup-dialog/modules/image-upload-
     WebCardComponent,
     DividerSizeModuleComponent,
     DividerColorModuleComponent,
-    DividerStyleModuleComponent,
     ListModuleComponent,
     PopupDialogComponent,
     ImageModuleComponent,

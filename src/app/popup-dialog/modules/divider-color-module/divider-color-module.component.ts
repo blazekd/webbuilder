@@ -9,4 +9,7 @@ import { AbstractDialogModule } from '../AbstractDialogModule';
 export class DividerColorModuleComponent extends AbstractDialogModule {
 
   title = 'Divider colors'
+  formatLabel(value: number): string {
+    return `${value*100}%`;
+  }
 }

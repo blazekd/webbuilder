@@ -23,15 +23,15 @@ export class LayoutModuleComponent extends AbstractDialogModule {
 
   changeLayout(layout: any) {
     // console.log(this.data);
-    this.data.layout.layout = layout.layout;
+    this.data.layout = layout.layout;
     switch (layout) {
       case this.layouts[3]:
       case this.layouts[4]:
       case this.layouts[5]:
-        this.data.layout.showBackground = true;
+        this.data.showBackground = true;
         break;
       default:
-        this.data.layout.showBackground = false;
+        this.data.showBackground = false;
       
     }
     // this.selection.emit(layout);

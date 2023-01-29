@@ -4,7 +4,6 @@ import { ColorModuleComponent } from "./modules/color-module/color-module.compon
 import { ColumnsModuleComponent } from "./modules/columns-module/columns-module.component";
 import { DividerColorModuleComponent } from "./modules/divider-color-module/divider-color-module.component";
 import { DividerSizeModuleComponent } from "./modules/divider-size-module/divider-size-module.component";
-import { DividerStyleModuleComponent } from "./modules/divider-style-module/divider-style-module.component";
 import { ImageModuleComponent } from "./modules/image-module/image-module.component";
 import { LayoutModuleComponent } from "./modules/layout-module/layout-module.component";
 import { EventMessage, ListModuleComponent } from "./modules/list-module/list-module.component";
@@ -109,7 +108,6 @@ export const EDIT_NAV_MODULES = [
 ]
 
 export const EDIT_SECTION_MODULES = [
-  new DialogModule(ColumnsModuleComponent, {type: 'columns', icon: 'view_compact', text: "Columns!!!"}),
   new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
   new DialogModule(SizeModuleComponent, {type: 'dimensions', icon: 'expand', text: "Dimensions"}),
   new DialogModule(BackgroundModuleComponent, {type: 'background', icon: 'image', text: "Background"})
@@ -121,7 +119,7 @@ export const EDIT_FOOTER_MODULES = [
 ]
 
 export const EDIT_GRID_MODULES = [
-  new DialogModule(ColumnsModuleComponent, {type: 'columns', icon: 'view_compact', text: "Columns!!!"}),
+  new DialogModule(ColumnsModuleComponent, {type: 'columns', icon: 'view_compact', text: "Columns"}),
 ]
 
 export const EDIT_CARD_MODULES = [
@@ -130,9 +128,8 @@ export const EDIT_CARD_MODULES = [
 ]
 
 export const EDIT_DIVIDER_MODULES = [
-  new DialogModule(DividerStyleModuleComponent, {type: 'linestyle', icon: 'horizontal_split', text: "Line style!!!"}),
-  new DialogModule(DividerColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors!!!"}),
-  new DialogModule(DividerSizeModuleComponent, {type: 'dimensions', icon: 'expand', text: "Dimensions!!!"})
+  new DialogModule(DividerColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
+  new DialogModule(DividerSizeModuleComponent, {type: 'dimensions', icon: 'expand', text: "Dimensions"})
 ]
 
 export const EDIT_IMAGE_MODULES = [
