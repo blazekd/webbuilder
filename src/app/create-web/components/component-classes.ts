@@ -1,66 +1,32 @@
-import { Type } from "@angular/core";
-import { BackgroundModuleComponent } from "../../popup-dialog/modules/background-module/background-module.component";
-import { ColorModuleComponent } from "../../popup-dialog/modules/color-module/color-module.component";
-import { LayoutModuleComponent } from "../../popup-dialog/modules/layout-module/layout-module.component";
-import { LogoModuleComponent } from "../../popup-dialog/modules/logo-module/logo-module.component";
-import { SizeModuleComponent } from "../../popup-dialog/modules/size-module/size-module.component";
-import { ColumnsModuleComponent } from '../../popup-dialog/modules/columns-module/columns-module.component';
 import { LOREM } from './constants';
-import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { DividerColorModuleComponent } from "../../popup-dialog/modules/divider-color-module/divider-color-module.component";
-import { DividerSizeModuleComponent } from '../../popup-dialog/modules/divider-size-module/divider-size-module.component';
 
 
 
-
-export class NavComponentClass {
-
-  constructor(public layout: LayoutClass, public color: ColorClass, public size: SizeClass, public logo: LogoAndTitleClass, public background: BackgroundClass) {
-  }
-
-  static empty() : NavComponentClass {
-    return new NavComponentClass(new LayoutClass(), ColorClass.default(), new SizeClass('width2', 'height2'), LogoAndTitleClass.default(), BackgroundClass.default())
-  }
-
-  static webnode() : NavComponentClass {
-    return new NavComponentClass(new LayoutClass(), ColorClass.default(), new SizeClass('width2', 'height2'), LogoAndTitleClass.webnode(), BackgroundClass.default())
-  }
-}
 
 export class SectionComponentClass {
   color: ColorClass;
   size: SizeClass;
   background: BackgroundClass;
-  alignment: AlignmentClass;
   columns: ColumnWrapperClass;
-  constructor(color: ColorClass, size: SizeClass, background: BackgroundClass, alignment: AlignmentClass, columns: ColumnWrapperClass) {
-    // console.log(this.content)
+  constructor(color: ColorClass, size: SizeClass, background: BackgroundClass, columns: ColumnWrapperClass) {
     this.color = color;
     this.size = size
     this.background = background;
-    // this.content = content;
-    this.alignment = alignment;
     this.columns = columns;
-    // this.content = content;
   }
 
-  // static empty() : SectionComponentClass {
-  //   return new SectionComponentClass(ColorClass.default(), new SizeClass('width1', 'height5'), new BackgroundClass('nonebg', undefined, 'none'), [new ColumnClass([new TextClass('')])], new AlignmentClass(), new GridClass())
-  // }
+
   static empty() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
       new SizeClass('width1', 'height5'), 
       BackgroundClass.default(), 
-      // Array(5).fill(undefined).map(a => new ColumnClass([])),
-      new AlignmentClass(),
       new ColumnWrapperClass([]))
   }
   static text() : SectionComponentClass {
     return new SectionComponentClass(ColorClass.default(), 
       new SizeClass('width1', 'height5'), 
       BackgroundClass.default(), 
-      new AlignmentClass(), 
       new ColumnWrapperClass(
       [[
           new ColumnClass([new TextClass(LOREM[0])])
@@ -73,7 +39,6 @@ export class SectionComponentClass {
     return new SectionComponentClass(ColorClass.default(), 
       new SizeClass('width1', 'height5'), 
       BackgroundClass.default(), 
-      new AlignmentClass(), 
       new ColumnWrapperClass(
       [[
           new ColumnClass([GridComponentClass.test2()],100,false)
@@ -87,7 +52,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width1', 'height5'),
       BackgroundClass.default(),
-      new AlignmentClass(), 
       new ColumnWrapperClass(      
         [[
         new ColumnClass([new TextClass(LOREM[0])]), 
@@ -99,8 +63,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width3', 'height3'), 
       BackgroundClass.webnode(),
-
-      new AlignmentClass(), 
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -113,7 +75,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width5', 'height5'),
       new BackgroundClass('custombg', 'url(https://d1di2lzuh97fh2.cloudfront.net/files/0c/0cx/0cx52n.jpg?ph=dee24c1a70&t=1)', 'url(https://d1di2lzuh97fh2.cloudfront.net/files/0c/0cx/0cx52n.jpg?ph=dee24c1a70&t=1)'),
-      new AlignmentClass(), 
       new ColumnWrapperClass(      
       [
         [
@@ -161,7 +122,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width5', 'height3'),
       new BackgroundClass('custombg', 'url(https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1);', 'url(https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1);'),
-      new AlignmentClass(), 
       new ColumnWrapperClass(      
         [[
         new ColumnClass([new TextClass('')],20),
@@ -176,7 +136,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width5', 'height2'),
       new BackgroundClass('custombg', 'url(https://d1di2lzuh97fh2.cloudfront.net/files/23/23k/23kxvc.jpg?ph=dee24c1a70&t=1)', 'url(https://d1di2lzuh97fh2.cloudfront.net/files/23/23k/23kxvc.jpg?ph=dee24c1a70&t=1)'),
-      new AlignmentClass(), 
       new ColumnWrapperClass(      
         [
           [
@@ -225,7 +184,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width5', 'height3'),
       new BackgroundClass('custombg', 'url(https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1);', 'url(https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1);'),
-      new AlignmentClass(), 
       new ColumnWrapperClass(      
         [[
         new ColumnClass([
@@ -235,11 +193,37 @@ export class SectionComponentClass {
         ]],2))
   }
 
+  static webnodeFooter() : SectionComponentClass {
+    return new SectionComponentClass(
+      ColorClass.default(), 
+      new SizeClass('width1', 'height5'),
+      BackgroundClass.default(),
+      new ColumnWrapperClass(      [[
+        new ColumnClass(
+          [
+            new TextClass('<p style="text-align: center;">© 2021 Worlds Collide</p>'),
+          ])
+      ]]))
+  }
+
+  
+  static webnodeNav() : SectionComponentClass {
+    return new SectionComponentClass(
+      ColorClass.default(), 
+      new SizeClass('width3', 'height5'),
+      BackgroundClass.default(),
+      new ColumnWrapperClass(      [[
+        new ColumnClass(
+          [
+            new TextClass('<h1 style="font-family: Courier; font-size: 330%;"><strong>WORLDS </strong>COLLIDE</h1>'),
+          ])
+      ]]))
+  }
+
   static text3() : SectionComponentClass {
     return new SectionComponentClass(ColorClass.default(), 
       new SizeClass('width1', 'height5'), 
       BackgroundClass.default(),
-      new AlignmentClass(), 
       new ColumnWrapperClass(
         [[
           new ColumnClass([new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3])])
@@ -254,7 +238,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width1', 'height5'), 
       BackgroundClass.default(),
-      new AlignmentClass(),
       new ColumnWrapperClass([[
         new ColumnClass(
           [
@@ -289,8 +272,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width2', 'height3'), 
       BackgroundClass.title(),
-
-      new AlignmentClass(), 
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -306,7 +287,6 @@ export class SectionComponentClass {
       ColorClass.default(), 
       new SizeClass('width1', 'height5'), 
       BackgroundClass.default(),
-      new AlignmentClass(), 
       new ColumnWrapperClass(      
       [[
         new ColumnClass(
@@ -363,47 +343,21 @@ export class DividerSizeClass {
 
 }
 
-export class DividerStyleClass {
-  constructor(public style: number = 1) {
-
-  }
-}
 
 export class DividerClass {
   type = 'divider';
-  constructor(public color: DividerColorClass, public size: DividerSizeClass, public style: DividerStyleClass) {
+  constructor(public color: DividerColorClass, public size: DividerSizeClass) {
 
   }
 
   static default() : DividerClass {
-    return new DividerClass(new DividerColorClass, new DividerSizeClass, new DividerStyleClass);
+    return new DividerClass(new DividerColorClass, new DividerSizeClass);
   }
 }
 
 
 
-export class AlignmentClass {
-  // align: string = 'center';
-  // justify: string = 'center';
 
-  constructor(public align: string = 'center', public justify: string = 'center') {
-  }
-}
-
-
-
-  export class LogoAndTitleClass {
-
-    constructor(public logo: ImageClass, public hasLogo: boolean, public text: string, public hasLogoText: boolean = false, public logoText: string = 'Logo text', public hasLogoHighlight: boolean = false, public hasTitle: boolean = false, public title: string = 'Title', public hasTitleHighlight: boolean = false, public titleHighlight: string = '#cccccc', public titleHighlightOpacity: number = 1) {
-    }
-
-    static default() : LogoAndTitleClass {
-      return new LogoAndTitleClass(ImageClass.default(), true, '<p style="font-family: Courier; font-size: 250%;"><b>WORDS<b> COLLIDE</p>');
-    }
-    static webnode() : LogoAndTitleClass {
-      return new LogoAndTitleClass(ImageClass.circle(), false, '<p style="font-family: Courier; font-size: 250%;"><b>WORDS<b> COLLIDE</p>');
-    }
-  }
   
   
   export class ColorClass {
@@ -447,19 +401,14 @@ export class AlignmentClass {
     color: ColorClass;
     size: SizeClass;
     background: BackgroundClass;
-    alignment: AlignmentClass;
     columns: GridColumnClass;
     cards: CardClass[];
     template: CardClass;
-    constructor(color: ColorClass, size: SizeClass, background: BackgroundClass, alignment: AlignmentClass, cards: CardClass[], template: CardClass, columns: GridColumnClass) {
-      // console.log(this.content)
+    constructor(color: ColorClass, size: SizeClass, background: BackgroundClass, cards: CardClass[], template: CardClass, columns: GridColumnClass) {
       this.color = color;
       this.size = size
       this.background = background;
-      // this.content = content;
-      this.alignment = alignment;
       this.columns = columns;
-      // this.content = content;
       this.cards = cards;
       this.template = template;
     }
@@ -468,7 +417,6 @@ export class AlignmentClass {
       return new GridComponentClass(ColorClass.default(), 
         new SizeClass('width1', 'height5'), 
         BackgroundClass.default(),
-        new AlignmentClass(), 
         [
           new CardClass(
             [
@@ -498,7 +446,6 @@ export class AlignmentClass {
       return new GridComponentClass(ColorClass.default(), 
         new SizeClass('width4', 'height5'), 
         BackgroundClass.default(),
-        new AlignmentClass(), 
         [
           new CardClass(
             [
@@ -549,18 +496,7 @@ export class AlignmentClass {
   }
 
 
-  
-  export class LayoutClass {
-    constructor(public layout: string = 'layout1') {
-    }
-  }
-  
-  // export class ButtonClass {
-  //   style: string = 'button1';
-  //   customColor: string = '#000000'
-  //   customBackground: string = '#ffffff'
-  //   opacity: number = 1;
-  // }
+
   
   export class SizeClass {
     width: string;
@@ -572,133 +508,9 @@ export class AlignmentClass {
   }
 
   export class ColumnWrapperClass {
-    // content: ColumnClass[];
     constructor(public content: ColumnClass[][], public columns: number = 1) {
-      // console.log('columns',columns)
-      // this.content = Array(5).fill(undefined).map(a => new ColumnClass([new TextClass('')], 100/columns));
-      // for (let i = 0; i < content.length; ++i) {
-      //   this.content[i] = content[i];
-      //   this.content[i].flexBasis = content[i].flexBasis == 100 ? 100/columns : content[i].flexBasis;
-      // }
-      
+
     }
   }
-
-  export class FooterComponentClass {
-    constructor(public text: TextClass, public color: ColorClass, public background: BackgroundClass) {
-    }
-    static default() : FooterComponentClass {
-      return new FooterComponentClass(new TextClass(''), ColorClass.default(), BackgroundClass.default())
-    }
-    static webnode() : FooterComponentClass {
-      return new FooterComponentClass(new TextClass('© 2021 Worlds Collide. Všechna práva vyhrazena.'), ColorClass.default(), BackgroundClass.default())
-    }
-  }
-
-  export class EditMenuButton {
-    constructor(public header: string, public icon: string, public name: string) {
-  
-    }
-  }
-  
-  export class EditMenuModule {
-    constructor(public component: Type<any>, public data: any) {
-  
-    }
-  }
-  
-  export interface EditMenuData {
-    data: any;
-  }
-
-  
-export class EditDialog {
-  data: any;
-  list: EditMenuModule[];
-  constructor(data: any, list: EditMenuModule[]) {
-    this.data = data;
-    this.list = list;
-  }
-
-  static navDialog(data: any) : EditDialog {
-    return new EditDialog(data, EDIT_NAV_COMPONENT);
-  }
-
-  static sectionDialog(data: any) : EditDialog {
-    return new EditDialog(data, EDIT_SECTION_COMPONENT);
-  }
-
-  static footerDialog(data: any) : EditDialog {
-    return new EditDialog(data, EDIT_FOOTER_COMPONENT);
-  }
-
-  static cardDialog(data: any) : EditDialog {
-    return new EditDialog(data, EDIT_CARD_COMPONENT);
-  }
-
-  static gridDialog(data: any) : EditDialog {
-    return new EditDialog(data, EDIT_GRID_COMPONENT);
-  }
-
-  static dividerDialog(data: any) : EditDialog {
-    return new EditDialog(data, EDIT_DIVIDER_COMPONENT);
-  }
-}
-
-// export const EDIT_NAV_COMPONENT = [
-//   new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Upravit hlavičku','','')),
-//   new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Rozvržení hlavičky','view_compact','Rozvržení')),
-//   new EditMenuModule(ColorModuleComponent, new EditMenuButton('Barvy hlavičky','palette','Barvy')),
-//   new EditMenuModule(SizeModuleComponent, new EditMenuButton('Rozměry hlavičky', 'expand','Rozměry')),
-//   new EditMenuModule(LogoModuleComponent, new EditMenuButton('Logo a titulek','title','Logo a titulek')),
-//   new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Pozadí hlavičky','image','Pozadí')),
-//   new EditMenuModule(ButtonModuleComponent, new EditMenuButton('Styl tlačítek','more_horiz','Tlačítka')),
-// ]
-
-export const EDIT_NAV_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit header','','')),
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Layout!!!','view_compact','Layout')), 
-  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
-  new EditMenuModule(SizeModuleComponent, new EditMenuButton('Dimensions', 'expand','Dimensions')),
-  new EditMenuModule(LogoModuleComponent, new EditMenuButton('Logo and title!!!','title','Logo and title')),
-  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Background','image','Background')),
-]
-
-export const EDIT_SECTION_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit section','','')),
-  new EditMenuModule(ColumnsModuleComponent, new EditMenuButton('Columns','view_compact','Columns')),
-  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
-  new EditMenuModule(SizeModuleComponent, new EditMenuButton('Dimensions', 'expand','Dimensions')),
-  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Background','image','Background'))
-]
-
-export const EDIT_FOOTER_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit footer','','')),
-  // new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Rozvržení hlavičky!!!','view_compact','Rozvržení')), 
-  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
-  // new EditMenuModule(SizeModuleComponent, new EditMenuButton('Rozměry zápatí', 'expand','Rozměry')),
-  // new EditMenuModule(LogoModuleComponent, new EditMenuButton('Logo a titulek!!!','title','Logo a titulek')),
-  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Background','image','Background')),
-]
-
-export const EDIT_GRID_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit grid','','')),
-  new EditMenuModule(ColumnsModuleComponent, new EditMenuButton('Columns','view_compact','Columns')),
-  // new EditMenuModule(ColorModuleComponent, new EditMenuButton('Barvy sekce','palette','Barvy')),
-  // new EditMenuModule(SizeModuleComponent, new EditMenuButton('Rozměry sekce', 'expand','Rozměry')),
-  // new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Pozadí sekce','image','Pozadí'))
-]
-
-export const EDIT_CARD_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit card','','')),
-  new EditMenuModule(ColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
-  new EditMenuModule(BackgroundModuleComponent, new EditMenuButton('Background','image','Background'))
-]
-
-export const EDIT_DIVIDER_COMPONENT = [
-  new EditMenuModule(LayoutModuleComponent, new EditMenuButton('Edit divider','','')),
-  new EditMenuModule(DividerColorModuleComponent, new EditMenuButton('Colors','palette','Colors')),
-  new EditMenuModule(DividerSizeModuleComponent, new EditMenuButton('Dimensions','expand','Dimensions'))
-]
 
 

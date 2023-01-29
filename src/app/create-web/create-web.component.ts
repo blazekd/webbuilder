@@ -5,7 +5,7 @@ import Quill from 'quill';
 import ImageDropAndPaste from 'quill-image-drop-and-paste';
 import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
 import { DialogData } from '../popup-dialog/dialog-settings';
-import { EditMenuModule, EditDialog, NavComponentClass, SectionComponentClass, GridComponentClass, FooterComponentClass } from './components/component-classes';
+import { SectionComponentClass, GridComponentClass } from './components/component-classes';
 import { FONT_NAMES, FONT_NAMES_LOWER } from './components/constants';
 
 @Component({
@@ -22,7 +22,7 @@ export class CreateWebComponent implements OnInit {
 
 
   components: ComponentData[] = [
-    {type: 'nav', data: NavComponentClass.webnode()},
+    {type: 'section', data: SectionComponentClass.webnodeNav()},
     // {type: 'header', data: HeaderComponentClass.empty()},
     // {type: 'text', data: TextComponentClass.empty()},
     {type: 'section', data: SectionComponentClass.webnode0()},
@@ -38,7 +38,7 @@ export class CreateWebComponent implements OnInit {
     // {type: 'section', data: SectionComponentClass.columns()},
     // {type: 'section', data: SectionComponentClass.empty()},
 
-    {type: 'footer', data: FooterComponentClass.webnode()},
+    {type: 'section', data: SectionComponentClass.webnodeFooter()},
   ]
   scrolledTop = true;
   // pageSettings: PageSettings = { title: 'Název stránky', defaultFont: 'Roboto', defaultFontWeight: '300'}
@@ -93,14 +93,14 @@ export class CreateWebComponent implements OnInit {
       return;
     let dialogRef;
     switch (this.components[i].type) {
-      case 'nav':
-        console.log(this.components[i].data)
-        dialogRef = this.dialog.open(PopupDialogComponent, {
-          // data: NavComponentClass.fromComponent(this.components[i])
+      // case 'nav':
+      //   console.log(this.components[i].data)
+        // dialogRef = this.dialog.open(PopupDialogComponent, {
+        //   // data: NavComponentClass.fromComponent(this.components[i])
 
-          data: DialogData.editNav(this.components[i].data)
-        });
-        break;
+        //   data: DialogData.editNav(this.components[i].data)
+        // });
+        // break;
       // case 'header':
       //   // dialogRef = this.dialog.open(EditHeaderCompComponent, {
       //   //   // data: NavComponentClass.fromComponent(this.components[i])
@@ -117,12 +117,12 @@ export class CreateWebComponent implements OnInit {
           data: DialogData.editSection(this.components[i].data)
         });
         break;
-      case 'footer':
-        dialogRef = this.dialog.open(PopupDialogComponent, {
-          // data: NavComponentClass.fromComponent(this.components[i])
-          data: DialogData.editFooter(this.components[i].data)
-        });
-        break;
+      // case 'footer':
+      //   dialogRef = this.dialog.open(PopupDialogComponent, {
+      //     // data: NavComponentClass.fromComponent(this.components[i])
+      //     data: DialogData.editFooter(this.components[i].data)
+      //   });
+      //   break;
       default:
         break;
     }

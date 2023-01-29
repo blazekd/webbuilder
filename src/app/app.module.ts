@@ -21,19 +21,12 @@ import { CreateWebComponent } from './create-web/create-web.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { QuillModule } from 'ngx-quill'
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { WebFooterComponent } from './create-web/components/web-footer/web-footer.component';
-import { WebNavComponent } from './create-web/components/web-nav/web-nav.component';
 import { WebSectionComponent } from './create-web/components/web-section/web-section.component';
 import { WebTextComponent } from './create-web/components/web-section/web-text/web-text.component';
 import { BackgroundModuleComponent } from './popup-dialog/modules/background-module/background-module.component';
-import { ButtonModuleComponent } from './popup-dialog/modules/button-module/button-module.component';
 import { ColorModuleComponent } from './popup-dialog/modules/color-module/color-module.component';
-import { LayoutModuleComponent } from './popup-dialog/modules/layout-module/layout-module.component';
-import { LogoModuleComponent } from './popup-dialog/modules/logo-module/logo-module.component';
 import { SizeModuleComponent } from './popup-dialog/modules/size-module/size-module.component';
-import { AlignmentModuleComponent } from './popup-dialog/modules/alignment-module/alignment-module.component';
 import { ColumnsModuleComponent } from './popup-dialog/modules/columns-module/columns-module.component';
-import { FONT_NAMES } from './create-web/components/constants';
 import { WebImageComponent } from './create-web/components/web-section/web-image/web-image.component';
 import { WebDividerComponent } from './create-web/components/web-section/web-divider/web-divider.component';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
@@ -55,17 +48,11 @@ import { ImageUploadModuleComponent } from './popup-dialog/modules/image-upload-
     AppComponent,
     CreateWebComponent,
     NavigationBarComponent,
-    WebFooterComponent,
-    WebNavComponent,
     WebSectionComponent,
     WebTextComponent,
     BackgroundModuleComponent,
-    ButtonModuleComponent,
     ColorModuleComponent,
-    LayoutModuleComponent,
-    LogoModuleComponent,
     SizeModuleComponent,
-    AlignmentModuleComponent,
     ColumnsModuleComponent,
     WebImageComponent,
     WebDividerComponent,

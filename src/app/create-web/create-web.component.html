@@ -23,18 +23,18 @@
                     
                         <!-- <web-grid *ngSwitchCase="'grid'" [component]="component"></web-grid> -->
 
-                        <web-footer *ngSwitchCase="'footer'" [component]="component"></web-footer>
+                        <!-- <web-footer *ngSwitchCase="'footer'" [component]="component"></web-footer> -->
 
                         <web-section *ngSwitchCase="'section'" [component]="component"></web-section>
                     
-                        <web-nav *ngSwitchCase="'nav'" [component]="component"></web-nav>
+                        <!-- <web-nav *ngSwitchCase="'nav'" [component]="component"></web-nav> -->
                         
                     </div> 
                     <div class="btn-settings">
-                        <button mat-icon-button (click)="moveCompUp(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" [disabled]="i == 1" matTooltip="Move section up"><mat-icon>arrow_upward</mat-icon></button>
-                        <button mat-icon-button (click)="moveCompDown(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" [disabled]="i == components.length - 2" matTooltip="Move section down"><mat-icon>arrow_downward</mat-icon></button>
+                        <button mat-icon-button (click)="moveCompUp(i)" [disabled]="i == 0" matTooltip="Move section up"><mat-icon>arrow_upward</mat-icon></button>
+                        <button mat-icon-button (click)="moveCompDown(i)" [disabled]="i == components.length - 1" matTooltip="Move section down"><mat-icon>arrow_downward</mat-icon></button>
                         <button mat-icon-button (click)="editComp(i)" matTooltip="Section settings"><mat-icon>edit</mat-icon></button>
-                        <button mat-icon-button (click)="deleteComp(i)" *ngIf="component.type !== 'nav' && component.type !== 'footer'" matTooltip="Delete section"><mat-icon>delete</mat-icon></button>
+                        <button mat-icon-button (click)="deleteComp(i)"  matTooltip="Delete section"><mat-icon>delete</mat-icon></button>
                     </div>    
                 </div>
                 <div class="new-component-button new-component-button-bottom" *ngIf="i != components.length -1">

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Renderer2, ElementRef, QueryList, ViewChildren, ContentChild } from '@angular/core';
 import { ComponentData } from '../../create-web.component';
 import { MatDialog } from '@angular/material/dialog';
-import { TextClass, ImageClass, DividerClass, ColorClass, ColumnClass, EditDialog } from '../component-classes';
+import { TextClass, ImageClass, DividerClass, ColorClass, ColumnClass } from '../component-classes';
 import { CdkDragDrop, DragRef, moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Subject } from 'rxjs';
 import { debounceTime, distinct, distinctUntilChanged, throttleTime } from 'rxjs/operators';
