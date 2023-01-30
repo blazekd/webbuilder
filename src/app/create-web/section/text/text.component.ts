@@ -1,7 +1,4 @@
-import { CdkDrag } from '@angular/cdk/drag-drop';
-import { AfterViewInit, Component, ContentChild, ElementRef, Injector, Input, OnInit, Output, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
-import { createCustomElement } from '@angular/elements';
-import { MatIcon } from '@angular/material/icon';
+import { Component, Input } from '@angular/core';
 import { TextClass } from '../../component-classes';
 import { FONT_NAMES, FONT_NAMES_LOWER } from '../../constants';
 
@@ -10,7 +7,7 @@ import { FONT_NAMES, FONT_NAMES_LOWER } from '../../constants';
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss']
 })
-export class TextComponent implements OnInit {
+export class TextComponent {
   @Input() content!: TextClass;
 
   modules = {
@@ -21,12 +18,6 @@ export class TextComponent implements OnInit {
 
   FONT_NAMES = FONT_NAMES;
   FONT_NAMES_LOWER = FONT_NAMES_LOWER;
-  constructor(private renderer: Renderer2) { 
-  }
-
-  ngOnInit(): void {
-  }
-
 }
 
 

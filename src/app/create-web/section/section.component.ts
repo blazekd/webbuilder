@@ -1,11 +1,8 @@
-import { Component, Input, OnInit, Renderer2, ElementRef, QueryList, ViewChildren, ContentChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TextClass, ImageClass, DividerClass, ColorClass, ColumnClass, SectionComponentClass } from '../component-classes';
-import { CdkDragDrop, DragRef, moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TextClass, ImageClass, DividerClass, ColumnClass, SectionComponentClass } from '../component-classes';
+import { moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Subject } from 'rxjs';
-import { debounceTime, distinct, distinctUntilChanged, throttleTime } from 'rxjs/operators';
-import { element } from 'protractor';
-import { Console } from 'console';
 import { PopupDialogComponent } from '../../popup-dialog/popup-dialog.component';
 import { DialogData } from '../../popup-dialog/dialog-settings';
 
@@ -15,25 +12,17 @@ import { DialogData } from '../../popup-dialog/dialog-settings';
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.scss']
 })
-export class SectionComponent implements OnInit {
+export class SectionComponent {
 
   @Input() component!: SectionComponentClass;
   pointChanged: Subject<Point> = new Subject<Point>();
-  // @ViewChildren('columnWidthDropList') viewChildren!: QueryList<ElementRef>;
   test = [];
-  constructor(public dialog: MatDialog, private renderer: Renderer2) { 
-
-  }
-
-  ngOnInit(): void {
-  }
+  constructor(public dialog: MatDialog) { }
 
   getColumns() {
-    // console.log(this.component.data.columns.content[0]);
     if (this.component == undefined)
       return [];
     
-    // console.log(this.component.data.columns.columns)
     return Array(this.component.columns.columns).fill(1).map((x,i)=>i); // [0,1,2,3,4]
   }
 
@@ -42,26 +31,9 @@ export class SectionComponent implements OnInit {
     return;
 
   const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addComponent()});
-  // console.log('column: ' + column + ' index: ' + i)
   dialogRef.afterClosed().subscribe(result => {
-    //console.log(result);
     if (result !== undefined)
       switch (result) {
-        // case 'header':
-        //   // this.components.splice(i, 0, {type: 'header', data: 'Nový nadpis', background: 'pozadi1', classes: new Map().set('text-align', 'text-left').set('text-align-v', 'align-items-end').set('section-size', 'section-large').set('font', 'roboto').set('font-size', 'font-size-32').set('font-weight', 'font-weight-light'), classesString: ''});
-        //   // this.components.splice(i, 0, {type: 'header', data: 'Nový nadpis', object: {}});
-        //   // this.components.splice(i, 0, {type: 'header', data: HeaderComponentClass.empty()});
-        //   // this.component.data.columns.content.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
-        //   alert("Není implementováno!!");
-        //   break;
-        // case 'image':
-        //   // this.component.data.columns.content.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
-        //   alert("Není implementováno!!");
-        //   break;
-        // case 'review':
-        //   // this.component.data.columns.content.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
-        //   alert("Není implementováno!!");
-        //   break;
         case 'text':
           this.component.columns.content[row][column].content.splice(i, 0, new TextClass('<p>Nový text</p>'));
           break;
@@ -167,7 +139,6 @@ export class SectionComponent implements OnInit {
 
 
   deleteContent(column: number, row: number, i:number) {
-    // console.log(this.component.data.columns.content[column].content[i])
     this.component.columns.content[row][column].content.splice(i, 1);
   }
 
@@ -178,21 +149,17 @@ export class SectionComponent implements OnInit {
     let dialogRef;
     switch (type) {
       case 'image':
-        let xx = this.dialog.open(PopupDialogComponent, {
-          data: DialogData.editImage(this.component.columns.content[row][column].content[i]),
-          backdropClass: 'custom-backdrop'
+        let tmpDialog = this.dialog.open(PopupDialogComponent, {
+          data: DialogData.editImage(this.component.columns.content[row][column].content[i])
         });
-        xx.afterClosed().subscribe(result => {
-          //console.log(result);
+        tmpDialog.afterClosed().subscribe(result => {
           if (result !== undefined)
             this.component.columns.content[row][column].content[i].src = result;
         });
         break;
       case 'divider':
         dialogRef = this.dialog.open(PopupDialogComponent, {
-          // data: NavComponentClass.fromComponent(this.components[i])
-          data: DialogData.editDivider(this.component.columns.content[row][column].content[i]),
-          backdropClass: 'custom-backdrop'
+          data: DialogData.editDivider(this.component.columns.content[row][column].content[i])
         });
         break;
       case 'grid':
@@ -215,10 +182,8 @@ export class SectionComponent implements OnInit {
   }
 
   dragEnd(event: any, row: number) {
-    // console.log(event)
     for (let i = 0; i < event.sizes.length; ++i) {
       this.component.columns.content[row][i].flexBasis = event.sizes[i];
     }
-    // console.log(this.component.data.columns)
   }
 }

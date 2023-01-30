@@ -1,19 +1,17 @@
-import { CdkDrag, CdkDragDrop, CdkDragMove, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { ViewportRuler } from '@angular/cdk/scrolling';
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Console } from 'console';
 import { Options } from 'sortablejs';
 import { DialogData } from 'src/app/popup-dialog/dialog-settings';
 import { PopupDialogComponent } from 'src/app/popup-dialog/popup-dialog.component';
-import { TextClass, ImageClass, DividerClass, CardClass, GridComponentClass } from '../../component-classes';
+import { CardClass, GridComponentClass } from '../../component-classes';
 
 @Component({
   selector: 'app-section-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss']
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent {
 
   sortableOptions: Options = {
     scroll: true,
@@ -42,9 +40,6 @@ export class CardsComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    // console.log(this.component)
-  }
 
   // getStyle() {
   //   return {

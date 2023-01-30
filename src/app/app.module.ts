@@ -42,6 +42,7 @@ import { ListModuleComponent } from './popup-dialog/modules/list-module/list-mod
 import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
 import { ImageModuleComponent } from './popup-dialog/modules/image-module/image-module.component';
 import { ImageUploadModuleComponent } from './popup-dialog/modules/image-upload-module/image-upload-module.component';
+import { QuillCustomSettingModule } from 'src/quill-custom-settings-module';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { ImageUploadModuleComponent } from './popup-dialog/modules/image-upload-
       ]
   
     }),
+    QuillCustomSettingModule,
     FlexLayoutModule,
     ImageCropperModule,
     // SortablejsModule.forRoot({ animation: 30 })

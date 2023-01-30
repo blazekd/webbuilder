@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DividerClass, DividerSizeClass } from '../../component-classes';
 
 @Component({
@@ -6,14 +6,8 @@ import { DividerClass, DividerSizeClass } from '../../component-classes';
   templateUrl: './divider.component.html',
   styleUrls: ['./divider.component.scss']
 })
-export class DividerComponent implements OnInit {
-
+export class DividerComponent {
   @Input() content!: DividerClass;
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 
   displayRadius(e: DividerSizeClass) {
     return (e.radiusType === '%' ? e.radius : e.radius / 5) + e.radiusType;

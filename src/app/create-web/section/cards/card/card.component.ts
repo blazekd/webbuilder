@@ -1,5 +1,5 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { CardClass, DividerClass, ImageClass, TextClass } from '../../../component-classes';
@@ -11,14 +11,12 @@ import { DialogData } from '../../../../popup-dialog/dialog-settings';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input('card') card!: CardClass;
 
   constructor(public dialog: MatDialog) { }
 
-  ngOnInit(): void {
-  }
 
   addContent(i: number) {
     if (this.dialog.openDialogs.length > 0)
