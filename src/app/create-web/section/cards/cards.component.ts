@@ -56,8 +56,9 @@ export class CardsComponent {
       backgroundColor: this.component.cards[i].color.background,
       color: this.component.cards[i].color.color,
       flexBasis: 100/this.component.columns.columns + '%',
-      backgroundImage: this.component.cards[i].background.background,
-      backgroundPosition: 'center',
+      backgroundImage: this.component.cards[i].src == '' ? '' : 'url(' + this.component.cards[i].src + ')',
+      backgroundPositionX: this.component.cards[i].left,
+      backgroundPositionY: this.component.cards[i].top,
       backgroundSize: 'cover'
 
     }
@@ -85,17 +86,6 @@ export class CardsComponent {
     if (this.dialog.openDialogs.length > 0)
       return;
 
-    // const dialogRef = this.dialog.open(WebCardDialogComponent, {
-    //   data: {
-    //     card: this.component.data.cards[i]
-    //   },
-    //   backdropClass: 'custom-backdrop'
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   //console.log(result);
-    //   if (result !== undefined)
-    //     this.component.data.cards[i] = result;
-    // });
 
     const dialogRef = this.dialog.open(PopupDialogComponent, {
       // data: NavComponentClass.fromComponent(this.components[i])
@@ -106,25 +96,6 @@ export class CardsComponent {
       if (result !== undefined)
         this.component.cards[i] = result;
     });
-
-    // switch (type) {
-    //   case 'image':
-    //     const dialogRef = this.dialog.open(WebImageDialogComponent, {
-    //       data: {
-    //         image: this.component.data.cards[i]
-    //       },
-    //       backdropClass: 'custom-backdrop'
-    //     });
-    //     dialogRef.afterClosed().subscribe(result => {
-    //       //console.log(result);
-    //       if (result !== undefined)
-    //         this.component.data.cards[i].src = result;
-    //     });
-    //     break;
-    //   default:
-    //     alert('NENÍ IMPLEMENTOVÁNO');
-    // }
-
     
   }
 

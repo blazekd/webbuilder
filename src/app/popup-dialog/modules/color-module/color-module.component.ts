@@ -3,7 +3,7 @@ import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
-  selector: 'web-color-module',
+  selector: 'app-color-module',
   templateUrl: './color-module.component.html',
   styleUrls: ['./color-module.component.scss']
 })

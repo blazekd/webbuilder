@@ -3,7 +3,7 @@ import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
-  selector: 'web-size-module',
+  selector: 'app-size-module',
   templateUrl: './size-module.component.html',
   styleUrls: ['./size-module.component.scss']
 })

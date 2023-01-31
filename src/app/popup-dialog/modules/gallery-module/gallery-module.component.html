@@ -1,0 +1,17 @@
+<div class="wrapper">
+    <div class="inner">
+        <div class="my-row">
+            <div *ngFor="let image of images" class="item">
+                <div class="gallery-item" (click)="chooseImage(image.image)">
+                    <img [src]="image.thumbnail" alt="image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 my-button">
+        <button mat-button class="w-100" (click)="cancel()">Close</button>
+    </div>
+</div>
+
+
+

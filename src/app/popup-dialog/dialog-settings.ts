@@ -1,5 +1,4 @@
 import { Type } from "@angular/core";
-import { BackgroundModuleComponent } from "./modules/background-module/background-module.component";
 import { ColorModuleComponent } from "./modules/color-module/color-module.component";
 import { ColumnsModuleComponent } from "./modules/columns-module/columns-module.component";
 import { DividerColorModuleComponent } from "./modules/divider-color-module/divider-color-module.component";
@@ -106,7 +105,7 @@ export class DialogData {
 export const EDIT_SECTION_MODULES = [
   new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
   new DialogModule(SizeModuleComponent, {type: 'dimensions', icon: 'expand', text: "Dimensions"}),
-  new DialogModule(BackgroundModuleComponent, {type: 'background', icon: 'image', text: "Background"})
+  new DialogModule(ImageModuleComponent, {type: 'background', icon: 'image', text: "Background"})
 ]
 
 // export const EDIT_FOOTER_MODULES = [
@@ -120,7 +119,7 @@ export const EDIT_GRID_MODULES = [
 
 export const EDIT_CARD_MODULES = [
   new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
-  new DialogModule(BackgroundModuleComponent, {type: 'background', icon: 'image', text: "Background"})
+  new DialogModule(ImageModuleComponent, {type: 'background', icon: 'image', text: "Background"})
 ]
 
 export const EDIT_DIVIDER_MODULES = [

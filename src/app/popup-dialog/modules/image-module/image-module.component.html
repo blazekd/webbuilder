@@ -1,7 +1,7 @@
 
 
 <div class="d-flex flex-column">
-	<div class="d-flex flex-column align-items-center">
+	<div class="d-flex flex-column align-items-center" *ngIf="data.src; else noImage">
 		<label>Focus point</label>
 		<div class="img-wrap">
 			<div #imageBoundary class="image-boundary">
@@ -10,15 +10,23 @@
 			</div>
 		</div>
 	</div>
+	<ng-template #noImage>
+		<p>Please upload new image or choose from gallery</p>
+	</ng-template>
 	
-	<label class="text-center">Image style</label>
+	<!-- <label class="text-center">Image style</label>
 	<mat-form-field appearance="fill">
 		<mat-select [(value)]="data.style">
 			<mat-option *ngFor="let style of styles" [value]="style.value">
 				{{style.viewValue}}
 			</mat-option>
 		</mat-select>
-	</mat-form-field>
+	</mat-form-field> -->
+	<div class="row mt-4">
+		<div class="col"><button class="w-100" mat-button (click)="uploadImage()"><mat-icon>upload</mat-icon> Upload</button></div>
+		<div class="col" *ngIf="data.src"><button class="w-100" mat-button (click)="deleteImage()"><mat-icon>delete</mat-icon> Delete</button></div>
+		<div class="col"><button class="w-100" mat-button (click)="showGallery()"><mat-icon>photo_library</mat-icon> Gallery</button></div>
+	</div>
 </div>
 
 

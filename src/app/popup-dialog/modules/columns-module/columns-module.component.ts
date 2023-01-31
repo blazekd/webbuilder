@@ -3,7 +3,7 @@ import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
-  selector: 'web-columns-module',
+  selector: 'app-columns-module',
   templateUrl: './columns-module.component.html',
   styleUrls: ['./columns-module.component.scss']
 })

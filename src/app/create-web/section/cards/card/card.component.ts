@@ -50,7 +50,7 @@ export class CardComponent {
           this.card.content.splice(i, 0, new TextClass('<h1 style="text-align: center">Nový nadpis</h1>'));
           break;
         case 'image':
-          this.card.content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/','lel', '300px'));
+          this.card.content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/', '300px'));
           break;
         case 'divider':
           this.card.content.splice(i, 0, DividerClass.default());
@@ -76,14 +76,15 @@ export class CardComponent {
 
     switch (type) {
       case 'image':
-        const dialogRef = this.dialog.open(PopupDialogComponent, {
-          data: DialogData.editImage(this.card.content[i]),
-          backdropClass: 'custom-backdrop'
+        let tmpData = structuredClone(this.card.content[i])
+        let tmpDialog = this.dialog.open(PopupDialogComponent, {
+          data: DialogData.editImage(this.card.content[i])
         });
-        dialogRef.afterClosed().subscribe(result => {
-          //console.log(result);
-          if (result !== undefined)
-            this.card.content[i].src = result;
+        tmpDialog.afterClosed().subscribe(result => {
+          if (result === undefined)
+            this.card.content[i] = tmpData;
+          else if (result.src == '')
+            this.deleteContent(i);
         });
         break;
       default:

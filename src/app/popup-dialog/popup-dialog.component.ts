@@ -15,6 +15,7 @@ export class PopupDialogComponent implements OnInit {
   sendMessage = new Subject<EventMessage>();
   subscription = new Subscription;
 
+
   @ViewChild('menuElem', {static: true, read: ViewContainerRef}) menuElem!: ViewContainerRef;
   constructor(public dialogRef: MatDialogRef<PopupDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData: DialogData) {
@@ -44,11 +45,18 @@ export class PopupDialogComponent implements OnInit {
   }
 
   save() {
+    if (this.menuIndex == 0)
+      this.dialogRef.close(this.dialogData.data);
     this.sendMessage.next(EventMessage.SAVE);
+
   }
 
   cancel() {
+    if (this.menuIndex == 0) {
+      this.dialogRef.close();
+    }
     this.sendMessage.next(EventMessage.CANCEL);
+
   }
 
   changeMenu(i: number) {

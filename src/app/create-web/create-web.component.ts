@@ -65,14 +65,14 @@ export class CreateWebComponent {
             break;
         }
     });
-
-    
   }
 
 
   editComp(i: number) {
     if (this.dialog.openDialogs.length > 0)
       return;
+
+    let dataTmp = structuredClone(this.components[i])
     let dialogRef = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editSection(this.components[i])
     })
@@ -80,20 +80,9 @@ export class CreateWebComponent {
     if (dialogRef === undefined)
       return;
 
-    // dialogRef.componentInstance.change.subscribe(result => {
-    //   console.log(result)
-    //   if (result !== undefined) 
-    //     this.components[i] = NavComponentClass.toComponent(result);
-    // });
-
     dialogRef.afterClosed().subscribe(result => {
-      // if (result !== undefined) {
-      //   console.log(result);
-      //   // this.components[i] = result;
-      //   this.components[i].data = result;
-      //   // this.components = this.components.slice();
-      // }
-      console.log("result", result)
+      if (result === undefined)
+        this.components[i] = dataTmp;
     });
   }
 

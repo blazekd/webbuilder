@@ -5,6 +5,9 @@ import { ImageClass } from '../../../create-web/component-classes';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { AbstractDialogModule } from '../AbstractDialogModule';
 import { ChangeMenuEvent, EventMessage } from '../list-module/list-module.component';
+import { ImageUploadModuleComponent } from '../image-upload-module/image-upload-module.component';
+import { MatDialog } from '@angular/material/dialog';
+import { GalleryModuleComponent } from '../gallery-module/gallery-module.component';
 
 @Component({
   selector: 'app-image-module',
@@ -17,21 +20,35 @@ export class ImageModuleComponent extends AbstractDialogModule {
   title = 'Image settings'
   @ViewChild('imageBoundary') imageBoundary!: ElementRef;
   @ViewChild('imageFocusPoint') imageFocusPoint!: ElementRef;
-  styles: any[] = [
-    {value: 1, viewValue: 'Square'},
-    {value: 2, viewValue: 'Circle'},
-    {value: 3, viewValue: 'Ellipse'}
-  ];
+  // styles: any[] = [
+  //   {value: 1, viewValue: 'Square'},
+  //   {value: 2, viewValue: 'Circle'},
+  //   {value: 3, viewValue: 'Ellipse'}
+  // ];
 
+  constructor(public dialog: MatDialog) {
+    super();
+    
+  }
 
-  // ok() {
-  //   this.newEvent.next(new ChangeMenuEvent(EventMessage.SAVE))
-  // }
+  
+  uploadImage() {
+    let dialogRef = this.dialog.open(ImageUploadModuleComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.data.src = result[0].image;
+    });
+  }
 
-  // close() {
-  //   this.newEvent.next(new ChangeMenuEvent(EventMessage.CANCEL))
-  // }
+  showGallery() {
+    let dialogRef = this.dialog.open(GalleryModuleComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.data.src = result;
+    });
+  }
 
+  deleteImage() {
+    this.data.src = '';
+  }
 
 
 

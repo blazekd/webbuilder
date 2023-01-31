@@ -41,7 +41,7 @@ export class SectionComponent {
           this.component.columns.content[row][column].content.splice(i, 0, new TextClass('<h1 style="text-align: center">Nový nadpis</h1>'));
           break;
         case 'image':
-          this.component.columns.content[row][column].content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/','lel', '300px'));
+          this.component.columns.content[row][column].content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/', '300px'));
           break;
         case 'divider':
           this.component.columns.content[row][column].content.splice(i, 0, DividerClass.default());
@@ -57,10 +57,11 @@ export class SectionComponent {
 
   getStyle() {
     return {
-      backgroundImage: this.component.background.background,
+      backgroundImage: this.component.src == '' ? '' : 'url(' + this.component.src + ')',
+      backgroundPositionX: this.component.left,
+      backgroundPositionY: this.component.top,
       backgroundColor: this.component.color.background,
       color: this.component.color.color,
-      backgroundPosition: 'center'
     }
   } 
 
@@ -145,16 +146,18 @@ export class SectionComponent {
   editMenu(column:number, row:number, i:number, type: string) {
     if (this.dialog.openDialogs.length > 0)
       return;
-
     let dialogRef;
     switch (type) {
       case 'image':
+        let tmpData = structuredClone(this.component.columns.content[row][column].content[i])
         let tmpDialog = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editImage(this.component.columns.content[row][column].content[i])
         });
         tmpDialog.afterClosed().subscribe(result => {
-          if (result !== undefined)
-            this.component.columns.content[row][column].content[i].src = result;
+          if (result === undefined)
+            this.component.columns.content[row][column].content[i] = tmpData;
+          else if (result.src == '')
+            this.deleteContent(column, row, i);
         });
         break;
       case 'divider':

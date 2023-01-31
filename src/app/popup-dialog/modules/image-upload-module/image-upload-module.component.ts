@@ -1,6 +1,7 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { AbstractDialogModule } from '../AbstractDialogModule';
 
@@ -13,11 +14,12 @@ export class ImageUploadModuleComponent extends AbstractDialogModule {
   title = 'Image upload'
   form: UntypedFormGroup;
   progress: number = 0;
-  uploading = 0;
+  uploading = false;
   imgChangeEvt: any = '';
 
   constructor(public fb: UntypedFormBuilder,
-    public fileUploadService: FileUploadService) {
+    public fileUploadService: FileUploadService,
+    public dialogRef: MatDialogRef<ImageUploadModuleComponent>) {
     super();
     this.form = this.fb.group({
       file: [null]
@@ -26,7 +28,6 @@ export class ImageUploadModuleComponent extends AbstractDialogModule {
 
   
   uploadFile(event: any) {
-    // console.log(event)
     this.imgChangeEvt = event;
     if ((event.target as HTMLInputElement) == null)
       return;
@@ -42,50 +43,26 @@ export class ImageUploadModuleComponent extends AbstractDialogModule {
       return;
     }
 
-    // this.form.patchValue({
-    //   file: file
-    // });
-    // this.form.get('file')?.updateValueAndValidity();
-    // this.uploadToServer();
-  }
-
-  uploadNew() {
-    this.uploading = 0;
-  }
-
-  gallery() {
-    this.uploading = 3;
+    this.form.patchValue({
+      file: file
+    });
+    this.form.get('file')?.updateValueAndValidity();
+    console.log(file)
   }
 
   uploadToServer() {
-    this.fileUploadService.addUser(
-       this.form.value.file
-    ).subscribe((event: HttpEvent<any>) => {
+    this.fileUploadService.uploadFile(this.form.value.file).subscribe((event: HttpEvent<any>) => {
       switch (event.type) {
-        case HttpEventType.Sent:
-          // console.log('Request has been made!');
-          this.uploading = 1;
-          break;
-        case HttpEventType.ResponseHeader:
-          // console.log('Response header has been received!');
-          break;
-        case HttpEventType.UploadProgress:
-          if (event.total)
-            this.progress = Math.round(event.loaded / event.total * 100);
-          // console.log(`Uploaded! ${this.progress}%`);
-          break;
-        case HttpEventType.Response:
-          this.uploading = 2;
-          // console.log('User successfully created!', event.body);
-          // this.image = event.body;// change
-          this.data.alt = event.body.name;
-          this.data.src = event.body.url;
-          this.data.height = event.body.height;
-          setTimeout(() => {
-            this.progress = 0;
-          }, 1500);
-
-      }
+            case HttpEventType.Sent:
+              this.uploading = true;
+              break;
+            case HttpEventType.UploadProgress:
+              if (event.total)
+                this.progress = Math.round(event.loaded / event.total * 100);
+              break;
+            case HttpEventType.Response:
+              this.dialogRef.close(event.body);
+            }
     })
   }
 

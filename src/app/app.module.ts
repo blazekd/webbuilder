@@ -23,7 +23,6 @@ import { QuillModule } from 'ngx-quill'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SectionComponent } from './create-web/section/section.component';
 import { TextComponent } from './create-web/section/text/text.component';
-import { BackgroundModuleComponent } from './popup-dialog/modules/background-module/background-module.component';
 import { ColorModuleComponent } from './popup-dialog/modules/color-module/color-module.component';
 import { SizeModuleComponent } from './popup-dialog/modules/size-module/size-module.component';
 import { ColumnsModuleComponent } from './popup-dialog/modules/columns-module/columns-module.component';
@@ -43,6 +42,7 @@ import { PopupDialogComponent } from './popup-dialog/popup-dialog.component';
 import { ImageModuleComponent } from './popup-dialog/modules/image-module/image-module.component';
 import { ImageUploadModuleComponent } from './popup-dialog/modules/image-upload-module/image-upload-module.component';
 import { QuillCustomSettingModule } from 'src/quill-custom-settings-module';
+import { GalleryModuleComponent } from './popup-dialog/modules/gallery-module/gallery-module.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,6 @@ import { QuillCustomSettingModule } from 'src/quill-custom-settings-module';
     NavigationBarComponent,
     SectionComponent,
     TextComponent,
-    BackgroundModuleComponent,
     ColorModuleComponent,
     SizeModuleComponent,
     ColumnsModuleComponent,
@@ -66,6 +65,7 @@ import { QuillCustomSettingModule } from 'src/quill-custom-settings-module';
     PopupDialogComponent,
     ImageModuleComponent,
     ImageUploadModuleComponent,
+    GalleryModuleComponent,
   ],
   imports: [
     BrowserModule,
