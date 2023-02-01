@@ -1,6 +1,6 @@
 
-<div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.size.height]">
-    <div class="flex-container" [ngClass]="[component.size.width]" cdkDropListGroup>
+<div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.height]">
+    <div class="flex-container" [ngClass]="[component.width]" cdkDropListGroup>
         <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,0)" class="column-width column-width-top" [attr.column]="'up'">
             <div class="column-width-border column-width-border-end"></div>
         </div>

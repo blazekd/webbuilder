@@ -3,9 +3,9 @@
   <mat-toolbar-row>
     <span class="toolbar-title"> Web builder </span>
 
-    <div fxFlex fxLayout fxLayoutAlign="flex-end center">
+    <div class="d-flex justify-content-end align-items-center w-100">
 
-      <mat-list-item fxHide.xs *ngIf="returnUrl === '/web'">
+      <mat-list-item>
         <span class="p-1">View: </span>
         <mat-button-toggle-group aria-label="Font Style" class="icon-display">
           <mat-button-toggle [checked]="!showPc" (change)="showPc = false"><mat-icon>smartphone</mat-icon></mat-button-toggle>
@@ -13,19 +13,19 @@
         </mat-button-toggle-group>
       </mat-list-item>
 
-      <ul fxLayout fxLayoutGap="20px" class="navigation-items">
-        <li fxHide.xs matRipple [matRippleColor]="'#ffffff2f'">
+      <ul class="d-flex navigation-items">
+        <li matRipple [matRippleColor]="'#ffffff2f'">
           <button mat-button>
             <mat-icon> download </mat-icon><span> Save as HTML </span>
           </button>
         </li>
-        <li fxHide.xs matRipple [matRippleColor]="'#ffffff2f'">
+        <li matRipple [matRippleColor]="'#ffffff2f'">
           <button mat-button>
             <mat-icon> settings </mat-icon><span> Page settings </span>
           </button>
         </li>
 
-        <li fxHide.xs matRipple [matRippleColor]="'#ffffff2f'">
+        <li matRipple [matRippleColor]="'#ffffff2f'">
           <button mat-button>
             <mat-icon> help_outline </mat-icon><span> Help </span>
           </button>

@@ -1,12 +1,9 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
-import ImageDropAndPaste from 'quill-image-drop-and-paste';
 import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
 import { DialogData } from '../popup-dialog/dialog-settings';
-import { SectionComponentClass, GridComponentClass } from './component-classes';
-import { FONT_NAMES, FONT_NAMES_LOWER } from './constants';
+import { SectionComponentClass } from './component-classes';
 
 @Component({
   selector: 'app-create-web',

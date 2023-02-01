@@ -10,9 +10,15 @@ abstract class AbstractBackgroundClass {
   }
 }
 
+//mixins
+abstract class AbstractSizeClass {
+  height: string = '50%';
+  width: string = '50%';
+}
+
 export class SectionComponentClass extends AbstractBackgroundClass {
 
-  constructor(public color: ColorClass, public size: SizeClass, public columns: ColumnWrapperClass, src?: string) {
+  constructor(public color: ColorClass, public width: string, public height: string, public columns: ColumnWrapperClass, src?: string) {
     super(src);
   }
 
@@ -20,12 +26,12 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static empty() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width1', 'height5'), 
+      'width1', 'height5', 
       new ColumnWrapperClass([]))
   }
   static text() : SectionComponentClass {
     return new SectionComponentClass(ColorClass.default(), 
-      new SizeClass('width1', 'height5'), 
+      'width1', 'height5', 
       new ColumnWrapperClass(
       [[
           new ColumnClass([new TextClass(LOREM[0])])
@@ -36,7 +42,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static grid() : SectionComponentClass {
     return new SectionComponentClass(ColorClass.default(), 
-      new SizeClass('width1', 'height5'), 
+      'width1', 'height5', 
       new ColumnWrapperClass(
       [[
           new ColumnClass([GridComponentClass.test2()],100,false)
@@ -48,7 +54,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static text2() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width1', 'height5'),
+      'width1', 'height5',
       new ColumnWrapperClass(      
         [[
         new ColumnClass([new TextClass(LOREM[0])]), 
@@ -58,7 +64,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static webnode0() : SectionComponentClass { // webnode!!!
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width3', 'height3'), 
+      'width3', 'height3', 
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -70,7 +76,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static webnode1() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width5', 'height5'),
+      'width5', 'height5',
       new ColumnWrapperClass(      
       [
         [
@@ -116,7 +122,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static webnode2() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width5', 'height3'),
+      'width5', 'height3',
       new ColumnWrapperClass(      
         [[
         new ColumnClass([new TextClass('')],20),
@@ -129,7 +135,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static webnode3() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width5', 'height2'),
+      'width5', 'height2',
       new ColumnWrapperClass(      
         [
           [
@@ -176,7 +182,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static webnode4() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width5', 'height3'),
+      'width5', 'height3',
       new ColumnWrapperClass(      
         [[
         new ColumnClass([
@@ -189,7 +195,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static webnodeFooter() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width1', 'height5'),
+      'width1', 'height5',
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -202,7 +208,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static webnodeNav() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width3', 'height5'),
+      'width3', 'height5',
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -213,7 +219,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static text3() : SectionComponentClass {
     return new SectionComponentClass(ColorClass.default(), 
-      new SizeClass('width1', 'height5'), 
+      'width1', 'height5', 
       new ColumnWrapperClass(
         [[
           new ColumnClass([new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3])])
@@ -226,7 +232,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static columns() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width1', 'height5'), 
+      'width1', 'height5', 
       new ColumnWrapperClass([[
         new ColumnClass(
           [
@@ -259,7 +265,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static title() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width2', 'height3'), 
+      'width2', 'height3', 
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -273,7 +279,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   static image() : SectionComponentClass {
     return new SectionComponentClass(
       ColorClass.default(), 
-      new SizeClass('width1', 'height5'), 
+      'width1', 'height5', 
       new ColumnWrapperClass(      
       [[
         new ColumnClass(
@@ -370,13 +376,13 @@ export class DividerClass {
   export class GridComponentClass extends AbstractBackgroundClass {
     type = 'grid';
 
-    constructor(public color: ColorClass, public size: SizeClass, public cards: CardClass[], public template: CardClass, public columns: GridColumnClass, src?: string) {
+    constructor(public color: ColorClass, public width: string, public height: string, public cards: CardClass[], public template: CardClass, public columns: GridColumnClass, src?: string) {
       super(src)
     }
 
     static test() : GridComponentClass {
       return new GridComponentClass(ColorClass.default(), 
-        new SizeClass('width1', 'height5'), 
+        'width1', 'height5', 
         [
           new CardClass(
             [
@@ -404,7 +410,7 @@ export class DividerClass {
 
     static test2() : GridComponentClass {
       return new GridComponentClass(ColorClass.default(), 
-        new SizeClass('width4', 'height5'), 
+        'width4', 'height5', 
         [
           new CardClass(
             [
@@ -457,15 +463,6 @@ export class DividerClass {
 
 
 
-  
-  export class SizeClass {
-    width: string;
-    height: string;
-    constructor(width: string, height: string) {
-      this.width = width;
-      this.height = height;
-    }
-  }
 
   export class ColumnWrapperClass {
     constructor(public content: ColumnClass[][], public columns: number = 1) {

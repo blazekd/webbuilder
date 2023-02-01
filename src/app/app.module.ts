@@ -20,7 +20,6 @@ import { MatListModule } from '@angular/material/list';
 import { CreateWebComponent } from './create-web/create-web.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { QuillModule } from 'ngx-quill'
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { SectionComponent } from './create-web/section/section.component';
 import { TextComponent } from './create-web/section/text/text.component';
 import { ColorModuleComponent } from './popup-dialog/modules/color-module/color-module.component';
@@ -123,7 +122,6 @@ import { GalleryModuleComponent } from './popup-dialog/modules/gallery-module/ga
   
     }),
     QuillCustomSettingModule,
-    FlexLayoutModule,
     ImageCropperModule,
     // SortablejsModule.forRoot({ animation: 30 })
     SortablejsModule.forRoot({}),
