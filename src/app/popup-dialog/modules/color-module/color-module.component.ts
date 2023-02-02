@@ -9,43 +9,29 @@ import { ChangeMenuEvent } from '../list-module/list-module.component';
 })
 export class ColorModuleComponent extends AbstractDialogModule {
   title = 'Colors'
-  @ViewChildren('colorBinding') colorBinding!: QueryList<ElementRef>;
+
+
   colors = [
-    'color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9', 'color10'
+    {text: '#000000', background: '#ffffff'},
+    {text: '#a78e01', background: '#ffffff'},
+    {text: '#000000', background: '#d3d3d3'},
+    {text: '#a78e01', background: '#d3d3d3'},
+    {text: '#000000', background: '#808080'},
+    {text: '#a78e01', background: '#808080'},
+    {text: '#ffffff', background: '#3b3b3b'},
+    {text: '#ffd700', background: '#3b3b3b'},
+    {text: '#ffffff', background: '#000000'},
+    {text: '#ffd700', background: '#000000'}
   ]
 
 
   unsetColors() {
-    this.data.color.name = 'nocolors';
-    this.data.color.color = 'unset';
-    this.data.color.background = 'unset'
+    this.data.textColor = 'unset';
+    this.data.backgroundColor = 'unset'
   }
 
-  changeBackgroundColor(color: string) {
-    this.data.color.background = color;
-    this.data.color.customBackground = color;
-  }
-
-  changeTextColor(color: string) {
-    this.data.color.color = color;
-    this.data.color.customColor = color;
-  }
-
-  changeColor(color: string) {
-    // console.log(this.currentColor);
-    // this.currentColor = color;
-    this.data.color.name = color;
-    this.setColor();
-    // this.change.emit(this.data)
-    // console.log(color);
-  }
-
-  setColor() {
-    const style = getComputedStyle(this.colorBinding.toArray().filter((x) => x.nativeElement.id == this.data.color.name)[0].nativeElement);
-    // console.log(style.color);
-    // console.log(style.backgroundColor);
-    // this.color = new ColorClass(style.color, style.backgroundColor, this.color.name);
-    this.data.color.color = style.color;
-    this.data.color.background = style.backgroundColor;
+  changeColor(colors: any) {
+    this.data.textColor = colors.text;
+    this.data.backgroundColor = colors.background;
   }
 }

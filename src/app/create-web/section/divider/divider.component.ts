@@ -9,7 +9,4 @@ import { DividerClass, DividerSizeClass } from '../../component-classes';
 export class DividerComponent {
   @Input() content!: DividerClass;
 
-  displayRadius(e: DividerSizeClass) {
-    return (e.radiusType === '%' ? e.radius : e.radius / 5) + e.radiusType;
-  }
 }

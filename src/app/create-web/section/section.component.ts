@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TextClass, ImageClass, DividerClass, ColumnClass, SectionComponentClass } from '../component-classes';
+import { TextClass, ImageClass, DividerClass, ColumnClass, SectionComponentClass, GridComponentClass, Cloneable } from '../component-classes';
 import { moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Subject } from 'rxjs';
 import { PopupDialogComponent } from '../../popup-dialog/popup-dialog.component';
@@ -60,8 +60,8 @@ export class SectionComponent {
       backgroundImage: this.component.src == '' ? '' : 'url(' + this.component.src + ')',
       backgroundPositionX: this.component.left,
       backgroundPositionY: this.component.top,
-      backgroundColor: this.component.color.background,
-      color: this.component.color.color,
+      backgroundColor: this.component.backgroundColor,
+      color: this.component.textColor,
     }
   } 
 
@@ -155,7 +155,7 @@ export class SectionComponent {
         });
         tmpDialog.afterClosed().subscribe(result => {
           if (result === undefined)
-            this.component.columns.content[row][column].content[i] = tmpData;
+            this.component.columns.content[row][column].content[i] = Cloneable.deepCopy(tmpData);
           else if (result.src == '')
             this.deleteContent(column, row, i);
         });
@@ -189,4 +189,21 @@ export class SectionComponent {
       this.component.columns.content[row][i].flexBasis = event.sizes[i];
     }
   }
+
+  asTextClass(item: any) {
+    return item as TextClass;
+  }
+
+  asImageClass(item: any) {
+    return item as ImageClass;
+  }
+
+  asDividerClass(item: any) {
+    return item as DividerClass;
+  }
+
+  asGridComponentClass(item: any) {
+    return item as GridComponentClass;
+  }
+
 }

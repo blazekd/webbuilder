@@ -1,37 +1,60 @@
 import { LOREM } from './constants';
 
 
-abstract class AbstractBackgroundClass {
+
+
+
+interface ImageInterface {
+  left: string;
+  top: string;
+  src: string;
+}
+
+
+interface SizeInterface {
+  height: string;
+  width: string;
+}
+
+interface ColorInterface {
+  textColor: string;
+  backgroundColor: string;
+}
+
+
+// interface Exportable {
+//   exportToHTML(): ;
+// }
+
+
+export class SectionComponentClass implements ImageInterface, SizeInterface, ColorInterface {
   left: string = '50%';
   top: string = '50%';
+  backgroundColor: string = '#ffffff';
+  textColor: string = '#000000'
+  constructor(public width: string, public height: string, public columns: ColumnWrapperClass, public src: string = '') {
   
-  constructor(public src: string = '') {
-
   }
-}
 
-//mixins
-abstract class AbstractSizeClass {
-  height: string = '50%';
-  width: string = '50%';
-}
 
-export class SectionComponentClass extends AbstractBackgroundClass {
-
-  constructor(public color: ColorClass, public width: string, public height: string, public columns: ColumnWrapperClass, src?: string) {
-    super(src);
+  toHTML() {
+    return `
+      <div style="min-height: ${this.height}vh; background-image: ${this.src == '' ? '' : 'url(' + this.src + ')'}; background-position-x: ${this.left}; background-position-y: ${this.top}; background-color: ${this.backgroundColor}; color: ${this.textColor}; padding: 20px 40px; background-size: cover; display: flex;">
+        <div style="max-width: ${this.width}px; margin: 0 auto; width: 100%;">
+          ${this.columns.toHTML()}
+        </div>
+      </div>`
   }
 
 
   static empty() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width1', 'height5', 
+      'unset', '0', 
       new ColumnWrapperClass([]))
   }
   static text() : SectionComponentClass {
-    return new SectionComponentClass(ColorClass.default(), 
-      'width1', 'height5', 
+    return new SectionComponentClass(
+      'unset', '0', 
       new ColumnWrapperClass(
       [[
           new ColumnClass([new TextClass(LOREM[0])])
@@ -41,8 +64,8 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
 
   static grid() : SectionComponentClass {
-    return new SectionComponentClass(ColorClass.default(), 
-      'width1', 'height5', 
+    return new SectionComponentClass(
+      'unset', '0', 
       new ColumnWrapperClass(
       [[
           new ColumnClass([GridComponentClass.test2()],100,false)
@@ -53,8 +76,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static text2() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width1', 'height5',
+      'unset', '0',
       new ColumnWrapperClass(      
         [[
         new ColumnClass([new TextClass(LOREM[0])]), 
@@ -63,8 +85,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   }
   static webnode0() : SectionComponentClass { // webnode!!!
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width3', 'height3', 
+      '1600', '50', 
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -75,8 +96,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   }
   static webnode1() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width5', 'height5',
+      '1000', '0',
       new ColumnWrapperClass(      
       [
         [
@@ -121,8 +141,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   }
   static webnode2() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width5', 'height3',
+      '1000', '50',
       new ColumnWrapperClass(      
         [[
         new ColumnClass([new TextClass('')],20),
@@ -134,8 +153,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static webnode3() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width5', 'height2',
+      '1000', '75',
       new ColumnWrapperClass(      
         [
           [
@@ -181,8 +199,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static webnode4() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width5', 'height3',
+      '1000', '50',
       new ColumnWrapperClass(      
         [[
         new ColumnClass([
@@ -194,8 +211,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static webnodeFooter() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width1', 'height5',
+      'unset', '0',
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -207,8 +223,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   
   static webnodeNav() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width3', 'height5',
+      '1600', '0',
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -218,8 +233,8 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   }
 
   static text3() : SectionComponentClass {
-    return new SectionComponentClass(ColorClass.default(), 
-      'width1', 'height5', 
+    return new SectionComponentClass(
+      'unset', '0', 
       new ColumnWrapperClass(
         [[
           new ColumnClass([new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3])])
@@ -231,8 +246,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static columns() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width1', 'height5', 
+      'unset', '0', 
       new ColumnWrapperClass([[
         new ColumnClass(
           [
@@ -264,8 +278,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static title() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width2', 'height3', 
+      '1750', '50', 
       new ColumnWrapperClass(      [[
         new ColumnClass(
           [
@@ -278,8 +291,7 @@ export class SectionComponentClass extends AbstractBackgroundClass {
 
   static image() : SectionComponentClass {
     return new SectionComponentClass(
-      ColorClass.default(), 
-      'width1', 'height5', 
+      'unset', '0', 
       new ColumnWrapperClass(      
       [[
         new ColumnClass(
@@ -290,26 +302,58 @@ export class SectionComponentClass extends AbstractBackgroundClass {
   }
 }
 
+interface HTMLable {
+  toHTML(): string;
+}
+
+interface SectionContentInterface extends HTMLable {
+  type: string;
+}
 
 export class ColumnClass {
 
-  constructor(public content: any[], public flexBasis: number = 100, public resizable: boolean = true) {
+  constructor(public content: SectionContentInterface[], public flexBasis: number = 100, public resizable: boolean = true) {
+  }
+
+  toHTML() {
+    let result = ''
+    this.content.forEach(e => {
+      result += e.toHTML();
+    })
+    return `
+    <div style="flex-basis: ${this.flexBasis}%">
+      ${result}
+    </div>`
   }
 }
 
 
-export class TextClass {
+export class TextClass implements SectionContentInterface {
   type = 'text';
   constructor(public text: string) {
   }
+  toHTML(): string {
+    return `
+    <div style="padding: 14px 17px">
+      ${this.text == '' ? '<p><br></p>' : this.text}
+    </div>`;
+  }
 }
 
-export class ImageClass {
+export class ImageClass implements ImageInterface, SectionContentInterface {
   type = 'image';
-  left = '50%';
-  top = '50%';
-  constructor(public src: string, public height: string, public style = 1) {
+  //todo remove style?
+  constructor(public src: string, public height: string, public style = 1, public left = '50%', public top = '50%') {
 
+  }
+  toHTML(): string {
+    return `
+    <div style="margin: 11px">
+      <div style="max-height: ${this.height}; height: 99999px">
+        <img src=${this.src} alt="image" style="object-position: ${this.left} ${this.top}; width: 100%; object-fit:cover; height: 100%;">
+      </div>
+    </div>
+    `;
   }
 
   static default() : ImageClass {
@@ -337,10 +381,17 @@ export class DividerSizeClass {
 }
 
 
-export class DividerClass {
+export class DividerClass implements SectionContentInterface {
   type = 'divider';
   constructor(public color: DividerColorClass, public size: DividerSizeClass) {
 
+  }
+  toHTML(): string {
+    return `<div style="padding-bottom: 1px"><hr style="border-top-color: ${this.color.color}; border-top-width: ${this.size.height}px; width: ${this.size.width}%; opacity: ${this.color.opacity}; border-radius: ${this.displayRadius()}"></div>`
+  }
+
+  displayRadius() {
+    return (this.size.radiusType === '%' ? this.size.radius : this.size.radius / 5) + this.size.radiusType;
   }
 
   static default() : DividerClass {
@@ -353,36 +404,30 @@ export class DividerClass {
 
   
   
-  export class ColorClass {
-    color: string = '#000000';
-    background: string = '#ffffff';
-    name: string;
-    customColor: string;
-    customBackground: string;
-    constructor(customColor: string, customBackground: string, name: string) {
-      this.customColor = customColor;
-      this.customBackground = customBackground;
-      this.name = name;
-      this.color = customColor;
-      this.background = customBackground;
-    }
 
-    static default() : ColorClass {
-      return new ColorClass('#000000', '#ffffff', 'color1');
-    }
-  }
   
 
-  export class GridComponentClass extends AbstractBackgroundClass {
+  export class GridComponentClass implements SectionContentInterface {
     type = 'grid';
+    constructor(public cards: CardClass[], public template: CardClass, public columns: GridColumnClass) {
 
-    constructor(public color: ColorClass, public width: string, public height: string, public cards: CardClass[], public template: CardClass, public columns: GridColumnClass, src?: string) {
-      super(src)
+    }
+    toHTML(): string {
+      let result = '<div style="padding: 40px;"><div style="display: flex; justify-content: center; flex-wrap: wrap;">'
+      this.cards.forEach(card => {
+        result += `
+        <div style="background-color: ${card.backgroundColor}; color: ${card.textColor}; flex-basis: ${100/this.columns.columns}%; background-position: ${card.left} ${card.top}; background-size: cover; background-image: url(${card.src}); padding: 15px 10px 0;">
+          ${card.toHTML()}
+        </div>`;
+      })
+      result += '</div></div>'
+      return result;
     }
 
+
+
     static test() : GridComponentClass {
-      return new GridComponentClass(ColorClass.default(), 
-        'width1', 'height5', 
+      return new GridComponentClass(
         [
           new CardClass(
             [
@@ -409,56 +454,64 @@ export class DividerClass {
     }
 
     static test2() : GridComponentClass {
-      return new GridComponentClass(ColorClass.default(), 
-        'width4', 'height5', 
-        [
+      return new GridComponentClass(
+        [ 
           new CardClass(
             [
-              {...new ImageClass('https://img.obrazky.cz/?url=b912f7f41b62f52e&size=2', '150px'),
-              top: '30%'
-            }, 
-              new TextClass('Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris elementum mauris vitae tortor. Maecenas libero. Nulla quis diam. Donec iaculis gravida nulla.')
+              new ImageClass('https://img.obrazky.cz/?url=b912f7f41b62f52e&size=2', '150px', 1, '50%', '30%'), 
+              new TextClass('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris elementum mauris vitae tortor. Maecenas libero. Nulla quis diam. Donec iaculis gravida nulla.</p>')
             ]),
           new CardClass(
             [
-              {...new ImageClass('https://cdn.myshoptet.com/usr/www.sladke-potreby.cz/user/shop/big/44209-1_depositphotos-185673142-m-2015.jpg?611fd2c0', '150px'),
-              top: '10%'
-            }, 
-              new TextClass('Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat.')
+              new ImageClass('https://cdn.myshoptet.com/usr/www.sladke-potreby.cz/user/shop/big/44209-1_depositphotos-185673142-m-2015.jpg?611fd2c0', '150px', 1, '50%', '10%'),
+              new TextClass('<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat.</p>')
             ]),
           new CardClass(
             [
-              {...new ImageClass('https://blog.eshop-rychle.cz/wp-content/uploads/2019/03/light-bulb-1318337_960_720-1.png', '150px'), 
-              top: '30%'
-            },
-              new TextClass('Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Aliquam id dolor.')
+              new ImageClass('https://blog.eshop-rychle.cz/wp-content/uploads/2019/03/light-bulb-1318337_960_720-1.png', '150px', 1, '50%', '30%'),
+              new TextClass('<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Aliquam id dolor.</p>')
             ]),
           new CardClass(
             [
-              {...new ImageClass('https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg', '150px'), 
-              top: '30%'
-            },
-              new TextClass('Curabitur vitae diam non enim vestibulum interdum. Phasellus et lorem id felis nonummy placerat. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo.')
+              new ImageClass('https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg', '150px', 1, '50%', '30%'),
+              new TextClass('<p>Curabitur vitae diam non enim vestibulum interdum. Phasellus et lorem id felis nonummy placerat. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo.</p>')
             ])
         ],
         new CardClass(
           [
             new ImageClass('https://bahmansport.com/media/com_store/images/empty.png', '150px'), 
-            new TextClass('TEXT?')
+            new TextClass('<p>TEXT?</p>')
           ]),
           new GridColumnClass(4))
     }
   }
-
+  //todo delete?
   export class GridColumnClass {
     constructor(public columns: number = 2) {
     }
   }
 
-  export class CardClass extends AbstractBackgroundClass {
-    constructor(public content: any, public color: ColorClass = ColorClass.default(), src?: string) {
-      super(src);
+  export class CardClass implements ImageInterface, ColorInterface, HTMLable {
+    left: string = '50%';
+    top: string = '50%';
+    textColor: string = 'unset';
+    backgroundColor: string = 'unset';
+    constructor(public content: SectionContentInterface[], public src: string = '') {
+
     }
+    toHTML(): string {
+      let content = '';
+      this.content.forEach(e => {
+        content += `
+        <div style="padding: 0 10px 25px">
+          ${e.toHTML()}
+        </div>`
+      });
+      return content
+    }
+
+
+
   }
 
 
@@ -468,6 +521,34 @@ export class DividerClass {
     constructor(public content: ColumnClass[][], public columns: number = 1) {
 
     }
+
+    toHTML() {
+      let result = '';
+      this.content.forEach(element => {
+        result += '<div style="display: flex;">'
+        element.forEach(e => {
+          result += e.toHTML();
+        })
+        result += '</div>'
+      })
+        
+      return result
+    }
   }
 
 
+  export class Cloneable {
+    public static deepCopy<T>(source: T): T {
+      return Array.isArray(source)
+      ? source.map(item => this.deepCopy(item))
+      : source instanceof Date
+      ? new Date(source.getTime())
+      : source && typeof source === 'object'
+            ? Object.getOwnPropertyNames(source).reduce((o, prop) => {
+               Object.defineProperty(o, prop, Object.getOwnPropertyDescriptor(source, prop)!);
+               o[prop] = this.deepCopy((source as { [key: string]: any })[prop]);
+               return o;
+            }, Object.create(Object.getPrototypeOf(source)))
+      : source as T;
+    }
+  }

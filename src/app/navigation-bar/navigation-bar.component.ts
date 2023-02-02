@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { DataManipulationService } from '../services/data-manipulation.service';
 
 
 @Component({
@@ -8,34 +9,22 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent {
-  //todo sidenav asi už není ne
-  @Output() toggleSidenav = new EventEmitter<void>();
-
-  returnUrl = '/';
 
   showPc = true;
 
-  constructor(private router: Router) {
-
-    this.router.events.subscribe((event) => {
-
-      if (event instanceof NavigationEnd) {
-
-        this.returnUrl = event.url;
-
-        console.log('NavigationBarComponent returnUrl: ' + this.returnUrl);
-      }
-
-    });
-
+  constructor(private service: DataManipulationService) {
+    
   }
 
-  public onProfile() {
-
+  importJSON() {
+    this.service.importData();
   }
 
-  public logout() {
-
+  exportJSON() {
+    this.service.exportJSON();
   }
 
+  exportHTML() {
+    this.service.exportHTML();
+  }
 }

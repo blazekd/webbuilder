@@ -1,26 +1,26 @@
 <mat-tab-group dynamicHeight mat-stretch-tabs>
     <mat-tab label="Preset">
-        <div [id]="'nocolors'" class="color nocolors" [class.color-active]="'nocolors' == data.color.name" (click)="unsetColors()"></div>
-        <div *ngFor="let item of colors" [id]="item" class="color" [class.color-active]="item == data.color.name" (click)="changeColor(item)" #colorBinding></div>
+        <div class="color nocolors" (click)="unsetColors()"></div>
+        <div *ngFor="let item of colors" class="color" [style.color]="item.text" [style.backgroundColor]="item.background" (click)="changeColor(item)"></div>
     </mat-tab>
     <mat-tab label="Custom">
-        <div [id]="'custom'" class="color" [class.color-active]="'custom' == data.color.name" [style.color]="data.color.customColor" [style.background]="data.color.customBackground" (click)="changeColor('custom')" #colorBinding></div>
-        <div (click)="changeColor('custom')">
+        <div class="color" [style.color]="data.textColor" [style.background]="data.backgroundColor"></div>
+        <div>
             <div class="my-label-container">
                 <label>Background color</label>
-                <label class="my-value-label">{{data.color.customBackground}}</label>
+                <label class="my-value-label">{{data.backgroundColor}}</label>
             </div>
             <mat-form-field class="w-100" appearance="fill">
-                <input matInput type="color" [ngModel]="data.color.customBackground" (ngModelChange)="changeBackgroundColor($event)">
+                <input matInput type="color" [(ngModel)]="data.backgroundColor">
             </mat-form-field>
         </div>
         <div>
             <div class="my-label-container">
                 <label>Text color</label>
-                <label class="my-value-label">{{data.color.customColor}}</label>
+                <label class="my-value-label">{{data.textColor}}</label>
             </div>
             <mat-form-field class="w-100" appearance="fill">
-                <input matInput type="color" [ngModel]="data.color.customColor" (ngModelChange)="changeTextColor($event)">
+                <input matInput type="color" [(ngModel)]="data.textColor">
             </mat-form-field>
         </div>
     </mat-tab>

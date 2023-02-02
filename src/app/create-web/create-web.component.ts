@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
 import { DialogData } from '../popup-dialog/dialog-settings';
-import { SectionComponentClass } from './component-classes';
+import { Cloneable, SectionComponentClass } from './component-classes';
+import { DataManipulationService } from '../services/data-manipulation.service';
 
 @Component({
   selector: 'app-create-web',
@@ -16,6 +17,7 @@ export class CreateWebComponent {
   showPc = true;
 
 
+
   components: SectionComponentClass[] = [
     SectionComponentClass.webnodeNav(),
     SectionComponentClass.webnode0(),
@@ -26,11 +28,74 @@ export class CreateWebComponent {
     SectionComponentClass.webnodeFooter(),
   ]
 
-  // pageSettings: PageSettings = { title: 'Název stránky', defaultFont: 'Roboto', defaultFontWeight: '300'}
-  // oldPageSettings: PageSettings = Object.assign({}, this.pageSettings);
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private service: DataManipulationService) {
+    this.service.message.subscribe(($event) => this.handleService($event))
+   }
 
+  handleService($event: any) {
+    switch ($event) {
+      case 'JSON':
+        this.exportToJSON();
+        break;
+      case 'HTML':
+        this.exportToHTML();
+        break;
+      default:
+        console.log($event)
+    }
+  }
+
+  exportToJSON() {
+    const jsonData = JSON.stringify(this.components);
+    const uri = 'data:application/json;charset=UTF-8,' + encodeURIComponent(jsonData);
+    this.saveAs(uri, 'website.json');
+  }
+
+  exportToHTML() {
+    let result = ''
+    this.components.forEach(element => {
+      result += element.toHTML();
+    });
+    let html =  `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Indie+Flower&family=Pacifico&family=Style+Script&display=swap" rel="stylesheet">
+        <title>Page Title</title>
+        <style>
+          body {
+            padding: 0;
+            margin: 0;
+            font-family: Helvetica,Arial,sans-serif;
+            font-size: 13px;
+          }
+          h1, h2, h3 {
+            margin: 0;
+            font-weight: 500;
+            line-height: 1.2;
+          }
+          p {
+            margin: 0;
+            line-height: 1.42;
+          }
+          * {
+            box-sizing: border-box;
+          }
+          hr {
+            margin: 1rem auto;
+          }
+        </style>
+      </head>
+      <body>
+        ${result}
+      </body>
+    </html>`
+    const uri = 'data:text/plain;charset=UTF-8,' + encodeURIComponent(html);
+    this.saveAs(uri, 'website.html');
+  }
 
 
   addComp(i: number) {
@@ -79,7 +144,7 @@ export class CreateWebComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === undefined)
-        this.components[i] = dataTmp;
+      this.components[i] = Cloneable.deepCopy(dataTmp)
     });
   }
 
@@ -93,6 +158,26 @@ export class CreateWebComponent {
 
   deleteComp(index: number) {
     this.components.splice(index, 1);
+  }
+
+  saveAs(uri:any, filename:any) {
+    var link = document.createElement('a');
+    if (typeof link.download === 'string') {
+        link.href = uri;
+        link.download = filename;
+  
+        //Firefox requires the link to be in the body
+        document.body.appendChild(link);
+  
+        //simulate click
+        link.click();
+  
+        //remove the link when done
+        document.body.removeChild(link);
+  
+    } else {
+        window.open(uri);
+    }
   }
 }
 

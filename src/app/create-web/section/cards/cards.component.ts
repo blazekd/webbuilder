@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Options } from 'sortablejs';
 import { DialogData } from 'src/app/popup-dialog/dialog-settings';
 import { PopupDialogComponent } from 'src/app/popup-dialog/popup-dialog.component';
-import { CardClass, GridComponentClass } from '../../component-classes';
+import { CardClass, Cloneable, GridComponentClass } from '../../component-classes';
 
 @Component({
   selector: 'app-section-cards',
@@ -53,8 +53,8 @@ export class CardsComponent {
   getCardStyle(i: number) {
     return {
       // alignItems: this.component.data.cards[i].alignment.align,
-      backgroundColor: this.component.cards[i].color.background,
-      color: this.component.cards[i].color.color,
+      backgroundColor: this.component.cards[i].backgroundColor,
+      color: this.component.cards[i].textColor,
       flexBasis: 100/this.component.columns.columns + '%',
       backgroundImage: this.component.cards[i].src == '' ? '' : 'url(' + this.component.cards[i].src + ')',
       backgroundPositionX: this.component.cards[i].left,
@@ -100,7 +100,7 @@ export class CardsComponent {
   }
 
   duplicate(i: number) {
-    this.component.cards.splice(i, 0, JSON.parse(JSON.stringify(this.component.cards[i]))); 
+    this.component.cards.splice(i, 0, Cloneable.deepCopy(this.component.cards[i])); 
   }
 
   // drop(event: any) {

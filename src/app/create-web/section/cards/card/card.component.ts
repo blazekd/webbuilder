@@ -2,7 +2,7 @@ import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { CardClass, DividerClass, ImageClass, TextClass } from '../../../component-classes';
+import { CardClass, DividerClass, ImageClass, SectionComponentClass, TextClass } from '../../../component-classes';
 import { PopupDialogComponent } from '../../../../popup-dialog/popup-dialog.component';
 import { DialogData } from '../../../../popup-dialog/dialog-settings';
 
@@ -64,6 +64,18 @@ export class CardComponent {
   
   }
 
+  asTextClass(item: any) {
+    return item as TextClass;
+  }
+
+  asImageClass(item: any) {
+    return item as ImageClass;
+  }
+
+  asDividerClass(item: any) {
+    return item as DividerClass;
+  }
+
   deleteContent(i:number) {
     // console.log(this.component.data.columns.content[column].content[i])
     this.card.content.splice(i, 1);
@@ -82,7 +94,7 @@ export class CardComponent {
         });
         tmpDialog.afterClosed().subscribe(result => {
           if (result === undefined)
-            this.card.content[i] = tmpData;
+            Object.assign(this.card.content[i], tmpData);
           else if (result.src == '')
             this.deleteContent(i);
         });

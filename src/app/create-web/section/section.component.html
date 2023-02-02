@@ -1,6 +1,6 @@
 
-<div class="content-wrapper" [ngStyle]="getStyle()" [ngClass]="[component.height]">
-    <div class="flex-container" [ngClass]="[component.width]" cdkDropListGroup>
+<div class="content-wrapper" [ngStyle]="getStyle()" [style.minHeight.vh]="[component.height]">
+    <div class="flex-container mx-auto" [style.maxWidth.px]="[component.width]" cdkDropListGroup>
         <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,0)" class="column-width column-width-top" [attr.column]="'up'">
             <div class="column-width-border column-width-border-end"></div>
         </div>
@@ -36,10 +36,10 @@
 
                                     <div [ngSwitch]="item.type">
                                 
-                                        <app-section-text *ngSwitchCase="'text'" [content]="item"></app-section-text>
-                                        <app-section-image *ngSwitchCase="'image'" [content]="item"></app-section-image>
-                                        <app-section-divider *ngSwitchCase="'divider'" [content]="item"></app-section-divider>
-                                        <app-section-cards *ngSwitchCase="'grid'" [component]="item"></app-section-cards>
+                                        <app-section-text *ngSwitchCase="'text'" [content]="asTextClass(item)"></app-section-text>
+                                        <app-section-image *ngSwitchCase="'image'" [content]="asImageClass(item)"></app-section-image>
+                                        <app-section-divider *ngSwitchCase="'divider'" [content]="asDividerClass(item)"></app-section-divider>
+                                        <app-section-cards *ngSwitchCase="'grid'" [component]="asGridComponentClass(item)"></app-section-cards>
                                         <div *ngSwitchDefault>{{item.type}}</div>
                                         
                                     </div> 

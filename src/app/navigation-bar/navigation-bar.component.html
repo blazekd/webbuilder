@@ -15,7 +15,17 @@
 
       <ul class="d-flex navigation-items">
         <li matRipple [matRippleColor]="'#ffffff2f'">
-          <button mat-button>
+          <button mat-button (click)="importJSON()">
+            <mat-icon> upload </mat-icon><span> Import JSON </span>
+          </button>
+        </li>
+        <li matRipple [matRippleColor]="'#ffffff2f'">
+          <button mat-button (click)="exportJSON()">
+            <mat-icon> download </mat-icon><span> Export as JSON </span>
+          </button>
+        </li>
+        <li matRipple [matRippleColor]="'#ffffff2f'">
+          <button mat-button (click)="exportHTML()">
             <mat-icon> download </mat-icon><span> Save as HTML </span>
           </button>
         </li>
