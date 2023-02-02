@@ -7,7 +7,7 @@ include 'cors.php';
 if(isset($_FILES[$formFilesInput])) {
 	$images = $_FILES[$formFilesInput];
 	
-	//make directiories if they do not exist
+	// make directiories if they do not exist
 	if (!is_dir("$filesPath")) {
 		mkdir("$filesPath");
 	}
@@ -20,17 +20,17 @@ if(isset($_FILES[$formFilesInput])) {
 	
 	$result = [];
 	
-	//for every file sent
+	// for every file sent
 	foreach ($images["error"] as $key => $error) {
 		$imageMime = mime_content_type($images['tmp_name'][$key]);
 		
-		//check if ok and correct type
+		// check if ok and correct type
 		if (($error == UPLOAD_ERR_OK) && ($imageMime == "image/jpeg" || $imageMime == "image/png")) {
 			
-			//hash file
+			// hash file
 			$fileHash = hash_file('crc32',$images["tmp_name"][$key]);
 			
-			//get extension
+			// get extension
 			switch ($imageMime) {
 				case "image/jpeg":
 					$fileExt = "jpg";

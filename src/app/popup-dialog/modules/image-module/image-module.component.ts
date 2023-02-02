@@ -20,11 +20,7 @@ export class ImageModuleComponent extends AbstractDialogModule {
   title = 'Image settings'
   @ViewChild('imageBoundary') imageBoundary!: ElementRef;
   @ViewChild('imageFocusPoint') imageFocusPoint!: ElementRef;
-  // styles: any[] = [
-  //   {value: 1, viewValue: 'Square'},
-  //   {value: 2, viewValue: 'Circle'},
-  //   {value: 3, viewValue: 'Ellipse'}
-  // ];
+
 
   constructor(public dialog: MatDialog) {
     super();
@@ -66,7 +62,6 @@ export class ImageModuleComponent extends AbstractDialogModule {
   }
 
   dropFocusPoint(event: any) {
-    // console.log(event)
 
     var height = (parseInt(getComputedStyle(this.imageBoundary.nativeElement, '').height))
     var width = (parseInt(getComputedStyle(this.imageBoundary.nativeElement, '').width))
@@ -88,8 +83,6 @@ export class ImageModuleComponent extends AbstractDialogModule {
 
     var newLeft = left + ((event.distance.x) / boundaryX * 100);
     var newTop = top + ((event.distance.y) / boundaryY * 100);
-    // this.test2.nativeElement.style.left = this.image.left =newLeft;
-    // this.test2.nativeElement.style.top = this.image. top = newTop;
     if (newLeft < 0)
       newLeft = 0;
     if (newLeft > 45 && newLeft < 55)

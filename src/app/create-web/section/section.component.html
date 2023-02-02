@@ -8,8 +8,6 @@
             <div class="column-width-border column-width-border-end"></div>
         </div>
         <as-split [gutterSize]="30" *ngFor="let rowContent of component.columns.content; index as row"  (dragEnd)="dragEnd($event, row)" >
-            <!-- <div class="split-wrapper"> -->
-                <!-- <p>{{rowContent[0] }} {{rowContent[0] && rowContent[0].resizable}}</p> -->
                 <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,row)" class="column-width column-width-left" [attr.column]="-1">
                     <div class="column-width-border column-width-border-end"></div>
                 </div>
@@ -29,7 +27,6 @@
                                     <mat-icon cdkDragHandle class="handle" matTooltip="Move element" matTooltipPosition="right" [style.display]="columnContent.resizable ? 'block' : 'none'">open_with</mat-icon>
                                     <mat-icon *ngSwitchDefault (click)="editMenu(column, row, i, item.type)" matTooltip="Edit element" matTooltipPosition="right">edit</mat-icon>
                                     <ng-template *ngSwitchCase="'text'"></ng-template>
-                                    <!-- <ng-template *ngSwitchCase="'grid'"></ng-template> -->
                                     <mat-icon (click)="deleteContent(column, row, i)" matTooltip="Delete element" matTooltipPosition="right">delete</mat-icon>
                                 </div>
                                 <div class="content-inner-wrapper">
@@ -61,7 +58,6 @@
                         </div>
                     </as-split-area>
                 </ng-container>
-            <!-- </div> -->
         </as-split>
     </div>
 </div>

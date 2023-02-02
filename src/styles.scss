@@ -14,32 +14,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
-// @import "../projects/utils/src/lib/angular-material/mat-variables";
-// https://github.com/angular/components/blob/master/src/material/core/style/_variables.scss
-
-$mat-xsmall: 'max-width: 599px';
-$mat-small: 'max-width: 959px';
-
-// https://github.com/angular/components/blob/master/src/material/toolbar/toolbar.scss
-
-$mat-toolbar-height-desktop: 64px !default;
-$mat-toolbar-height-mobile: 56px !default;
-$mat-toolbar-row-padding: 16px !default;
-
-
-// @import "../projects/utils/src/lib/angular-material/variables";
-
-
-
-
-
-
-// top, right, bottom, and left
-// width: 100vw;
-// height: 100vh;
 
 html, body {
-  // height: 100%;
   height: 100vh;
   overflow: hidden;
 }
@@ -60,8 +36,6 @@ quill-editor {
   bottom: 0;
   left: 0;
   right: 0;
-  // width: 100vw;
-  // height: 100vh;
   overflow: auto;
 }
 
@@ -87,20 +61,10 @@ quill-editor {
 
 app-home, app-create-web {
     .ql-editor {
-        // border: none;
+
         border: 1px solid transparent;
         overflow: hidden;
-        // line-height: 1em;
-        // border: 1px dashed black;
-        // position: relative;
-        // &::after {
-        //   content:'';
-        //   position: absolute;
-        //   top: -1px;
-        //   left: -1px;
-        //   width: calc(100% + 2px);
-        //   height: calc(100% + 2px);
-        // }
+
         &:hover {
           border: 1px dashed black;
           outline: 1px dashed white;
@@ -110,32 +74,18 @@ app-home, app-create-web {
           outline: 1px solid white;
         }
 
-        // &.ql-blank {
-        //   width: 300px;
-        // }
-
-        // & > * {
-        //   word-wrap: break-word;
-        // }
         word-break: break-word;
-        // &::after:hover {
-        //   border: 1px dashed white;
-        // }
+
     }
 
-        // width: fit-content;
-        // margin: 3px;
+       
         .ql-position.ql-tooltip.ql-flip {
-            // bottom: calc(100% - 5px);
-            // margin: auto;
-            // left: 0;
-            // right: 0;
-            // width: fit-content;
+
             z-index: 500;
 
             position: absolute;
             left: 50%;
-            /* top: 50%; */
+
             bottom: 100%;
             -webkit-transform: translateX(-50%);
             -moz-transform: translateX(-50%);
@@ -145,7 +95,6 @@ app-home, app-create-web {
             min-width: 300px;
             width: fit-content;
 
-            //TODO: translate -> style
             .ql-toolbar {
               display: flex;
               flex-wrap: wrap;
@@ -171,7 +120,6 @@ app-home, app-create-web {
               border-radius: 16px;
               padding: 0 8px;
               .mat-icon {
-                // padding: 0 4px;
                 cursor: pointer;
                 color: #ccc;
                 &:hover {
@@ -188,7 +136,6 @@ app-home, app-create-web {
 }
 .ql-bubble .ql-picker.ql-size .ql-picker-item[data-value]:not([data-value=''])::before {
   font-size: attr(data-value);
-  // line-height: 1.3em;
   content: attr(data-value);
 }
 
@@ -199,26 +146,6 @@ app-home, app-create-web {
 .ql-bubble .ql-picker.ql-font .ql-picker-label::before {
   content: 'Font';
 }
-
-// .ql-bubble .ql-picker.ql-size .ql-picker-label::before, .ql-bubble .ql-picker.ql-size .ql-picker-item::before
-
-/* Set default font-family */
-// #editor-container {
-//   font-family: "Aref Ruqaa";
-//   font-size: 18px;
-//   height: 375px;
-// }
-
-// .ql-bubble .ql-picker.ql-font .ql-picker-label::before, .ql-bubble .ql-picker.ql-font .ql-picker-item::before
-/* Set dropdown font-families */
-// .ql-bubble .ql-picker.ql-font span.ql-picker-item[data-value]:not([data-value=''])::before {
-//   font-family: attr(data-value);
-//   content: attr(data-value);
-// }
-
-// .ql-picker-item.ql-primary {
-//   border: 1px solid black;
-// }
 
 .ql-bubble .ql-picker-options .ql-picker-item.ql-primary[data-label='none'] {
   background-color: white;
@@ -232,11 +159,9 @@ app-home, app-create-web {
     display: block;
     width: 100%;
     height: 2px;
-    // -webkit-transform: rotate(-45deg);
-    // transform: rotate(-45deg);
+
     -webkit-transform: rotate(-6deg);
     transform: rotate(-6deg);
-    //center the X vertically and horizontally:
     left: 0;
     right: 0;
     top: 0;
@@ -272,19 +197,6 @@ app-home, app-create-web {
   color: red !important;
 }
 
-// .ql-bubble .ql-picker.ql-font .ql-picker-label::before, .ql-bubble .ql-picker.ql-font .ql-picker-item::before {
-//   font-family: attr(data-value);
-//   content: attr(data-value);
-// }
-
-/* Set content font-families */
-// .ql-font-mirza {
-//   font-family: "Mirza";
-// }
-// .ql-font-roboto {
-//   font-family: "Roboto";
-// }
-/* We do not set Aref Ruqaa since it is the default font */
 
 web-logo-module, web-background-module, web-size-module, web-color-module, web-button-module  {
   /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */
@@ -341,10 +253,9 @@ web-grid {
     border: 1px dashed black;
     box-shadow: 0px 0px 5px 0px white;
     width: 0;
-    // z-index: 10;
+
   }
-  // border-left: 1px dashed black;
-  // box-shadow: 0px 0px 5px 0px white;
+
 
 }
 

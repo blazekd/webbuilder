@@ -19,17 +19,10 @@ export class SectionComponent {
   test = [];
   constructor(public dialog: MatDialog) { }
 
-  getColumns() {
-    if (this.component == undefined)
-      return [];
-    
-    return Array(this.component.columns.columns).fill(1).map((x,i)=>i); // [0,1,2,3,4]
-  }
-
   addContent(column:number,row:number, i: number) {
     if (this.dialog.openDialogs.length > 0)
     return;
-    //todo enum
+    // todo enum
   const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addComponent()});
   dialogRef.afterClosed().subscribe(result => {
     if (result !== undefined)
@@ -68,14 +61,11 @@ export class SectionComponent {
   drop(event: any, row: number) {
     let col = event.container.element.nativeElement.getAttribute('column');
     if (col === 'up') {
-      // console.log(col); // nový s flexBasis = 100;
       this.component.columns.content.splice(0,0,[new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
-      // console.log(this.component.data.columns.content)
       event.previousContainer.data.splice(event.previousIndex, 1);
       return;
     }
     if (col === 'down') {
-      // console.log(col); // nový s flexBasis = 100;
       this.component.columns.content.splice(this.component.columns.content.length,0,[new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
       event.previousContainer.data.splice(event.previousIndex, 1);
       return;
@@ -84,25 +74,17 @@ export class SectionComponent {
 
 
     let column = parseInt(col);
-    // column = column == NaN ? undefined : column;
-    // console.log(column, this.component.data.columns.content.length, typeof column)
     if (!isNaN(column) && event.previousContainer.element.nativeElement.getAttribute('column') )
       return;
-    if (!isNaN(column) && event.previousContainer !== event.container) { //make new column
-      this.component.columns.columns = this.component.columns.columns + 1; // přidat column
-      // console.log(this.component.data.columns.content)
+    if (!isNaN(column) && event.previousContainer !== event.container) { // make new column
       this.component.columns.content[row].splice(column+1,0,new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))]));
-      // console.log(this.component.data.columns.content)
-      //výpočet šířky
+
+      // calculate width
       for (let i = 0; i < event.container.data.length; ++i) {
         event.previousContainer.data[i].flexBasis = 100 / event.container.data.length;
       }
-      // console.log(event.previousContainer.data[event.previousIndex])
+
       event.previousContainer.data.splice(event.previousIndex, 1);
-
-
-      // console.log(this.component.data.columns)
-      // console.log([event.previousContainer.data[event.previousIndex]])
     }
     else if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -112,29 +94,17 @@ export class SectionComponent {
                         event.previousIndex,
                         event.currentIndex);
     }
-    console.log(event.previousContainer.data)
     if (event.previousContainer.data.length == 0) {
 
       let x = event.previousContainer.element.nativeElement.getAttribute('row')
       let y = event.previousContainer.element.nativeElement.getAttribute('mycolumn')
-      // console.log(this.component.data.columns.content[x])
-      // for (let i = 0; i < this.component.data.columns.content[x].length; ++i) {
-      //   console.log(this.component.data.columns.content[x][i].flexBasis);
-      //   // this.component.data.columns.content[x][i].flexBasis += flex;
-      // }
-      // console.log(event.previousContainer.element.nativeElement)
-      // console.log(x, y, this.component.data.columns.content)
 
       this.component.columns.content[x].splice(y,1);
-      // let flex = this.component.data.columns.content[x][y-1].flexBasis / this.component.data.columns.content[x].length;
-      // console.log(flex)
+
       let flex = 100 / this.component.columns.content[x].length;
       for (let i = 0; i < this.component.columns.content[x].length; ++i) {
-        // console.log(this.component.data.columns.content[x][i].flexBasis, flex)
         this.component.columns.content[x][i].flexBasis = flex;
       }
-      // console.log(this.component.data.columns.content[x])
-      // console.log('x')
     }
   }
 
@@ -148,7 +118,7 @@ export class SectionComponent {
       return;
     let dialogRef;
     let tmpData = Cloneable.deepCopy(this.component.columns.content[row][column].content[i])
-    //todo enum
+    // todo enum
     switch (type) {
       case 'image':
         let tmpDialog = this.dialog.open(PopupDialogComponent, {
@@ -176,7 +146,6 @@ export class SectionComponent {
     }
     if (dialogRef) {
       dialogRef.afterClosed().subscribe(result => {
-        console.log(result);
         if (result === undefined)
           this.component.columns.content[row][column].content[i] = tmpData;
       });

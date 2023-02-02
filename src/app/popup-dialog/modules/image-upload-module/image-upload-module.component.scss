@@ -96,30 +96,6 @@
     }
   }
 
-  // .test {
-  //   clip-path: inset(5% 20% 15% 10%);
-  // }
-
-  // .test2 {
-  //   opacity: 0.25;
-  // }
-
-  // .test, .test2 {
-  //   position: absolute;
-  //   margin: auto;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   max-height: 100%;
-  //   max-width: 100%
-  // }
-
-  // .ohgodhelpme {
-  //   position: relative;
-  //   width: 800px;
-  //   height: 500px;
-  // }
 
   .img-wrap {
     height: 200px;
@@ -129,21 +105,17 @@
     justify-content: center;
     user-select: none;
     & > div {
-      // max-width: 200px;
-      // max-height: 200px;
-      // margin: auto;
       position: relative;
       cursor: pointer;
       border: 1px solid #ccc;
       user-select: none;
-      // margin: -8px;
       & > img {
         user-select: none;
         max-width: 200px;
         max-height: 200px;
       }
 
-      & > div { // změnit
+      & > div { 
         user-select: none;
         height: 16px;
         width: 16px;

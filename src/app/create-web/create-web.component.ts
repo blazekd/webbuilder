@@ -33,7 +33,7 @@ export class CreateWebComponent {
     this.service.message.subscribe(($event) => this.handleService($event))
    }
 
-   //todo enum
+   // todo enum
   handleService($event: any) {
     switch ($event.type) {
       case 'JSON':
@@ -53,7 +53,7 @@ export class CreateWebComponent {
               return a.map(b => {
                 let columnContent = b.content.map((c: any) => {
                   switch (c.type) {
-                    //todo enum
+                    // todo enum
                     case 'divider':
                       return new DividerClass(c.color, c.size);
                     case 'image':
@@ -91,11 +91,9 @@ export class CreateWebComponent {
                 return new ColumnClass(columnContent, b.flexBasis, b.resizable);
               })
             })
-            let columns = new ColumnWrapperClass(columnsContent, x.columns.columns);
+            let columns = new ColumnWrapperClass(columnsContent);
             return new SectionComponentClass(x.width, x.height, columns, x.src, x.left, x.top, x.backgroundColor, x.textColor)
           })
-          // console.log(xxx)
-          // console.log(this.components)
           this.components = xxx;
         }
         fileReader.readAsText($event.data);
@@ -225,13 +223,13 @@ export class CreateWebComponent {
         link.href = uri;
         link.download = filename;
   
-        //Firefox requires the link to be in the body
+        // Firefox requires the link to be in the body
         document.body.appendChild(link);
   
-        //simulate click
+        // simulate click
         link.click();
   
-        //remove the link when done
+        // remove the link when done
         document.body.removeChild(link);
   
     } else {

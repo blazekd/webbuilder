@@ -41,7 +41,7 @@ export class PopupDialogComponent implements OnInit {
           this.changeMenu($event.index);
         break;
       default:
-        console.log("default", $event)
+        console.log("unhandled event, popup-dialog", $event)
     }
   }
 

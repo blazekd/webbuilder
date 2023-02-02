@@ -47,7 +47,6 @@ export class ImageUploadModuleComponent extends AbstractDialogModule {
       file: file
     });
     this.form.get('file')?.updateValueAndValidity();
-    console.log(file)
   }
 
   uploadToServer() {

@@ -76,7 +76,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
         [[
         new ColumnClass([new TextClass(LOREM[0])]), 
         new ColumnClass([new TextClass(LOREM[1])])
-        ]],2))
+        ]]))
   }
   static webnode0() : SectionComponentClass { // webnode!!!
     return new SectionComponentClass(
@@ -132,7 +132,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
             ])
         ]
       ]
-        ,2), 'https://d1di2lzuh97fh2.cloudfront.net/files/0c/0cx/0cx52n.jpg?ph=dee24c1a70&t=1')
+        ), 'https://d1di2lzuh97fh2.cloudfront.net/files/0c/0cx/0cx52n.jpg?ph=dee24c1a70&t=1')
   }
   static webnode2() : SectionComponentClass {
     return new SectionComponentClass(
@@ -143,7 +143,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
         new ColumnClass([
           new TextClass('<h2 style="color: rgb(255, 255, 255); font-size: 300%; text-align: right;"><strong>OMRKNI, KDE HRAJEME A PŘIJĎ SI NÁS POSLECHNOUT</strong></h2><p style="color: rgb(255, 255, 255); text-align: right;">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
         ],80)
-        ]],2), 'https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1')
+        ]]), 'https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1')
   }
 
   static webnode3() : SectionComponentClass {
@@ -189,7 +189,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
               ])
           ]
         ]
-          ,2), 'https://d1di2lzuh97fh2.cloudfront.net/files/23/23k/23kxvc.jpg?ph=dee24c1a70&t=1')
+        ), 'https://d1di2lzuh97fh2.cloudfront.net/files/23/23k/23kxvc.jpg?ph=dee24c1a70&t=1')
   }
 
   static webnode4() : SectionComponentClass {
@@ -201,7 +201,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
           new TextClass('<h2 style="color: rgb(255, 255, 255); font-size: 300%;"><strong>POSLECHNI SI UKÁZKY Z NOVÉHO ALBA</strong></h2><p style="color: rgb(255, 255, 255);">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
         ],80),
         new ColumnClass([new TextClass('')],20)
-        ]],2), 'https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1')
+        ]]), 'https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1')
   }
 
   static webnodeFooter() : SectionComponentClass {
@@ -233,7 +233,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
       new ColumnWrapperClass(
         [[
           new ColumnClass([new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3])])
-        ]],3 
+        ]] 
       ))
   }
 
@@ -268,7 +268,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
             new TextClass(LOREM[4]), 
             new TextClass(LOREM[0])
           ])
-      ]], 5))
+      ]]))
   }
 
   static title() : SectionComponentClass {
@@ -337,7 +337,7 @@ export class TextClass implements SectionContentInterface {
 
 export class ImageClass implements ImageInterface, SectionContentInterface {
   type = 'image';
-  //todo remove style?
+  // todo remove style?
   constructor(public src: string, public height: string, public style = 1, public left = '50%', public top = '50%') {
 
   }
@@ -506,8 +506,8 @@ export class DividerClass implements SectionContentInterface {
 
 
   export class ColumnWrapperClass {
-    //todo remove columns
-    constructor(public content: ColumnClass[][], public columns: number = 1) {
+
+    constructor(public content: ColumnClass[][]) {
 
     }
 

@@ -16,7 +16,6 @@
     }
 
     // set headers and return result
-    // todo
     header("Access-Control-Allow-Origin: *");
 	header('Content-Type: application/json; charset=utf-8');
 	exit(json_encode($result, JSON_UNESCAPED_SLASHES));	

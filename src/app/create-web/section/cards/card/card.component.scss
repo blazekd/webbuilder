@@ -12,8 +12,6 @@
 }
 
 .new-content-button {
-    // height: 34px;
-    // width: 100%;
     left:0;
     right: 0;
     z-index: 5;
@@ -22,13 +20,7 @@
     box-sizing: border-box;
 
     &.new-content-button-bottom {
-        // bottom: -20px;
-        // top:0;
-        // border-bottom: 2px dashed #666;
-        // box-shadow: 0 1px 0px 1px #666;
         bottom: 0;
-        // width: calc(100% - 80px);
-        // margin-left: 40px;
     }
 
     &.new-content-button-bottom-empty {
@@ -41,9 +33,6 @@
 
     &.new-content-button-top {
         top: -20px;
-        // bottom:0;
-        // border-top: 2px dashed #666;
-        // box-shadow: 0 -1px 0px 1px #666;
     }
 
     &::before {
@@ -73,27 +62,20 @@
         }
 
     }
-
-    // & > div {
-    //     height: 17px;
-    // }
 }
 
 .new-content-button:hover {
     opacity: 1;
-    // cursor: pointer;
 }
 
 .mini-menu {
     position: absolute;
     top: 10px;
     right: -5px;
-    // display: flex;
     display:none;
     flex-direction: column;
     border:1px solid rgba(0, 0, 0, 0.15);
     background-color: rgba(255, 255, 255, 0.5);
-    // padding: 5px;
     border-radius: 17px;
     z-index: 4500;
     color: black;

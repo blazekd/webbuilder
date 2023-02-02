@@ -18,7 +18,6 @@ export class GalleryModuleComponent extends AbstractDialogModule {
     public dialogRef: MatDialogRef<ImageUploadModuleComponent>) {
     super();
     this.fileUploadService.getImages().subscribe(x => {
-      console.log("newx", x)
       this.images = x;
     })
   }

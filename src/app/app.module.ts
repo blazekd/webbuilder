@@ -86,14 +86,6 @@ import { GalleryModuleComponent } from './popup-dialog/modules/gallery-module/ga
     MatListModule,
     QuillModule.forRoot({
       suppressGlobalRegisterWarning: true,
-      // customOptions: [{
-      //   import: 'formats/font',
-      //   whitelist: FONT_NAMES,
-      // }],
-      // customModules: [{
-      //   implementation: Counter,
-      //   path: 'modules/counter'
-      // }],
       formats: [
         'background',
         'bold',
@@ -115,15 +107,11 @@ import { GalleryModuleComponent } from './popup-dialog/modules/gallery-module/ga
         'code-block',
         'font-size-button',
         'letter-spacing'
-        // 'formula'
-        // 'image'
-        // 'video'
       ]
   
     }),
     QuillCustomSettingModule,
     ImageCropperModule,
-    // SortablejsModule.forRoot({ animation: 30 })
     SortablejsModule.forRoot({}),
     AngularSplitModule,
     ResizableModule

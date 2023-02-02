@@ -37,7 +37,6 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
       item.tabIndex = '0';
       item.setAttribute('role', 'button');
       item.classList.add('ql-picker-item');
-      // item.classList.add('custom-class');
       if (option.hasAttribute('value')) {
         item.setAttribute('data-value', option.getAttribute('value'));
       }
@@ -73,24 +72,15 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
       quill.root.setAttribute('spellcheck', false)
     }
   
-    extendToolbar(toolbar: any) {
-      // console.log(toolbar.quill.options.modules); // if HEADER module, if TEXT module.. add correct buttons
-      // if (toolbar.quill.options.modules.clipboard !== undefined) {
-      //   console.log('hasClipboard')
-      //   var customButton = document.querySelector('#ql-tooltip-submenu')
-      //   customButton?.insertAdjacentHTML('beforeend', '<button>two</button>');
-      //   // customButton?.appendChild()
-      //   console.log(customButton)
-      // }
-  
+    extendToolbar(toolbar: any) { 
       this.tooltip = new ExtendBubbleTooltip(this.quill, this.options.bounds);
       this.tooltip.root.appendChild(toolbar.container);
       this.buildButtons(Array.from(toolbar.container.querySelectorAll('button')), icons);
       this.buildPickers(Array.from(toolbar.container.querySelectorAll('select')), icons);
     }
-    //custom color pickers
+    // custom color pickers
     buildPickers(selects: HTMLElement[], icons: any) {
-      //select classes from selects and run it here, other to super.buildPickers()
+      // select classes from selects and run it here, other to super.buildPickers()
       const COLORS = [
         'none',
         '#000000',
@@ -134,7 +124,7 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
       let [thisPickers, superPickers] = partition(selects, (select: any) => (select.classList.contains('ql-background') ||
       select.classList.contains('ql-color')));
       super.buildPickers(superPickers, icons);
-      //ad to this.pickers instead
+      // add to this.pickers instead
       let newPickers = Array.from(thisPickers).map((select: any) => {
         const format = select.classList.contains('ql-background')
           ? 'background'
@@ -143,7 +133,6 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
           fillSelect(
             select,
             COLORS,
-            // //format === 'background' ? '#ffffff' : '#000000',
             'none'
           );
         }
@@ -171,17 +160,9 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
       this.quill.on(
         'editor-change',
         (type: any, range: any, oldRange: any, source: any) => {
-          // console.log('type: ' + type);
-          // console.log('source: ' + source);
-          // console.log('fočus: ' +  this.quill.hasFocus())
-          // console.log('fočus2: ' +  document.activeElement === this.textbox)
-          // console.log('************************')
           if (
             !this.quill.hasFocus()
           ) {
-            // this.hide();
-            // console.log('asdasijdasdasj')
-            // quill.root.classList.remove('ql-editing');
             quill.root.classList.remove('ql-border');
           }
           if (type !== 'selection-change') return;
@@ -189,7 +170,6 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
             source === 'user'
           ) {
             this.show();
-            // console.log(this.root);
             this.root.classList.add('ql-flip');
             this.root.classList.add('ql-position');
             quill.root.classList.add('ql-editing');
@@ -200,9 +180,7 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
             !this.quill.hasFocus()
           ) {
             this.hide();
-            // console.log('ajajaaj')
             quill.root.classList.remove('ql-editing');
-            // quill.root.classList.remove('ql-border');
           }
         },
       );
@@ -244,7 +222,6 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
   Quill.register(SizeStyle, true);
   
   var Font = Quill.import('formats/font');
-  // // We do not add Aref Ruqaa since it is the default
   Font.whitelist = null;
   Font.scope = Parchment.Scope.BLOCK;
   Quill.register(Font, true);
@@ -318,7 +295,7 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
   
   Quill.register(IndentStyle, true);
   
-  // let xxxx = ['0.2em', '0.3em', '0.4em', '0.5em', '0.6em', '0.7em', '0.8em', '0.9em'];
+
   
   class LetterSpacingAttributor extends Parchment.Attributor.Style {
     add (node: any, value: any) {
@@ -326,31 +303,22 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
       let num = this.value(node);
   
       if (num == undefined) {
-        // console.log('x', value)
         if (value[0] == '+') {
-          // console.log('xx')
           let numx = parseFloat(value);
           return super.add(node, `${numx}em`)
         } else if (value[0] == '-') {
-          // console.log('xy')
           this.remove(node);
           return true;
         } else {
-          // console.log('xz')
           return super.add(node, `${value}em`)
         }
   
       }
       else if (num <= 0 && value[0] == '-') {
-        // console.log('y')
         this.remove(node);
         return true
       } else if (value[0] == '+' || value[0] == '-') {
-        // console.log('z')
-        // console.log(super.add(node, `${value}em`));
-        // console.log(this.value(node), parseFloat(value))
         let numx = num + parseFloat(value);
-        // console.log(num, value, node)
         return super.add(node, `${numx}em`)
       }
       else {
@@ -380,9 +348,6 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
   
   class FontSizeButtonAttributor extends Parchment.Attributor.Style {
     add (node: any, value: any) {
-      // console.log(super.value(node));
-      // console.log('f')
-      // console.log(node.nodeName)
       let num = this.value(node);
       let base = 100;
       switch(node.nodeName.toLowerCase()) {
@@ -395,45 +360,32 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
         case 'h3':
           base = 117;
           break;
-        // case 'p':
-        // case 'blockquote':
         default:
           base = 100;
       }
-      // console.log(value, num)
+
       if (num == undefined) {
-        // console.log('x', value)
         if (value[0] == '+') {
-          // console.log('xx')
           let numx = base + parseFloat(value);
           return super.add(node, `${numx}%`)
         } else if (value[0] == '-') {
-          // console.log('xy')
           this.remove(node);
           return true;
         } else if (base <= value) {
-          // console.log('xz')
-          // console.log(value, base)
           return super.add(node, `${value}%`)
         }
         else {
-          // console.log('xa')
           this.remove(node);
           return true;
         }
   
       }
       else if (num <= base && value[0] == '-') {
-        // console.log('y')
         this.remove(node);
         return true
       } else if (value[0] == '+' || value[0] == '-') {
-  
-        // console.log('z')
-        // console.log(super.add(node, `${value}em`));
-        // console.log(this.value(node), parseFloat(value))
+
         let numx = num + parseFloat(value);
-        // console.log(num, value, node)
         return super.add(node, `${numx}%`)
       }
       else {

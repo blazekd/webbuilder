@@ -21,27 +21,23 @@ export class ImageComponent implements AfterViewInit {
   ngAfterViewInit() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        console.log(mutation)
         if (this.content.style == 2) {
           this.content.height = Math.min(parseInt(getComputedStyle(this.imageContainer.nativeElement,'').width)-20, parseInt(this.content.height)) + 'px'
         }
-        console.log(this.content.height)
       });
     });
 
     observer.observe(this.wrapper.nativeElement, {
-      attributeFilter: ['mystyle'] //detect changes in style
+      attributeFilter: ['mystyle'] // detect changes in style
     });
   }
 
   editDialog() {
     if (this.dialog.openDialogs.length > 0)
       return;
-      //todo change dialog
       const dialogRef = this.dialog.open(PopupDialogComponent);
 
   dialogRef.afterClosed().subscribe(result => {
-    //console.log(result);
     if (result !== undefined)
       this.content.src = result;
   });

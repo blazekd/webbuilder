@@ -23,26 +23,9 @@ export class CardComponent {
     return;
 
   const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addComponent()});
-  // console.log('column: ' + column + ' index: ' + i)
   dialogRef.afterClosed().subscribe(result => {
-    //console.log(result);
     if (result !== undefined)
       switch (result) {
-        // case 'header':
-        //   // this.components.splice(i, 0, {type: 'header', data: 'Nový nadpis', background: 'pozadi1', classes: new Map().set('text-align', 'text-left').set('text-align-v', 'align-items-end').set('section-size', 'section-large').set('font', 'roboto').set('font-size', 'font-size-32').set('font-weight', 'font-weight-light'), classesString: ''});
-        //   // this.components.splice(i, 0, {type: 'header', data: 'Nový nadpis', object: {}});
-        //   // this.components.splice(i, 0, {type: 'header', data: HeaderComponentClass.empty()});
-        //   // this.component.data.columns.content.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
-        //   alert("Není implementováno!!");
-        //   break;
-        // case 'image':
-        //   // this.component.data.columns.content.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
-        //   alert("Není implementováno!!");
-        //   break;
-        // case 'review':
-        //   // this.component.data.columns.content.splice(i, 0, {type: 'section', data: SectionComponentClass.empty()});
-        //   alert("Není implementováno!!");
-        //   break;
         case 'text':
           this.card.content.splice(i, 0, new TextClass('<p>Nový text</p>'));
           break;
@@ -77,17 +60,15 @@ export class CardComponent {
   }
 
   deleteContent(i:number) {
-    // console.log(this.component.data.columns.content[column].content[i])
     this.card.content.splice(i, 1);
   }
 
   editMenu(i:number, type: string) {
-    // console.log(i);
     if (this.dialog.openDialogs.length > 0)
       return;
     let tmpData = Cloneable.deepCopy(this.card.content[i])
     let dialogRef;
-    //todo enum
+    // todo enum
     switch (type) {
       case 'image':
 
@@ -111,7 +92,6 @@ export class CardComponent {
     }
     if (dialogRef) {
       dialogRef.afterClosed().subscribe(result => {
-        console.log(result);
         if (result === undefined)
           this.card.content[i] = tmpData;
       });
@@ -120,17 +100,7 @@ export class CardComponent {
   }
 
   drop(event: any) {
-    // console.log('??')
     moveItemInArray(this.card.content, event.previousIndex, event.currentIndex);
 
   }
-
-  // getStyle() {
-  //   return {
-  //     // backgroundImage: this.card.background.background,
-  //     backgroundColor: this.card.color.background,
-  //     color: this.card.color.color,
-  //     backgroundPosition: 'center'
-  //   }
-  // } 
 }

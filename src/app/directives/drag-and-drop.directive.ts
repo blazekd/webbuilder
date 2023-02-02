@@ -28,12 +28,8 @@ export class DragAndDropDirective {
     evt.stopPropagation();
     this.fileOver = false;
     let files = evt.dataTransfer.files;
-    // console.log('myfiles')
-    // console.log(files);
     if (files.length > 0) {
       evt.target.files = files; // dragevent -> event
-      // console.log('emmiting evt');
-      // console.log(evt);
       this.fileDropped.emit(evt);
     }
   }

@@ -25,17 +25,11 @@ export class DialogData {
       return new DialogData(ADD_COMPONENT_MODULES, EventMessage.ADD);
     }
 
-    // static editNav(data: any) : DialogData {
-    //   return new DialogData(DialogData.getModulesWithMenu(EDIT_NAV_MODULES), EventMessage.CHANGE, data);
-    // }
 
     static editSection(data: any) : DialogData {
       return new DialogData(DialogData.getModulesWithMenu(EDIT_SECTION_MODULES), EventMessage.CHANGE, data);
     }
 
-    // static editFooter(data: any) : DialogData {
-    //   return new DialogData(DialogData.getModulesWithMenu(EDIT_FOOTER_MODULES), EventMessage.CHANGE, data);
-    // }
 
     static editGrid(data: any) : DialogData {
       return new DialogData(DialogData.getModulesWithMenu(EDIT_GRID_MODULES), EventMessage.CHANGE, data);
@@ -95,12 +89,7 @@ export class DialogData {
 
 
 
-  //todo enum for type
-// export const EDIT_NAV_MODULES = [
-//   new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
-//   new DialogModule(SizeModuleComponent, {type: 'size', icon: 'expand', text: "Dimensions!!(HEIGHT)"}),
-//   new DialogModule(BackgroundModuleComponent, {type: 'background', icon: 'image', text: "Background!!!"})
-// ]
+  // todo enum for type
 
 export const EDIT_SECTION_MODULES = [
   new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
@@ -108,10 +97,6 @@ export const EDIT_SECTION_MODULES = [
   new DialogModule(ImageModuleComponent, {type: 'background', icon: 'image', text: "Background"})
 ]
 
-// export const EDIT_FOOTER_MODULES = [
-//   new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
-//   new DialogModule(BackgroundModuleComponent, {type: 'background', icon: 'image', text: "Background!!!"})
-// ]
 
 export const EDIT_GRID_MODULES = [
   new DialogModule(ColumnsModuleComponent, {type: 'columns', icon: 'view_compact', text: "Columns"}),

@@ -5,7 +5,6 @@
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     height: 50px;
-    //border-bottom: 1px solid #333;
     z-index: 10;
 
     p {
@@ -24,24 +23,6 @@
     }
 }
   
-
-/* Main content */
-// .main {
-//     //margin-top: 50px; __<<ngThemingMigrationEscapedComment4>>__
-//     position: absolute;
-//     top: 50px;
-//     width: 100%;
-// }
-
-// .my-menu {
-//     width: 0;
-//     overflow: hidden;
-//     transition: all .5s ease-in-out;
-// }
-
-// .my-menu-active {
-//     width: 400px !important;
-// }
 
 .btn-settings {
     display: none;
@@ -67,10 +48,7 @@
 .component {
     position: relative;
     box-sizing: border-box;
-    // border: 1px solid rgba(0,0,0,0);
-    // &:hover {
-        //  border: 1px dashed #333;
-    // }
+
 }
 
 .component:hover .btn-settings {
@@ -82,14 +60,12 @@
  }
 
 .pc-container {
-    // height: calc(100vh - 50px);
     width: 100%;
     display:flex;
     flex-direction: column;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    // overflow-y: auto;
 }
 
 .smartphone {
@@ -194,6 +170,5 @@
 
 .new-component-button:hover {
     opacity: 1;
-    // cursor: pointer;
 }
 

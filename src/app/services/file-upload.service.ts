@@ -18,7 +18,6 @@ export class FileUploadService {
   uploadFile(file: File) {
     var formData: FormData = new FormData();
     formData.append("images[]", file);
-    this.getImages().subscribe(x => console.log(x));
     return this.http.post(this.uploadUrl, formData, {
       reportProgress: true,
       observe: 'events'
