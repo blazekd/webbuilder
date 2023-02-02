@@ -481,6 +481,63 @@ export class DividerClass implements SectionContentInterface {
     }
   }
 
+
+export class Deserializable  {
+  public static cardClass(obj: CardClass): CardClass {
+    let cardContent = obj.content.map((e: any) => {
+      switch (e.type) {
+        case 'divider':
+          return new DividerClass(e.color, e.size);
+        case 'image':
+          return new ImageClass(e.src, e.height, e.style, e.left, e.top);
+        default:
+          return new TextClass(e.text);
+      }
+    })
+    return new CardClass(cardContent, obj.src, obj.left, obj.top, obj.textColor, obj.backgroundColor);
+  }
+
+  public static gridComponentClass(obj: GridComponentClass): GridComponentClass {
+    let cardTemplate = Deserializable.cardClass(obj.template);
+    let cards = obj.cards.map((d: CardClass) => {
+      return Deserializable.cardClass(d)
+    })
+    return new GridComponentClass(cards, cardTemplate, obj.columns)
+  }
+
+  public static columnClass(obj: ColumnClass): ColumnClass {
+    let columnContent = obj.content.map((c: any) => {
+      switch (c.type) {
+        // todo enum
+        case 'divider':
+          return new DividerClass(c.color, c.size);
+        case 'image':
+          return new ImageClass(c.src, c.height, c.style, c.left, c.top);
+        case 'grid':
+          return Deserializable.gridComponentClass(c)
+        default:
+          return new TextClass(c.text);
+      }
+    })
+    return new ColumnClass(columnContent, obj.flexBasis, obj.resizable);
+  }
+
+  public static columnWrapperClass(obj: ColumnWrapperClass): ColumnWrapperClass {
+    let columnsContent = obj.content.map(a => {
+      return a.map(b => {
+        return Deserializable.columnClass(b);
+      })
+    })
+    return new ColumnWrapperClass(columnsContent);
+  }
+
+  public static sectionComponentClass(obj: SectionComponentClass): SectionComponentClass {
+    return new SectionComponentClass(obj.width, obj.height, Deserializable.columnWrapperClass(obj.columns), obj.src, obj.left, obj.top, obj.backgroundColor, obj.textColor)
+  }
+
+}
+
+
   export class CardClass implements ImageInterface, ColorInterface, HTMLable {
 
     constructor(public content: SectionContentInterface[], public src: string = '', 
@@ -497,9 +554,6 @@ export class DividerClass implements SectionContentInterface {
       });
       return content
     }
-
-
-
   }
 
 
