@@ -79,31 +79,39 @@ app-home, app-create-web {
     }
 
        
-        .ql-position.ql-tooltip.ql-flip {
+        .ql-position.ql-tooltip {
+          min-width: 300px;
+          width: fit-content;
+          z-index: 500;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+          position: absolute;
+          left: 50%;
+          margin-top: 10px;
 
-            z-index: 500;
+          .ql-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .ql-formats {
+              margin: 4px 6px 4px 6px;
+            }
+          }
+          
+          &.ql-flip {
 
-            position: absolute;
-            left: 50%;
-
+            margin-top: 0;
+            margin-bottom: 10px;
             bottom: 100%;
+
+
             -webkit-transform: translateX(-50%);
             -moz-transform: translateX(-50%);
             -ms-transform: translateX(-50%);
             transform: translateX(-50%);
-            margin-bottom: 10px;
-            min-width: 300px;
-            width: fit-content;
 
-            .ql-toolbar {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-
-              .ql-formats {
-                margin: 4px 6px 4px 6px;
-              }
-            }
 
             .ql-tooltip-submenu {
               &.ql-tooltip-submenu-show {
@@ -127,6 +135,7 @@ app-home, app-create-web {
                 }
               }
             }
+        } 
 
 
 
@@ -137,6 +146,10 @@ app-home, app-create-web {
 .ql-bubble .ql-picker.ql-size .ql-picker-item[data-value]:not([data-value=''])::before {
   font-size: attr(data-value);
   content: attr(data-value);
+}
+
+.ql-bubble .ql-picker-label.ql-active {
+  overflow: hidden;
 }
 
 .ql-bubble .ql-picker.ql-size .ql-picker-label::before {

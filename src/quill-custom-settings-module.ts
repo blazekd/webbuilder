@@ -170,7 +170,8 @@ function fillSelect(select: any, values: any, defaultValue: any = false) {
             source === 'user'
           ) {
             this.show();
-            this.root.classList.add('ql-flip');
+            if (this.root.getBoundingClientRect().top > 250)
+              this.root.classList.add('ql-flip');
             this.root.classList.add('ql-position');
             quill.root.classList.add('ql-editing');
             if (this.quill.hasFocus())

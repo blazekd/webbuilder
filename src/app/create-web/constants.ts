@@ -1,6 +1,6 @@
 // export const FONT_SIZES = ['16px', '20px', '24px', '30px', '36px', '42px', '50px', '60px', '70px', '80px', '100px'];
 // export const FONT_SIZES = ['30%', '50%', '70%', '90%', '100%', '130%', '150%', '170%', '200%', '250%', '300%'];
-export const FONT_NAMES = ['Arial', 'Courier', 'Garamond', 'Tahoma', 'Times New Roman', 'Verdana', 'Amatic SC', 'Caveat', 'Indie Flower', 'Pacifico', 'Palette Mosaic','Style Script'];
+export const FONT_NAMES = ['Arial', 'Courier', 'Garamond', 'Tahoma', 'Times New Roman', 'Verdana', 'Amatic SC', 'Caveat', 'Indie Flower', 'Pacifico', 'Style Script'];
 export const FONT_NAMES_LOWER = FONT_NAMES.map(function (font){
     return font.toLowerCase().replace(/\s/g, "-");
 });
