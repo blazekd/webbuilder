@@ -17,7 +17,21 @@ export class NavigationBarComponent {
   }
 
   importJSON() {
-    this.service.importData();
+    let data = 'importuju';
+    var input = document.createElement('input');
+    input.type = 'file'
+    input.click();
+    // input.onchange = function (e) {
+    //   if (input.files)
+    //     this.service.importData(input.files[0]);
+    // }
+
+    input.addEventListener('change', function(service: any, e: any) {
+      console.log(e, input, service)
+      if (input.files)
+        service.importData(input.files[0]);
+    }.bind(input, this.service));
+    
   }
 
   exportJSON() {
@@ -26,5 +40,9 @@ export class NavigationBarComponent {
 
   exportHTML() {
     this.service.exportHTML();
+  }
+
+  notImplemented() {
+    alert('NOT IMPLEMENTED');
   }
 }

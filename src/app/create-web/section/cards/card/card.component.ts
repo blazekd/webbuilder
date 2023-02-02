@@ -2,7 +2,7 @@ import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { CardClass, DividerClass, ImageClass, SectionComponentClass, TextClass } from '../../../component-classes';
+import { CardClass, Cloneable, DividerClass, ImageClass, SectionComponentClass, TextClass } from '../../../component-classes';
 import { PopupDialogComponent } from '../../../../popup-dialog/popup-dialog.component';
 import { DialogData } from '../../../../popup-dialog/dialog-settings';
 
@@ -85,24 +85,37 @@ export class CardComponent {
     // console.log(i);
     if (this.dialog.openDialogs.length > 0)
       return;
-
+    let tmpData = Cloneable.deepCopy(this.card.content[i])
+    let dialogRef;
+    //todo enum
     switch (type) {
       case 'image':
-        let tmpData = structuredClone(this.card.content[i])
+
         let tmpDialog = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editImage(this.card.content[i])
         });
         tmpDialog.afterClosed().subscribe(result => {
           if (result === undefined)
-            Object.assign(this.card.content[i], tmpData);
+            this.card.content[i] = tmpData;
           else if (result.src == '')
             this.deleteContent(i);
         });
         break;
+      case 'divider': 
+        dialogRef = this.dialog.open(PopupDialogComponent, {
+          data: DialogData.editDivider(this.card.content[i])
+        });
+        break;
       default:
-        alert('NENÍ IMPLEMENTOVÁNO');
+        alert('NOT IMPLEMENTED');
     }
-
+    if (dialogRef) {
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(result);
+        if (result === undefined)
+          this.card.content[i] = tmpData;
+      });
+    }
     
   }
 

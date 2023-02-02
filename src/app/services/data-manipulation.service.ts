@@ -10,14 +10,14 @@ export class DataManipulationService {
   constructor() { }
 
   exportHTML() {
-    this.message.next('HTML');
+    this.message.next({type: 'HTML'});
   }
 
   exportJSON() {
-    this.message.next('JSON');
+    this.message.next({type: 'JSON'});
   }
 
-  importData() {
-    this.message.next('import');
+  importData(data: string) {
+    this.message.next({type: 'import', data: data});
   }
 }

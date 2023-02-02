@@ -13,7 +13,7 @@ export abstract class AbstractDialogModule {
     handleMessage(message: EventMessage) {
         switch (message) {
             case EventMessage.CANCEL:
-                this.data = Cloneable.deepCopy(this.dataOld);
+                this.data = this.dataOld;
                 this.newEvent.next(new ChangeMenuEvent(EventMessage.CHANGE, 0));
                 break;
             case EventMessage.SAVE:

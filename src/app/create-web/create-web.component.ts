@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
 import { DialogData } from '../popup-dialog/dialog-settings';
-import { Cloneable, SectionComponentClass } from './component-classes';
+import { CardClass, Cloneable, ColumnClass, ColumnWrapperClass, DividerClass, GridComponentClass, ImageClass, SectionComponentClass, TextClass } from './component-classes';
 import { DataManipulationService } from '../services/data-manipulation.service';
 
 @Component({
@@ -33,16 +33,75 @@ export class CreateWebComponent {
     this.service.message.subscribe(($event) => this.handleService($event))
    }
 
+   //todo enum
   handleService($event: any) {
-    switch ($event) {
+    switch ($event.type) {
       case 'JSON':
         this.exportToJSON();
         break;
       case 'HTML':
         this.exportToHTML();
         break;
+      case 'import': 
+        let fileReader = new FileReader();
+        fileReader.onload = (e) => {
+          let str: string = fileReader.result == null ?  '[]' : fileReader.result.toString();
+
+          let xxx = JSON.parse(str) as SectionComponentClass[]
+          xxx = xxx.map(x => {
+            let columnsContent = x.columns.content.map(a => {
+              return a.map(b => {
+                let columnContent = b.content.map((c: any) => {
+                  switch (c.type) {
+                    //todo enum
+                    case 'divider':
+                      return new DividerClass(c.color, c.size);
+                    case 'image':
+                      return new ImageClass(c.src, c.height, c.style, c.left, c.top);
+                    case 'grid':
+                      let templateContent = c.template.content.map((e: any) => {
+                        switch (e.type) {
+                          case 'divider':
+                            return new DividerClass(e.color, e.size);
+                          case 'image':
+                            return new ImageClass(e.src, e.height, e.style, e.left, e.top);
+                          default:
+                            return new TextClass(e.text);
+                        }
+                      })
+                      let cardTemplate = new CardClass(templateContent, c.template.src, c.template.left, c.template.top, c.template.textColor, c.template.backgroundColor);
+                      let cards = c.cards.map((d: CardClass) => {
+                        let cardContent = d.content.map((e: any) => {
+                          switch (e.type) {
+                            case 'divider':
+                              return new DividerClass(e.color, e.size);
+                            case 'image':
+                              return new ImageClass(e.src, e.height, e.style, e.left, e.top);
+                            default:
+                              return new TextClass(e.text);
+                          }
+                        })
+                        return new CardClass(cardContent, d.src, d.left, d.top, d.textColor, d.backgroundColor);
+                      })
+                      return new GridComponentClass(cards, cardTemplate, c.columns)
+                    default:
+                      return new TextClass(c.text);
+                  }
+                })
+                return new ColumnClass(columnContent, b.flexBasis, b.resizable);
+              })
+            })
+            let columns = new ColumnWrapperClass(columnsContent, x.columns.columns);
+            return new SectionComponentClass(x.width, x.height, columns, x.src, x.left, x.top, x.backgroundColor, x.textColor)
+          })
+          // console.log(xxx)
+          // console.log(this.components)
+          this.components = xxx;
+        }
+        fileReader.readAsText($event.data);
+        break;
       default:
-        console.log($event)
+        alert('NOT IMPLEMENTED')
     }
   }
 
@@ -134,7 +193,7 @@ export class CreateWebComponent {
     if (this.dialog.openDialogs.length > 0)
       return;
 
-    let dataTmp = structuredClone(this.components[i])
+    let dataTmp = Cloneable.deepCopy(this.components[i])
     let dialogRef = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editSection(this.components[i])
     })
@@ -144,7 +203,7 @@ export class CreateWebComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === undefined)
-      this.components[i] = Cloneable.deepCopy(dataTmp)
+        this.components[i] = dataTmp
     });
   }
 

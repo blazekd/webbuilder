@@ -1,6 +1,6 @@
 
 <div class="my-label-container">
     <label>Number of columns</label>
-    <label class="my-value-label">{{data.columns.columns}}</label>
+    <label class="my-value-label">{{data.columns}}</label>
 </div>
-<mat-slider class="my-slider" min="1" max="8" step="1" discrete showTickMarks><input matSliderThumb [ngModel]="data.columns.columns" (ngModelChange)="onModelChange($event)"></mat-slider>
+<mat-slider class="my-slider" min="1" max="8" step="1" discrete showTickMarks><input matSliderThumb [ngModel]="data.columns" (ngModelChange)="onModelChange($event)"></mat-slider>

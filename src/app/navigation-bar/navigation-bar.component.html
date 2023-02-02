@@ -7,9 +7,10 @@
 
       <mat-list-item>
         <span class="p-1">View: </span>
+        <!-- TODO: implement -->
         <mat-button-toggle-group aria-label="Font Style" class="icon-display">
-          <mat-button-toggle [checked]="!showPc" (change)="showPc = false"><mat-icon>smartphone</mat-icon></mat-button-toggle>
-          <mat-button-toggle [checked]="showPc" (change)="showPc = true"><mat-icon>computer</mat-icon></mat-button-toggle>
+          <mat-button-toggle [checked]="!showPc" (change)="showPc = false; notImplemented()"><mat-icon>smartphone</mat-icon></mat-button-toggle>
+          <mat-button-toggle [checked]="showPc" (change)="showPc = true; notImplemented()"><mat-icon>computer</mat-icon></mat-button-toggle>
         </mat-button-toggle-group>
       </mat-list-item>
 
@@ -29,24 +30,19 @@
             <mat-icon> download </mat-icon><span> Save as HTML </span>
           </button>
         </li>
+        <!-- TODO: implement -->
         <li matRipple [matRippleColor]="'#ffffff2f'">
-          <button mat-button>
+          <button mat-button (click)="notImplemented()">
             <mat-icon> settings </mat-icon><span> Page settings </span>
           </button>
         </li>
-
+        <!-- TODO: implement -->
         <li matRipple [matRippleColor]="'#ffffff2f'">
-          <button mat-button>
+          <button mat-button (click)="notImplemented()">
             <mat-icon> help_outline </mat-icon><span> Help </span>
           </button>
         </li>
-
-        
-
       </ul>
-
     </div>
-
   </mat-toolbar-row>
-
 </mat-toolbar>

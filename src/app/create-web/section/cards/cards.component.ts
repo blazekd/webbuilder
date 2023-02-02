@@ -55,7 +55,7 @@ export class CardsComponent {
       // alignItems: this.component.data.cards[i].alignment.align,
       backgroundColor: this.component.cards[i].backgroundColor,
       color: this.component.cards[i].textColor,
-      flexBasis: 100/this.component.columns.columns + '%',
+      flexBasis: 100/this.component.columns + '%',
       backgroundImage: this.component.cards[i].src == '' ? '' : 'url(' + this.component.cards[i].src + ')',
       backgroundPositionX: this.component.cards[i].left,
       backgroundPositionY: this.component.cards[i].top,
@@ -71,7 +71,7 @@ export class CardsComponent {
   // } 
 
   addContent(i:number) {
-    this.component.cards.splice(i, 0, JSON.parse(JSON.stringify(this.component.template)));  
+    this.component.cards.splice(i, 0, Cloneable.deepCopy(this.component.template));  
     this.initTable()
   }
 
@@ -114,14 +114,14 @@ export class CardsComponent {
     // create table rows based on input list
     // example: [1,2,3,4,5,6] => [ [1,2,3], [4,5,6] ]
     this.itemsTable = this.component.cards
-      .filter((_:any, outerIndex:any) => outerIndex % this.component.columns.columns == 0) // create outter list of rows
+      .filter((_:any, outerIndex:any) => outerIndex % this.component.columns == 0) // create outter list of rows
       .map((
         _:any,
         rowIndex:any // fill each row from...
       ) =>
         this.component.cards.slice(
-          rowIndex * this.component.columns.columns, // ... row start and
-          rowIndex * this.component.columns.columns + this.component.columns.columns // ...row end
+          rowIndex * this.component.columns, // ... row start and
+          rowIndex * this.component.columns + this.component.columns // ...row end
         )
       );
   }

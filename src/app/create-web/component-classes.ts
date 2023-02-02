@@ -1,3 +1,4 @@
+import { he } from 'date-fns/locale';
 import { LOREM } from './constants';
 
 
@@ -22,18 +23,12 @@ interface ColorInterface {
 }
 
 
-// interface Exportable {
-//   exportToHTML(): ;
-// }
-
 
 export class SectionComponentClass implements ImageInterface, SizeInterface, ColorInterface {
-  left: string = '50%';
-  top: string = '50%';
-  backgroundColor: string = '#ffffff';
-  textColor: string = '#000000'
-  constructor(public width: string, public height: string, public columns: ColumnWrapperClass, public src: string = '') {
-  
+
+  constructor(public width: string, public height: string, public columns: ColumnWrapperClass, public src: string = '',
+  public left: string = '50%', public top: string = '50%', public backgroundColor: string = '#ffffff', public textColor: string = '#000000') {
+
   }
 
 
@@ -409,14 +404,14 @@ export class DividerClass implements SectionContentInterface {
 
   export class GridComponentClass implements SectionContentInterface {
     type = 'grid';
-    constructor(public cards: CardClass[], public template: CardClass, public columns: GridColumnClass) {
+    constructor(public cards: CardClass[], public template: CardClass, public columns: number) {
 
     }
     toHTML(): string {
       let result = '<div style="padding: 40px;"><div style="display: flex; justify-content: center; flex-wrap: wrap;">'
       this.cards.forEach(card => {
         result += `
-        <div style="background-color: ${card.backgroundColor}; color: ${card.textColor}; flex-basis: ${100/this.columns.columns}%; background-position: ${card.left} ${card.top}; background-size: cover; background-image: url(${card.src}); padding: 15px 10px 0;">
+        <div style="background-color: ${card.backgroundColor}; color: ${card.textColor}; flex-basis: ${100/this.columns}%; background-position: ${card.left} ${card.top}; background-size: cover; background-image: url(${card.src}); padding: 15px 10px 0;">
           ${card.toHTML()}
         </div>`;
       })
@@ -450,7 +445,7 @@ export class DividerClass implements SectionContentInterface {
             new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'), 
             new TextClass(LOREM[2])
           ]), 
-        new GridColumnClass())
+        2)
     }
 
     static test2() : GridComponentClass {
@@ -482,21 +477,14 @@ export class DividerClass implements SectionContentInterface {
             new ImageClass('https://bahmansport.com/media/com_store/images/empty.png', '150px'), 
             new TextClass('<p>TEXT?</p>')
           ]),
-          new GridColumnClass(4))
-    }
-  }
-  //todo delete?
-  export class GridColumnClass {
-    constructor(public columns: number = 2) {
+          4)
     }
   }
 
   export class CardClass implements ImageInterface, ColorInterface, HTMLable {
-    left: string = '50%';
-    top: string = '50%';
-    textColor: string = 'unset';
-    backgroundColor: string = 'unset';
-    constructor(public content: SectionContentInterface[], public src: string = '') {
+
+    constructor(public content: SectionContentInterface[], public src: string = '', 
+    public left: string = '50%', public top: string = '50%', public textColor: string = 'unset', public backgroundColor: string = 'unset') {
 
     }
     toHTML(): string {
@@ -518,6 +506,7 @@ export class DividerClass implements SectionContentInterface {
 
 
   export class ColumnWrapperClass {
+    //todo remove columns
     constructor(public content: ColumnClass[][], public columns: number = 1) {
 
     }

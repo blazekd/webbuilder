@@ -29,7 +29,7 @@ export class SectionComponent {
   addContent(column:number,row:number, i: number) {
     if (this.dialog.openDialogs.length > 0)
     return;
-
+    //todo enum
   const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addComponent()});
   dialogRef.afterClosed().subscribe(result => {
     if (result !== undefined)
@@ -147,15 +147,16 @@ export class SectionComponent {
     if (this.dialog.openDialogs.length > 0)
       return;
     let dialogRef;
+    let tmpData = Cloneable.deepCopy(this.component.columns.content[row][column].content[i])
+    //todo enum
     switch (type) {
       case 'image':
-        let tmpData = structuredClone(this.component.columns.content[row][column].content[i])
         let tmpDialog = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editImage(this.component.columns.content[row][column].content[i])
         });
         tmpDialog.afterClosed().subscribe(result => {
           if (result === undefined)
-            this.component.columns.content[row][column].content[i] = Cloneable.deepCopy(tmpData);
+            this.component.columns.content[row][column].content[i] = tmpData;
           else if (result.src == '')
             this.deleteContent(column, row, i);
         });
@@ -171,13 +172,13 @@ export class SectionComponent {
         });
         break;
       default:
-        alert('NENÍ IMPLEMENTOVÁNO');
+        alert('NOT IMPLEMENTED');
     }
     if (dialogRef) {
       dialogRef.afterClosed().subscribe(result => {
         console.log(result);
-        // if (result !== undefined)
-        //   this.component.data.columns.content[row][column].content[i].src = result;
+        if (result === undefined)
+          this.component.columns.content[row][column].content[i] = tmpData;
       });
     }
 
