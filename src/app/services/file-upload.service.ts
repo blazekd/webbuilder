@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FileUploadService {
-  api = 'https://blazekd.cz/api/'
+  api = 'https://webbuilder.blazekd.cz/api/'
   uploadUrl = this.api + 'uploadimage.php'
   getUrl = this.api + 'getimages.php'
 
