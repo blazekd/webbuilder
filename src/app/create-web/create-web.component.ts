@@ -124,7 +124,7 @@ export class CreateWebComponent {
           case 'title':
             this.components.splice(i, 0, SectionComponentClass.title());
             break;
-          case 'section':
+          case 'empty':
             this.components.splice(i, 0, SectionComponentClass.empty());
             break;
           case 'text':

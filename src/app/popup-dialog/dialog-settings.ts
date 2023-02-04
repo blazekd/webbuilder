@@ -65,27 +65,21 @@ export class DialogData {
   
   export const ADD_COMPONENT_MODULES = [
     new DialogModule(ListModuleComponent, [
-    {type: 'button', icon: 'title', text: 'button!!'}, 
-    {type: 'file', icon: 'title', text: 'file!!'}, 
-    {type: 'map', icon: 'title', text: 'map!!'}, 
-    {type: 'divider', icon: 'title', text: 'divider'}, 
-    {type: 'video', icon: 'title', text: 'video!!'}, 
-    {type: 'image', icon: 'title', text: 'image'}, 
-    {type: 'header', icon: 'title', text: 'header'}, 
-    {type: 'text', icon: 'title', text: 'text'}])
-  ]
+    {type: 'header', icon: 'abc', text: 'header'}, 
+    {type: 'text', icon: 'notes', text: 'text'},
+    {type: 'image', icon: 'image', text: 'image'}, 
+    {type: 'divider', icon: 'horizontal_rule', text: 'divider'}
+    ])]
         
   
   export const ADD_SECTION_MODULES = [
     new DialogModule(ListModuleComponent, [
-      {type: 'table', icon: 'title', text: "table!!"},
-      {type: 'cards', icon: 'title', text: "cards"},
-      {type: 'empty', icon: 'title', text: "empty!!"},
-      {type: 'gallery', icon: 'title', text: "gallery!!"},
-      {type: 'text2', icon: 'title', text: "text2"},
-      {type: 'text', icon: 'title', text: "text"},
-      {type: 'title', icon: 'title', text: "title"}]),
-  ]
+      {type: 'title', icon: 'title', text: "title"},
+      {type: 'text', icon: 'notes', text: "text"},
+      {type: 'text2', icon: 'vertical_split', text: "two columns"},
+      {type: 'empty', icon: 'crop_16_9', text: "empty section"},
+      {type: 'cards', icon: 'view_module', text: "cards"}
+  ])]
 
 
 
@@ -93,13 +87,13 @@ export class DialogData {
 
 export const EDIT_SECTION_MODULES = [
   new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
-  new DialogModule(SizeModuleComponent, {type: 'dimensions', icon: 'expand', text: "Dimensions"}),
+  new DialogModule(SizeModuleComponent, {type: 'dimensions', icon: 'straighten', text: "Dimensions"}),
   new DialogModule(ImageModuleComponent, {type: 'background', icon: 'image', text: "Background"})
 ]
 
 
 export const EDIT_GRID_MODULES = [
-  new DialogModule(ColumnsModuleComponent, {type: 'columns', icon: 'view_compact', text: "Columns"}),
+  new DialogModule(ColumnsModuleComponent, {type: 'columns', icon: 'view_week', text: "Columns"}),
 ]
 
 export const EDIT_CARD_MODULES = [
@@ -109,7 +103,7 @@ export const EDIT_CARD_MODULES = [
 
 export const EDIT_DIVIDER_MODULES = [
   new DialogModule(DividerColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
-  new DialogModule(DividerSizeModuleComponent, {type: 'dimensions', icon: 'expand', text: "Dimensions"})
+  new DialogModule(DividerSizeModuleComponent, {type: 'dimensions', icon: 'straighten', text: "Dimensions"})
 ]
 
 export const EDIT_IMAGE_MODULES = [
