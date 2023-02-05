@@ -26,20 +26,27 @@ export class CardComponent {
   dialogRef.afterClosed().subscribe(result => {
     if (result !== undefined)
       switch (result) {
-        case 'text':
-          this.card.content.splice(i, 0, new TextClass('<p>Nový text</p>'));
+        case DialogComponentType.TEXT:
+          this.card.content.splice(i, 0, TextClass.new());
           break;
-        case 'header':
-          this.card.content.splice(i, 0, new TextClass('<h1 style="text-align: center">Nový nadpis</h1>'));
+        case DialogComponentType.HEADER:
+          this.card.content.splice(i, 0, TextClass.newHeader());
           break;
-        case 'image':
-          this.card.content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/', '300px'));
+        case DialogComponentType.IMAGE:
+          this.card.content.splice(i, 0, ImageClass.new());
+          let tmpDialog = this.dialog.open(PopupDialogComponent, {
+            data: DialogData.editImage(this.card.content[i])
+          });
+          tmpDialog.afterClosed().subscribe(result => {
+            if (result === undefined || result.src == '')
+              this.card.content.splice(i, 1);
+          });
           break;
-        case 'divider':
-          this.card.content.splice(i, 0, DividerClass.default());
+        case DialogComponentType.DIVIDER:
+          this.card.content.splice(i, 0, DividerClass.new());
           break;
         default:
-          alert("Není implementováno!!");
+          alert("Not implemented!!");
           break;
       }
   });

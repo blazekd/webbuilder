@@ -334,6 +334,14 @@ export class TextClass implements SectionContentInterface {
       ${this.text == '' ? '<p><br></p>' : this.text}
     </div>`;
   }
+
+  public static new(): TextClass {
+    return new TextClass('');
+  }
+
+  public static newHeader(): TextClass {
+    return new TextClass('<h1 style="text-align: center">Nový nadpis</h1>');
+  }
 }
 
 export class ImageClass implements ImageInterface, SectionContentInterface {
@@ -352,13 +360,13 @@ export class ImageClass implements ImageInterface, SectionContentInterface {
     `;
   }
 
-  static default() : ImageClass {
-    return new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '80px');
+  static new() : ImageClass {
+    return new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px');
   }
 
-  static circle() : ImageClass {
-    return new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '80px', 2);
-  }
+  // static circle() : ImageClass {
+  //   return new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '80px', 2);
+  // }
   
 }
 
@@ -390,7 +398,7 @@ export class DividerClass implements SectionContentInterface {
     return (this.size.radiusType === '%' ? this.size.radius : this.size.radius / 5) + this.size.radiusType;
   }
 
-  static default() : DividerClass {
+  static new() : DividerClass {
     return new DividerClass(new DividerColorClass, new DividerSizeClass);
   }
 }

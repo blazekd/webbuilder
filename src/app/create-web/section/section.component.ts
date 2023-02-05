@@ -28,16 +28,23 @@ export class SectionComponent {
     if (result !== undefined)
       switch (result) {
         case DialogComponentType.TEXT:
-          this.component.columns.content[row][column].content.splice(i, 0, new TextClass('<p>Nový text</p>'));
+          this.component.columns.content[row][column].content.splice(i, 0, TextClass.new());
           break;
         case DialogComponentType.HEADER:
-          this.component.columns.content[row][column].content.splice(i, 0, new TextClass('<h1 style="text-align: center">Nový nadpis</h1>'));
+          this.component.columns.content[row][column].content.splice(i, 0, TextClass.newHeader());
           break;
         case DialogComponentType.IMAGE:
-          this.component.columns.content[row][column].content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/', '300px'));
+          this.component.columns.content[row][column].content.splice(i, 0, ImageClass.new());
+          let tmpDialog = this.dialog.open(PopupDialogComponent, {
+            data: DialogData.editImage(this.component.columns.content[row][column].content[i])
+          });
+          tmpDialog.afterClosed().subscribe(result => {
+            if (result === undefined || result.src == '')
+              this.deleteContent(column, row, i);
+          });
           break;
         case DialogComponentType.DIVIDER:
-          this.component.columns.content[row][column].content.splice(i, 0, DividerClass.default());
+          this.component.columns.content[row][column].content.splice(i, 0, DividerClass.new());
           break;
         default:
           alert("Není implementováno!!");
