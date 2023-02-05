@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { CardClass, Cloneable, DividerClass, ImageClass, SectionComponentClass, TextClass } from '../../../component-classes';
 import { PopupDialogComponent } from '../../../../popup-dialog/popup-dialog.component';
-import { DialogData } from '../../../../popup-dialog/dialog-settings';
+import { DialogComponentType, DialogData } from '../../../../popup-dialog/dialog-settings';
 
 @Component({
   selector: 'app-section-card',
@@ -63,14 +63,13 @@ export class CardComponent {
     this.card.content.splice(i, 1);
   }
 
-  editMenu(i:number, type: string) {
+  editMenu(i:number, type: DialogComponentType) {
     if (this.dialog.openDialogs.length > 0)
       return;
     let tmpData = Cloneable.deepCopy(this.card.content[i])
     let dialogRef;
-    // todo enum
     switch (type) {
-      case 'image':
+      case DialogComponentType.IMAGE:
 
         let tmpDialog = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editImage(this.card.content[i])
@@ -82,7 +81,7 @@ export class CardComponent {
             this.deleteContent(i);
         });
         break;
-      case 'divider': 
+      case DialogComponentType.DIVIDER: 
         dialogRef = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editDivider(this.card.content[i])
         });
@@ -102,5 +101,9 @@ export class CardComponent {
   drop(event: any) {
     moveItemInArray(this.card.content, event.previousIndex, event.currentIndex);
 
+  }
+
+  public get DialogComponentType() {
+    return DialogComponentType
   }
 }

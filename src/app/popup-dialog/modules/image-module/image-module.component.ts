@@ -4,7 +4,6 @@ import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ImageClass } from '../../../create-web/component-classes';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { AbstractDialogModule } from '../AbstractDialogModule';
-import { ChangeMenuEvent, EventMessage } from '../list-module/list-module.component';
 import { ImageUploadModuleComponent } from '../image-upload-module/image-upload-module.component';
 import { MatDialog } from '@angular/material/dialog';
 import { GalleryModuleComponent } from '../gallery-module/gallery-module.component';

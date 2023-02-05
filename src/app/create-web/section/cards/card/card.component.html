@@ -16,7 +16,6 @@
             <div class="mini-menu" [ngSwitch]="item.type">
                 <mat-icon cdkDragHandle class="handle-content" matTooltip="Move element" matTooltipPosition="left">open_with</mat-icon>
                 <mat-icon *ngSwitchDefault (click)="editMenu(i, item.type)" matTooltip="Edit element" matTooltipPosition="left">edit</mat-icon>
-                <ng-template *ngSwitchCase="'text'"></ng-template>
                 <mat-icon (click)="deleteContent(i)" matTooltip="Delete element" matTooltipPosition="left">delete</mat-icon>
             </div>
 
@@ -24,9 +23,9 @@
 
             <div [ngSwitch]="item.type">
 
-                <app-section-text *ngSwitchCase="'text'" [content]="asTextClass(item)"></app-section-text>
-                <app-section-image *ngSwitchCase="'image'" [content]="asImageClass(item)"></app-section-image>
-                <app-section-divider *ngSwitchCase="'divider'" [content]="asDividerClass(item)"></app-section-divider>
+                <app-section-text *ngSwitchCase="DialogComponentType.TEXT" [content]="asTextClass(item)"></app-section-text>
+                <app-section-image *ngSwitchCase="DialogComponentType.IMAGE" [content]="asImageClass(item)"></app-section-image>
+                <app-section-divider *ngSwitchCase="DialogComponentType.DIVIDER" [content]="asDividerClass(item)"></app-section-divider>
                 <div *ngSwitchDefault>{{item.type}}</div>
             </div>   
 

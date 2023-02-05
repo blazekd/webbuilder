@@ -1,4 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
+import { ChangeMenuEvent } from '../../classes/ChangeMenuEvent';
+import { EventMessage } from '../../classes/EventMessageEnum';
 import { AbstractDialogModule } from '../AbstractDialogModule';
 
 @Component({
@@ -19,12 +21,5 @@ export class ListModuleComponent extends AbstractDialogModule {
 
 }
 
-export class ChangeMenuEvent {
-  constructor(public message: EventMessage, public index?: number, public data?: any) {
-    
-  }
-}
 
-export enum EventMessage {
-  ADD, CHANGE, CANCEL, SAVE
-}
+

@@ -2,8 +2,9 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject, Subscription } from 'rxjs';
 import { Cloneable } from '../create-web/component-classes';
+import { ChangeMenuEvent } from './classes/ChangeMenuEvent';
+import { EventMessage } from './classes/EventMessageEnum';
 import { DialogData } from './dialog-settings';
-import { ChangeMenuEvent, EventMessage } from './modules/list-module/list-module.component';
 
 @Component({
   selector: 'app-popup-dialog',
@@ -29,6 +30,7 @@ export class PopupDialogComponent implements OnInit {
 
 
   handleEvent($event: ChangeMenuEvent) {
+    console.log("handling", $event)
     switch ($event.message) {
       case EventMessage.ADD:
         this.dialogRef.close($event.data)
@@ -37,8 +39,13 @@ export class PopupDialogComponent implements OnInit {
         this.dialogRef.close();
         break;
       case EventMessage.CHANGE:
-        if ($event.index !== undefined)
+        console.log($event.data)
+        if ($event.index !== undefined) {
+          // if ($event.data !== undefined)
+          //   this.dialogData.data = $event.data
           this.changeMenu($event.index);
+        }
+
         break;
       default:
         console.log("unhandled event, popup-dialog", $event)
@@ -53,21 +60,21 @@ export class PopupDialogComponent implements OnInit {
   }
 
   cancel() {
-    if (this.menuIndex == 0) {
+    if (this.menuIndex == 0) 
       this.dialogRef.close();
-    }
     this.sendMessage.next(EventMessage.CANCEL);
 
   }
 
   changeMenu(i: number) {
+    console.log(this.dialogData.data)
     this.menuIndex = i;
     if (this.menuElem)
       this.menuElem.clear();
     const componentRef = this.menuElem.createComponent(this.dialogData.list[this.menuIndex].component);
     componentRef.instance.newEvent.subscribe((x: ChangeMenuEvent) => this.handleEvent(x));
     componentRef.instance.moduleData = this.dialogData.list[this.menuIndex].moduleData;
-    componentRef.instance.dataOld = Cloneable.deepCopy(this.dialogData.data);
+    componentRef.instance.dataOld = Cloneable.deepCopy(this.dialogData.data); //object assign?
     componentRef.instance.data = this.dialogData.data;
     componentRef.instance.message = this.dialogData.message;
     this.subscription.unsubscribe();

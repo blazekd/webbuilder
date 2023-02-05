@@ -211,14 +211,6 @@ app-home, app-create-web {
 }
 
 
-web-logo-module, web-background-module, web-size-module, web-color-module, web-button-module  {
-  /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */
-  .mat-tab-header-pagination {
-      display: none !important;
-  }
-
-}
-
 .cdk-drag-placeholder, .cdk-drop-list-receiving {
 
   .mini-menu, .new-content-button {
@@ -231,22 +223,6 @@ web-logo-module, web-background-module, web-size-module, web-color-module, web-b
   }
 }
 
-web-section .cdk-drag-placeholder {
-  .content-inner-wrapper > div {
-    border: 2px dotted grey;
-  }
-
-}
-
-web-grid {
-  .cdk-drag-placeholder.content > div, .sortable-chosen .inner-content {
-    border: 2px dotted grey !important;
-    .new-content-button, .card-menu, .mini-menu {
-      display: none !important;
-    }
-
-  }
-}
 
 .cdk-drag-preview:not(.column-width-border) {
   border: 1px dashed #666 !important;

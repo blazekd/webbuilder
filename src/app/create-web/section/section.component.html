@@ -26,17 +26,16 @@
                                 <div class="mini-menu" [ngSwitch]="item.type">
                                     <mat-icon cdkDragHandle class="handle" matTooltip="Move element" matTooltipPosition="right" [style.display]="columnContent.resizable ? 'block' : 'none'">open_with</mat-icon>
                                     <mat-icon *ngSwitchDefault (click)="editMenu(column, row, i, item.type)" matTooltip="Edit element" matTooltipPosition="right">edit</mat-icon>
-                                    <ng-template *ngSwitchCase="'text'"></ng-template>
                                     <mat-icon (click)="deleteContent(column, row, i)" matTooltip="Delete element" matTooltipPosition="right">delete</mat-icon>
                                 </div>
                                 <div class="content-inner-wrapper">
 
                                     <div [ngSwitch]="item.type">
                                 
-                                        <app-section-text *ngSwitchCase="'text'" [content]="asTextClass(item)"></app-section-text>
-                                        <app-section-image *ngSwitchCase="'image'" [content]="asImageClass(item)"></app-section-image>
-                                        <app-section-divider *ngSwitchCase="'divider'" [content]="asDividerClass(item)"></app-section-divider>
-                                        <app-section-cards *ngSwitchCase="'grid'" [component]="asGridComponentClass(item)"></app-section-cards>
+                                        <app-section-text *ngSwitchCase="DialogComponentType.TEXT" [content]="asTextClass(item)"></app-section-text>
+                                        <app-section-image *ngSwitchCase="DialogComponentType.IMAGE" [content]="asImageClass(item)"></app-section-image>
+                                        <app-section-divider *ngSwitchCase="DialogComponentType.DIVIDER" [content]="asDividerClass(item)"></app-section-divider>
+                                        <app-section-cards *ngSwitchCase="DialogComponentType.CARDS" [component]="asGridComponentClass(item)"></app-section-cards>
                                         <div *ngSwitchDefault>{{item.type}}</div>
                                         
                                     </div> 

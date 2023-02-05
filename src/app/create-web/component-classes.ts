@@ -1,4 +1,5 @@
 import { he } from 'date-fns/locale';
+import { DialogComponentType, DialogModuleType } from '../popup-dialog/dialog-settings';
 import { LOREM } from './constants';
 
 
@@ -34,7 +35,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
 
   toHTML() {
     return `
-      <div style="min-height: ${this.height}vh; background-image: ${this.src == '' ? '' : 'url(' + this.src + ')'}; background-position-x: ${this.left}; background-position-y: ${this.top}; background-color: ${this.backgroundColor}; color: ${this.textColor}; padding: 20px 40px; background-size: cover; display: flex;">
+      <div style="min-height: ${this.height}vh; background-image: ${this.src == '' ? 'none' : 'url(' + this.src + ')'}; background-position-x: ${this.left}; background-position-y: ${this.top}; background-color: ${this.backgroundColor}; color: ${this.textColor}; padding: 20px 40px; background-size: cover; display: flex;">
         <div style="max-width: ${this.width}px; margin: 0 auto; width: 100%;">
           ${this.columns.toHTML()}
         </div>
@@ -45,7 +46,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
   static empty() : SectionComponentClass {
     return new SectionComponentClass(
       'unset', '0', 
-      new ColumnWrapperClass([]))
+      new ColumnWrapperClass([[new ColumnClass([])]]))
   }
   static text() : SectionComponentClass {
     return new SectionComponentClass(
@@ -302,7 +303,7 @@ interface HTMLable {
 }
 
 interface SectionContentInterface extends HTMLable {
-  type: string;
+  type: DialogComponentType;
 }
 
 export class ColumnClass {
@@ -324,7 +325,7 @@ export class ColumnClass {
 
 
 export class TextClass implements SectionContentInterface {
-  type = 'text';
+  type = DialogComponentType.TEXT;
   constructor(public text: string) {
   }
   toHTML(): string {
@@ -336,7 +337,7 @@ export class TextClass implements SectionContentInterface {
 }
 
 export class ImageClass implements ImageInterface, SectionContentInterface {
-  type = 'image';
+  type = DialogComponentType.IMAGE;
   // todo remove style?
   constructor(public src: string, public height: string, public style = 1, public left = '50%', public top = '50%') {
 
@@ -377,7 +378,7 @@ export class DividerSizeClass {
 
 
 export class DividerClass implements SectionContentInterface {
-  type = 'divider';
+  type = DialogComponentType.DIVIDER;
   constructor(public color: DividerColorClass, public size: DividerSizeClass) {
 
   }
@@ -403,7 +404,7 @@ export class DividerClass implements SectionContentInterface {
   
 
   export class GridComponentClass implements SectionContentInterface {
-    type = 'grid';
+    type = DialogComponentType.CARDS;
     constructor(public cards: CardClass[], public template: CardClass, public columns: number) {
 
     }
@@ -486,9 +487,9 @@ export class Deserializable  {
   public static cardClass(obj: CardClass): CardClass {
     let cardContent = obj.content.map((e: any) => {
       switch (e.type) {
-        case 'divider':
+        case DialogComponentType.DIVIDER:
           return new DividerClass(e.color, e.size);
-        case 'image':
+        case DialogComponentType.IMAGE:
           return new ImageClass(e.src, e.height, e.style, e.left, e.top);
         default:
           return new TextClass(e.text);
@@ -508,12 +509,11 @@ export class Deserializable  {
   public static columnClass(obj: ColumnClass): ColumnClass {
     let columnContent = obj.content.map((c: any) => {
       switch (c.type) {
-        // todo enum
-        case 'divider':
+        case DialogComponentType.DIVIDER:
           return new DividerClass(c.color, c.size);
-        case 'image':
+        case DialogComponentType.IMAGE:
           return new ImageClass(c.src, c.height, c.style, c.left, c.top);
-        case 'grid':
+        case DialogComponentType.CARDS:
           return Deserializable.gridComponentClass(c)
         default:
           return new TextClass(c.text);

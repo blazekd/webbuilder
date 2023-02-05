@@ -4,7 +4,7 @@ import { TextClass, ImageClass, DividerClass, ColumnClass, SectionComponentClass
 import { moveItemInArray, Point, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Subject } from 'rxjs';
 import { PopupDialogComponent } from '../../popup-dialog/popup-dialog.component';
-import { DialogData } from '../../popup-dialog/dialog-settings';
+import { DialogComponentType, DialogData } from '../../popup-dialog/dialog-settings';
 
 
 @Component({
@@ -22,21 +22,21 @@ export class SectionComponent {
   addContent(column:number,row:number, i: number) {
     if (this.dialog.openDialogs.length > 0)
     return;
-    // todo enum
+
   const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addComponent()});
   dialogRef.afterClosed().subscribe(result => {
     if (result !== undefined)
       switch (result) {
-        case 'text':
+        case DialogComponentType.TEXT:
           this.component.columns.content[row][column].content.splice(i, 0, new TextClass('<p>Nový text</p>'));
           break;
-        case 'header':
+        case DialogComponentType.HEADER:
           this.component.columns.content[row][column].content.splice(i, 0, new TextClass('<h1 style="text-align: center">Nový nadpis</h1>'));
           break;
-        case 'image':
+        case DialogComponentType.IMAGE:
           this.component.columns.content[row][column].content.splice(i, 0, new ImageClass('https://blog.inpage.cz/obrazek/3/kitten-jpg/', '300px'));
           break;
-        case 'divider':
+        case DialogComponentType.DIVIDER:
           this.component.columns.content[row][column].content.splice(i, 0, DividerClass.default());
           break;
         default:
@@ -113,14 +113,14 @@ export class SectionComponent {
     this.component.columns.content[row][column].content.splice(i, 1);
   }
 
-  editMenu(column:number, row:number, i:number, type: string) {
+  editMenu(column:number, row:number, i:number, type: DialogComponentType) {
     if (this.dialog.openDialogs.length > 0)
       return;
     let dialogRef;
     let tmpData = Cloneable.deepCopy(this.component.columns.content[row][column].content[i])
-    // todo enum
+
     switch (type) {
-      case 'image':
+      case DialogComponentType.IMAGE:
         let tmpDialog = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editImage(this.component.columns.content[row][column].content[i])
         });
@@ -131,12 +131,12 @@ export class SectionComponent {
             this.deleteContent(column, row, i);
         });
         break;
-      case 'divider':
+      case DialogComponentType.DIVIDER:
         dialogRef = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editDivider(this.component.columns.content[row][column].content[i])
         });
         break;
-      case 'grid':
+      case DialogComponentType.CARDS:
         dialogRef = this.dialog.open(PopupDialogComponent, {
           data: DialogData.editGrid(this.component.columns.content[row][column].content[i])
         });
@@ -174,6 +174,10 @@ export class SectionComponent {
 
   asGridComponentClass(item: any) {
     return item as GridComponentClass;
+  }
+
+  public get DialogComponentType() {
+    return DialogComponentType; 
   }
 
 }

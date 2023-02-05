@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupDialogComponent } from '../popup-dialog/popup-dialog.component';
-import { DialogData } from '../popup-dialog/dialog-settings';
+import { DialogComponentType, DialogData } from '../popup-dialog/dialog-settings';
 import { CardClass, Cloneable, ColumnClass, ColumnWrapperClass, Deserializable, DividerClass, GridComponentClass, ImageClass, SectionComponentClass, TextClass } from './component-classes';
 import { DataManipulationService } from '../services/data-manipulation.service';
 
@@ -34,16 +34,15 @@ export class CreateWebComponent {
     this.service.message.subscribe(($event) => this.handleService($event))
    }
 
-   // todo enum
   handleService($event: any) {
     switch ($event.type) {
-      case 'JSON':
+      case NavMessage.JSON:
         this.exportToJSON();
         break;
-      case 'HTML':
+      case NavMessage.HTML:
         this.exportToHTML();
         break;
-      case 'import': 
+      case NavMessage.IMPORT: 
         let fileReader = new FileReader();
         fileReader.onload = (e) => {
           let str: string = fileReader.result == null ?  '[]' : fileReader.result.toString();
@@ -121,19 +120,19 @@ export class CreateWebComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined)
         switch (result) {
-          case 'title':
+          case DialogComponentType.TITLE:
             this.components.splice(i, 0, SectionComponentClass.title());
             break;
-          case 'empty':
+          case DialogComponentType.EMPTY:
             this.components.splice(i, 0, SectionComponentClass.empty());
             break;
-          case 'text':
+          case DialogComponentType.TEXT:
             this.components.splice(i, 0, SectionComponentClass.text());
             break;
-          case 'text2':
+          case DialogComponentType.TEXT2:
             this.components.splice(i, 0, SectionComponentClass.text2());
             break;
-          case 'cards':
+          case DialogComponentType.CARDS:
             this.components.splice(i, 0, SectionComponentClass.grid());
             break;
           default:
@@ -142,7 +141,6 @@ export class CreateWebComponent {
         }
     });
   }
-
 
   editComp(i: number) {
     if (this.dialog.openDialogs.length > 0)
@@ -195,3 +193,6 @@ export class CreateWebComponent {
   }
 }
 
+export enum NavMessage {
+  JSON, HTML, IMPORT
+}

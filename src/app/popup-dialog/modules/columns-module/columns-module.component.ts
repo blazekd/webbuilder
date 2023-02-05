@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractDialogModule } from '../AbstractDialogModule';
-import { ChangeMenuEvent } from '../list-module/list-module.component';
 
 @Component({
   selector: 'app-columns-module',

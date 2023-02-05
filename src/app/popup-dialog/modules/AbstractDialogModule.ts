@@ -1,7 +1,8 @@
 
 import { Subject } from "rxjs";
 import { Cloneable } from "src/app/create-web/component-classes";
-import { ChangeMenuEvent, EventMessage } from "./list-module/list-module.component";
+import { ChangeMenuEvent } from "../classes/ChangeMenuEvent";
+import { EventMessage } from "../classes/EventMessageEnum";
 
 export abstract class AbstractDialogModule {
     data: any;
@@ -13,7 +14,7 @@ export abstract class AbstractDialogModule {
     handleMessage(message: EventMessage) {
         switch (message) {
             case EventMessage.CANCEL:
-                this.data = this.dataOld;
+                Object.assign(this.data, this.dataOld)
                 this.newEvent.next(new ChangeMenuEvent(EventMessage.CHANGE, 0));
                 break;
             case EventMessage.SAVE:

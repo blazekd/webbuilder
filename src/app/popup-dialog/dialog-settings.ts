@@ -1,10 +1,11 @@
 import { Type } from "@angular/core";
+import { EventMessage } from "./classes/EventMessageEnum";
 import { ColorModuleComponent } from "./modules/color-module/color-module.component";
 import { ColumnsModuleComponent } from "./modules/columns-module/columns-module.component";
 import { DividerColorModuleComponent } from "./modules/divider-color-module/divider-color-module.component";
 import { DividerSizeModuleComponent } from "./modules/divider-size-module/divider-size-module.component";
 import { ImageModuleComponent } from "./modules/image-module/image-module.component";
-import { EventMessage, ListModuleComponent } from "./modules/list-module/list-module.component";
+import { ListModuleComponent } from "./modules/list-module/list-module.component";
 import { SizeModuleComponent } from "./modules/size-module/size-module.component";
 
 export class DialogData {
@@ -62,48 +63,54 @@ export class DialogData {
   
     }
   }
+
+  export enum DialogComponentType {
+    HEADER, TEXT, IMAGE, DIVIDER, TITLE, TEXT2, CARDS, EMPTY
+  }
   
   export const ADD_COMPONENT_MODULES = [
     new DialogModule(ListModuleComponent, [
-    {type: 'header', icon: 'abc', text: 'header'}, 
-    {type: 'text', icon: 'notes', text: 'text'},
-    {type: 'image', icon: 'image', text: 'image'}, 
-    {type: 'divider', icon: 'horizontal_rule', text: 'divider'}
+    {type: DialogComponentType.HEADER, icon: 'abc', text: 'header'}, 
+    {type: DialogComponentType.TEXT, icon: 'notes', text: 'text'},
+    {type: DialogComponentType.IMAGE, icon: 'image', text: 'image'}, 
+    {type: DialogComponentType.DIVIDER, icon: 'horizontal_rule', text: 'divider'}
     ])]
         
   
   export const ADD_SECTION_MODULES = [
     new DialogModule(ListModuleComponent, [
-      {type: 'title', icon: 'title', text: "title"},
-      {type: 'text', icon: 'notes', text: "text"},
-      {type: 'text2', icon: 'vertical_split', text: "two columns"},
-      {type: 'empty', icon: 'crop_16_9', text: "empty section"},
-      {type: 'cards', icon: 'view_module', text: "cards"}
+      {type: DialogComponentType.TITLE, icon: 'title', text: "title"},
+      {type: DialogComponentType.TEXT, icon: 'notes', text: "text"},
+      {type: DialogComponentType.TEXT2, icon: 'vertical_split', text: "two columns"},
+      {type: DialogComponentType.EMPTY, icon: 'crop_16_9', text: "empty section"},
+      {type: DialogComponentType.CARDS, icon: 'view_module', text: "cards"}
   ])]
 
 
 
-  // todo enum for type
+export enum DialogModuleType {
+  COLORS, DIMENSIONS, BACKGROUND, COLUMNS
+}
 
 export const EDIT_SECTION_MODULES = [
-  new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
-  new DialogModule(SizeModuleComponent, {type: 'dimensions', icon: 'straighten', text: "Dimensions"}),
-  new DialogModule(ImageModuleComponent, {type: 'background', icon: 'image', text: "Background"})
+  new DialogModule(ColorModuleComponent, {type: DialogModuleType.COLORS, icon: 'palette', text: "Colors"}),
+  new DialogModule(SizeModuleComponent, {type: DialogModuleType.DIMENSIONS, icon: 'straighten', text: "Dimensions"}),
+  new DialogModule(ImageModuleComponent, {type: DialogModuleType.BACKGROUND, icon: 'image', text: "Background"})
 ]
 
 
 export const EDIT_GRID_MODULES = [
-  new DialogModule(ColumnsModuleComponent, {type: 'columns', icon: 'view_week', text: "Columns"}),
+  new DialogModule(ColumnsModuleComponent, {type: DialogModuleType.COLUMNS, icon: 'view_week', text: "Columns"}),
 ]
 
 export const EDIT_CARD_MODULES = [
-  new DialogModule(ColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
-  new DialogModule(ImageModuleComponent, {type: 'background', icon: 'image', text: "Background"})
+  new DialogModule(ColorModuleComponent, {type: DialogModuleType.COLORS, icon: 'palette', text: "Colors"}),
+  new DialogModule(ImageModuleComponent, {type: DialogModuleType.BACKGROUND, icon: 'image', text: "Background"})
 ]
 
 export const EDIT_DIVIDER_MODULES = [
-  new DialogModule(DividerColorModuleComponent, {type: 'colors', icon: 'palette', text: "Colors"}),
-  new DialogModule(DividerSizeModuleComponent, {type: 'dimensions', icon: 'straighten', text: "Dimensions"})
+  new DialogModule(DividerColorModuleComponent, {type: DialogModuleType.COLORS, icon: 'palette', text: "Colors"}),
+  new DialogModule(DividerSizeModuleComponent, {type: DialogModuleType.DIMENSIONS, icon: 'straighten', text: "Dimensions"})
 ]
 
 export const EDIT_IMAGE_MODULES = [

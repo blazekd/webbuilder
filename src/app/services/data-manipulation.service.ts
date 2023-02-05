@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { NavMessage } from '../create-web/create-web.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,14 @@ export class DataManipulationService {
   constructor() { }
 
   exportHTML() {
-    this.message.next({type: 'HTML'});
+    this.message.next({type: NavMessage.HTML});
   }
 
   exportJSON() {
-    this.message.next({type: 'JSON'});
+    this.message.next({type: NavMessage.JSON});
   }
 
   importData(data: string) {
-    this.message.next({type: 'import', data: data});
+    this.message.next({type: NavMessage.IMPORT, data: data});
   }
 }
