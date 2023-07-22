@@ -1,9 +1,8 @@
-<div class="d-flex flex-column new-component-wrapper">
+<div class="d-flex flex-column">
     <ng-container *ngFor="let item of moduleData; index as i">
-        <button mat-button (click)="onClick(item.type, i)">                  
+        <button class="m-1" mat-button (click)="onClick(item.type, i)">
             <mat-icon class="custom-icon">{{item.icon}}</mat-icon>
-            <!-- <mat-icon>chevron_right</mat-icon> -->
             <span>{{item.text}}</span>
-          </button>
+        </button>
     </ng-container>
 </div>

@@ -28,7 +28,7 @@ interface ColorInterface {
 export class SectionComponentClass implements ImageInterface, SizeInterface, ColorInterface {
 
   constructor(public width: string, public height: string, public columns: ColumnWrapperClass, public src: string = '',
-  public left: string = '50%', public top: string = '50%', public backgroundColor: string = '#ffffff', public textColor: string = '#000000') {
+    public left: string = '50%', public top: string = '50%', public backgroundColor: string = '#ffffff', public textColor: string = '#000000') {
 
   }
 
@@ -43,46 +43,46 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
   }
 
 
-  static empty() : SectionComponentClass {
-    return new SectionComponentClass(
-      'unset', '0', 
-      new ColumnWrapperClass([[new ColumnClass([])]]))
-  }
-  static text() : SectionComponentClass {
-    return new SectionComponentClass(
-      'unset', '0', 
-      new ColumnWrapperClass(
-      [[
-          new ColumnClass([new TextClass(LOREM[0])])
-        ]], 
-      ))
-  }
-
-
-  static grid() : SectionComponentClass {
-    return new SectionComponentClass(
-      'unset', '0', 
-      new ColumnWrapperClass(
-      [[
-          new ColumnClass([GridComponentClass.test2()],100,false)
-        ]], 
-      ))
-  }
-
-
-  static text2() : SectionComponentClass {
+  static empty(): SectionComponentClass {
     return new SectionComponentClass(
       'unset', '0',
-      new ColumnWrapperClass(      
+      new ColumnWrapperClass([[new ColumnClass([])]]))
+  }
+  static text(): SectionComponentClass {
+    return new SectionComponentClass(
+      'unset', '0',
+      new ColumnWrapperClass(
         [[
-        new ColumnClass([new TextClass(LOREM[0])]), 
-        new ColumnClass([new TextClass(LOREM[1])])
+          new ColumnClass([new TextClass(LOREM[0])])
+        ]],
+      ))
+  }
+
+
+  static grid(): SectionComponentClass {
+    return new SectionComponentClass(
+      'unset', '0',
+      new ColumnWrapperClass(
+        [[
+          new ColumnClass([GridComponentClass.test2()], 100, false)
+        ]],
+      ))
+  }
+
+
+  static text2(): SectionComponentClass {
+    return new SectionComponentClass(
+      'unset', '0',
+      new ColumnWrapperClass(
+        [[
+          new ColumnClass([new TextClass(LOREM[0])]),
+          new ColumnClass([new TextClass(LOREM[1])])
         ]]))
   }
-  static webnode0() : SectionComponentClass { // webnode!!!
+  static webnode0(): SectionComponentClass { // webnode!!!
     return new SectionComponentClass(
-      '1600', '50', 
-      new ColumnWrapperClass(      [[
+      '1600', '50',
+      new ColumnWrapperClass([[
         new ColumnClass(
           [
             new TextClass('<p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><h1><br></h1><h1 style="color: rgb(255, 255, 255); text-align: center; font-size: 300%; letter-spacing: 0.7em;">OPEN YOUR MIND</h1><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><h2 style="color: rgb(255, 255, 255); text-align: center; font-family: Tahoma; font-size: 150%; letter-spacing: 0.2em;">NOVÉ ALBUM VYCHÁZÍ JIŽ <strong>18. ČERVNA 2021!</strong></h2>'),
@@ -90,71 +90,71 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
       ]]),
       'https://d1di2lzuh97fh2.cloudfront.net/files/1f/1f1/1f14ip.jpg?ph=803803e858')
   }
-  static webnode1() : SectionComponentClass {
+  static webnode1(): SectionComponentClass {
     return new SectionComponentClass(
       '1000', '0',
-      new ColumnWrapperClass(      
-      [
-        [
-          new ColumnClass(
-            [          
-              new TextClass(''),
-              new TextClass(''),
-              new TextClass(''),
-            ])
-        ],
-        [
-        new ColumnClass(
-          [
-            new TextClass('<h2 style="font-size: 200%; color: rgb(112, 112, 112);">POCTA NAŠIM KYTAROVÝM VZORŮM</h2>'),
-            new TextClass('<p style="color: rgb(148, 148, 148);">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
-          ],63), 
-        new ColumnClass(
-          [
-            new TextClass('')
-          ],37)
-        ],
-        [
-          new ColumnClass(
-            [
-              new ImageClass('https://d1di2lzuh97fh2.cloudfront.net/files/0h/0hj/200/0hjhl8.png?ph=dee24c1a70', '30px'),
-            ], 16), 
-          new ColumnClass(
-            [
-              new TextClass('')
-            ], 84)
-          ],
-        [
-          new ColumnClass(
-            [
-              new TextClass(''),
-              new TextClass(''),
-              new TextClass('')
-            ])
-        ]
-      ]
-        ), 'https://d1di2lzuh97fh2.cloudfront.net/files/0c/0cx/0cx52n.jpg?ph=dee24c1a70&t=1')
-  }
-  static webnode2() : SectionComponentClass {
-    return new SectionComponentClass(
-      '1000', '50',
-      new ColumnWrapperClass(      
-        [[
-        new ColumnClass([new TextClass('')],20),
-        new ColumnClass([
-          new TextClass('<h2 style="color: rgb(255, 255, 255); font-size: 300%; text-align: right;"><strong>OMRKNI, KDE HRAJEME A PŘIJĎ SI NÁS POSLECHNOUT</strong></h2><p style="color: rgb(255, 255, 255); text-align: right;">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
-        ],80)
-        ]]), 'https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1')
-  }
-
-  static webnode3() : SectionComponentClass {
-    return new SectionComponentClass(
-      '1000', '75',
-      new ColumnWrapperClass(      
+      new ColumnWrapperClass(
         [
           [
             new ColumnClass(
-              [          
+              [
+                new TextClass(''),
+                new TextClass(''),
+                new TextClass(''),
+              ])
+          ],
+          [
+            new ColumnClass(
+              [
+                new TextClass('<h2 style="font-size: 200%; color: rgb(112, 112, 112);">POCTA NAŠIM KYTAROVÝM VZORŮM</h2>'),
+                new TextClass('<p style="color: rgb(148, 148, 148);">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
+              ], 63),
+            new ColumnClass(
+              [
+                new TextClass('')
+              ], 37)
+          ],
+          [
+            new ColumnClass(
+              [
+                new ImageClass('https://d1di2lzuh97fh2.cloudfront.net/files/0h/0hj/200/0hjhl8.png?ph=dee24c1a70', '30px'),
+              ], 16),
+            new ColumnClass(
+              [
+                new TextClass('')
+              ], 84)
+          ],
+          [
+            new ColumnClass(
+              [
+                new TextClass(''),
+                new TextClass(''),
+                new TextClass('')
+              ])
+          ]
+        ]
+      ), 'https://d1di2lzuh97fh2.cloudfront.net/files/0c/0cx/0cx52n.jpg?ph=dee24c1a70&t=1')
+  }
+  static webnode2(): SectionComponentClass {
+    return new SectionComponentClass(
+      '1000', '50',
+      new ColumnWrapperClass(
+        [[
+          new ColumnClass([new TextClass('')], 20),
+          new ColumnClass([
+            new TextClass('<h2 style="color: rgb(255, 255, 255); font-size: 300%; text-align: right;"><strong>OMRKNI, KDE HRAJEME A PŘIJĎ SI NÁS POSLECHNOUT</strong></h2><p style="color: rgb(255, 255, 255); text-align: right;">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
+          ], 80)
+        ]]), 'https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1')
+  }
+
+  static webnode3(): SectionComponentClass {
+    return new SectionComponentClass(
+      '1000', '75',
+      new ColumnWrapperClass(
+        [
+          [
+            new ColumnClass(
+              [
                 new TextClass(''),
                 new TextClass(''),
                 new TextClass(''),
@@ -164,12 +164,12 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
             new ColumnClass(
               [
                 new TextClass('')
-              ],30),
+              ], 30),
             new ColumnClass(
               [
                 new TextClass('<h2 style="font-size: 200%; color: rgb(112, 112, 112);">OBSAHUJE VŠECHNY TVOJE OBLÍBENÉ SKLADBY</h2>'),
                 new TextClass('<p style="color: rgb(148, 148, 148);">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
-              ],70)
+              ], 70)
           ],
           [
             new ColumnClass(
@@ -180,7 +180,7 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
               [
                 new ImageClass('https://d1di2lzuh97fh2.cloudfront.net/files/0k/0ku/200/0kuz6l.png?ph=dee24c1a70', '30px'),
               ], 19)
-            ],
+          ],
           [
             new ColumnClass(
               [
@@ -190,25 +190,25 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
               ])
           ]
         ]
-        ), 'https://d1di2lzuh97fh2.cloudfront.net/files/23/23k/23kxvc.jpg?ph=dee24c1a70&t=1')
+      ), 'https://d1di2lzuh97fh2.cloudfront.net/files/23/23k/23kxvc.jpg?ph=dee24c1a70&t=1')
   }
 
-  static webnode4() : SectionComponentClass {
+  static webnode4(): SectionComponentClass {
     return new SectionComponentClass(
       '1000', '50',
-      new ColumnWrapperClass(      
+      new ColumnWrapperClass(
         [[
-        new ColumnClass([
-          new TextClass('<h2 style="color: rgb(255, 255, 255); font-size: 300%;"><strong>POSLECHNI SI UKÁZKY Z NOVÉHO ALBA</strong></h2><p style="color: rgb(255, 255, 255);">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
-        ],80),
-        new ColumnClass([new TextClass('')],20)
+          new ColumnClass([
+            new TextClass('<h2 style="color: rgb(255, 255, 255); font-size: 300%;"><strong>POSLECHNI SI UKÁZKY Z NOVÉHO ALBA</strong></h2><p style="color: rgb(255, 255, 255);">Váš text začíná právě zde. Klikněte a můžete začít psát. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi.</p>'),
+          ], 80),
+          new ColumnClass([new TextClass('')], 20)
         ]]), 'https://d1di2lzuh97fh2.cloudfront.net/files/2s/2sh/2shjwo.jpg?ph=dee24c1a70&t=1')
   }
 
-  static webnodeFooter() : SectionComponentClass {
+  static webnodeFooter(): SectionComponentClass {
     return new SectionComponentClass(
       'unset', '0',
-      new ColumnWrapperClass(      [[
+      new ColumnWrapperClass([[
         new ColumnClass(
           [
             new TextClass('<p style="text-align: center;">© 2021 Worlds Collide</p>'),
@@ -216,11 +216,11 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
       ]]))
   }
 
-  
-  static webnodeNav() : SectionComponentClass {
+
+  static webnodeNav(): SectionComponentClass {
     return new SectionComponentClass(
       '1600', '0',
-      new ColumnWrapperClass(      [[
+      new ColumnWrapperClass([[
         new ColumnClass(
           [
             new TextClass('<h1 style="font-family: Courier; font-size: 330%;"><strong>WORLDS </strong>COLLIDE</h1>'),
@@ -228,73 +228,73 @@ export class SectionComponentClass implements ImageInterface, SizeInterface, Col
       ]]))
   }
 
-  static text3() : SectionComponentClass {
+  static text3(): SectionComponentClass {
     return new SectionComponentClass(
-      'unset', '0', 
+      'unset', '0',
       new ColumnWrapperClass(
         [[
           new ColumnClass([new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3]), new TextClass(LOREM[0]), new TextClass(LOREM[1]), new TextClass(LOREM[2]), new TextClass(LOREM[3])])
-        ]] 
+        ]]
       ))
   }
 
 
 
-  static columns() : SectionComponentClass {
+  static columns(): SectionComponentClass {
     return new SectionComponentClass(
-      'unset', '0', 
+      'unset', '0',
       new ColumnWrapperClass([[
         new ColumnClass(
           [
-            new TextClass(LOREM[0]), 
+            new TextClass(LOREM[0]),
             new TextClass(LOREM[1])
-          ]), 
+          ]),
         new ColumnClass(
           [
-            new TextClass(LOREM[1]), 
+            new TextClass(LOREM[1]),
             new TextClass(LOREM[2])
-          ]), 
+          ]),
         new ColumnClass(
           [
-            new TextClass(LOREM[2]), 
+            new TextClass(LOREM[2]),
             new TextClass(LOREM[3])
-          ]), 
+          ]),
         new ColumnClass(
           [
             new TextClass(LOREM[3]),
             new TextClass(LOREM[4])
-          ]), 
+          ]),
         new ColumnClass(
           [
-            new TextClass(LOREM[4]), 
+            new TextClass(LOREM[4]),
             new TextClass(LOREM[0])
           ])
       ]]))
   }
 
-  static title() : SectionComponentClass {
+  static title(): SectionComponentClass {
     return new SectionComponentClass(
-      '1750', '50', 
-      new ColumnWrapperClass(      [[
+      '1750', '50',
+      new ColumnWrapperClass([[
         new ColumnClass(
           [
-            new TextClass('<h1 style="text-align: center;">Nový nadpis</h1>'), 
+            new TextClass('<h1 style="text-align: center;">Nový nadpis</h1>'),
             new TextClass('<h2 style="text-align: center;">Nový podnadpis</h2>')
           ])
       ]]))
   }
 
 
-  static image() : SectionComponentClass {
+  static image(): SectionComponentClass {
     return new SectionComponentClass(
-      'unset', '0', 
-      new ColumnWrapperClass(      
-      [[
-        new ColumnClass(
-          [
-            new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px')
-          ])
-      ]]))
+      'unset', '0',
+      new ColumnWrapperClass(
+        [[
+          new ColumnClass(
+            [
+              new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px')
+            ])
+        ]]))
   }
 }
 
@@ -346,7 +346,7 @@ export class TextClass implements SectionContentInterface {
 
 export class ImageClass implements ImageInterface, SectionContentInterface {
   type = DialogComponentType.IMAGE;
-  // todo remove style?
+  // todo style
   constructor(public src: string, public height: string, public style = 1, public left = '50%', public top = '50%') {
 
   }
@@ -360,14 +360,14 @@ export class ImageClass implements ImageInterface, SectionContentInterface {
     `;
   }
 
-  static new() : ImageClass {
+  static new(): ImageClass {
     return new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px');
   }
 
   // static circle() : ImageClass {
   //   return new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '80px', 2);
   // }
-  
+
 }
 
 export class DividerColorClass {
@@ -398,7 +398,7 @@ export class DividerClass implements SectionContentInterface {
     return (this.size.radiusType === '%' ? this.size.radius : this.size.radius / 5) + this.size.radiusType;
   }
 
-  static new() : DividerClass {
+  static new(): DividerClass {
     return new DividerClass(new DividerColorClass, new DividerSizeClass);
   }
 }
@@ -406,92 +406,92 @@ export class DividerClass implements SectionContentInterface {
 
 
 
-  
-  
 
-  
 
-  export class GridComponentClass implements SectionContentInterface {
-    type = DialogComponentType.CARDS;
-    constructor(public cards: CardClass[], public template: CardClass, public columns: number) {
 
-    }
-    toHTML(): string {
-      let result = '<div style="padding: 40px;"><div style="display: flex; justify-content: center; flex-wrap: wrap;">'
-      this.cards.forEach(card => {
-        result += `
-        <div style="background-color: ${card.backgroundColor}; color: ${card.textColor}; flex-basis: ${100/this.columns}%; background-position: ${card.left} ${card.top}; background-size: cover; background-image: url(${card.src}); padding: 15px 10px 0;">
+
+
+export class GridComponentClass implements SectionContentInterface {
+  type = DialogComponentType.CARDS;
+  constructor(public cards: CardClass[], public template: CardClass, public columns: number) {
+
+  }
+  toHTML(): string {
+    let result = '<div style="padding: 40px;"><div style="display: flex; justify-content: center; flex-wrap: wrap;">'
+    this.cards.forEach(card => {
+      result += `
+        <div style="background-color: ${card.backgroundColor}; color: ${card.textColor}; flex-basis: ${100 / this.columns}%; background-position: ${card.left} ${card.top}; background-size: cover; background-image: url(${card.src}); padding: 15px 10px 0;">
           ${card.toHTML()}
         </div>`;
-      })
-      result += '</div></div>'
-      return result;
-    }
-
-
-
-    static test() : GridComponentClass {
-      return new GridComponentClass(
-        [
-          new CardClass(
-            [
-              new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'), 
-              new TextClass(LOREM[0])
-            ]),
-          new CardClass(
-            [
-              new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'), 
-              new TextClass(LOREM[1])
-            ]),
-          new CardClass(
-            [
-              new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'), 
-              new TextClass(LOREM[2])
-            ])
-        ],
-        new CardClass(
-          [
-            new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'), 
-            new TextClass(LOREM[2])
-          ]), 
-        2)
-    }
-
-    static test2() : GridComponentClass {
-      return new GridComponentClass(
-        [ 
-          new CardClass(
-            [
-              new ImageClass('https://img.obrazky.cz/?url=b912f7f41b62f52e&size=2', '150px', 1, '50%', '30%'), 
-              new TextClass('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris elementum mauris vitae tortor. Maecenas libero. Nulla quis diam. Donec iaculis gravida nulla.</p>')
-            ]),
-          new CardClass(
-            [
-              new ImageClass('https://cdn.myshoptet.com/usr/www.sladke-potreby.cz/user/shop/big/44209-1_depositphotos-185673142-m-2015.jpg?611fd2c0', '150px', 1, '50%', '10%'),
-              new TextClass('<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat.</p>')
-            ]),
-          new CardClass(
-            [
-              new ImageClass('https://blog.eshop-rychle.cz/wp-content/uploads/2019/03/light-bulb-1318337_960_720-1.png', '150px', 1, '50%', '30%'),
-              new TextClass('<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Aliquam id dolor.</p>')
-            ]),
-          new CardClass(
-            [
-              new ImageClass('https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg', '150px', 1, '50%', '30%'),
-              new TextClass('<p>Curabitur vitae diam non enim vestibulum interdum. Phasellus et lorem id felis nonummy placerat. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo.</p>')
-            ])
-        ],
-        new CardClass(
-          [
-            new ImageClass('https://bahmansport.com/media/com_store/images/empty.png', '150px'), 
-            new TextClass('<p>TEXT?</p>')
-          ]),
-          4)
-    }
+    })
+    result += '</div></div>'
+    return result;
   }
 
 
-export class Deserializable  {
+
+  static test(): GridComponentClass {
+    return new GridComponentClass(
+      [
+        new CardClass(
+          [
+            new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'),
+            new TextClass(LOREM[0])
+          ]),
+        new CardClass(
+          [
+            new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'),
+            new TextClass(LOREM[1])
+          ]),
+        new CardClass(
+          [
+            new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'),
+            new TextClass(LOREM[2])
+          ])
+      ],
+      new CardClass(
+        [
+          new ImageClass('https://i.iinfo.cz/images/108/36-c9f123043398a2effeebf57ff7f796.png', '300px'),
+          new TextClass(LOREM[2])
+        ]),
+      2)
+  }
+
+  static test2(): GridComponentClass {
+    return new GridComponentClass(
+      [
+        new CardClass(
+          [
+            new ImageClass('https://img.obrazky.cz/?url=b912f7f41b62f52e&size=2', '150px', 1, '50%', '30%'),
+            new TextClass('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris elementum mauris vitae tortor. Maecenas libero. Nulla quis diam. Donec iaculis gravida nulla.</p>')
+          ]),
+        new CardClass(
+          [
+            new ImageClass('https://cdn.myshoptet.com/usr/www.sladke-potreby.cz/user/shop/big/44209-1_depositphotos-185673142-m-2015.jpg?611fd2c0', '150px', 1, '50%', '10%'),
+            new TextClass('<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat.</p>')
+          ]),
+        new CardClass(
+          [
+            new ImageClass('https://blog.eshop-rychle.cz/wp-content/uploads/2019/03/light-bulb-1318337_960_720-1.png', '150px', 1, '50%', '30%'),
+            new TextClass('<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Aliquam id dolor.</p>')
+          ]),
+        new CardClass(
+          [
+            new ImageClass('https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg', '150px', 1, '50%', '30%'),
+            new TextClass('<p>Curabitur vitae diam non enim vestibulum interdum. Phasellus et lorem id felis nonummy placerat. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo.</p>')
+          ])
+      ],
+      new CardClass(
+        [
+          new ImageClass('https://bahmansport.com/media/com_store/images/empty.png', '150px'),
+          new TextClass('<p>TEXT?</p>')
+        ]),
+      4)
+  }
+}
+
+
+export class Deserializable {
   public static cardClass(obj: CardClass): CardClass {
     let cardContent = obj.content.map((e: any) => {
       switch (e.type) {
@@ -546,60 +546,60 @@ export class Deserializable  {
 }
 
 
-  export class CardClass implements ImageInterface, ColorInterface, HTMLable {
+export class CardClass implements ImageInterface, ColorInterface, HTMLable {
 
-    constructor(public content: SectionContentInterface[], public src: string = '', 
+  constructor(public content: SectionContentInterface[], public src: string = '',
     public left: string = '50%', public top: string = '50%', public textColor: string = 'unset', public backgroundColor: string = 'unset') {
 
-    }
-    toHTML(): string {
-      let content = '';
-      this.content.forEach(e => {
-        content += `
+  }
+  toHTML(): string {
+    let content = '';
+    this.content.forEach(e => {
+      content += `
         <div style="padding: 0 10px 25px">
           ${e.toHTML()}
         </div>`
-      });
-      return content
-    }
+    });
+    return content
+  }
+}
+
+
+
+
+export class ColumnWrapperClass {
+
+  constructor(public content: ColumnClass[][]) {
+
   }
 
-
-
-
-  export class ColumnWrapperClass {
-
-    constructor(public content: ColumnClass[][]) {
-
-    }
-
-    toHTML() {
-      let result = '';
-      this.content.forEach(element => {
-        result += '<div style="display: flex;">'
-        element.forEach(e => {
-          result += e.toHTML();
-        })
-        result += '</div>'
+  toHTML() {
+    let result = '';
+    this.content.forEach(element => {
+      result += '<div style="display: flex;">'
+      element.forEach(e => {
+        result += e.toHTML();
       })
-        
-      return result
-    }
+      result += '</div>'
+    })
+
+    return result
   }
+}
 
 
-  export class Cloneable {
-    public static deepCopy<T>(source: T): T {
-      return Array.isArray(source)
+export class Cloneable {
+  public static deepCopy<T>(source: T): T {
+    return Array.isArray(source)
       ? source.map(item => this.deepCopy(item))
       : source instanceof Date
-      ? new Date(source.getTime())
-      : source && typeof source === 'object'
-            ? Object.getOwnPropertyNames(source).reduce((o, prop) => {
-               Object.defineProperty(o, prop, Object.getOwnPropertyDescriptor(source, prop)!);
-               o[prop] = this.deepCopy((source as { [key: string]: any })[prop]);
-               return o;
-            }, Object.create(Object.getPrototypeOf(source)))
-      : source as T;
-    }
+        ? new Date(source.getTime())
+        : source && typeof source === 'object'
+          ? Object.getOwnPropertyNames(source).reduce((o, prop) => {
+            Object.defineProperty(o, prop, Object.getOwnPropertyDescriptor(source, prop)!);
+            o[prop] = this.deepCopy((source as { [key: string]: any })[prop]);
+            return o;
+          }, Object.create(Object.getPrototypeOf(source)))
+          : source as T;
   }
+}

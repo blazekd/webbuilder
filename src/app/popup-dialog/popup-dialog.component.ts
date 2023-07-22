@@ -18,19 +18,18 @@ export class PopupDialogComponent implements OnInit {
   subscription = new Subscription;
 
 
-  @ViewChild('menuElem', {static: true, read: ViewContainerRef}) menuElem!: ViewContainerRef;
+  @ViewChild('menuElem', { static: true, read: ViewContainerRef }) menuElem!: ViewContainerRef;
   constructor(public dialogRef: MatDialogRef<PopupDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData: DialogData) {
 
-    }
+  }
 
-    ngOnInit(): void {
-      this.changeMenu(0);
+  ngOnInit(): void {
+    this.changeMenu(0);
   }
 
 
   handleEvent($event: ChangeMenuEvent) {
-    console.log("handling", $event)
     switch ($event.message) {
       case EventMessage.ADD:
         this.dialogRef.close($event.data)
@@ -39,7 +38,6 @@ export class PopupDialogComponent implements OnInit {
         this.dialogRef.close();
         break;
       case EventMessage.CHANGE:
-        console.log($event.data)
         if ($event.index !== undefined) {
           // if ($event.data !== undefined)
           //   this.dialogData.data = $event.data
@@ -60,14 +58,13 @@ export class PopupDialogComponent implements OnInit {
   }
 
   cancel() {
-    if (this.menuIndex == 0) 
+    if (this.menuIndex == 0)
       this.dialogRef.close();
     this.sendMessage.next(EventMessage.CANCEL);
 
   }
 
   changeMenu(i: number) {
-    console.log(this.dialogData.data)
     this.menuIndex = i;
     if (this.menuElem)
       this.menuElem.clear();

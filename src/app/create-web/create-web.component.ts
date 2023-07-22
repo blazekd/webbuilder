@@ -14,12 +14,12 @@ import { DataManipulationService } from '../services/data-manipulation.service';
 })
 export class CreateWebComponent {
 
-  
+
   showPc = true;
 
+  //TODO rename Component to Section
 
-
-  components: SectionComponentClass[] = [
+  sections: SectionComponentClass[] = [
     SectionComponentClass.webnodeNav(),
     SectionComponentClass.webnode0(),
     SectionComponentClass.webnode1(),
@@ -32,7 +32,7 @@ export class CreateWebComponent {
 
   constructor(public dialog: MatDialog, private service: DataManipulationService) {
     this.service.message.subscribe(($event) => this.handleService($event))
-   }
+  }
 
   handleService($event: any) {
     switch ($event.type) {
@@ -42,15 +42,15 @@ export class CreateWebComponent {
       case NavMessage.HTML:
         this.exportToHTML();
         break;
-      case NavMessage.IMPORT: 
+      case NavMessage.IMPORT:
         let fileReader = new FileReader();
         fileReader.onload = (e) => {
-          let str: string = fileReader.result == null ?  '[]' : fileReader.result.toString();
-          let components = JSON.parse(str) as SectionComponentClass[]
-          components = components.map(component => {
-            return Deserializable.sectionComponentClass(component)  
+          let str: string = fileReader.result == null ? '[]' : fileReader.result.toString();
+          let sections = JSON.parse(str) as SectionComponentClass[]
+          sections = sections.map(section => {
+            return Deserializable.sectionComponentClass(section)
           })
-          this.components = components;
+          this.sections = sections;
         }
         fileReader.readAsText($event.data);
         break;
@@ -60,17 +60,17 @@ export class CreateWebComponent {
   }
 
   exportToJSON() {
-    const jsonData = JSON.stringify(this.components);
+    const jsonData = JSON.stringify(this.sections);
     const uri = 'data:application/json;charset=UTF-8,' + encodeURIComponent(jsonData);
     this.saveAs(uri, 'website.json');
   }
 
   exportToHTML() {
     let result = ''
-    this.components.forEach(element => {
+    this.sections.forEach(element => {
       result += element.toHTML();
     });
-    let html =  `
+    let html = `
     <!DOCTYPE html>
     <html>
       <head>
@@ -115,25 +115,25 @@ export class CreateWebComponent {
     if (this.dialog.openDialogs.length > 0)
       return;
 
-    const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addSection()});
+    const dialogRef = this.dialog.open(PopupDialogComponent, { data: DialogData.addSection() });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined)
         switch (result) {
           case DialogComponentType.TITLE:
-            this.components.splice(i, 0, SectionComponentClass.title());
+            this.sections.splice(i, 0, SectionComponentClass.title());
             break;
           case DialogComponentType.EMPTY:
-            this.components.splice(i, 0, SectionComponentClass.empty());
+            this.sections.splice(i, 0, SectionComponentClass.empty());
             break;
           case DialogComponentType.TEXT:
-            this.components.splice(i, 0, SectionComponentClass.text());
+            this.sections.splice(i, 0, SectionComponentClass.text());
             break;
           case DialogComponentType.TEXT2:
-            this.components.splice(i, 0, SectionComponentClass.text2());
+            this.sections.splice(i, 0, SectionComponentClass.text2());
             break;
           case DialogComponentType.CARDS:
-            this.components.splice(i, 0, SectionComponentClass.grid());
+            this.sections.splice(i, 0, SectionComponentClass.grid());
             break;
           default:
             alert("Není implementováno!!");
@@ -146,9 +146,9 @@ export class CreateWebComponent {
     if (this.dialog.openDialogs.length > 0)
       return;
 
-    let dataTmp = Cloneable.deepCopy(this.components[i])
+    let dataTmp = Cloneable.deepCopy(this.sections[i])
     let dialogRef = this.dialog.open(PopupDialogComponent, {
-          data: DialogData.editSection(this.components[i])
+      data: DialogData.editSection(this.sections[i])
     })
 
     if (dialogRef === undefined)
@@ -156,39 +156,39 @@ export class CreateWebComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === undefined)
-        this.components[i] = dataTmp
+        this.sections[i] = dataTmp
     });
   }
 
   moveCompUp(index: number) {
-    [this.components[index-1], this.components[index]] = [this.components[index], this.components[index-1]];
+    [this.sections[index - 1], this.sections[index]] = [this.sections[index], this.sections[index - 1]];
   }
 
   moveCompDown(index: number) {
-    [this.components[index], this.components[index+1]] = [this.components[index+1], this.components[index]];
+    [this.sections[index], this.sections[index + 1]] = [this.sections[index + 1], this.sections[index]];
   }
 
   deleteComp(index: number) {
-    this.components.splice(index, 1);
+    this.sections.splice(index, 1);
   }
 
-  saveAs(uri:any, filename:any) {
+  saveAs(uri: any, filename: any) {
     var link = document.createElement('a');
     if (typeof link.download === 'string') {
-        link.href = uri;
-        link.download = filename;
-  
-        // Firefox requires the link to be in the body
-        document.body.appendChild(link);
-  
-        // simulate click
-        link.click();
-  
-        // remove the link when done
-        document.body.removeChild(link);
-  
+      link.href = uri;
+      link.download = filename;
+
+      // Firefox requires the link to be in the body
+      document.body.appendChild(link);
+
+      // simulate click
+      link.click();
+
+      // remove the link when done
+      document.body.removeChild(link);
+
     } else {
-        window.open(uri);
+      window.open(uri);
     }
   }
 }

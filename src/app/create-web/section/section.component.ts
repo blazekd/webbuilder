@@ -14,66 +14,66 @@ import { DialogComponentType, DialogData } from '../../popup-dialog/dialog-setti
 })
 export class SectionComponent {
 
-  @Input() component!: SectionComponentClass;
+  @Input() section!: SectionComponentClass;
   pointChanged: Subject<Point> = new Subject<Point>();
   test = [];
   constructor(public dialog: MatDialog) { }
 
-  addContent(column:number,row:number, i: number) {
+  addContent(column: number, row: number, i: number) {
     if (this.dialog.openDialogs.length > 0)
-    return;
+      return;
 
-  const dialogRef = this.dialog.open(PopupDialogComponent, {data: DialogData.addComponent()});
-  dialogRef.afterClosed().subscribe(result => {
-    if (result !== undefined)
-      switch (result) {
-        case DialogComponentType.TEXT:
-          this.component.columns.content[row][column].content.splice(i, 0, TextClass.new());
-          break;
-        case DialogComponentType.HEADER:
-          this.component.columns.content[row][column].content.splice(i, 0, TextClass.newHeader());
-          break;
-        case DialogComponentType.IMAGE:
-          this.component.columns.content[row][column].content.splice(i, 0, ImageClass.new());
-          let tmpDialog = this.dialog.open(PopupDialogComponent, {
-            data: DialogData.editImage(this.component.columns.content[row][column].content[i])
-          });
-          tmpDialog.afterClosed().subscribe(result => {
-            if (result === undefined || result.src == '')
-              this.deleteContent(column, row, i);
-          });
-          break;
-        case DialogComponentType.DIVIDER:
-          this.component.columns.content[row][column].content.splice(i, 0, DividerClass.new());
-          break;
-        default:
-          alert("Není implementováno!!");
-          break;
-      }
-  });
+    const dialogRef = this.dialog.open(PopupDialogComponent, { data: DialogData.addComponent() });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined)
+        switch (result) {
+          case DialogComponentType.TEXT:
+            this.section.columns.content[row][column].content.splice(i, 0, TextClass.new());
+            break;
+          case DialogComponentType.HEADER:
+            this.section.columns.content[row][column].content.splice(i, 0, TextClass.newHeader());
+            break;
+          case DialogComponentType.IMAGE:
+            this.section.columns.content[row][column].content.splice(i, 0, ImageClass.new());
+            let tmpDialog = this.dialog.open(PopupDialogComponent, {
+              data: DialogData.editImage(this.section.columns.content[row][column].content[i])
+            });
+            tmpDialog.afterClosed().subscribe(result => {
+              if (result === undefined || result.src == '')
+                this.deleteContent(column, row, i);
+            });
+            break;
+          case DialogComponentType.DIVIDER:
+            this.section.columns.content[row][column].content.splice(i, 0, DividerClass.new());
+            break;
+          default:
+            alert("Není implementováno!!");
+            break;
+        }
+    });
 
-  
+
   }
 
   getStyle() {
     return {
-      backgroundImage: this.component.src == '' ? '' : 'url(' + this.component.src + ')',
-      backgroundPositionX: this.component.left,
-      backgroundPositionY: this.component.top,
-      backgroundColor: this.component.backgroundColor,
-      color: this.component.textColor,
+      backgroundImage: this.section.src == '' ? '' : 'url(' + this.section.src + ')',
+      backgroundPositionX: this.section.left,
+      backgroundPositionY: this.section.top,
+      backgroundColor: this.section.backgroundColor,
+      color: this.section.textColor,
     }
-  } 
+  }
 
   drop(event: any, row: number) {
     let col = event.container.element.nativeElement.getAttribute('column');
     if (col === 'up') {
-      this.component.columns.content.splice(0,0,[new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
+      this.section.columns.content.splice(0, 0, [new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
       event.previousContainer.data.splice(event.previousIndex, 1);
       return;
     }
     if (col === 'down') {
-      this.component.columns.content.splice(this.component.columns.content.length,0,[new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
+      this.section.columns.content.splice(this.section.columns.content.length, 0, [new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))])]);
       event.previousContainer.data.splice(event.previousIndex, 1);
       return;
     }
@@ -81,10 +81,10 @@ export class SectionComponent {
 
 
     let column = parseInt(col);
-    if (!isNaN(column) && event.previousContainer.element.nativeElement.getAttribute('column') )
+    if (!isNaN(column) && event.previousContainer.element.nativeElement.getAttribute('column'))
       return;
     if (!isNaN(column) && event.previousContainer !== event.container) { // make new column
-      this.component.columns.content[row].splice(column+1,0,new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))]));
+      this.section.columns.content[row].splice(column + 1, 0, new ColumnClass([JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]))]));
 
       // calculate width
       for (let i = 0; i < event.container.data.length; ++i) {
@@ -97,55 +97,55 @@ export class SectionComponent {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
     if (event.previousContainer.data.length == 0) {
 
       let x = event.previousContainer.element.nativeElement.getAttribute('row')
       let y = event.previousContainer.element.nativeElement.getAttribute('mycolumn')
 
-      this.component.columns.content[x].splice(y,1);
+      this.section.columns.content[x].splice(y, 1);
 
-      let flex = 100 / this.component.columns.content[x].length;
-      for (let i = 0; i < this.component.columns.content[x].length; ++i) {
-        this.component.columns.content[x][i].flexBasis = flex;
+      let flex = 100 / this.section.columns.content[x].length;
+      for (let i = 0; i < this.section.columns.content[x].length; ++i) {
+        this.section.columns.content[x][i].flexBasis = flex;
       }
     }
   }
 
 
-  deleteContent(column: number, row: number, i:number) {
-    this.component.columns.content[row][column].content.splice(i, 1);
+  deleteContent(column: number, row: number, i: number) {
+    this.section.columns.content[row][column].content.splice(i, 1);
   }
 
-  editMenu(column:number, row:number, i:number, type: DialogComponentType) {
+  editMenu(column: number, row: number, i: number, type: DialogComponentType) {
     if (this.dialog.openDialogs.length > 0)
       return;
     let dialogRef;
-    let tmpData = Cloneable.deepCopy(this.component.columns.content[row][column].content[i])
+    let tmpData = Cloneable.deepCopy(this.section.columns.content[row][column].content[i])
 
     switch (type) {
       case DialogComponentType.IMAGE:
         let tmpDialog = this.dialog.open(PopupDialogComponent, {
-          data: DialogData.editImage(this.component.columns.content[row][column].content[i])
+          data: DialogData.editImage(this.section.columns.content[row][column].content[i])
         });
         tmpDialog.afterClosed().subscribe(result => {
           if (result === undefined)
-            this.component.columns.content[row][column].content[i] = tmpData;
+            this.section.columns.content[row][column].content[i] = tmpData;
           else if (result.src == '')
             this.deleteContent(column, row, i);
         });
         break;
       case DialogComponentType.DIVIDER:
         dialogRef = this.dialog.open(PopupDialogComponent, {
-          data: DialogData.editDivider(this.component.columns.content[row][column].content[i])
+          data: DialogData.editDivider(this.section.columns.content[row][column].content[i])
         });
         break;
       case DialogComponentType.CARDS:
         dialogRef = this.dialog.open(PopupDialogComponent, {
-          data: DialogData.editGrid(this.component.columns.content[row][column].content[i])
+          data: DialogData.editGrid(this.section.columns.content[row][column].content[i])
         });
         break;
       default:
@@ -154,16 +154,16 @@ export class SectionComponent {
     if (dialogRef) {
       dialogRef.afterClosed().subscribe(result => {
         if (result === undefined)
-          this.component.columns.content[row][column].content[i] = tmpData;
+          this.section.columns.content[row][column].content[i] = tmpData;
       });
     }
 
-    
+
   }
 
   dragEnd(event: any, row: number) {
     for (let i = 0; i < event.sizes.length; ++i) {
-      this.component.columns.content[row][i].flexBasis = event.sizes[i];
+      this.section.columns.content[row][i].flexBasis = event.sizes[i];
     }
   }
 
@@ -184,7 +184,7 @@ export class SectionComponent {
   }
 
   public get DialogComponentType() {
-    return DialogComponentType; 
+    return DialogComponentType;
   }
 
 }

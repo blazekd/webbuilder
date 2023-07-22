@@ -1,10 +1,11 @@
 <mat-tab-group dynamicHeight mat-stretch-tabs>
     <mat-tab label="Preset">
-        <div class="color nocolors" (click)="unsetColors()"></div>
-        <div *ngFor="let item of colors" class="color" [style.color]="item.text" [style.backgroundColor]="item.background" (click)="changeColor(item)"></div>
+        <div class="preset no-preset" (click)="unsetColors()"></div>
+        <div *ngFor="let item of colors" class="preset" [style.color]="item.text"
+            [style.backgroundColor]="item.background" (click)="changeColor(item)"></div>
     </mat-tab>
     <mat-tab label="Custom">
-        <div class="color" [style.color]="data.textColor" [style.background]="data.backgroundColor"></div>
+        <div class="preset" [style.color]="data.textColor" [style.background]="data.backgroundColor"></div>
         <div>
             <div class="my-label-container">
                 <label>Background color</label>

@@ -1,19 +1,8 @@
-
 <div class="image-container" #imageContainer>
-    <div class="image-wrapper" #wrapper [style.maxHeight]="content.height"
-    mwlResizable
-    [validateResize]="validate"
-    [enableGhostResize]="false"
-    (resizeEnd)="onResizeEnd($event)"
-    (resizing)="onResize($event)"
-    [ngClass]="'image-style-' + content.style"
-    [attr.mystyle]="content.style"
-    >
-            <img [src]="content.src" alt="image" class="w-100" class="imagee" [style.objectPosition]="content.left + ' ' + content.top">
-        <div class="handle handle-bottom" mwlResizeHandle
-        [resizeEdges]="{ bottom: true }"></div>
+    <div class="image-wrapper" #wrapper [style.maxHeight]="content.height" mwlResizable [validateResize]="validate"
+        [enableGhostResize]="false" (resizeEnd)="onResizeEnd($event)" (resizing)="onResize($event)"
+        [ngClass]="'image-style-' + content.style" [attr.mystyle]="content.style">
+        <img [src]="content.src" alt="image" class="w-100" [style.objectPosition]="content.left + ' ' + content.top">
+        <div class="handle" mwlResizeHandle [resizeEdges]="{ bottom: true }"></div>
     </div>
 </div>
-
-
-

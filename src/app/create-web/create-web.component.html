@@ -1,31 +1,31 @@
+<div class="d-flex w-100 flex-column align-items-center mx-auto">
+    <div class="w-100 position-relative show-btn-settings" *ngFor="let section of sections; index as i">
+        <div class="new-section-button new-section-button-top" *ngIf="i != 0">
+            <div class="d-flex align-items-end justify-content-center">
+                <button mat-button (click)="addComp(i)"><mat-icon>add</mat-icon>Add section</button>
+            </div>
+        </div>
 
-<div class="main d-flex">
-    <div [class.w-100] = "showPc" [class.smartphone] = "!showPc">
-        <div class="pc-container" id="pc-container">
-            <div class="w-100 component" *ngFor="let component of components; index as i">
-                <div class="new-component-button new-component-button-top" *ngIf="i != 0">
-                    <div class="d-flex align-items-end justify-content-center">
-                        <button mat-button (click)="addComp(i)"><mat-icon>add</mat-icon>Add section</button>
-                    </div>
-                </div>
-                <div class="w-100">
-                    <div class="h-100 my-min-height">
-                        <app-section [component]="component"></app-section>
+        <div class="h-100 my-min-height">
+            <app-section [section]="section"></app-section>
 
-                    </div> 
-                    <div class="btn-settings">
-                        <button mat-icon-button (click)="moveCompUp(i)" [disabled]="i == 0" matTooltip="Move section up"><mat-icon>arrow_upward</mat-icon></button>
-                        <button mat-icon-button (click)="moveCompDown(i)" [disabled]="i == components.length - 1" matTooltip="Move section down"><mat-icon>arrow_downward</mat-icon></button>
-                        <button mat-icon-button (click)="editComp(i)" matTooltip="Section settings"><mat-icon>edit</mat-icon></button>
-                        <button mat-icon-button (click)="deleteComp(i)"  matTooltip="Delete section"><mat-icon>delete</mat-icon></button>
-                    </div>    
-                </div>
-                <div class="new-component-button new-component-button-bottom" *ngIf="i != components.length -1">
-                    <div class="d-flex align-items-start justify-content-center">
-                        <button mat-button (click)="addComp(i+1)"><mat-icon>add</mat-icon>Add section</button>
-                    </div>
-                </div>
+        </div>
+        <div class="btn-settings">
+            <button mat-icon-button (click)="moveCompUp(i)" [disabled]="i == 0"
+                matTooltip="Move section up"><mat-icon>arrow_upward</mat-icon></button>
+            <button mat-icon-button (click)="moveCompDown(i)" [disabled]="i == sections.length - 1"
+                matTooltip="Move section down"><mat-icon>arrow_downward</mat-icon></button>
+            <button mat-icon-button (click)="editComp(i)"
+                matTooltip="Section settings"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button (click)="deleteComp(i)"
+                matTooltip="Delete section"><mat-icon>delete</mat-icon></button>
+        </div>
+
+        <div class="new-section-button new-section-button-bottom" *ngIf="i != sections.length -1">
+            <div class="d-flex align-items-start justify-content-center">
+                <button mat-button (click)="addComp(i+1)"><mat-icon>add</mat-icon>Add section</button>
             </div>
         </div>
     </div>
+
 </div>

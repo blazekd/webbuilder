@@ -1,62 +1,79 @@
-
-<div class="content-wrapper" [ngStyle]="getStyle()" [style.minHeight.vh]="[component.height]">
-    <div class="flex-container mx-auto" [style.maxWidth.px]="[component.width]" cdkDropListGroup>
-        <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,0)" class="column-width column-width-top" [attr.column]="'up'">
+<div class="content-wrapper" [ngStyle]="getStyle()" [style.minHeight.vh]="[section.height]">
+    <div class="flex-container mx-auto" [style.maxWidth.px]="[section.width]" cdkDropListGroup>
+        <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test"
+            (cdkDropListDropped)="drop($event,0)" class="column-width column-width-top" [attr.column]="'up'">
             <div class="column-width-border column-width-border-end"></div>
         </div>
-        <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,0)" class="column-width column-width-bottom" [attr.column]="'down'">
+        <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test"
+            (cdkDropListDropped)="drop($event,0)" class="column-width column-width-bottom" [attr.column]="'down'">
             <div class="column-width-border column-width-border-end"></div>
         </div>
-        <as-split [gutterSize]="30" *ngFor="let rowContent of component.columns.content; index as row"  (dragEnd)="dragEnd($event, row)" >
-                <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,row)" class="column-width column-width-left" [attr.column]="-1">
-                    <div class="column-width-border column-width-border-end"></div>
-                </div>
-                <ng-container *ngFor="let columnContent of rowContent; index as column;">
-                    <as-split-area [size]="columnContent.flexBasis" [minSize]="10" [maxSize]="100" [order]="column">
-                        <div cdkDropList
-                            [cdkDropListData]="columnContent.content"
-                            [cdkDropListConnectedTo]="[columnWidthDropList]"
-                            (cdkDropListDropped)="drop($event, row)" class="h-100" [attr.row]="row" [attr.mycolumn]="column">
-                            <div class="content" *ngFor="let item of columnContent.content; index as i" cdkDrag>
-                                <div class="new-content-button new-content-button-top">
-                                    <div class="d-flex align-items-end justify-content-center">
-                                        <button mat-mini-fab (click)="addContent(column, row, i)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
-                                    </div>
+        <as-split [gutterSize]="30" *ngFor="let rowContent of section.columns.content; index as row"
+            (dragEnd)="dragEnd($event, row)">
+            <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test"
+                (cdkDropListDropped)="drop($event,row)" class="column-width column-width-left" [attr.column]="-1">
+                <div class="column-width-border column-width-border-end"></div>
+            </div>
+            <ng-container *ngFor="let columnContent of rowContent; index as column;">
+                <as-split-area [size]="columnContent.flexBasis" [minSize]="10" [maxSize]="100" [order]="column">
+                    <div cdkDropList [cdkDropListData]="columnContent.content"
+                        [cdkDropListConnectedTo]="[columnWidthDropList]" (cdkDropListDropped)="drop($event, row)"
+                        class="h-100" [attr.row]="row" [attr.mycolumn]="column">
+                        <div class="position-relative show-mini-menu show-outline"
+                            *ngFor=" let item of columnContent.content; index as i" cdkDrag>
+                            <div class="new-content-button new-content-button-top">
+                                <div class="d-flex align-items-end justify-content-center">
+                                    <button mat-mini-fab (click)="addContent(column, row, i)"
+                                        matTooltip="Add element"><mat-icon>add</mat-icon></button>
                                 </div>
-                                <div class="mini-menu" [ngSwitch]="item.type">
-                                    <mat-icon cdkDragHandle class="handle" matTooltip="Move element" matTooltipPosition="right" [style.display]="columnContent.resizable ? 'block' : 'none'">open_with</mat-icon>
-                                    <mat-icon *ngSwitchDefault (click)="editMenu(column, row, i, item.type)" matTooltip="Edit element" matTooltipPosition="right">edit</mat-icon>
-                                    <mat-icon (click)="deleteContent(column, row, i)" matTooltip="Delete element" matTooltipPosition="right">delete</mat-icon>
-                                </div>
-                                <div class="content-inner-wrapper">
+                            </div>
+                            <div class="mini-menu" [ngSwitch]="item.type">
+                                <mat-icon cdkDragHandle class="handle" matTooltip="Move element"
+                                    matTooltipPosition="right"
+                                    [style.display]="columnContent.resizable ? 'block' : 'none'">open_with</mat-icon>
+                                <mat-icon *ngSwitchDefault (click)="editMenu(column, row, i, item.type)"
+                                    matTooltip="Edit element" matTooltipPosition="right">edit</mat-icon>
+                                <mat-icon (click)="deleteContent(column, row, i)" matTooltip="Delete element"
+                                    matTooltipPosition="right">delete</mat-icon>
+                            </div>
+                            <div class="content-inner-wrapper">
 
-                                    <div [ngSwitch]="item.type">
-                                
-                                        <app-section-text *ngSwitchCase="DialogComponentType.TEXT" [content]="asTextClass(item)"></app-section-text>
-                                        <app-section-image *ngSwitchCase="DialogComponentType.IMAGE" [content]="asImageClass(item)"></app-section-image>
-                                        <app-section-divider *ngSwitchCase="DialogComponentType.DIVIDER" [content]="asDividerClass(item)"></app-section-divider>
-                                        <app-section-cards *ngSwitchCase="DialogComponentType.CARDS" [component]="asGridComponentClass(item)"></app-section-cards>
-                                        <div *ngSwitchDefault>{{item.type}}</div>
-                                        
-                                    </div> 
+                                <div [ngSwitch]="item.type">
+
+                                    <app-section-text *ngSwitchCase="DialogComponentType.TEXT"
+                                        [content]="asTextClass(item)"></app-section-text>
+                                    <app-section-image *ngSwitchCase="DialogComponentType.IMAGE"
+                                        [content]="asImageClass(item)"></app-section-image>
+                                    <app-section-divider *ngSwitchCase="DialogComponentType.DIVIDER"
+                                        [content]="asDividerClass(item)"></app-section-divider>
+                                    <app-section-cards *ngSwitchCase="DialogComponentType.CARDS"
+                                        [content]="asGridComponentClass(item)"></app-section-cards>
+                                    <div *ngSwitchDefault>{{item.type}}</div>
+
                                 </div>
-                                <div class="new-content-button new-content-button-bottom" *ngIf="i == columnContent.content.length - 1">
-                                    <div class="d-flex align-items-start justify-content-center">
-                                        <button mat-mini-fab (click)="addContent(column, row, columnContent.content.length)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
-                                    </div>
+                            </div>
+                            <div class="new-content-button new-content-button-bottom"
+                                *ngIf="i == columnContent.content.length - 1">
+                                <div class="d-flex align-items-start justify-content-center">
+                                    <button mat-mini-fab (click)="addContent(column, row, columnContent.content.length)"
+                                        matTooltip="Add element"><mat-icon>add</mat-icon></button>
                                 </div>
                             </div>
                         </div>
-                        <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test" (cdkDropListDropped)="drop($event,row)" class="column-width" [attr.column]="column">
-                            <div class="column-width-border column-width-border-end"></div>
+                    </div>
+                    <div cdkDropList #columnWidthDropList="cdkDropList" [cdkDropListData]="test"
+                        (cdkDropListDropped)="drop($event,row)" class="column-width" [attr.column]="column">
+                        <div class="column-width-border column-width-border-end"></div>
+                    </div>
+                    <div class="new-content-button new-content-button-bottom-empty"
+                        *ngIf="0 == columnContent.content.length">
+                        <div class="d-flex align-items-start justify-content-center">
+                            <button mat-mini-fab (click)="addContent(column, row, columnContent.content.length)"
+                                matTooltip="Add element"><mat-icon>add</mat-icon></button>
                         </div>
-                        <div class="new-content-button new-content-button-bottom-empty" *ngIf="0 == columnContent.content.length">
-                            <div class="d-flex align-items-start justify-content-center">
-                                <button mat-mini-fab (click)="addContent(column, row, columnContent.content.length)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
-                            </div>
-                        </div>
-                    </as-split-area>
-                </ng-container>
+                    </div>
+                </as-split-area>
+            </ng-container>
         </as-split>
     </div>
 </div>

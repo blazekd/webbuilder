@@ -1,9 +1,10 @@
+body {
+  max-height: 100vh;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
 
-
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 /* Importing Bootstrap SCSS file. */
@@ -13,22 +14,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import '~quill/dist/quill.snow.css';
 
 
+/* Import custom styles */
+@import './styles/angularsplit.scss';
+@import './styles/cdk.scss';
+@import './styles/material.scss';
+@import './styles/quill.scss';
 
 
-html, body {
-  height: 100vh;
-  overflow: hidden;
-}
-body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-}
 
-// The Nav Component hosts the Sidenav container and the Sidenav content area (i.e., the router-outlet).
-
-quill-editor {
-  display: block !important;
-}
 
 #app-content {
   position: absolute;
@@ -37,11 +30,6 @@ quill-editor {
   left: 0;
   right: 0;
   overflow: auto;
-}
-
-
-.my-slider.mat-mdc-slider {
-  width: calc(100% - 24px);
 }
 
 .my-label-container {
@@ -55,270 +43,139 @@ quill-editor {
   font-weight: 600;
 }
 
-// ------------------------------------------------------------------------------------------------------------------ //
+.mini-menu {
+  position: absolute;
+  top: 5px;
+  left: -5px;
+  display: none;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 17px;
+  z-index: 4500;
+  color: black;
 
+  &>* {
+    margin: 5px;
+    user-select: none;
+    cursor: pointer;
+  }
 
-
-app-home, app-create-web {
-    .ql-editor {
-
-        border: 1px solid transparent;
-        overflow: hidden;
-
-        &:hover {
-          border: 1px dashed black;
-          outline: 1px dashed white;
-        }
-        &.ql-border {
-          border: 1px solid black;
-          outline: 1px solid white;
-        }
-
-        word-break: break-word;
-
-    }
-
-       
-        .ql-position.ql-tooltip {
-          min-width: 300px;
-          width: fit-content;
-          z-index: 500;
-          -webkit-transform: translateX(-50%);
-          -moz-transform: translateX(-50%);
-          -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-          position: absolute;
-          left: 50%;
-          margin-top: 10px;
-
-          .ql-toolbar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            .ql-formats {
-              margin: 4px 6px 4px 6px;
-            }
-          }
-          
-          &.ql-flip {
-
-            margin-top: 0;
-            margin-bottom: 10px;
-            bottom: 100%;
-
-
-            -webkit-transform: translateX(-50%);
-            -moz-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
-
-
-            .ql-tooltip-submenu {
-              &.ql-tooltip-submenu-show {
-                display:flex;
-              }
-              display: none;
-              height: 32px;
-              width: fit-content;
-              align-items: center;
-              position: absolute;
-              right: 0;
-              left: calc(100% + 6px);
-              background: #444;
-              border-radius: 16px;
-              padding: 0 8px;
-              .mat-icon {
-                cursor: pointer;
-                color: #ccc;
-                &:hover {
-                  color: #fff;
-                }
-              }
-            }
-        } 
-
-
-
-    }
-
-
-}
-.ql-bubble .ql-picker.ql-size .ql-picker-item[data-value]:not([data-value=''])::before {
-  font-size: attr(data-value);
-  content: attr(data-value);
+  .handle-content {
+    cursor: move;
+  }
 }
 
-.ql-bubble .ql-picker-label.ql-active {
-  overflow: hidden;
+.show-mini-menu:hover>.mini-menu {
+  display: flex;
 }
 
-.ql-bubble .ql-picker.ql-size .ql-picker-label::before {
-  content: 'Size';
+.btn-settings {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  &>.mat-mdc-icon-button.mat-mdc-button-base {
+    height: 40px;
+    width: 40px;
+    padding: 6px;
+  }
+
 }
 
-.ql-bubble .ql-picker.ql-font .ql-picker-label::before {
-  content: 'Font';
+.show-btn-settings:hover>.btn-settings {
+  display: flex;
 }
 
-.ql-bubble .ql-picker-options .ql-picker-item.ql-primary[data-label='none'] {
-  background-color: white;
-  position: relative;
-  overflow: hidden; 
-  width: 136px;
-  &:before {
-    position: absolute;
-    content: '';
-    background: red;
-    display: block;
+
+.preset {
+  height: 100px;
+  width: 300px;
+  border: 1px solid silver;
+  margin: 20px 0;
+  text-align: center;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 100px;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px dashed #222;
+  }
+
+  &::before {
+    content: 'Text';
+  }
+}
+
+.no-preset {
+  &::before {
+    content: 'No preset'
+  }
+}
+
+
+.new-content-button {
+
+  left: 0;
+  right: 0;
+  z-index: 5;
+  position: absolute;
+  opacity: 0;
+  box-sizing: border-box;
+  transform: scale(0.5);
+
+  &.new-content-button-bottom {
+    bottom: -20px;
+  }
+
+  &.new-content-button-bottom-empty {
+    bottom: 0;
+    top: -20px;
     width: 100%;
-    height: 2px;
+    height: 40px;
+  }
 
-    -webkit-transform: rotate(-6deg);
-    transform: rotate(-6deg);
-    left: 0;
-    right: 0;
+  &.new-content-button-top {
+    top: -20px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
     top: 0;
     bottom: 0;
-    margin: auto;
-  }
-}
-
-
-
-
-.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value='10']::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value='10']::before {
-  content: 'Citation';
-}
-
-.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value='1']::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value='1']::before {
-  content: 'Title';
-}
-
-.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value='2']::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value='2']::before {
-  content: 'Header';
-}
-
-.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value='3']::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value='3']::before {
-  content: 'Subtitle';
-}
-
-.ql-bubble .ql-picker.ql-header .ql-picker-label::before, .ql-bubble .ql-picker.ql-header .ql-picker-item::before {
-  content: 'Text';
-}
-
-.ql-selected {
-  color: red !important;
-}
-
-
-.cdk-drag-placeholder, .cdk-drop-list-receiving {
-
-  .mini-menu, .new-content-button {
-    display: none !important;
-  }
-
-  .ql-editor {
-    border: 1px solid transparent !important;
-    outline: none !important;
-  }
-}
-
-
-.cdk-drag-preview:not(.column-width-border) {
-  border: 1px dashed #666 !important;
-  height: auto !important;
-}
-
-.cdk-drag-preview.column-width-border {
-  position: relative;
-  width: 30px !important;
-  &::after {
-    content: '';
-    position: absolute;
+    left: 0;
     right: 0;
-    left:0;
-    margin: auto;
-    height: 100%;
-    border: 1px dashed black;
-    box-shadow: 0px 0px 5px 0px white;
-    width: 0;
-
+    display: block;
+    height: 50%;
+    margin-top: 2px;
+    width: 200%;
+    transform: translateX(-25%);
+    border-bottom: 4px dashed #666;
   }
 
-
-}
-
-.dragclass > .content {
-  border: 1px dashed #666 !important;
-}
-
-.cdk-drop-list-receiving, .cdk-drag-preview, .cdk-drag-placeholder, .cdk-drop-list-dragging {
-  .new-content-button {
-    display: none !important;
+  button {
+    background-color: #333;
+    color: white;
   }
 }
 
-
-
-.cdk-drag-preview, .cdk-drag-placeholder  { 
-  .ql-tooltip.ql-flip.ql-position {
-    display: none;
-  }
-
-
- }
-
- .cdk-drag-preview {
-  &.column-width {
-    opacity: 1 !important;
-  }
- }
-
- .cdk-drag-placeholder {
-  &.column-width:hover {
-    opacity: 0 !important;
-  }
- }
-
-
-.nav-ql-editor {
-  div.ql-position.ql-tooltip.ql-flip {
-    bottom: unset;
-    margin-top: 10px;
-    span.ql-tooltip-arrow {
-      border-bottom: 6px solid #444;
-      top: -6px;
-      bottom: unset;
-      border-top: unset;
-    }
-  }
+.new-content-button:hover {
+  opacity: 1;
 }
 
-.as-split-area {
-  overflow-x: unset !important;
-  overflow-y: unset !important;
-  position: relative;
-  height: unset !important;
-}
+.show-outline {
+  border: 1px solid transparent;
+  outline: 1px solid transparent;
 
-.as-init {
-  overflow: unset !important;
-  height: unset !important;
-  position: relative;
-}
-
-.as-split-gutter {
-  height: unset !important;
-  background-color: unset !important;
-  opacity: 0;
   &:hover {
-    opacity: 1;
-  }
-  .as-split-gutter-icon {
-    background-image: none !important;
-    border: 1px dashed black;
-    box-shadow: 0px 0px 3px 0px white;
-    width: 0 !important;
-
+    border: 1px dashed #666;
+    outline: 1px dashed white;
   }
 }

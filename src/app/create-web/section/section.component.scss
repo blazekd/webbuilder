@@ -1,122 +1,58 @@
-
-.new-content-button {
-
-    left:0;
-    right: 0;
-    z-index: 5;
-    position: absolute;
-    opacity: 0;
-    box-sizing: border-box;
-    transform: scale(0.5);
-    &.new-content-button-bottom {
-        bottom: -20px;
-    }
-
-    &.new-content-button-bottom-empty {
-      bottom: 0;
-      top: -20px;
-      width: 100%;
-      height: 40px;
-    }
-
-    &.new-content-button-top {
-        top: -20px;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: block;
-      height: 50%;
-      margin-top: 2px;
-      width: 200%;
-      transform: translateX(-25%);
-      border-bottom: 4px dashed #666;
-    }
-
-    button {
-        background-color: #333;
-        color: white;
-    }
-}
-
-.new-content-button:hover {
-    opacity: 1;
-}
-
-
+//todo check
 .content {
-    position: relative;
-    box-sizing: border-box;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 100%;
+  // position: relative;
+  // box-sizing: border-box;
+  // flex-grow: 0;
+  // flex-shrink: 0;
+  // flex-basis: 100%;
 
-    display:flex;
-    & > .content-inner-wrapper {
-        flex: 1 1 auto;
-    }
+  // display: flex;
 
-    &:hover .mini-menu {
-      display: flex;
-    }
-    border:1px solid transparent;
-    &:hover {
-      border: 1px dashed #666;
-      outline: 1px dashed white;
-    }
+  &>.content-inner-wrapper {
+    flex: 1 1 auto;
+  }
+
+  // &:hover .mini-menu {
+  //   display: flex;
+  // }
+
+  // border:1px solid transparent;
+
+  // &:hover {
+  //   border: 1px dashed #666;
+  //   outline: 1px dashed white;
+  // }
 }
 
+//todo check
 .content-wrapper {
-    padding: 20px 40px;
-    width: 100%;
-    background-size: cover;
-    display: flex;
+  padding: 20px 40px;
+  width: 100%;
+  background-size: cover;
+  display: flex;
 }
 
+//todo check
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  position: relative;
 
-.flex-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
+  .my-col {
     position: relative;
-    .my-col {
-      position: relative;
-      flex: 0 0 100%;
-      min-width: 90px;
-      display: flex;
-      .my-col-data {
-        flex-grow: 1;
-      }
+    flex: 0 0 100%;
+    min-width: 90px;
+    display: flex;
+
+    .my-col-data {
+      flex-grow: 1;
     }
-}
-
-.mini-menu {
-  position: absolute;
-  top: 5px;
-  left: -5px;
-  display:none;
-  flex-direction: column;
-  border:1px solid rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 17px;
-  z-index: 4500;
-  color: black;
-  & > * {
-    margin: 5px;
-    user-select: none;
-    cursor: pointer;
-  }
-  .handle {
-    cursor: move;
   }
 }
 
+//todo move
 .column-width {
   position: absolute;
   width: 30px;
@@ -133,9 +69,10 @@
   &.column-width-top {
     right: 0;
     left: 0;
-    top: -30px;
+    top: -5px;
     width: unset;
     height: 30px;
+
     &.cdk-drop-list-dragging {
       div.column-width-border::after {
         width: 100%;
@@ -150,7 +87,8 @@
     bottom: -30px;
     width: unset;
     height: 30px;
-    top:unset;
+    top: unset;
+
     &.cdk-drop-list-dragging {
       div.column-width-border::after {
         width: 100%;
@@ -158,37 +96,41 @@
       }
     }
   }
-  &.cdk-drop-list-receiving, &.cdk-drop-list-dragging {
+
+  &.cdk-drop-list-receiving,
+  &.cdk-drop-list-dragging {
     z-index: 5;
   }
+
   &.cdk-drop-list-dragging {
     div.column-width-border::after {
       content: '';
       position: absolute;
       right: 0;
-      left:0;
+      left: 0;
       margin: auto;
       height: 100%;
       border: 1px solid orange;
       box-shadow: 0px 0px 3px 0px white;
       width: 0;
     }
-  
+
     .cdk-drag-placeholder:not(.column-width-border) {
-      display:none
+      display: none
     }
   }
- div:not(.column-width-border-end) {
+
+  div:not(.column-width-border-end) {
     width: 30px;
     height: 100%;
     opacity: 0;
     cursor: ew-resize;
-    
+
     &::after {
       content: '';
       position: absolute;
       right: 0;
-      left:0;
+      left: 0;
       margin: auto;
       height: 100%;
       border: 1px dashed black;
@@ -202,7 +144,6 @@
   }
 }
 
-.split-wrapper {
-  position: relative;
-}
-
+// .split-wrapper {
+//   position: relative;
+// }

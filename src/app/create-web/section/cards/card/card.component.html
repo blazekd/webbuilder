@@ -1,40 +1,41 @@
-<div class="card-wrapper" cdkDropList
-    [cdkDropListData]="card.content"
-    (cdkDropListDropped)="drop($event)">
-    <div class="content" *ngFor="let item of card.content; index as i" cdkDrag>
-        <div>
-            <!-- ADD TOP -->
+<div cdkDropList [cdkDropListData]="card.content" (cdkDropListDropped)="drop($event)">
+    <div class="wrapper show-mini-menu" *ngFor="let item of card.content; index as i" cdkDrag>
+        <!-- ADD TOP -->
 
-            <div class="new-content-button new-content-button-top">
-                <div class="d-flex align-items-end justify-content-start">
-                    <button (click)="addContent(i)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
-                </div>
-            </div> 
-
-            <!-- MODULE MENU -->
-
-            <div class="mini-menu" [ngSwitch]="item.type">
-                <mat-icon cdkDragHandle class="handle-content" matTooltip="Move element" matTooltipPosition="left">open_with</mat-icon>
-                <mat-icon *ngSwitchDefault (click)="editMenu(i, item.type)" matTooltip="Edit element" matTooltipPosition="left">edit</mat-icon>
-                <mat-icon (click)="deleteContent(i)" matTooltip="Delete element" matTooltipPosition="left">delete</mat-icon>
+        <div class="new-content-button new-content-button-top">
+            <div class="d-flex align-items-end justify-content-start">
+                <button (click)="addContent(i)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
             </div>
+        </div>
 
-            <!-- MODULE -->
+        <!-- MODULE MENU -->
 
-            <div [ngSwitch]="item.type">
+        <div class="mini-menu" [ngSwitch]="item.type">
+            <mat-icon cdkDragHandle class="handle-content" matTooltip="Move element"
+                matTooltipPosition="left">open_with</mat-icon>
+            <mat-icon *ngSwitchDefault (click)="editMenu(i, item.type)" matTooltip="Edit element"
+                matTooltipPosition="left">edit</mat-icon>
+            <mat-icon (click)="deleteContent(i)" matTooltip="Delete element" matTooltipPosition="left">delete</mat-icon>
+        </div>
 
-                <app-section-text *ngSwitchCase="DialogComponentType.TEXT" [content]="asTextClass(item)"></app-section-text>
-                <app-section-image *ngSwitchCase="DialogComponentType.IMAGE" [content]="asImageClass(item)"></app-section-image>
-                <app-section-divider *ngSwitchCase="DialogComponentType.DIVIDER" [content]="asDividerClass(item)"></app-section-divider>
-                <div *ngSwitchDefault>{{item.type}}</div>
-            </div>   
+        <!-- MODULE -->
 
-            <!-- ADD BOTTOM -->
+        <div [ngSwitch]="item.type">
 
-            <div class="new-content-button new-content-button-bottom" *ngIf="i == card.content.length - 1">
-                <div class="d-flex align-items-start justify-content-start">
-                    <button (click)="addContent(card.content.length)" matTooltip="Add element"><mat-icon>add</mat-icon></button>
-                </div>
+            <app-section-text *ngSwitchCase="DialogComponentType.TEXT" [content]="asTextClass(item)"></app-section-text>
+            <app-section-image *ngSwitchCase="DialogComponentType.IMAGE"
+                [content]="asImageClass(item)"></app-section-image>
+            <app-section-divider *ngSwitchCase="DialogComponentType.DIVIDER"
+                [content]="asDividerClass(item)"></app-section-divider>
+            <div *ngSwitchDefault>{{item.type}}</div>
+        </div>
+
+        <!-- ADD BOTTOM -->
+
+        <div class="new-content-button new-content-button-bottom" *ngIf="i == card.content.length - 1">
+            <div class="d-flex align-items-start justify-content-start">
+                <button (click)="addContent(card.content.length)"
+                    matTooltip="Add element"><mat-icon>add</mat-icon></button>
             </div>
         </div>
     </div>

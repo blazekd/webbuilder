@@ -23,10 +23,10 @@ export class ImageModuleComponent extends AbstractDialogModule {
 
   constructor(public dialog: MatDialog) {
     super();
-    
+
   }
 
-  
+
   uploadImage() {
     let dialogRef = this.dialog.open(ImageUploadModuleComponent);
     dialogRef.afterClosed().subscribe(result => {
@@ -36,6 +36,7 @@ export class ImageModuleComponent extends AbstractDialogModule {
 
   showGallery() {
     let dialogRef = this.dialog.open(GalleryModuleComponent);
+    //TODO do not remove image if not selected
     dialogRef.afterClosed().subscribe(result => {
       this.data.src = result;
     });
@@ -51,7 +52,7 @@ export class ImageModuleComponent extends AbstractDialogModule {
   clickFocusPoint(event: any) {
     var height = (parseInt(getComputedStyle(this.imageBoundary.nativeElement, '').height))
     var width = (parseInt(getComputedStyle(this.imageBoundary.nativeElement, '').width))
-    var ratio = width/height;
+    var ratio = width / height;
     var boundaryX = width > height ? 200 : ratio * 200;
     var boundaryY = height > width ? 200 : 200 / ratio;
     var newLeft = (event.offsetX) / boundaryX * 100 + "%";
@@ -65,7 +66,7 @@ export class ImageModuleComponent extends AbstractDialogModule {
     var height = (parseInt(getComputedStyle(this.imageBoundary.nativeElement, '').height))
     var width = (parseInt(getComputedStyle(this.imageBoundary.nativeElement, '').width))
 
-    var ratio = width/height;
+    var ratio = width / height;
     var boundaryX = width > height ? 200 : ratio * 200;
     var boundaryY = height > width ? 200 : 200 / ratio;
 

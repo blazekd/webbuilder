@@ -27,9 +27,9 @@ export class CardsComponent {
 
   };
 
-  @Input() component!: GridComponentClass;
+  @Input() content!: GridComponentClass;
 
-    constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog) {
 
 
   }
@@ -38,59 +38,59 @@ export class CardsComponent {
 
   getCardStyle(i: number) {
     return {
-      backgroundColor: this.component.cards[i].backgroundColor,
-      color: this.component.cards[i].textColor,
-      flexBasis: 100/this.component.columns + '%',
-      backgroundImage: this.component.cards[i].src == '' ? '' : 'url(' + this.component.cards[i].src + ')',
-      backgroundPositionX: this.component.cards[i].left,
-      backgroundPositionY: this.component.cards[i].top,
+      backgroundColor: this.content.cards[i].backgroundColor,
+      color: this.content.cards[i].textColor,
+      flexBasis: 100 / this.content.columns + '%',
+      backgroundImage: this.content.cards[i].src == '' ? '' : 'url(' + this.content.cards[i].src + ')',
+      backgroundPositionX: this.content.cards[i].left,
+      backgroundPositionY: this.content.cards[i].top,
       backgroundSize: 'cover'
 
     }
-  } 
+  }
 
 
-  addContent(i:number) {
-    this.component.cards.splice(i, 0, Cloneable.deepCopy(this.component.template));  
+  addContent(i: number) {
+    this.content.cards.splice(i, 0, Cloneable.deepCopy(this.content.template));
     this.initTable()
   }
 
 
-  deleteContent(i:number) {
-    this.component.cards.splice(i, 1);
+  deleteContent(i: number) {
+    this.content.cards.splice(i, 1);
   }
 
-  editMenu(i:number) {
+  editMenu(i: number) {
     if (this.dialog.openDialogs.length > 0)
       return;
 
 
     const dialogRef = this.dialog.open(PopupDialogComponent, {
-      data: DialogData.editCard(this.component.cards[i])
+      data: DialogData.editCard(this.content.cards[i])
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined)
-        this.component.cards[i] = result;
+        this.content.cards[i] = result;
     });
-    
+
   }
 
   duplicate(i: number) {
-    this.component.cards.splice(i, 0, Cloneable.deepCopy(this.component.cards[i])); 
+    this.content.cards.splice(i, 0, Cloneable.deepCopy(this.content.cards[i]));
   }
 
   initTable() {
     // create table rows based on input list
     // example: [1,2,3,4,5,6] => [ [1,2,3], [4,5,6] ]
-    this.itemsTable = this.component.cards
-      .filter((_:any, outerIndex:any) => outerIndex % this.component.columns == 0) // create outter list of rows
+    this.itemsTable = this.content.cards
+      .filter((_: any, outerIndex: any) => outerIndex % this.content.columns == 0) // create outter list of rows
       .map((
-        _:any,
-        rowIndex:any // fill each row from...
+        _: any,
+        rowIndex: any // fill each row from...
       ) =>
-        this.component.cards.slice(
-          rowIndex * this.component.columns, // ... row start and
-          rowIndex * this.component.columns + this.component.columns // ...row end
+        this.content.cards.slice(
+          rowIndex * this.content.columns, // ... row start and
+          rowIndex * this.content.columns + this.content.columns // ...row end
         )
       );
   }
@@ -124,7 +124,7 @@ export class CardsComponent {
 
     // update items after drop: flatten matrix into list
     // example: [ [1,2,3], [4,5,6] ] => [1,2,3,4,5,6]
-    this.component.cards = this.itemsTable.reduce(
+    this.content.cards = this.itemsTable.reduce(
       (previous, current) => previous.concat(current),
       []
     );
@@ -138,24 +138,24 @@ export class CardsComponent {
 
 
   list = Array(25)
-  .fill('')
-  .map((_, i) => i + 1);
+    .fill('')
+    .map((_, i) => i + 1);
 
-drop(event: CdkDragDrop<number>): void {
-  moveItemInArray(
-    this.list,
-    event.previousContainer.data,
-    event.container.data
-  );
-}
+  drop(event: CdkDragDrop<number>): void {
+    moveItemInArray(
+      this.list,
+      event.previousContainer.data,
+      event.container.data
+    );
+  }
 
-drop2(event: CdkDragDrop<any>): void {
-  moveItemInArray(
-    this.component.cards,
-    event.previousContainer.data,
-    event.container.data
-  );
-}
+  drop2(event: CdkDragDrop<any>): void {
+    moveItemInArray(
+      this.content.cards,
+      event.previousContainer.data,
+      event.container.data
+    );
+  }
 
 
 

@@ -1,14 +1,15 @@
-<div class="container">
+<div class="wrapper">
     <ng-container *ngIf="!uploading; else uploadingTemplate">
         <div class="drag-and-drop">
             <div appDragAndDrop (fileDropped)="uploadFile($event)">
-                <input type="file" #fileDropRef id="fileDropRef" (change)="uploadFile($event)" accept="image/*" name="images[]" />
+                <input type="file" #fileDropRef id="fileDropRef" (change)="uploadFile($event)" accept="image/*"
+                    name="images[]" />
                 <h3>Drag image</h3>
                 <h3>or</h3>
                 <label for="fileDropRef">Browse</label>
             </div>
         </div>
-        <div *ngIf="form.value.file" class="mt-4 selected text-break">
+        <div *ngIf="form.value.file" class="mt-4 text-break">
             <p class="text-center">Selected file: <strong>{{ form.value.file.name }}</strong></p>
             <button mat-button class="w-100" (click)="uploadToServer()"><mat-icon>file_upload</mat-icon> Upload</button>
         </div>

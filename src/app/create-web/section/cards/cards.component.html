@@ -1,31 +1,30 @@
-<div class="content-wrapper">
-    <div class="flex-container" [sortablejs]="component.cards" [sortablejsOptions]="sortableOptions">
-       <div class="d-flex" [ngStyle]="getCardStyle(index)"
-       *ngFor="let item of component.cards; index as index">
-            <div class="content">
-                <div class="d-flex flex-column inner-content">
-                    <div class="new-content-button new-content-button-left">
-                        <button mat-mini-fab (click)="addContent(index)" matTooltip="Add card"><mat-icon>add</mat-icon></button>
-                    </div>
-                    <div class="card-menu"> 
-                        <mat-icon class="card-handle" matTooltip="Move card">open_with</mat-icon>
-                        <mat-icon (click)="editMenu(index)" matTooltip="Card settings">edit</mat-icon>
-                        <mat-icon (click)="duplicate(index)" matTooltip="Duplicate card">content_copy</mat-icon>
-                        <mat-icon (click)="deleteContent(index)" matTooltip="Delete card">delete</mat-icon>
-                    </div>
+<div class="wrapper">
+    <div class="d-flex flex-wrap justify-content-center" [sortablejs]="content.cards"
+        [sortablejsOptions]="sortableOptions">
+        <div class="d-flex" [ngStyle]="getCardStyle(index)" *ngFor="let item of content.cards; index as index">
+            <div class="d-flex flex-column inner-wrapper show-mini-menu">
+                <div class="new-content-button new-content-button-left">
+                    <button mat-mini-fab (click)="addContent(index)"
+                        matTooltip="Add card"><mat-icon>add</mat-icon></button>
+                </div>
+                <div class="mini-menu">
+                    <mat-icon class="handle-content card-handle" matTooltip="Move card">open_with</mat-icon>
+                    <mat-icon (click)="editMenu(index)" matTooltip="Card settings">edit</mat-icon>
+                    <mat-icon (click)="duplicate(index)" matTooltip="Duplicate card">content_copy</mat-icon>
+                    <mat-icon (click)="deleteContent(index)" matTooltip="Delete card">delete</mat-icon>
+                </div>
 
-                    <app-section-card [card]="item"></app-section-card>
+                <app-section-card [card]="item"></app-section-card>
 
 
-                    <div class="new-content-button new-content-button-right">
-                        <button mat-mini-fab (click)="addContent(component.cards.length)" matTooltip="Add card"><mat-icon>add</mat-icon></button>
-                    </div>
+                <div class="new-content-button new-content-button-right">
+                    <button mat-mini-fab (click)="addContent(content.cards.length)"
+                        matTooltip="Add card"><mat-icon>add</mat-icon></button>
                 </div>
             </div>
         </div>
-        <div class="new-content-button new-content-button-bottom" *ngIf="component.cards.length == 0">
+        <div class="new-content-button new-content-button-bottom" *ngIf="content.cards.length == 0">
             <button mat-mini-fab (click)="addContent(0)" matTooltip="Add card"><mat-icon>add</mat-icon></button>
         </div>
     </div>
 </div>
-  

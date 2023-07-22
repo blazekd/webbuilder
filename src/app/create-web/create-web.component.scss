@@ -1,158 +1,19 @@
-.my-nav {
-    overflow: hidden;
-    background-color: rgb(58, 216, 255);
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
-    height: 50px;
-    z-index: 10;
-
-    p {
-        font-family: Roboto, "Helvetica Neue", sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-    }
-
-    button, p, h1, mat-list-item {
-        margin: 0;
-    }
-
-    h1 {
-        font-family: Roboto, "Helvetica Neue", sans-serif;
-        font-weight: 500;
-    }
-}
-  
-
-.btn-settings {
-    display: none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
-    background-color:rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.15);
-    button {
-        padding: 6px;
-        margin: 0;
-    }
-
-    & > .mat-mdc-icon-button.mat-mdc-button-base {
-        height: 40px;
-        width: 40px;
-    }
-
-}
-
-.component {
-    position: relative;
-    box-sizing: border-box;
-
-}
-
-.component:hover .btn-settings {
-    display:block;
-}
-
-.icon-display {
-    transform: scale(0.7);
- }
-
-.pc-container {
-    width: 100%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.smartphone {
-    margin-top: 120px;
-    position: relative;
-    width: 360px;
-    height: 640px;
-    margin-left: auto;
-    margin-right: auto;;
-    border: 16px black solid;
-    border-top-width: 60px;
-    border-bottom-width: 60px;
-    border-radius: 36px;
-}
-  
-  /* The horizontal line on the top of the device */
-.smartphone:before {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 5px;
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #333;
-    border-radius: 10px;
-}
-  
-  /* The circle on the bottom of the device */
-.smartphone:after {
-    content: '';
-    display: block;
-    width: 35px;
-    height: 35px;
-    position: absolute;
-    left: 50%;
-    bottom: -65px;
-    transform: translate(-50%, -50%);
-    background: #333;
-    border-radius: 50%;
-}
-  
-  /* The screen (or content) of the device */
-.smartphone .pc-container {
-    height: 100%;
-    background: white;
-    overflow-y: auto;
-}
-
-.smartphone .pc-container::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    box-shadow: insert 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
-}
-
-.smartphone .pc-container::-webkit-scrollbar
-{
-	width: 10px;
-	background-color: #F5F5F5;
-}
-
-.smartphone .pc-container::-webkit-scrollbar-thumb
-{
-	background-color: #000000;
-	border: 2px solid #555555;
-}
-  
-.bg-white {
-    background-color: white;
-}
-
-.new-component-button {
+//todo move
+.new-section-button {
     height: 17px;
     width: 100%;
     z-index: 5;
     position: absolute;
     opacity: 0;
     box-sizing: border-box;
-    &.new-component-button-bottom {
+
+    &.new-section-button-bottom {
         bottom: 0;
         border-bottom: 2px solid #666;
         box-shadow: 0 1px 0px 1px #666;
     }
 
-    &.new-component-button-top {
+    &.new-section-button-top {
         top: 0;
         border-top: 2px solid #666;
         box-shadow: 0 -1px 0px 1px #666;
@@ -163,12 +24,11 @@
         color: white;
     }
 
-    & > div {
+    &>div {
         height: 17px;
     }
 }
 
-.new-component-button:hover {
+.new-section-button:hover {
     opacity: 1;
 }
-

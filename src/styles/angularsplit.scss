@@ -1,0 +1,30 @@
+.as-split-area {
+    overflow-x: unset !important;
+    overflow-y: unset !important;
+    position: relative;
+    height: unset !important;
+}
+
+.as-init {
+    overflow: unset !important;
+    height: unset !important;
+    position: relative;
+}
+
+.as-split-gutter {
+    height: unset !important;
+    background-color: unset !important;
+    opacity: 0;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    .as-split-gutter-icon {
+        background-image: none !important;
+        border: 1px dashed black;
+        box-shadow: 0px 0px 3px 0px white;
+        width: 0 !important;
+
+    }
+}
