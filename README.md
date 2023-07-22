@@ -1,9 +1,20 @@
-# OrgNew
+# Webbuilder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+This is webbuilder inspired mostly by [Webnode](webnode.cz) and [Squarespace](squarespace.com). You can create webpage and then export it to JSON or HTML. You can also import exported JSON back. The Worlds Collide default webpage is re-creation of one default pages from Webnode.   
+
+Uploading and retrieving of images is done using simple PHP API found in `src/api`.
+
+Page settings, Help, mobile view and some other things are not implemented but you can still create some nice looking websites.
+
+Demo: https://webbuilder.blazekd.cz/
+
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1 and then updated to version 15.1.1.
 
 ## Development server
 
+
+Install `node_modules` using `npm install` before first run.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
