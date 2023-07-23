@@ -4,7 +4,6 @@ This is webbuilder inspired mostly by [Webnode](webnode.cz) and [Squarespace](sq
 
 Uploading and retrieving of images is done using simple PHP API found in `src/api`.
 
-Page settings, Help, mobile view and some other things are not implemented but you can still create some nice looking websites.
 
 Demo: https://webbuilder.blazekd.cz/
 
