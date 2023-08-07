@@ -1,6 +1,6 @@
 # Webbuilder
 
-This is webbuilder inspired mostly by [Webnode](webnode.cz) and [Squarespace](squarespace.com). You can create webpage and then export it to JSON or HTML. You can also import exported JSON back. The Worlds Collide default webpage is re-creation of one default pages from Webnode.   
+This is webbuilder inspired mostly by [Webnode](webnode.cz) and [Squarespace](squarespace.com). You can create webpage and then export it to JSON or HTML. You can also import exported JSON back. The Worlds Collide default webpage is re-creation of one of the default pages from Webnode.   
 
 Uploading and retrieving of images is done using simple PHP API found in `src/api`.
 
